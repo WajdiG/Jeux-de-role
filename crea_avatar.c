@@ -11,7 +11,7 @@
 #include<string.h>
 
 
-#define N 16
+#define N 16 /**<constante définissant la taille maximale du pseudo*/
 
 char pseudo[N];/**<tableau destiné à contenir le pseudo du joueur*/
 
