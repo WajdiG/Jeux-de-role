@@ -245,14 +245,14 @@ void taille(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir
 	int tal=0;
 
 	if((*joueur).physique.race==nain){
-		while(tal<80||tal>150){
-			printf("\nChoisissez la taille de votre avatar en cm (comprise entre 80 et 150), la taille de votre avatar aura une influence sur votre expérience de jeu. \n votre taille : ");
+		while(tal<100||tal>150){
+			printf("\nChoisissez la taille de votre avatar en cm (comprise entre 100 et 150), la taille de votre avatar aura une influence sur votre expérience de jeu. \n votre taille : ");
 			scanf("%i", &tal);
 		}
 	}
 	else if((*joueur).physique.race==humain||(*joueur).physique.race==elfe||(*joueur).physique.race==orc){
-		while(tal<120||tal>220){
-			printf("\nChoisissez la taille de votre avatar en cm (comprise entre 120 et 220), la taille de votre avatar aura une influence sur votre expérience de jeu. \n votre taille : ");
+		while(tal<140||tal>220){
+			printf("\nChoisissez la taille de votre avatar en cm (comprise entre 140 et 220), la taille de votre avatar aura une influence sur votre expérience de jeu. \n votre taille : ");
 			scanf("%i", &tal);
 		}
 	}
@@ -281,14 +281,14 @@ void poids(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir 
     float imc=0.0;
 
 
-	if((*joueur).physique.race!=troll){
+	if((*joueur).physique.race==elfe||(*joueur).physique.race==humain){
 		do{					//test afin de que le poids soit dans la fourchette voulue
 			printf("\nVeuillez saisir un nombre entier correspondant au poids de votre avatar compris entre 40 et 200kg : ");
 			scanf("%f", &poids);
 		}while(poids<40||poids>200);
 
         imc= (poids/(taille*taille))*ch;
-        printf("IMC = %f",imc);
+        printf("\n imc = %f \n", imc);
 
 		if(imc<16.5){
 			printf("vous êtes anoréxique, vous pourrez passer par tout les chemins y compris les passages les plus étroits étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
@@ -315,7 +315,7 @@ void poids(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir 
 			(*joueur).physique.poids=obesemo;
 		}
 	}
-	else{
+	else if((*joueur).physique.race==nain){
 		while(poids<40||poids>200){					//test afin que le poids soit dans la fourchette voulue
 			printf("Veuillez saisir un nombre entier correspondant au poids de votre avatar compris entre 40 et 200kg : ");
 			scanf("%f", &poids);
@@ -323,21 +323,83 @@ void poids(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir 
 
 
         imc=(poids/(((*joueur).physique.taille)*((*joueur).physique.taille)))*10000;
+		printf("\n imc = %f \n", imc);
 
-
-		if(imc<16.5){
+		if(imc<45){
 			printf("vous êtes anoréxique, vous pourrez passer par les passages étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
 			(*joueur).physique.poids=anorexique;
 		}
-		else if(imc>=16.5&&imc<18.5){
+		else if(imc>=45&&imc<48){
 			printf("vous êtes mince voir très mince, vous pourrez emprunter la plupart des chemins mais pas tous, vos caractéristiques ont un léger bonus d'agilité et de rapidité et un léger malus de force et de puissance. \n");
 			(*joueur).physique.poids=mince;
 		}
-		else if(imc>=18.5&&imc<25){
+		else if(imc>=48&&imc<57){
 			printf("Vous êtes de corpulence moyenne, vous ne pourrez passer que sur les chemins classiques, vous avez des compétences équilibrées \n");
 			(*joueur).physique.poids=moyen;
 		}
-		else if(imc>=25&&imc<30){
+		else if(imc>=57&&imc<60){
+			printf("Vous êtes en surpoids, vous ne pourrez passer que par les chemins suffisament large pour vous. Vous avez un grand bonus de force et de puissance et un grand malus de rapidité et d'agilité. \n");
+			(*joueur).physique.poids=surpoids;
+		}
+		else{
+			printf("Vous êtes obèse. Vous avez un énorme bonus de force et puissance et un énorme malus de rapidité et d'agilité. Vous risquez d'avoir certaines surprise durant votre aventure... \n");
+			(*joueur).physique.poids=obese;
+		}
+	}
+	else if((*joueur).physique.race==orc){
+		while(poids<40||poids>200){					//test afin que le poids soit dans la fourchette voulue
+			printf("Veuillez saisir un nombre entier correspondant au poids de votre avatar compris entre 40 et 200kg : ");
+			scanf("%f", &poids);
+		}
+
+
+        imc=(poids/(((*joueur).physique.taille)*((*joueur).physique.taille)))*10000;
+		printf("\n imc = %f \n", imc);
+
+		if(imc<18){
+			printf("vous êtes anoréxique, vous pourrez passer par les passages étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
+			(*joueur).physique.poids=anorexique;
+		}
+		else if(imc>=18&&imc<21){
+			printf("vous êtes mince voir très mince, vous pourrez emprunter la plupart des chemins mais pas tous, vos caractéristiques ont un léger bonus d'agilité et de rapidité et un léger malus de force et de puissance. \n");
+			(*joueur).physique.poids=mince;
+		}
+		else if(imc>=21&&imc<27){
+			printf("Vous êtes de corpulence moyenne, vous ne pourrez passer que sur les chemins classiques, vous avez des compétences équilibrées \n");
+			(*joueur).physique.poids=moyen;
+		}
+		else if(imc>=27&&imc<30){
+			printf("Vous êtes en surpoids, vous ne pourrez passer que par les chemins suffisament large pour vous. Vous avez un grand bonus de force et de puissance et un grand malus de rapidité et d'agilité. \n");
+			(*joueur).physique.poids=surpoids;
+		}
+		else{
+			printf("Vous êtes obèse. Vous avez un énorme bonus de force et puissance et un énorme malus de rapidité et d'agilité. Vous risquez d'avoir certaines surprise durant votre aventure... \n");
+			(*joueur).physique.poids=obese;
+		}
+	}
+	else if((*joueur).physique.race==troll){
+		while(poids<100||poids>350){					//test afin que le poids soit dans la fourchette voulue
+			printf("Veuillez saisir un nombre entier correspondant au poids de votre avatar compris entre 100 et 350kg : ");
+			scanf("%f", &poids);
+		}
+
+
+        imc=(poids/(((*joueur).physique.taille)*((*joueur).physique.taille)))*10000;
+		printf("\n imc = %f \n", imc);
+
+		if(imc<32){
+			printf("vous êtes anoréxique, vous pourrez passer par les passages étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
+			(*joueur).physique.poids=anorexique;
+		}
+		else if(imc>=32&&imc<36){
+			printf("vous êtes mince voir très mince, vous pourrez emprunter la plupart des chemins mais pas tous, vos caractéristiques ont un léger bonus d'agilité et de rapidité et un léger malus de force et de puissance. \n");
+			(*joueur).physique.poids=mince;
+		}
+		else if(imc>=36&&imc<44){
+			printf("Vous êtes de corpulence moyenne, vous ne pourrez passer que sur les chemins classiques, vous avez des compétences équilibrées \n");
+			(*joueur).physique.poids=moyen;
+		}
+		else if(imc>=44&&imc<48){
 			printf("Vous êtes en surpoids, vous ne pourrez passer que par les chemins suffisament large pour vous. Vous avez un grand bonus de force et de puissance et un grand malus de rapidité et d'agilité. \n");
 			(*joueur).physique.poids=surpoids;
 		}
@@ -651,7 +713,7 @@ void config(t_joueur *joueur){	//Fonction permettant à l'utilisateur de revenir
 			case 2 : race(joueur); printf("Vous devez maintenant ajuster votre taille et votre poids. \n"); taille(joueur); poids(joueur); break;
 			case 3 : poids(joueur); break;
 			case 4 : sexe(joueur); break;
-			case 5 : taille(joueur); break;
+			case 5 : taille(joueur); poids(joueur);break;
 			case 6 : break;
 			default : printf("Veuillez saisir une valeur valide comprise entre 1 et 6. \n");
 		}
