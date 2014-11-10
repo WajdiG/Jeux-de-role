@@ -33,7 +33,7 @@ typedef enum{anorexique=1,mince,moyen,surpoids,obese,obesemo}t_poids;
  *\struct t_physique
  *\brief stucture liée aux caractéristiques physiques du joueur, elle contient tout les types énumérés liés au physique ainsi que l'entier taille
  */
-typedef struct{t_sexe sexe;t_race race;t_poids poids;}t_physique;
+typedef struct{t_sexe sexe;t_race race;t_poids poids;int taille;}t_physique;
 
 /**
  *\struct t_comp1
