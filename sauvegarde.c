@@ -10,24 +10,9 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include "crea_avatar.h"
 
 
-/**
- *\fn exist 
- *\brief fonction permettant de vérifier l'existence ou non d'un fichier de sauvegarde lié à ce joueur, et de le créer si il n'éxiste pas. 
- *\param fichier 
- **/
- /*
-void exist(FILE*fichier){
-	
-	fichier=fopen(pseudo,"r");
-	
-	if(fichier==NULL){
-		fichier=fopen(pseudo,"w");
-	}
-	else{fichier=fopen(pseudo,"a");}
-}
-*/
 /**
  *\fn crea_file 
  *\brief fonction permettant de sauvegarder la structure t_joueur dans le fichier de sauvegarde
@@ -75,13 +60,7 @@ void crea_file(FILE*fichier){
 	fprintf(fichier,"%i",joueur.magie.destruction);
 	fprintf(fichier,"%i",joueur.magie.guerison);
 	fprintf(fichier,"%i",joueur.magie.invocation);
+	
+	fclose(fichier);
 }
 
-void main(){
-	
-	FILE*ficher;
-	
-	exist(fichier);
-	crea_file(fichier);
-	
-}

@@ -10,7 +10,6 @@
 #include<stdlib.h>
 #include<string.h>
 
-
 #define N 16 /**<constante définissant la taille maximale du pseudo*/
 
 char pseudo[N];/**<tableau destiné à contenir le pseudo du joueur*/
@@ -288,7 +287,6 @@ void poids(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir 
 		}while(poids<40||poids>200);
 
         imc= (poids/(taille*taille))*ch;
-        printf("\n imc = %f \n", imc);
 
 		if(imc<16.5){
 			printf("vous êtes anoréxique, vous pourrez passer par tout les chemins y compris les passages les plus étroits étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
@@ -321,9 +319,7 @@ void poids(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir 
 			scanf("%f", &poids);
 		}
 
-
         imc=(poids/(((*joueur).physique.taille)*((*joueur).physique.taille)))*10000;
-		printf("\n imc = %f \n", imc);
 
 		if(imc<45){
 			printf("vous êtes anoréxique, vous pourrez passer par les passages étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
@@ -354,7 +350,7 @@ void poids(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir 
 
 
         imc=(poids/(((*joueur).physique.taille)*((*joueur).physique.taille)))*10000;
-		printf("\n imc = %f \n", imc);
+		
 
 		if(imc<18){
 			printf("vous êtes anoréxique, vous pourrez passer par les passages étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
@@ -385,7 +381,7 @@ void poids(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir 
 
 
         imc=(poids/(((*joueur).physique.taille)*((*joueur).physique.taille)))*10000;
-		printf("\n imc = %f \n", imc);
+	
 
 		if(imc<32){
 			printf("vous êtes anoréxique, vous pourrez passer par les passages étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
@@ -668,6 +664,7 @@ void attribution_points(t_joueur *joueur, int principale, int secondaire){  //fo
 void config(t_joueur *joueur){	//Fonction permettant à l'utilisateur de revenir sur un choix concernant le physique de votre avatar
 
 	int choix=0;
+	int m,c;
 
 	printf("\nChacun de vos choix concernant les caractéristiques physiques de votre avatar auront un impact sur votre expérience de jeu et sur les compétences suivantes : Rapidité, Agilité, Perception, Force et Puissance. Vous aurez à chaques choix la possibilité de changer d'avis. \n");
 
@@ -697,6 +694,36 @@ void config(t_joueur *joueur){	//Fonction permettant à l'utilisateur de revenir
         else{
             printf("Race : troll \n");
         }
+        
+        m=(*joueur).physique.taille/100;
+        c=(*joueur).physique.taille%100;
+        
+        if(c==0){
+			printf("Taille : %i m \n", m);
+		}
+		else{
+			printf("Taille : %i m %i \n", m,c);
+		}
+        
+        if((*joueur).physique.poids==1){
+			printf("Corpulence : anorexique \n");
+        }
+        else if((*joueur).physique.poids==2){
+            printf("Corpulence : mince \n");
+        }
+        else if((*joueur).physique.poids==3){
+            printf("Corpulence : moyenne \n");
+        }
+        else if((*joueur).physique.poids==4){
+            printf("Corpulence : surpoids \n");
+        }
+        else if((*joueur).physique.poids==5){
+            printf("Corpulence : obèse \n");
+        }
+        else{
+            printf("Corpulence : obèsité morbide \n");
+        }
+        
 																		//Offre la possibilité de modifier l'une des options de l'avatar
 		printf("\nSélectionnez l'une des options suivantes : \n");
 		printf("1- Modifier votre pseudo \n");
