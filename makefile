@@ -1,5 +1,5 @@
-JDR: JDR1_0.o crea_avatar.o 
-	gcc JDR1_0.o crea_avatar.o -o JDR1
+JDR: JDR1_0.o crea_avatar.o sauvegarde.o
+	gcc JDR1_0.o crea_avatar.o sauvegarde.o -o JDR1
 	
 JDR1_0.o: JDR1_0.c
 	gcc -c JDR1_0.c

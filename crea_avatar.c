@@ -9,76 +9,11 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include "crea_avatar.h"
 
 #define N 16 /**<constante définissant la taille maximale du pseudo*/
 
 char pseudo[N];/**<tableau destiné à contenir le pseudo du joueur*/
-
-/**
- *\enum t_sexe
- *\brief type énuméré contenant le sexe de l'avatar  
- */
-typedef enum{homme=1,femme,sans}t_sexe;
-
-/**
- *\enum t_race
- *\brief type énumeré contenant la race du joueur parmis cinq races possibles 
- */
-typedef enum{elfe=1,humain,nain,orc,troll}t_race;
-
-/**
- *\enum t_poids
- *\brief type énuméré contenant la corpulence du joueur parmis 6 possibilitées 
- */
-typedef enum{anorexique=1,mince,moyen,surpoids,obese,obesemo}t_poids;
-
-/**
- *\struct t_physique
- *\brief stucture liée aux caractéristiques physiques du joueur, elle contient tout les types énumérés liés au physique ainsi que l'entier taille
- */
-typedef struct{t_sexe sexe;t_race race;t_poids poids; int taille;}t_physique;	
-
-/**
- *\struct t_comp1
- *\brief structure contenant les compétences principales du joueur
- */
-typedef struct{int rapidite,agilite,force,puissance,intelligence,perception,chance;}t_comp1;	
-
-/**
- *\struct t_combat
- *\brief structure contenant les compétences secondaires liées au combat
- */
-typedef struct{int archerie,precision,unemain,deuxmains,lance,contondant,parade,armureleg,armurelou,corpscorps;}t_combat;	
-
-/**
- *\struct t_furtif
- *\brief structure contenant les compétences secondaires liées à la furtivité
- */
-typedef struct{int discretion,crochetage,dague,acrobatie;}t_furtif;	
-
-/**
- *\struct t_dial
- *\brief structure contenant les compétences secondaires liées au dialogue
- */
-typedef struct{int persuasion,charisme,marchandage;}t_dial;	
-
-/**
- *\struct t_vie
- *\brief structure contenant les valeurs des points de vie, mana et endurance
- */
-typedef struct{int sante,mana,endu;}t_vie;
-
-/**
- *\struct t_magie
- *\brief structure contenant les compétences secondaires liées à la magie
- */
-typedef struct{int destruction,guerison,invocation;}t_magie;	
-
-/**
- *\struct t_joueur
- *\brief structure contenant toutes les structures et tableaux de données de joueur
- */
-typedef struct{char pseudo[N];t_physique physique;t_vie vie;t_comp1 comp;t_combat combat;t_furtif furtif;t_dial dial;t_magie magie;}t_joueur; //structure regroupant toutes les structures précédentes
 
 
 /**
@@ -188,7 +123,7 @@ void race(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir l
 			printf("5- Troll \n");
 			printf("Votre choix :");
 
-			scanf("%i", &choix);			//associe à la variable choix le numéro correspondant à la race choisit
+			scanf("%i", &choix);			
 		}while(choix<1||choix>5);
 
 
@@ -224,7 +159,7 @@ void sexe(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir l
 		printf("2_ Sans \n");
 		printf("Votre choix :");
 
-		scanf("%i", &choix);						//associe à la variable choix le numéro correspondant à la race choisit
+		scanf("%i", &choix);				
 	}while(choix!=0&&choix!=1&&choix!=2);
 
 
@@ -772,9 +707,7 @@ void crea_ava(t_joueur *joueur,int principale,int secondaire){ //fonction conten
 
 	initCaract(joueur);
 
-
     attribution_points(joueur,principale,secondaire);
-
 
     config(joueur);
 }

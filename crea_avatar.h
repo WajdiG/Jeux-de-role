@@ -33,45 +33,50 @@ typedef enum{anorexique=1,mince,moyen,surpoids,obese,obesemo}t_poids;
  *\struct t_physique
  *\brief stucture liée aux caractéristiques physiques du joueur, elle contient tout les types énumérés liés au physique ainsi que l'entier taille
  */
-typedef struct{t_sexe sexe;t_race race;t_poids poids;int taille;}t_physique;
+typedef struct{t_sexe sexe;t_race race;t_poids poids; int taille;}t_physique;	
 
 /**
  *\struct t_comp1
  *\brief structure contenant les compétences principales du joueur
  */
-typedef struct{int rapidite,agilite,force,puissance,intelligence,perception,chance;}t_comp1;
+typedef struct{int rapidite,agilite,force,puissance,intelligence,perception,chance;}t_comp1;	
 
 /**
  *\struct t_combat
  *\brief structure contenant les compétences secondaires liées au combat
  */
-typedef struct{int archerie,precision,unemain,deuxmains,lance,contondant,parade,armureleg,armurelou;}t_combat;
+typedef struct{int archerie,precision,unemain,deuxmains,lance,contondant,parade,armureleg,armurelou,corpscorps;}t_combat;	
 
 /**
  *\struct t_furtif
  *\brief structure contenant les compétences secondaires liées à la furtivité
  */
-typedef struct{int discretion,crochetage,dague,acrobatie;}t_furtif;
+typedef struct{int discretion,crochetage,dague,acrobatie;}t_furtif;	
+
 /**
  *\struct t_dial
  *\brief structure contenant les compétences secondaires liées au dialogue
  */
-typedef struct{int persuasion,charisme,marchandage;}t_dial;
+typedef struct{int persuasion,charisme,marchandage;}t_dial;	
+
 /**
  *\struct t_vie
  *\brief structure contenant les valeurs des points de vie, mana et endurance
  */
 typedef struct{int sante,mana,endu;}t_vie;
+
 /**
  *\struct t_magie
  *\brief structure contenant les compétences secondaires liées à la magie
  */
-typedef struct{int destruction,guerison,invocation;}t_magie;
+typedef struct{int destruction,guerison,invocation;}t_magie;	
+
 /**
  *\struct t_joueur
  *\brief structure contenant toutes les structures et tableaux de données de joueur
  */
-typedef struct{char pseudo[N];t_physique physique;t_vie vie;t_comp1 comp;t_combat combat;t_furtif furtif;t_dial dial;t_magie magie;}t_joueur;
+typedef struct{char pseudo[N];t_physique physique;t_vie vie;t_comp1 comp;t_combat combat;t_furtif furtif;t_dial dial;t_magie magie;}t_joueur; //structure regroupant toutes les structures précédentes
+
 /**
  *\fn void initstruct(t_joueur*)
  *\brief fonction permettant d'initialiser toutes les valeurs contenue dans la structure t_joueur
