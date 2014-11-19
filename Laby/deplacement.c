@@ -8,17 +8,21 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <ncurses.h>
+#include <time.h>
 #define N 20
 #define MUR 0
 #define CHEMIN 1
 #define COFFRE 2
 #define JOUEUR 3
 #define OBJECTIF 4
+#define MOB 5
 
 typedef struct {int x, y;}t_coordonees;
 
 t_coordonees mes_choix[4];
 t_coordonees ma_position = {17, 2};
+t_coordonees mob_position = {2, 17};
 
 void affichage(int matrice[N][N]){
 	int i, j;
@@ -30,6 +34,7 @@ void affichage(int matrice[N][N]){
                     case(JOUEUR) : printf("*_*"); break;
                     case(COFFRE) : printf("ICI"); break;
                     case(OBJECTIF) : printf(" X "); break;
+                    case(MOB) : printf(">_<"); break;
                 }
 		}
 		printf("\n");
@@ -57,41 +62,61 @@ void initialisation(int matrice[N][N]){
 }
 
 void coordonnees(int matrice[N][N]){
-		int i;
-		t_coordonees chemin_voulu;
-        	t_coordonees tampon;
+		
+		char direction;
+        t_coordonees tampon;
 
-		mes_choix[0].x = ma_position.x + 1;
-		mes_choix[0].y = ma_position.y;
-		mes_choix[1].x = ma_position.x;
-		mes_choix[1].y = ma_position.y + 1;
-		mes_choix[2].x = ma_position.x - 1;
-		mes_choix[2].y = ma_position.y;
-		mes_choix[3].x = ma_position.x;
-		mes_choix[3].y = ma_position.y - 1;
-        	printf("\nVous pouvez aller sur les cases suivantes : ");
-		for(i=0; i<4; i++){
-			if(matrice[mes_choix[i].x][mes_choix[i].y] == 1 || matrice[mes_choix[i].x]
 
-[mes_choix[i].y] == 2){
-				printf("(%i;%i)", mes_choix[i].x, mes_choix[i].y);
-			}
+		printf("\n Ou souhaitez-vous vous deplacer ?\n\n");
+		scanf("%c", &direction);
+		
+		tampon.x = ma_position.x;
+        tampon.y = ma_position.y;
+		switch(direction){
+			case 'z' : ma_position.x-- ; break;
+			case 'q' : ma_position.y-- ; break;
+			case 's' : ma_position.x++ ; break;
+			case 'd' : ma_position.y++ ; break;
 		}
-		printf("Ou souhaitez-vous vous deplacer ?\n\n");
-		scanf("%i %i", &chemin_voulu.x, &chemin_voulu.y);
-		for(i=0; i<4; i++){
-			if(((mes_choix[i].x == chemin_voulu.x) && (mes_choix[i].y == chemin_voulu.y)) &&
-
-(matrice[chemin_voulu.x][chemin_voulu.y] != 0)){
-				printf("Deplacement accepte !\n");
-                tampon.x = ma_position.x;
-                tampon.y = ma_position.y;
-				ma_position.x = chemin_voulu.x;
-				ma_position.y = chemin_voulu.y;
-                matrice[tampon.x][tampon.y] = 1;
-				break;
-			}
+		
+		if(matrice[ma_position.x][ma_position.y] == 0){
+			ma_position.x = tampon.x;
+			ma_position.y = tampon.y;
+			printf("\n aïe ! \n");
 		}
+		else{
+			matrice[tampon.x][tampon.y] = 1;
+		}              
+}
+
+void IA(int matrice[N][N]){
+		srand(time(NULL));
+		char direction;
+		char deplac_mob[4]={'z','q','s','d'};
+		int dir=rand()%(3-0)+0;
+        t_coordonees tampon;
+        
+
+		direction=deplac_mob[dir];
+		
+		tampon.x = mob_position.x;
+        tampon.y = mob_position.y;
+		switch(direction){
+			case 'z' : mob_position.x-- ; break;
+			case 'q' : mob_position.y-- ; break;
+			case 's' : mob_position.x++ ; break;
+			case 'd' : mob_position.y++ ; break;
+			default : printf("fail\n");
+		}
+		
+		if(matrice[mob_position.x][mob_position.y] == 0){
+			mob_position.x = tampon.x;
+			mob_position.y = tampon.y;
+			printf("\n BOOM ! \n");
+		}
+		else{
+			matrice[tampon.x][tampon.y] = 1;
+		}          
 }
 
 
@@ -102,6 +127,13 @@ void placement_perso(int matrice[N][N], int *compteur){
 	if(matrice[ma_position.x][ma_position.y] == COFFRE){
         *compteur = *compteur + 1;
 	}
+}
+
+void placement_mob(int matrice[N][N], int *compteur){
+	matrice[ma_position.x][ma_position.y] = MOB;
+	affichage(matrice);
+	IA(matrice);
+
 }
 
 int nb_coffre_map(int matrice[N][N]){
@@ -127,10 +159,10 @@ int main(){
     while(matrice[ma_position.x][ma_position.y] != OBJECTIF){
         while(compteur < nb_coffre){
             placement_perso(matrice, &compteur);
-            printf("\n%i\n", compteur);
         }
         matrice[2][17] = OBJECTIF;
         placement_perso(matrice, &compteur);
+        placement_mob(matrice, &compteur);
     }
         printf("IIIIIII   IIIIII IIIIIII II     II IIIIIIII\n");
         printf("II    I   I    I II   II II     II II    II\n");
