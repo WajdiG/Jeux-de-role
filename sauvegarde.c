@@ -12,15 +12,15 @@
 #include<string.h>
 #include "crea_avatar.h"
 extern t_joueur joueur;
-extern FILE*fichier;
+extern char pseudo[N];
 
 /**
- *\fn crea_file 
+ *\fn crea_file(FILE*) 
  *\brief fonction permettant de sauvegarder la structure t_joueur dans le fichier de sauvegarde
- *\param fichier 
+ *\param fichier fichier qui contiendra les données à sauvegarder
  */
-void crea_file(FILE*fichier){
-	fichier=fopen(pseudo,"w");
+void crea_file(){
+	FILE*fichier=fopen(pseudo,"w");
 	
 	fprintf(fichier,"%i ",joueur.physique.sexe);
 	fprintf(fichier,"%i ",joueur.physique.race);
