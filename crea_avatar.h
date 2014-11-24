@@ -9,7 +9,6 @@
 #define N 16 /**<constante définissant la taille maximale du pseudo*/
 int principale; /**<nombre de points de compétence principale distribuable */
 int secondaire; /**<nombre de points de compétence secondaire distribuable*/
-char pseudo[N]; /**<tableau destiné à contenir le pseudo du joueur*/
 
 /**
  *\enum t_sexe

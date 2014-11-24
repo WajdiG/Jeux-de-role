@@ -1,1 +1,1 @@
-void crea_file(FILE*fichier);
+void crea_file();
