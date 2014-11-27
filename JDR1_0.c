@@ -9,11 +9,14 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<time.h>
+#include<assert.h>
 #include "crea_avatar.h"
 #include "sauvegarde.h"
 #include "charger.h"
-
-#define N 16
+#include "pile_tab.h"
+#include "region.h"
+#include "monde.h"
 
 t_joueur joueur;
 extern char charger[16];
@@ -24,7 +27,6 @@ extern char charger[16];
  *\brief structure contenant toutes les statistiques liées au combat
  */
 typedef struct{int victoire,defaite,total; float pourvic,pourdef;}t_statcombat;		
-
 
 /**
  *\struct afficher_joueur(void)
@@ -114,19 +116,22 @@ void afficher_joueur(){
 int main(){
 	int choix;
 	int i=0;
-	
+	int k=0;
 	
     principale=5;
-    secondaire=10;
+    secondaire=5;
+    
+    init_monde();
     
     printf("Bienvenue : \n");
     printf("1 : Nouvelle partie \n");
     printf("2 : Charger partie \n");
+    printf("3 : Afficher monde \n");
     printf("Votre choix : ");
     scanf("%i",&choix);
     
     switch(choix){
-		case 1 : crea_ava(&joueur,principale,secondaire); crea_file(); break;
+		case 1 : crea_ava(&joueur,principale,secondaire); crea_file(); creer_region(); break;
 		case 2 : 
 			i=charger_partie(charger);
 			if(i==1){
@@ -135,6 +140,13 @@ int main(){
 			else{
 				break;
 			}
+			while(k!=1){
+				creer_region();
+				printf("Souhaitez générer une autre map ? 0 si oui, 1 si non : ");
+				scanf("%i",&k);
+			}
+			break;
+		case 3 : aff_monde(0,0); break;
 		}
  
 	return EXIT_SUCCESS;

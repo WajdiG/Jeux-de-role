@@ -11,9 +11,9 @@
 #include<string.h>
 #include "crea_avatar.h"
 
-#define N 16 /**<constante définissant la taille maximale du pseudo*/
+#define P 16 /**<constante définissant la taille maximale du pseudo*/
 
-char pseudo[N];/**<tableau destiné à contenir le pseudo du joueur*/
+char pseudo[P];/**<tableau destiné à contenir le pseudo du joueur*/
 
 
 /**
@@ -75,7 +75,7 @@ void creer_pseudo(t_joueur *joueur){	//fonction permettant à l'utilisateur de s
 
 	char pseudotest[100];								//Tableau contenant le pseudo entré par l'utilisateur pour tester sa taille
 
-	for(i=0;i<N;i++){pseudo[i]='\0';}					//initialise les tableaux
+	for(i=0;i<P;i++){pseudo[i]='\0';}					//initialise les tableaux
 	for(i=0;i<100;i++){pseudotest[i]='\0';}
 
 	do{												//boucle test visant à ne pas dépasser le nombre limite de caractère pour le pseudo de l'utilisateur
@@ -515,7 +515,7 @@ void attribution_points(t_joueur *joueur, int principale, int secondaire){  //fo
 		printf("7	Parade : %i \n", (*joueur).combat.parade);
 		printf("8	Armure légère : %i \n", (*joueur).combat.armureleg);
 		printf("9	Armure lourde : %i \n", (*joueur).combat.armurelou);
-		printf("10  Corps à corps : %i \n", (*joueur).combat.corpscorps);
+		printf("10  	Corps à corps : %i \n", (*joueur).combat.corpscorps);
 		printf("\nCompétences de furtivité : \n");
 		printf("11	Crochetage : %i \n", (*joueur).furtif.crochetage);
 		printf("12	Discretion : %i \n", (*joueur).furtif.discretion);
