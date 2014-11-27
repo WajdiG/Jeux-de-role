@@ -18,15 +18,21 @@
 #define JOUEUR 3
 #define OBJECTIF 4
 #define MOB 5
-
+extern int quitter;
 typedef struct {int x, y;}t_coordonees;
 
 t_coordonees mes_choix[4];
 t_coordonees ma_position = {17, 2};
 t_coordonees mob_position = {2, 17};
 
+/**
+* \fn void affichage(int matrice[N][N])
+* \brief Fonction permettant l'affichage de la carte a chaque tour.
+* \param matrice[N][N] matrice ou chaque case contient soir un mur, un chemin, un joueur, un coffre ou un monstre
+**/
 void affichage(int matrice[N][N]){
 	int i, j;
+	
 	for(i=0;i<N;i++){
 		for(j=0;j<N;j++){
                 switch(matrice[i][j]){
@@ -62,28 +68,32 @@ void initialisation(int matrice[N][N]){
     fclose(fichier);
 }
 
-void coordonnees(int matrice[N][N]){
+/**
+* \fn void deplacement_perso(int matrice[N][N])
+* \brief Fonction permettant de deplacer le joueur a chaque tour.
+* \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemin, un coffre ou un monstre
+**/
+void deplacement_perso(int matrice[N][N]){
 		
 		char direction;
-        t_coordonees tampon;
+        	t_coordonees tampon;
 		printf("\n Ou souhaitez-vous vous deplacer ?\n\n");
-		scanf("%c", &direction);		
+		scanf(" %c", &direction);		
 		tampon.x = ma_position.x;
-        tampon.y = ma_position.y;
+        	tampon.y = ma_position.y;
 		switch(direction){
 			case 'z' : ma_position.x-- ; break;
 			case 'q' : ma_position.y-- ; break;
 			case 's' : ma_position.x++ ; break;
 			case 'd' : ma_position.y++ ; break;
 		}		
-		if(matrice[ma_position.x][ma_position.y] == 0){
+		if(matrice[ma_position.x][ma_position.y] == MUR){
 			ma_position.x = tampon.x;
 			ma_position.y = tampon.y;
-			printf("\n aïe ! \n");
 		}
 		else{
-			matrice[tampon.x][tampon.y] = 1;
-		}              
+			matrice[tampon.x][tampon.y] = CHEMIN;
+		} 		        
 }
 
 void IA(int matrice[N][N]){
@@ -93,47 +103,52 @@ void IA(int matrice[N][N]){
 		char deplac_mob[4]={'z','q','s','d'};
 		int dir=rand()%(4-0)+0;
 		
-		int cpt ;		
-		for(cpt=0 ; cpt<5 ; cpt++){
-			printf("%c", deplac_mob[cpt]);
-		}
-		printf("\n %i \n", dir);
+		int cpt ;	
         
 		direction=deplac_mob[dir];
 		tampon.x = mob_position.x;
-        tampon.y = mob_position.y;
+        	tampon.y = mob_position.y;
+		
 		switch(direction){
 			case 'z' : mob_position.x-- ; break;
 			case 'q' : mob_position.y-- ; break;
 			case 's' : mob_position.x++ ; break;
 			case 'd' : mob_position.y++ ; break;
-		}	
-		if(matrice[mob_position.x][mob_position.y] == 0){
+		}
+	
+		if(matrice[mob_position.x][mob_position.y] == MUR || matrice[mob_position.x][mob_position.y] == COFFRE){
 			mob_position.x = tampon.x;
 			mob_position.y = tampon.y;
-			printf("\n BOOM ! \n");
 		}
+			
 		else{
-			matrice[tampon.x][tampon.y] = 1;
+			matrice[mob_position.x][mob_position.y] = MOB;
+			matrice[tampon.x][tampon.y] = CHEMIN;
 		}          
 }
 
-
-void placement_perso(int matrice[N][N], int *compteur){
-	matrice[ma_position.x][ma_position.y] = JOUEUR;
-	affichage(matrice);
-	coordonnees(matrice);
+/**
+* \fn void comptage_coffre(int matrice[N][N], int * compteur)
+* \brief Fonction permettant d'actualiser le nombre de coffre que possede la joueur.
+* \param *compteur s'incremente a chaque fios qu'un coffre est ramassé
+**/
+void comptage_coffre(int matrice[N][N], int *compteur){	
 	if(matrice[ma_position.x][ma_position.y] == COFFRE){
-        *compteur = *compteur + 1;
-	}
+        	*compteur = *compteur + 1;
+	}  
 }
 
 void placement_mob(int matrice[N][N]){
 	matrice[mob_position.x][mob_position.y] = MOB;
 	IA(matrice);
-
 }
 
+/**
+* \fn int nb_coffre_map(int matrice[N][N])
+* \brief Fonction permettant de compter le nombre coffre present sur la carte au debut du jeu
+* \param matrice[N][N]
+* \return Retourne le nombre de coffre sur la carte
+**/
 int nb_coffre_map(int matrice[N][N]){
     int i, j;
     int cpt = 0;
@@ -148,9 +163,10 @@ int nb_coffre_map(int matrice[N][N]){
 }
 
 int main(){
-    int matrice[N][N];
-    int compteur = 0;
-    int nb_coffre;
+    	int matrice[N][N];
+    	int compteur = 0;
+    	int nb_coffre;
+    	
 	initialisation(matrice);
 	printf("\n\n");
 	nb_coffre = nb_coffre_map(matrice);
@@ -159,26 +175,26 @@ int main(){
 	
 	Menu_Jeu();
 	
-    while(matrice[ma_position.x][ma_position.y] != OBJECTIF){
-        while(compteur < nb_coffre){
+	if(quitter == 1){
+		return 0;
+	}	
+	
+   	while(matrice[ma_position.x][ma_position.y] != OBJECTIF){
+   		matrice[ma_position.x][ma_position.y] = JOUEUR; // position initiale du joueur
+       		matrice[mob_position.x][mob_position.y] = MOB; //position initiale du perso
+       		if(compteur < nb_coffre){
+			affichage(matrice);
+			deplacement_perso(matrice);
+			comptage_coffre(matrice, &compteur);
+			placement_mob(matrice);  	          	    
+       	 	}
+       	 	else{
+			matrice[2][17] = OBJECTIF; //la porte est visible maintenant
+       			affichage(matrice); 
 			placement_mob(matrice);
-            placement_perso(matrice, &compteur);
-            
-        }
-        matrice[2][17] = OBJECTIF;
-        placement_mob(matrice);
-        placement_perso(matrice, &compteur);
-        
-        
-    }
-        printf("IIIIIII   IIIIII IIIIIII II     II IIIIIIII\n");
-        printf("II    I   I    I II   II II     II II    II\n");
-        printf("II     I  I   I  II   II II     II II    II\n");
-        printf("II    I   IIII   II   II II     II II    II\n");
-        printf("IIIIIII   II     IIIIIII II     II II    II\n");
-        printf("II    I   I I    II   II II     II II    II\n");
-        printf("II     I  I  I   II   II  II   II  II    II\n");
-        printf("II    I   I   I  II   II   II II   II    II\n");
-        printf("IIIIIII   I    I II   II    II     IIIIIIII\n");
-        return 0;
+			deplacement_perso(matrice);
+			comptage_coffre(matrice, &compteur);  
+		}       	             
+    	}
+    	printf("WELL PLAYED NOOB !!!!\n");
 }
