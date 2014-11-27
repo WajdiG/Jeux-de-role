@@ -16,7 +16,7 @@
 #define Y 3
 
 extern char region[N][M]; //une region du monde
-char monde[X][Y][N][M]; //le monde
+char ** monde[X][Y]; //le monde
 
 /**
  *\fn init_monde(void)
