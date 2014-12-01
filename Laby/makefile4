@@ -1,0 +1,14 @@
+prog4: IA.o pile.o accueil.o deplacement.o
+	gcc IA.o pile.o accueil.o deplacement.o -o prog4
+	
+pile.o : pile.c
+	gcc -c pile.c
+	
+IA.o: IA.c 
+	gcc -c IA.c 
+	
+accueil.o : accueil.c
+	gcc -c accueil.c
+	
+deplacement.o : deplacement.c
+	gcc -c deplacement.c 

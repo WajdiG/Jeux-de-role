@@ -25,15 +25,10 @@
 #define MOB_haut 8
 #define MOB_bas 9
 
-t_coordonees mes_choix[4];
-t_coordonees ma_position = {17, 2};
-t_coordonees mob_position = {2, 17};
-t_coordonees mob = {8,8};
-
 int matrice[N][N];
 int vision[N][N];
 
-void affichage(int matrice[N][N]){
+void affichage2(int matrice[N][N]){
 	int i, j;
 	
 	for(i=0;i<N;i++){
@@ -56,7 +51,7 @@ void affichage(int matrice[N][N]){
 	printf("\n");
 }
 
-void initialisation(int matrice[N][N]){
+void initialisation2(int matrice[N][N]){
 
 	int entier;
 	int i, j;
@@ -259,41 +254,30 @@ void IA(){
 	t_coordonees cheminRetour;
 	t_coordonees resultat;
 
-	initialisation(matrice);
+	initialisation2(matrice);
 	tradVision(matrice);
 	
+	resetMob();
+		
+	trouverMob(&mobx, &moby);
+		
+	cheminRetour=ecrireChemin(cheminRetour);
+
+	cptx=cheminRetour.x;
+	cpty=cheminRetour.y;
+	lireChemin(cheminRetour, cptx, cpty);
+
+	depiler(&resultat);
+	vision[resultat.x][resultat.y]=0;
+	vision[mobx][moby]=-1;
 	
-	while(cpt<=25){
-		
-		
-		resetMob();
-		
-		trouverMob(&mobx, &moby);
-		
-		cheminRetour=ecrireChemin(cheminRetour);
-
-		cptx=cheminRetour.x;
-		cpty=cheminRetour.y;
-		lireChemin(cheminRetour, cptx, cpty);
-		
-		affVision2(vision);
-		affVision(vision);
-
-		depiler(&resultat);
-		vision[resultat.x][resultat.y]=0;
-		vision[mobx][moby]=-1;
-		
-		printf("\n#############################################\n");
-		scanf("%c",&suivant);
-		if(cpt==10){
-			vision[17][2]=-1;
-			vision[2][17]=-2;
-		}
-		cpt++;
+	printf("\n#############################################\n");
+	scanf("%c",&suivant);
+	if(cpt==10){
+		vision[17][2]=-1;
+		vision[2][17]=-2;
 	}
-	
-	affVision2(vision);
-	affVision(vision);
+
 
 }
 
