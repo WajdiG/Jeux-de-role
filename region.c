@@ -13,7 +13,7 @@
 #include "pile_tab.h"
 #include "region.h"
 
-char **region; //[N][M]; // une région du monde !
+char region[N][M]; // une région du monde !
 
 
 /**
@@ -23,13 +23,13 @@ char **region; //[N][M]; // une région du monde !
 void initregion(){
 	int i,j;
 	
-	for(i=0;i<N;i++){
-			for(j=0;j<M;j++){
-				region[i][j]='X';
-			}
+	for(i=0;i<N;i++){	//initialise la matrice monde
+		for(j=0;j<M;j++){
+			region[i][j]='X';
+		}
 	}
 	
-	for(i=0;i<8;i++){
+	for(i=0;i<8;i++){	//initialise le tableau tab
 		tab[i]=1;
 	}
 }
@@ -106,7 +106,7 @@ void place_coffre(){
 	int i,j;
 	int k=0;
 	
-	for(k=0;k<NB_COFFRE;k++){
+	for(k=0;k<NB_COFFRE;k++){	//genere un nombre de coffre égale à NB_COFFRE
 		do{
 			i=rand()%(N-2)+1;
 			j=rand()%(M-2)+1;
@@ -158,7 +158,7 @@ void chemin(){
 	 
 	int i,j,k,l,b; 
 	 
-	for(k=-1; k<=1; k++){
+	for(k=-1; k<=1; k++){	//creeer des couloirs a partir du personnage vers les extremités du laby
 		for(l=-1; l<=1; l++){
 			if((k==0||l==0) && k!=l){
 				i=tab[8];
@@ -188,7 +188,7 @@ void chemin(){
 	}
 	 
 	 
-	for(b=0;b<NB_COFFRE;b++){
+	for(b=0;b<NB_COFFRE;b++){	//créer des couloirs depuis les coffres jusqu'à un couloir existant ou la bordure de la matrice
 		i=tab[2*b];
 		j=tab[2*b+1];
 		
@@ -276,8 +276,6 @@ void carre(){
  *\brief creer une region : labyrinthe aléatoire
  */
 void creer_region(){
-	
-	srand(time(NULL));
 		
 	initregion();
 	initpile();

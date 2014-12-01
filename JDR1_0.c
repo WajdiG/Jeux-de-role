@@ -112,15 +112,17 @@ void afficher_joueur(){
 	}	
 }
 
-
 int main(){
 	int choix;
 	int i=0;
 	int k=0;
+	int x=0;
+	int y=0;
 	
     principale=5;
     secondaire=5;
     
+    srand(time(NULL));
     init_monde();
     
     printf("Bienvenue : \n");
@@ -146,8 +148,8 @@ int main(){
 				scanf("%i",&k);
 			}
 			break;
-		case 3 : aff_monde(0,0); break;
-		}
+		case 3 : deplacement_monde(x,y);break;
+	}
  
 	return EXIT_SUCCESS;
 }
