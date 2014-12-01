@@ -18,6 +18,10 @@
 #define JOUEUR 3
 #define OBJECTIF 4
 #define MOB 5
+#define MOB_gauche 6
+#define MOB_droite 7
+#define MOB_haut 8
+#define MOB_bas 9
 
 typedef struct {int x, y;}t_coordonees;
 
@@ -27,6 +31,7 @@ t_coordonees mob_position = {2, 17};
 
 void affichage(int matrice[N][N]){
 	int i, j;
+	
 	for(i=0;i<N;i++){
 		for(j=0;j<N;j++){
                 switch(matrice[i][j]){
@@ -35,7 +40,11 @@ void affichage(int matrice[N][N]){
                     case(JOUEUR) : printf("*_*"); break;
                     case(COFFRE) : printf("[C]"); break;
                     case(OBJECTIF) : printf(" X "); break;
-                    case(MOB) : printf(">_<"); break;
+                    case(MOB) : printf("X_X"); break;
+                    case(MOB_gauche) : printf("<_<"); break;
+                    case(MOB_droite) : printf(">_>"); break;
+                    case(MOB_haut) : printf("^_^"); break;
+                    case(MOB_bas) : printf("v_v"); break;
                 }
 		}
 		printf("\n");
@@ -93,15 +102,12 @@ void IA(int matrice[N][N]){
 		char deplac_mob[4]={'z','q','s','d'};
 		int dir=rand()%(4-0)+0;
 		
-		int cpt ;		
-		for(cpt=0 ; cpt<5 ; cpt++){
-			printf("%c", deplac_mob[cpt]);
-		}
 		printf("\n %i \n", dir);
         
 		direction=deplac_mob[dir];
 		tampon.x = mob_position.x;
         tampon.y = mob_position.y;
+        
 		switch(direction){
 			case 'z' : mob_position.x-- ; break;
 			case 'q' : mob_position.y-- ; break;
@@ -114,8 +120,14 @@ void IA(int matrice[N][N]){
 			printf("\n BOOM ! \n");
 		}
 		else{
-			matrice[tampon.x][tampon.y] = 1;
-		}          
+			switch(direction){
+				case 'z' : matrice[mob_position.x][mob_position.y] = MOB_haut; ; break;
+				case 'q' : matrice[mob_position.x][mob_position.y] = MOB_gauche; ; break;
+				case 's' : matrice[mob_position.x][mob_position.y] = MOB_bas; ; break;
+				case 'd' : matrice[mob_position.x][mob_position.y] = MOB_droite; ; break;
+			}
+			matrice[tampon.x][tampon.y] = CHEMIN;
+		}       
 }
 
 
@@ -129,6 +141,7 @@ void placement_perso(int matrice[N][N], int *compteur){
 }
 
 void placement_mob(int matrice[N][N]){
+	
 	matrice[mob_position.x][mob_position.y] = MOB;
 	IA(matrice);
 
@@ -159,12 +172,17 @@ int main(){
 	
 	Menu_Jeu();
 	
+	matrice[3][17]=COFFRE;
+	
     while(matrice[ma_position.x][ma_position.y] != OBJECTIF){
         while(compteur < nb_coffre){
+			system("clear");
 			placement_mob(matrice);
             placement_perso(matrice, &compteur);
+            affichage(matrice);
             
         }
+        system("clear");
         matrice[2][17] = OBJECTIF;
         placement_mob(matrice);
         placement_perso(matrice, &compteur);

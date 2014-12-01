@@ -1,0 +1,8 @@
+prog3: IA.o pile.o
+	gcc IA.o pile.o -o prog3
+	
+pile.o : pile.c
+	gcc -c pile.c
+	
+IA.o: IA.c 
+	gcc -c IA.c 
