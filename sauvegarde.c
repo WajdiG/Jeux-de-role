@@ -12,7 +12,7 @@
 #include<string.h>
 #include "crea_avatar.h"
 extern t_joueur joueur;
-extern char pseudo[N];
+extern char pseudo[P];
 
 /**
  *\fn crea_file(FILE*) 
