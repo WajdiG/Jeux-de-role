@@ -6,8 +6,8 @@
 *\date 27 Novembre 2014
 */
 
-#define N 20
-#define M 20
+#define N 21
+#define M 21
 #define tmax N+M
 #define NB_COFFRE 4
 

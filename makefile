@@ -26,4 +26,4 @@ pile_tab.o: pile_tab.c
 	gcc -c pile_tab.c ${OPTS}
 
 clean:
-	rm -f *.o JDR1
+	rm -f *.o *.gch JDR1

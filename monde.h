@@ -21,6 +21,16 @@ void init_monde();
 void inclure_region(int i, int j);
 
 /**
+ *\fn deplacement_case_monde(int*, int*)
+ *\brief permet de deplacer le joueur dans le monde
+ *\param *i abscisse correspondant aux coordonnées actuelles du joueur
+ *\param *j ordonnée correspondant aux coordonnées actuelles du joueur
+ */
+void deplacement_case_monde(int* i, int* j);
+
+void deplacement_monde(int x, int y);
+
+/**
  *\fn aff_monde(int, int)
  *\brief permet d'inclure une region dans le monde
  *\param i abscisse correspondant aux coordonnées du joueur
