@@ -6,7 +6,7 @@
 *\date 20 octobre 2014
 */
 
-#define N 16 /**<constante définissant la taille maximale du pseudo*/
+#define P 16 /**<constante définissant la taille maximale du pseudo*/
 int principale; /**<nombre de points de compétence principale distribuable */
 int secondaire; /**<nombre de points de compétence secondaire distribuable*/
 
@@ -74,7 +74,7 @@ typedef struct{int destruction,guerison,invocation;}t_magie;
  *\struct t_joueur
  *\brief structure contenant toutes les structures et tableaux de données de joueur
  */
-typedef struct{char pseudo[N];t_physique physique;t_vie vie;t_comp1 comp;t_combat combat;t_furtif furtif;t_dial dial;t_magie magie;}t_joueur; //structure regroupant toutes les structures précédentes
+typedef struct{char pseudo[P];t_physique physique;t_vie vie;t_comp1 comp;t_combat combat;t_furtif furtif;t_dial dial;t_magie magie;}t_joueur; //structure regroupant toutes les structures précédentes
 
 /**
  *\fn void initstruct(t_joueur*)

@@ -86,57 +86,6 @@ void Option_jeu(){
 	Menu_Jeu();
 }
 
-void Nouvelle_Partie(){
-	int verif='a';
-	system("clear");
-	printf("\n");
-	printf("\n");
-	printf("         O                   IIII   IIII   IIII   II  II IIIIII II   IIII II  II IIIIII                   O    \n");
-	printf("         H                   II II II  II II  II  II  II II     II    II  II II  II                       H    \n");
-	printf("         H                   IIII  II  II II      II  II IIII   II    II  III    IIII                     H    \n");
-	printf("         H                   III   II  II II  III II  II II     II    II  II II  II                       H    \n"); 
-	printf("         H                   II II  IIII   IIII I  IIII  IIIIII IIII IIII II  II IIIIII ©                 H    \n");
-	printf("        /H\\                                                                                              /H\\ \n");
-	printf("       <HUH>            _______TOULMONDE_Joris-THIEULART_Godefroy-GUEDOUAR_Wajdi________                <HUH>  \n");
-	printf("        |||                                                                                              |||   \n");
-	printf("        |||                                                                                              |||   \n");
-	printf("        |||       III    II  IIII  II  II II   II IIIIII II   II   IIIIII                                |||   \n");
-	printf("        |||       IIII   II II  II II  II II   II II     II   II   II                                    |||   \n");
-	printf("        |||       II II  II II  II II  II  II II  IIII   II   II   IIII                                  |||   \n");
-	printf("        |||       II   IIII II  II II  II   III   II     II   II   II                                    |||   \n");
-	printf("        |||       II    III  IIII   IIII     I    IIIIII IIII IIII IIIIII                                |||   \n");
-	printf("        |||                                                                                              |||   \n");
-	printf("        |||       ================================================================================       |||   \n");
-	printf("        |||                                                                                              |||   \n");
-	printf("        |||                                                  IIII   IIII  IIII  IIIIII IIII IIIIII       |||   \n");
-	printf("        |||                                                  II II II  II II II   II    II  II           |||   \n");
-	printf("        |||                                                  IIII  IIIIII IIII    II    II  IIII         |||   \n");
-	printf("        |||                                                  II    II  II III     II    II  II           |||   \n");
-	printf("        |||                                                  II    II  II II II   II   IIII IIIIII       |||   \n");
-	printf("        |||                                                                                              |||   \n");
-	printf("        |||                                                                           |============|     |||   \n");
-	printf("        |||                                                                           |    -5-     |     |||   \n");
-	printf("        |||                                                                           |Quitter     |     |||   \n");
-	printf("        |||                                                                           |      le jeu|     |||   \n");
-	printf("        |||                                                                           |============|     |||   \n");
-	printf("        |||                                                                                              |||   \n");
-	printf("        |||                                                                                              |||   \n");
-	printf("        |||                             |================================|                               |||   \n");
-	printf("        |||                             |            VEUILLEZ            |                               |||   \n");
-	printf("        |||                             |          FAIRE  VOTRE          |                               |||   \n");
-	printf("        \\|/                             |             CHOIX              |                               \\|/ \n");
-	printf("         V                        ______|================================|______                          V    \n");
-	printf("                                  \\______________|====O    O====|______________/                              \n");
-	printf("\n");
-	
-	while(verif<=0 || verif>5){
-		scanf("%i", &verif);
-	}
-	switch(verif){
-		case 5 : Menu_Jeu(); break;
-	}
-}
-
 void Menu_Jeu(){
 	int verif='a';
 	system("clear");
@@ -154,8 +103,8 @@ void Menu_Jeu(){
 	printf("        |||                                                                                              |||   \n");
 	printf("        |||   |============|    |============|    |============|    |============|    |============|     |||   \n");
 	printf("        |||   |    -1-     |    |    -2-     |    |    -3-     |    |    -4-     |    |    -5-     |     |||   \n");
-	printf("        |||   |Nouvelle    |    |Charger     |    |Cheat       |    |Option      |    |Retour      |     |||   \n");
-	printf("        |||   |      Partie|    |      Partie|    |        Code|    |      de jeu|    |    au  Menu|     |||   \n");
+	printf("        |||   |Nouvelle    |    |Charger     |    |Cheat       |    |Option      |    |Quitter     |     |||   \n");
+	printf("        |||   |      Partie|    |      Partie|    |        Code|    |      de jeu|    |      le jeu|     |||   \n");
 	printf("        |||   |============|    |============|    |============|    |============|    |============|     |||   \n");
 	printf("        |||                                                                                              |||   \n");
 	printf("        |||                                                                                              |||   \n");
@@ -171,7 +120,6 @@ void Menu_Jeu(){
 		scanf("%i", &verif);
 	}
 	switch(verif){
-		case 1 : Nouvelle_Partie(); break;
 		case 4 : Option_jeu(); break ;
 		case 5 : Quitter_Jeu(); break;
 	}

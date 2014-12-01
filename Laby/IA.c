@@ -146,26 +146,46 @@ void affVision(int matrice[N][N]){
 	printf("\n");
 }
 
-void ReflechirChemin(t_coordonees *coordMob){
+void trouverMob(int *mobx, int *moby){
 	int cptx;
 	int cpty;
-	int mobx;
-	int moby;
+	int mob=0;
 	int sorti=0;
-	int chemin=0;
 	
-	for(cptx=0;cptx<N && !sorti;cptx++){
-		for(cpty=0;cpty<N && !sorti;cpty++){			
-			if(vision[cptx][cpty]==chemin){
-				mobx=cptx;
-				moby=cpty;
+	for(cptx=0 ; cptx<N && !sorti ; cptx++){
+		for(cpty=0 ; cpty<N && !sorti ; cpty++){	
+					
+			if(vision[cptx][cpty]==mob){
+				*mobx=cptx;
+				*moby=cpty;
 			}
+			
 		}
 	}
 	
-	while(sorti!=1){
-		for(cptx=0;cptx<N && !sorti;cptx++){
-			for(cpty=0;cpty<N && !sorti;cpty++){
+}
+
+void resetMob(){
+	int cptx, cpty;
+	int sorti=0;
+	
+	for(cptx=0;cptx<N && !sorti;cptx++){
+		for(cpty=0;cpty<N && !sorti;cpty++){
+			if(vision[cptx][cpty]>0){
+				vision[cptx][cpty]=-1;
+			}
+		}
+	}
+}
+
+t_coordonees ecrireChemin(t_coordonees cheminRetour){
+	int cptx,cpty;
+	//int sorti=0;
+	int chemin=0;
+	
+	while(1){
+		for(cptx=0;cptx<N;cptx++){
+			for(cpty=0;cpty<N;cpty++){
 				
 				if(vision[cptx][cpty]==chemin){
 					
@@ -181,26 +201,10 @@ void ReflechirChemin(t_coordonees *coordMob){
 					if((vision[cptx+1][cpty]==-1)){
 						vision[cptx+1][cpty]=chemin+1;
 					}
-					
-					if(vision[cptx][cpty-1]==-2){
-						coordMob->x=cptx;
-						coordMob->y=cpty;
-						sorti=1;
-					}
-					if(vision[cptx][cpty+1]==-2){
-						coordMob->x=cptx;
-						coordMob->y=cpty;
-						sorti=1;
-					}
-					if(vision[cptx-1][cpty]==-2){
-						coordMob->x=cptx;
-						coordMob->y=cpty;
-						sorti=1;
-					}
-					if(vision[cptx+1][cpty]==-2){
-						coordMob->x=cptx;
-						coordMob->y=cpty;
-						sorti=1;
+					if((vision[cptx][cpty-1]==-2) || (vision[cptx][cpty+1]==-2) || (vision[cptx-1][cpty]==-2) || (vision[cptx+1][cpty]==-2)){
+						cheminRetour.x=cptx;
+						cheminRetour.y=cpty;
+						return cheminRetour;
 					}	
 				}				
 			}
@@ -209,127 +213,11 @@ void ReflechirChemin(t_coordonees *coordMob){
 	}
 }
 
-void faireChemin(t_coordonees *coordCible){
-	int cptx;
-	int cpty;
+void lireChemin(t_coordonees cheminRetour, int cptx, int cpty){
 	int arrive=0;
-	t_coordonees cheminRetour;
+	initpile();
 	
 	while(arrive!=1){
-		
-		empiler(cheminRetour);
-		
-		if((vision[cptx][cpty-1]==vision[cptx][cpty]-1)){
-			coordCible->x=cptx;
-			coordCible->y=cpty-1;
-			cpty--;
-		}
-		else if((vision[cptx][cpty+1]==vision[cptx][cpty]-1)){
-			coordCible->x=cptx;
-			coordCible->y=cpty+1;
-			cpty++;
-		}
-		else if((vision[cptx-1][cpty]==vision[cptx][cpty]-1)){
-			coordCible->x=cptx-1;
-			coordCible->y=cpty;
-			cptx--;
-		}
-		else if((vision[cptx+1][cpty]==vision[cptx][cpty]-1)){
-			coordCible->x=cptx+1;
-			coordCible->y=cpty;
-			cptx++;
-		}
-		
-		if(vision[cptx][cpty-1]==0){
-			arrive=1;
-		}
-		if(vision[cptx][cpty+1]==0){
-			arrive=1;
-		}
-		if(vision[cptx-1][cpty]==0){
-			arrive=1;
-		}
-		if(vision[cptx+1][cpty]==0){
-			arrive=1;
-		}
-	}
-	
-}
-
-int main(){
-	int mobx;
-	int moby;
-	int cptx=0;
-	int cpty=0;
-	int arrive=0;
-	int sorti=0;
-	int chemin=0;
-	t_coordonees cheminRetour;
-	t_coordonees resultat;
-
-	initialisation(matrice);
-	tradVision(matrice);
-	for(cptx=0;cptx<N && !sorti;cptx++){
-		for(cpty=0;cpty<N && !sorti;cpty++){			
-			if(vision[cptx][cpty]==chemin){
-				mobx=cptx;
-				moby=cpty;
-			}
-		}
-	}
-	
-	//boucle qui determine le chemin le plus court pour le Mob
-	/*while(sorti!=1){
-		for(cptx=0;cptx<N && !sorti;cptx++){
-			for(cpty=0;cpty<N && !sorti;cpty++){
-				
-				if(vision[cptx][cpty]==chemin){
-					
-					if((vision[cptx][cpty-1]==-1)){
-						vision[cptx][cpty-1]=chemin+1;
-					}
-					if((vision[cptx][cpty+1]==-1)){
-						vision[cptx][cpty+1]=chemin+1;
-					}
-					if((vision[cptx-1][cpty]==-1)){
-						vision[cptx-1][cpty]=chemin+1;
-					}
-					if((vision[cptx+1][cpty]==-1)){
-						vision[cptx+1][cpty]=chemin+1;
-					}
-					
-					if(vision[cptx][cpty-1]==-2){
-						cheminRetour.x=cptx;
-						cheminRetour.y=cpty;
-						sorti=1;
-					}
-					if(vision[cptx][cpty+1]==-2){
-						cheminRetour.x=cptx;
-						cheminRetour.y=cpty;
-						sorti=1;
-					}
-					if(vision[cptx-1][cpty]==-2){
-						cheminRetour.x=cptx;
-						cheminRetour.y=cpty;
-						sorti=1;
-					}
-					if(vision[cptx+1][cpty]==-2){
-						cheminRetour.x=cptx;
-						cheminRetour.y=cpty;
-						sorti=1;
-					}	
-				}				
-			}
-		}
-		chemin++;	
-	}*/
-	
-	//sorti=0;
-	cptx=cheminRetour.x;
-	cpty=cheminRetour.y;
-	//chemin=0;
-	
-	/*while(arrive!=1){
 
 		empiler(cheminRetour);
 		
@@ -354,86 +242,59 @@ int main(){
 			cptx++;
 		}
 		
-		if(vision[cptx][cpty-1]==0){
+		if((vision[cptx][cpty-1]==0) || (vision[cptx][cpty+1]==0) || (vision[cptx-1][cpty]==0) || (vision[cptx+1][cpty]==0)){
 			arrive=1;
-		}
-		if(vision[cptx][cpty+1]==0){
-			arrive=1;
-		}
-		if(vision[cptx-1][cpty]==0){
-			arrive=1;
-		}
-		if(vision[cptx+1][cpty]==0){
-			arrive=1;
-		}
-	}*/		
-	
-	affVision2(vision);
-	
-	depiler(&resultat);
-	vision[resultat.x-1][resultat.y]=0;
-	
-	vision[mobx][moby]=-1;
-	
-	for(cptx=0;cptx<N && !sorti;cptx++){
-		for(cpty=0;cpty<N && !sorti;cpty++){
-			if(vision[cptx][cpty]>0){
-				vision[cptx][cpty]=-1;
-			}
 		}
 	}
+	empiler(cheminRetour);
+}
+
+void IA(){
+	int mobx;
+	int moby;
+	char suivant;
+	int cpt=0;
+	int cptx=0;
+	int cpty=0;
+	t_coordonees cheminRetour;
+	t_coordonees resultat;
+
+	initialisation(matrice);
+	tradVision(matrice);
 	
-	/*while(sorti!=1){
-		for(cptx=0;cptx<N && !sorti;cptx++){
-			for(cpty=0;cpty<N && !sorti;cpty++){
-				
-				if(vision[cptx][cpty]==chemin){
-						
-					if((vision[cptx][cpty-1]==-1)){
-						vision[cptx][cpty-1]=chemin+1;
-					}
-					if((vision[cptx][cpty+1]==-1)){
-						vision[cptx][cpty+1]=chemin+1;
-					}
-					if((vision[cptx-1][cpty]==-1)){
-						vision[cptx-1][cpty]=chemin+1;
-					}
-					if((vision[cptx+1][cpty]==-1)){
-						vision[cptx+1][cpty]=chemin+1;
-					}
-					
-					if(vision[cptx][cpty-1]==-2){
-						cheminRetour.x=cptx;
-						cheminRetour.y=cpty;
-						sorti=1;
-					}
-					if(vision[cptx][cpty+1]==-2){
-						cheminRetour.x=cptx;
-						cheminRetour.y=cpty;
-						sorti=1;
-					}
-					if(vision[cptx-1][cpty]==-2){
-						cheminRetour.x=cptx;
-						cheminRetour.y=cpty;
-						sorti=1;
-					}
-					if(vision[cptx+1][cpty]==-2){
-						cheminRetour.x=cptx;
-						cheminRetour.y=cpty;
-						sorti=1;
-					}	
-				}				
-			}
+	
+	while(cpt<=25){
+		
+		
+		resetMob();
+		
+		trouverMob(&mobx, &moby);
+		
+		cheminRetour=ecrireChemin(cheminRetour);
+
+		cptx=cheminRetour.x;
+		cpty=cheminRetour.y;
+		lireChemin(cheminRetour, cptx, cpty);
+		
+		affVision2(vision);
+		affVision(vision);
+
+		depiler(&resultat);
+		vision[resultat.x][resultat.y]=0;
+		vision[mobx][moby]=-1;
+		
+		printf("\n#############################################\n");
+		scanf("%c",&suivant);
+		if(cpt==10){
+			vision[17][2]=-1;
+			vision[2][17]=-2;
 		}
-		chemin++;	
-	}	
-*/
+		cpt++;
+	}
 	
 	affVision2(vision);
 	affVision(vision);
-	
-	
-	return EXIT_SUCCESS;
+
 }
 
 

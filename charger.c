@@ -16,9 +16,10 @@ char charger[16];
 
 
 /**
- *\fn charger_struct(t_joueur *)
+ *\fn charger_struct(t_joueur *,FILE*)
  *\brief fonction permettant de charger toutes les données contenue dans le fichier de sauvegarde dans la structure t_joueur jouer
  *\param *joueur pointeur sur la structure t_joueur joueur
+ *\param fichier fichier contenant les données sauvegardéess
  */
 void charger_struct(t_joueur *joueur,FILE*fichier){
 	int i=0;
@@ -150,9 +151,10 @@ void charger_struct(t_joueur *joueur,FILE*fichier){
  *\fn void charger_partie(char)
  *\brief fonction permettant de charger une partie
  *\param charger tableau contenant le pseudo du joueur
+ *\return int renvoie 1 si le fichier charger est valide, 0 si non
  */
-void charger_partie(char* charger,FILE*fichier){
-	
+int charger_partie(char* charger){
+	FILE*fichier;
 	printf("Quel est votre pseudo dans la partie que vous souhaitez charger ? : ");
 	scanf("%s",charger); 
 	
@@ -160,20 +162,8 @@ void charger_partie(char* charger,FILE*fichier){
 	
 	if(fichier!=NULL){
 		charger_struct(&joueur,fichier);
+		return 1;
 	}
-	/*while(i!=1){
-		printf("Votre fichier n'existe pas ! Souhaitez-vous réessayer ? 0 si oui, 1 si non :");
-		scanf("%i",&i);
-		if(i==0){
-			fichier=fopen(charger,"r");
-			if(fichier!=NULL){
-				charger_struct(&joueur,fichier);
-			}
-		}
-		else{
-			i=1;
-		}
-	}*/
-	
-	printf("Aucun ficher de sauvegarder existant pour ce pseudo. Vous pouvez commencer une nouvelle partie. \n");
+	printf("Aucun ficher de sauvegarder existant pour ce pseudo. Vous pouvez commencer une nouvelle partie ou réessayer. \n");
+	return 0;
 }

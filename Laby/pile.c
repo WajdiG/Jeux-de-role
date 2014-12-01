@@ -27,6 +27,7 @@ void empiler(t_coordonees coord){
 		sommet++;
 		pile[sommet].x=coord.x;
 		pile[sommet].y=coord.y;
+		//pile[sommet] = coord;
 	}
 }
 

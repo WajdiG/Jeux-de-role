@@ -91,7 +91,7 @@ void placement_perso(int matrice[N][N]){
 
 
 int main(){
-    	int matrice[N][N];
+    int matrice[N][N];
 	initialisation(matrice);
 	printf("\n\n");
 	while(1){
