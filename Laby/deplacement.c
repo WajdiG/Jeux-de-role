@@ -96,37 +96,6 @@ void deplacement_perso(int matrice[N][N]){
 		} 		        
 }
 
-void IA(int matrice[N][N]){
-		srand(time(NULL));
-		char direction;
-		t_coordonees tampon;
-		char deplac_mob[4]={'z','q','s','d'};
-		int dir=rand()%(4-0)+0;
-		
-		int cpt ;	
-        
-		direction=deplac_mob[dir];
-		tampon.x = mob_position.x;
-        	tampon.y = mob_position.y;
-		
-		switch(direction){
-			case 'z' : mob_position.x-- ; break;
-			case 'q' : mob_position.y-- ; break;
-			case 's' : mob_position.x++ ; break;
-			case 'd' : mob_position.y++ ; break;
-		}
-	
-		if(matrice[mob_position.x][mob_position.y] == MUR || matrice[mob_position.x][mob_position.y] == COFFRE){
-			mob_position.x = tampon.x;
-			mob_position.y = tampon.y;
-		}
-			
-		else{
-			matrice[mob_position.x][mob_position.y] = MOB;
-			matrice[tampon.x][tampon.y] = CHEMIN;
-		}          
-}
-
 /**
 * \fn void comptage_coffre(int matrice[N][N], int * compteur)
 * \brief Fonction permettant d'actualiser le nombre de coffre que possede la joueur.
@@ -140,7 +109,7 @@ void comptage_coffre(int matrice[N][N], int *compteur){
 
 void placement_mob(int matrice[N][N]){
 	matrice[mob_position.x][mob_position.y] = MOB;
-	IA(matrice);
+	
 }
 
 /**
