@@ -8,11 +8,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ncurses.h>
+//#include <ncurses.h>
 #include <time.h>
 #include <assert.h>
 #include "accueil.h"
-#include "pile.h"
+#include "pile_tab.h"
 #define N 20
 #define MUR 0
 #define CHEMIN 1
@@ -20,12 +20,9 @@
 #define JOUEUR 3
 #define OBJECTIF 4
 #define MOB 5
-#define MOB_gauche 6
-#define MOB_droite 7
-#define MOB_haut 8
-#define MOB_bas 9
 
-int matrice[N][N];
+
+//int matrice[N][N];
 int vision[N][N];
 
 void affichage2(int matrice[N][N]){
@@ -39,11 +36,8 @@ void affichage2(int matrice[N][N]){
                     case(JOUEUR) : printf("*_*"); break;
                     case(COFFRE) : printf("[C]"); break;
                     case(OBJECTIF) : printf(" X "); break;
-                    case(MOB) : printf(">_<"); break;
-                    case(MOB_gauche) : printf("<_<"); break;
-                    case(MOB_droite) : printf(">_>"); break;
-                    case(MOB_haut) : printf("^_^"); break;
-                    case(MOB_bas) : printf("v_v"); break;
+                    case(MOB) : printf("X_X"); break;
+
                 }
 		}
 		printf("\n");
@@ -73,12 +67,28 @@ void initialisation2(int matrice[N][N]){
     fclose(fichier);
 }
 
+void tradRandom(int matrice[N][N], char region[N][N]){
+	int cptx=0;
+	int cpty=0;
+	
+	for(cptx=0;cptx<N;cptx++){
+		for(cpty=0;cpty<N;cpty++){
+                switch(region[cptx][cpty]){
+                    case('X') : matrice[cptx][cpty]=MUR ; break;
+                    case(' ') : matrice[cptx][cpty]=CHEMIN; break;
+                    case('P') : matrice[cptx][cpty]=JOUEUR; break;
+                    case('C') : matrice[cptx][cpty]=COFFRE; break;
+                    case('M') : matrice[cptx][cpty]=MOB; break;
+                }
+		}
+	}
+}
+
 void tradVision(int matrice[N][N]){
 	int cptx=0;
 	int cpty=0;
 	
 	for(cptx=0;cptx<N;cptx++){
-		printf("\n");
 		for(cpty=0;cpty<N;cpty++){
                 switch(matrice[cptx][cpty]){
                     case(MUR) : vision[cptx][cpty]=-8; break;
@@ -90,12 +100,12 @@ void tradVision(int matrice[N][N]){
                 }
 		}
 	}
-	printf("\n");
 }
 
 void affVision2(int matrice[N][N]){
 	int cptx=0;
 	int cpty=0;
+	system("clear");
 	
 	for(cptx=0;cptx<N;cptx++){
 		printf("\n");
@@ -175,7 +185,6 @@ void resetMob(){
 
 t_coordonees ecrireChemin(t_coordonees cheminRetour){
 	int cptx,cpty;
-	//int sorti=0;
 	int chemin=0;
 	
 	while(1){
@@ -210,11 +219,11 @@ t_coordonees ecrireChemin(t_coordonees cheminRetour){
 
 void lireChemin(t_coordonees cheminRetour, int cptx, int cpty){
 	int arrive=0;
-	initpile();
+	initpileStruct();
 	
 	while(arrive!=1){
 
-		empiler(cheminRetour);
+		empilerStruct(cheminRetour);
 		
 		if((vision[cptx][cpty-1]==vision[cptx][cpty]-1)){
 			cheminRetour.x=cptx;
@@ -241,43 +250,42 @@ void lireChemin(t_coordonees cheminRetour, int cptx, int cpty){
 			arrive=1;
 		}
 	}
-	empiler(cheminRetour);
+	empilerStruct(cheminRetour);
 }
 
-void IA(){
+int IA(int matrice[N][N]){
 	int mobx;
 	int moby;
-	char suivant;
-	int cpt=0;
+
 	int cptx=0;
 	int cpty=0;
 	t_coordonees cheminRetour;
 	t_coordonees resultat;
 
-	initialisation2(matrice);
 	tradVision(matrice);
-	
+
 	resetMob();
 		
 	trouverMob(&mobx, &moby);
 		
 	cheminRetour=ecrireChemin(cheminRetour);
-
+	
 	cptx=cheminRetour.x;
 	cpty=cheminRetour.y;
+	
+	if(cptx==mobx && cpty==moby){
+		return 1;
+	}
+	
 	lireChemin(cheminRetour, cptx, cpty);
 
-	depiler(&resultat);
+	depilerStruct(&resultat);
 	vision[resultat.x][resultat.y]=0;
+	matrice[resultat.x][resultat.y]=MOB;
 	vision[mobx][moby]=-1;
+	matrice[mobx][moby]=CHEMIN;
 	
-	printf("\n#############################################\n");
-	scanf("%c",&suivant);
-	if(cpt==10){
-		vision[17][2]=-1;
-		vision[2][17]=-2;
-	}
-
+	return 0;
 
 }
 
