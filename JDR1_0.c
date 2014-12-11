@@ -1,3 +1,4 @@
+
 /**
 *\file JR1_0.c
 *\brief regroupe toutes les fonctions nécessaire à la création de l'avatar
@@ -18,29 +19,29 @@
 #include "region.h"
 #include "monde.h"
 
-t_joueur joueur;
 extern char charger[16];
-
-
-/**
- *\struct t_statcombat
- *\brief structure contenant toutes les statistiques liées au combat
- */
-typedef struct{int victoire,defaite,total; float pourvic,pourdef;}t_statcombat;		
+extern t_coord coord;
+t_joueur joueur;
 
 /**
- *\struct afficher_joueur(void)
- *\brief fonction permettant d'afficher les caractéristiques du joueur
- */
+*\struct t_statcombat
+*\brief structure contenant toutes les statistiques liées au combat
+*/
+typedef struct{int victoire,defaite,total; float pourvic,pourdef;}t_statcombat;
+/**
+*\struct afficher_joueur(void)
+*\brief fonction permettant d'afficher les caractéristiques du joueur
+*/
 void afficher_joueur(){
+	
 	printf("\nVoici vos niveaux de compétences principales actuels : \n");
 	printf("	Rapidité : %i \n", joueur.comp.rapidite);
 	printf("	Agilité : %i \n", joueur.comp.agilite);
 	printf("	Force : %i \n", joueur.comp.force);
 	printf("	Puissance : %i \n", joueur.comp.puissance);
 	printf("	Intelligence : %i \n", joueur.comp.intelligence);
-	printf("	Perception : %i \n", joueur.comp.perception);				printf("	Chance : %i \n", joueur.comp.chance);
-			
+	printf("	Perception : %i \n", joueur.comp.perception);
+	printf("	Chance : %i \n", joueur.comp.chance);
 	printf("Compétences de combat : \n");
 	printf("	Archerie : %i \n", joueur.combat.archerie);
 	printf("	Précision : %i \n", joueur.combat.precision);
@@ -52,7 +53,7 @@ void afficher_joueur(){
 	printf("	Armure légère : %i \n", joueur.combat.armureleg);
 	printf("	Armure lourde : %i \n", joueur.combat.armurelou);
 	printf("\nCompétences de furtivité : \n");
-	printf("    Crochetage : %i \n", joueur.furtif.crochetage);
+	printf(" 	Crochetage : %i \n", joueur.furtif.crochetage);
 	printf("	Discretion : %i \n", joueur.furtif.discretion);
 	printf("	Dague : %i \n", joueur.furtif.dague);
 	printf("	Acrobatie : %i \n", joueur.furtif.acrobatie);
@@ -66,6 +67,7 @@ void afficher_joueur(){
 	printf("	Invocation : %i \n", joueur.magie.invocation);
 			
 	printf("Pseudo : %s \n", joueur.pseudo);
+	
 	if(joueur.physique.race==1){
 		printf("Race : elfe \n");
 	}
@@ -81,17 +83,17 @@ void afficher_joueur(){
 	else{
 		printf("Race : troll \n");
 	}
-       
+	
 	int m=joueur.physique.taille/100;
 	int c=joueur.physique.taille%100;
-        
+	
 	if(c==0){
 		printf("Taille : %i m \n", m);
 	}
 	else{
 		printf("Taille : %i m %i \n", m,c);
 	}
-        
+	
 	if(joueur.physique.poids==1){
 		printf("Corpulence : anorexique \n");
 	}
@@ -109,47 +111,89 @@ void afficher_joueur(){
 	}
 	else{
 		printf("Corpulence : obèsité morbide \n");
-	}	
+	}
+}
+
+void nouvelle_partie(){
+	int choix=0;
+	int principale=5;
+    int secondaire=5;
+	
+	crea_ava(&joueur,principale,secondaire);
+	creer_region();
+	inclure_region(coord);
+	crea_file();
+	
+	while(choix!=4&&choix!=3){
+		
+		printf("\n Entrez le nombre entier correspondant à votre choix : \n");
+		printf("0- Afficher la region dans laquelle vous vous trouvez \n");
+		printf("1- Continuer \n");
+		printf("2- Sauvegarder \n");
+		printf("3- Sauvegarder et quitter \n");
+		printf("4- Quittez sans sauvegarder \n");
+		printf("Votre choix :");
+		scanf("%i",&choix);
+	
+		switch(choix){
+			case 0 : aff_region_monde(); break;
+			case 1 : deplacement_monde(); creer_region(); inclure_region(coord);break;
+			case 2 : crea_file(); break;
+			case 3 : crea_file(); break;
+			case 4 : break;
+		}	
+	}
+}
+
+void charger_par(){
+	
+	int i=charger_partie(charger);
+	int choix=0;
+	
+	if(i==1){
+		while(choix!=4){
+			printf("\n Entrez le nombre entier correspondant à votre choix : \n");
+			printf(" 0- afficher la region dans laquelle vous vous trouvez \n");
+			printf(" 1- Afficher les caractéristiques de l'avatar \n ");
+			printf("2- Vous déplacer dans le monde \n ");
+			printf("3- Afficher la position courante dans le monde \n ");
+			printf("4- Retour à l'accueil \n ");
+			printf("Votre choix :");
+			scanf("%i",&choix);
+			
+			switch(choix){
+				case 0 : aff_region_monde(); break;
+				case 1 : afficher_joueur();break;
+				case 2 : deplacement_monde(); creer_region(); inclure_region(coord);break;
+				case 3 : aff_monde(); break;
+				case 4 : break;
+			}
+		}
+	}
+	else{
+		printf("\n Ce fichier n'existe pas, si vous n'avez pas créer de partie, retournez à l'accueil du jeu. Sinon, réessayez. \n");
+	}
 }
 
 int main(){
 	int choix;
-	int i=0;
-	int k=0;
-	int x=0;
-	int y=0;
 	
-    principale=5;
-    secondaire=5;
-    
-    srand(time(NULL));
-    init_monde();
-    
-    printf("Bienvenue : \n");
-    printf("1 : Nouvelle partie \n");
-    printf("2 : Charger partie \n");
-    printf("3 : Afficher monde \n");
-    printf("Votre choix : ");
-    scanf("%i",&choix);
-    
-    switch(choix){
-		case 1 : crea_ava(&joueur,principale,secondaire); crea_file(); creer_region(); break;
-		case 2 : 
-			i=charger_partie(charger);
-			if(i==1){
-				afficher_joueur();
-			}
-			else{
-				break;
-			}
-			while(k!=1){
-				creer_region();
-				printf("Souhaitez générer une autre map ? 0 si oui, 1 si non : ");
-				scanf("%i",&k);
-			}
-			break;
-		case 3 : deplacement_monde(x,y);break;
+	srand(time(NULL));
+	
+	init_monde();
+	
+	printf("Bienvenue : \n");
+	printf("1 : Nouvelle partie \n");
+	printf("2 : Charger partie \n");
+	printf("3 : Afficher monde \n");
+	printf("Votre choix : ");
+	scanf("%i",&choix);
+	
+	switch(choix){
+		case 1 : nouvelle_partie(); break;
+		case 2 : charger_par(); break;
+		case 3 : aff_monde();break;
 	}
- 
+	
 	return EXIT_SUCCESS;
 }
