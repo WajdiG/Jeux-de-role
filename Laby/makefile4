@@ -1,5 +1,5 @@
-prog4: IA.o pile_tab.o region.o accueil.o deplacement.o
-	gcc IA.o pile_tab.o region.o accueil.o deplacement.o -o prog4
+prog4: IA.o pile_tab.o region.o combatRework.o accueil.o deplacement.o
+	gcc IA.o pile_tab.o region.o combatRework.o accueil.o deplacement.o -o prog4
 	
 pile_tab.o : pile_tab.c
 	gcc -c pile_tab.c
@@ -10,6 +10,9 @@ region.o : region.c
 IA.o: IA.c 
 	gcc -c IA.c 
 	
+combatRework.o : combatRework.c
+	gcc -c combatRework.c
+
 accueil.o : accueil.c
 	gcc -c accueil.c
 	

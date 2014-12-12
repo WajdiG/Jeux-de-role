@@ -1,7 +1,7 @@
 /**
 *\file region.h
 *\brief regroupe tout les prototypes de fonctions nécessaires à la création d'une région : génération aléatoire d'un labyrinthe
-*\author Wajdi Guedouar
+*\author Wajdi Guedouar, Joris Toulmonde, Godefroy Thieulart
 *\version 0.1
 *\date 27 Novembre 2014
 */

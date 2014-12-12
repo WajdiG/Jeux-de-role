@@ -1,7 +1,7 @@
 /**
  *\file IA.c
  *\brief Projet informatique S3 Deplacement du personnage et colisions sur le parois
- *\author TOULMONDE Joris
+ *\author Joris Toulmonde, Godefroy Thieulart
  *\version 0.2
  *\date 22 Octobre 2014
 */
@@ -24,48 +24,6 @@
 
 //int matrice[N][N];
 int vision[N][N];
-
-void affichage2(int matrice[N][N]){
-	int i, j;
-	
-	for(i=0;i<N;i++){
-		for(j=0;j<N;j++){
-                switch(matrice[i][j]){
-                    case(MUR) : printf("|-|"); break;
-                    case(CHEMIN) : printf("   "); break;
-                    case(JOUEUR) : printf("*_*"); break;
-                    case(COFFRE) : printf("[C]"); break;
-                    case(OBJECTIF) : printf(" X "); break;
-                    case(MOB) : printf("X_X"); break;
-
-                }
-		}
-		printf("\n");
-	}
-	printf("\n");
-}
-
-void initialisation2(int matrice[N][N]){
-
-	int entier;
-	int i, j;
-	FILE * fichier;
-
-    fichier = fopen("maptest.txt","r");
-
-    while(!feof(fichier)){
-
-        for(i=0;i<N;i++){
-            for(j=0;j<N;j++){
-                fscanf(fichier,"%i", &entier);
-                matrice[i][j] = entier;
-            }
-        }
-    }
-    matrice[17][2]=JOUEUR;
-    matrice[2][10]=MOB;
-    fclose(fichier);
-}
 
 void tradRandom(int matrice[N][N], char region[N][N]){
 	int cptx=0;
@@ -154,8 +112,8 @@ void affVision(int matrice[N][N]){
 void trouverMob(int *mobx, int *moby){
 	int cptx;
 	int cpty;
-	int mob=0;
 	int sorti=0;
+	int mob=0;
 	
 	for(cptx=0 ; cptx<N && !sorti ; cptx++){
 		for(cpty=0 ; cpty<N && !sorti ; cpty++){	
@@ -163,6 +121,25 @@ void trouverMob(int *mobx, int *moby){
 			if(vision[cptx][cpty]==mob){
 				*mobx=cptx;
 				*moby=cpty;
+			}
+			
+		}
+	}
+	
+}
+
+void trouverCible(int *Jx, int *Jy){
+	int cptx;
+	int cpty;
+	int sorti=0;
+	int joueur=-2;
+	
+	for(cptx=0 ; cptx<N && !sorti ; cptx++){
+		for(cpty=0 ; cpty<N && !sorti ; cpty++){	
+					
+			if(vision[cptx][cpty]==joueur){
+				*Jx=cptx;
+				*Jy=cpty;
 			}
 			
 		}
@@ -193,16 +170,16 @@ t_coordonees ecrireChemin(t_coordonees cheminRetour){
 				
 				if(vision[cptx][cpty]==chemin){
 					
-					if((vision[cptx][cpty-1]==-1)){
+					if(vision[cptx][cpty-1]==-1){
 						vision[cptx][cpty-1]=chemin+1;
 					}
-					if((vision[cptx][cpty+1]==-1)){
+					if(vision[cptx][cpty+1]==-1){
 						vision[cptx][cpty+1]=chemin+1;
 					}
-					if((vision[cptx-1][cpty]==-1)){
+					if(vision[cptx-1][cpty]==-1){
 						vision[cptx-1][cpty]=chemin+1;
 					}
-					if((vision[cptx+1][cpty]==-1)){
+					if(vision[cptx+1][cpty]==-1){
 						vision[cptx+1][cpty]=chemin+1;
 					}
 					if((vision[cptx][cpty-1]==-2) || (vision[cptx][cpty+1]==-2) || (vision[cptx-1][cpty]==-2) || (vision[cptx+1][cpty]==-2)){
@@ -217,46 +194,86 @@ t_coordonees ecrireChemin(t_coordonees cheminRetour){
 	}
 }
 
+int MobNextToJoueur(){
+	int cptx;
+	int cpty;
+	int mobx, moby, Jx, Jy;
+	int sortis=0;
+	int joueur=-2;
+	int mob=0;
+	
+	for(cptx=0 ; cptx<N && !sortis ; cptx++){
+		for(cpty=0 ; cpty<N && !sortis ; cpty++){	
+			if(vision[cptx][cpty]==mob){
+				mobx=cptx;
+				moby=cpty;
+			}
+			if(vision[cptx][cpty]==joueur){
+				Jx=cptx;
+				Jy=cpty;
+			}
+		}
+	}
+	printf("joueur : %i %i \n", Jx, Jy);
+	printf("mob : %i %i \n", mobx, moby);
+
+	if(moby==Jy+1 && mobx==Jx){
+		return 1;
+	}
+	if(moby==Jy-1 && mobx==Jx){
+		return 1;
+	}
+	if(moby==Jy && mobx==Jx+1){
+		return 1;
+	}
+	if(moby==Jy && mobx==Jx-1){
+		return 1;
+	}
+	return 0;
+}
+
 void lireChemin(t_coordonees cheminRetour, int cptx, int cpty){
 	int arrive=0;
+	int mobJoueur;
 	initpileStruct();
 	
-	while(arrive!=1){
-
-		empilerStruct(cheminRetour);
-		
-		if((vision[cptx][cpty-1]==vision[cptx][cpty]-1)){
+	empilerStruct(cheminRetour);
+	
+	mobJoueur=MobNextToJoueur();
+	
+	while(arrive!=1 && mobJoueur!=1){
+		if(vision[cptx][cpty-1]==vision[cptx][cpty]-1){
 			cheminRetour.x=cptx;
 			cheminRetour.y=cpty-1;
 			cpty--;
 		}
-		else if((vision[cptx][cpty+1]==vision[cptx][cpty]-1)){
+		else if(vision[cptx][cpty+1]==vision[cptx][cpty]-1){
 			cheminRetour.x=cptx;
 			cheminRetour.y=cpty+1;
 			cpty++;
 		}
-		else if((vision[cptx-1][cpty]==vision[cptx][cpty]-1)){
+		else if(vision[cptx-1][cpty]==vision[cptx][cpty]-1){
 			cheminRetour.x=cptx-1;
 			cheminRetour.y=cpty;
 			cptx--;
 		}
-		else if((vision[cptx+1][cpty]==vision[cptx][cpty]-1)){
+		else if(vision[cptx+1][cpty]==vision[cptx][cpty]-1){
 			cheminRetour.x=cptx+1;
 			cheminRetour.y=cpty;
 			cptx++;
 		}
-		
+	
 		if((vision[cptx][cpty-1]==0) || (vision[cptx][cpty+1]==0) || (vision[cptx-1][cpty]==0) || (vision[cptx+1][cpty]==0)){
 			arrive=1;
 		}
+		empilerStruct(cheminRetour);
 	}
-	empilerStruct(cheminRetour);
 }
 
 int IA(int matrice[N][N]){
-	int mobx;
-	int moby;
-
+	int mobx, Jx;
+	int moby, Jy;
+	int attaque=0;
 	int cptx=0;
 	int cpty=0;
 	t_coordonees cheminRetour;
@@ -267,7 +284,7 @@ int IA(int matrice[N][N]){
 	resetMob();
 		
 	trouverMob(&mobx, &moby);
-		
+
 	cheminRetour=ecrireChemin(cheminRetour);
 	
 	cptx=cheminRetour.x;
@@ -284,9 +301,6 @@ int IA(int matrice[N][N]){
 	matrice[resultat.x][resultat.y]=MOB;
 	vision[mobx][moby]=-1;
 	matrice[mobx][moby]=CHEMIN;
-	
+
 	return 0;
-
 }
-
-

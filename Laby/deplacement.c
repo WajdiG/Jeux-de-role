@@ -1,7 +1,7 @@
 /**
  *\file deplacement.c
  *\brief Projet informatique S3 Deplacement du personnage et colisions sur le parois
- *\author TOULMONDE Joris
+ *\author Joris Toulmonde, Godefroy Thieulart
  *\version 0.2
  *\date 22 Octobre 2014
 */
@@ -13,6 +13,7 @@
 #include "accueil.h"
 #include "IA.h"
 #include "region.h"
+#include "combatRework.h"
 
 #define N 20
 #define MUR 0
@@ -21,10 +22,6 @@
 #define JOUEUR 3
 #define OBJECTIF 4
 #define MOB 5
-#define MOB_gauche 6
-#define MOB_droite 7
-#define MOB_haut 8
-#define MOB_bas 9
 
 extern int quitter;
 extern char region[N][N];
@@ -57,6 +54,11 @@ void affichage(int matrice[N][N]){
 	}
 }
 
+/**
+* \fn void rechercheJoueur(int matrice[N][N])
+* \brief Fonction qui recherche les coordonnées du joueur sur la carte
+* \param matrice[N][N] matrice ou chaque case contient soir un mur, un chemin, un joueur, un coffre ou un monstre
+**/
 void rechercheJoueur(int matrice[N][N]){
 	int cptx=0;
 	int cpty=0;
@@ -71,7 +73,7 @@ void rechercheJoueur(int matrice[N][N]){
 	}
 }
 
-void initialisation(int matrice[N][N]){
+/*void initialisation(int matrice[N][N]){
 
 	int entier;
 	int i, j;
@@ -89,14 +91,14 @@ void initialisation(int matrice[N][N]){
         }
     }
     fclose(fichier);
-}
+}*/
 
 /**
 * \fn void deplacement_perso(int matrice[N][N])
 * \brief Fonction permettant de deplacer le joueur a chaque tour.
 * \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemin, un coffre ou un monstre
 **/
-void deplacement_perso(int matrice[N][N]){
+void deplacement_perso(int matrice[N][N], int*pvMob){
 		
 		char direction;
         t_coordonees tampon;
@@ -111,6 +113,11 @@ void deplacement_perso(int matrice[N][N]){
 			case 'q' : ma_position.y-- ; break;
 			case 's' : ma_position.x++ ; break;
 			case 'd' : ma_position.y++ ; break;
+			case 'h' : creer_region() ; tradRandom(matrice, region) ; break;
+			case 'i' : degatHaut(matrice, ma_position, pvMob) ; break;
+			/*case 'j' : degatGauche() ; break;
+			case 'k' : degatBas() ; break;
+			case 'l' :degatDroite() ; break;*/
 		}	
 		if(matrice[ma_position.x][ma_position.y] == MUR){
 			ma_position.x = tampon.x;
@@ -163,6 +170,7 @@ int main(){
    
 	while(quitter != 1){
 		VD=-1;
+		int pvMob=100;
 		Menu_Jeu();
 		rechercheJoueur(matrice);
 		sorti=ma_position;
@@ -171,11 +179,14 @@ int main(){
 			rechercheJoueur(matrice);
 
 			affichage(matrice);
-			deplacement_perso(matrice);
+			deplacement_perso(matrice, &pvMob);
 			VD=IA(matrice);
+			
 			scanf("%c", &temp); //pour absorber le caractère resté dans le buffer
+			
 			if(VD==1){
 				defeat();
+				quitter=0;
 				break;
 			}
 			if(coffre(matrice)){
@@ -186,6 +197,7 @@ int main(){
 		}
 		if(VD==0){
 			victory();
+			quitter=0;
 		}
 	}  	
 		

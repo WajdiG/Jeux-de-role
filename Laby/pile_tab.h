@@ -1,7 +1,7 @@
 /**
 *\file pile_tab.h
 *\brief regroupe toutes les déclarations des primitives de pile par tableau
-*\author Wajdi Guedouar
+*\author Wajdi Guedouar, Joris Toulmonde, Godefroy Thieulart
 *\version 0.1
 *\date 25 Novembre 2014
 */

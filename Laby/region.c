@@ -1,7 +1,7 @@
 /**
 *\file region.c
 *\brief regroupe toutes les fonctions nécessaires à la création d'une région : génération aléatoire d'un labyrinthe
-*\author Wajdi Guedouar
+*\author Wajdi Guedouar, Joris Toulmonde, Godefroy Thieulart
 *\version 0.1
 *\date 25 Novembre 2014
 */
@@ -107,6 +107,7 @@ int verif_cour(int i, int j){
 void place_coffre(){
 	int i,j;
 	int k=0;
+	srand(time(NULL));
 	
 	for(k=0;k<NB_COFFRE;k++){	//genere un nombre de coffre égale à NB_COFFRE
 		do{
