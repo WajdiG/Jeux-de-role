@@ -71,15 +71,19 @@ void crea_file(){
 	fprintf(fichier,"%i ",coord.x);
 	fprintf(fichier,"%i ",coord.y);
 	
+	fprintf(fichier,"\n");	
 	for(i=0;i<X;i++){
 		for(j=0;j<Y;j++){
 			for(k=0;k<N;k++){
 				for(l=0;l<M;l++){
-					fprintf(fichier,"%c ",monde[i][j][k][l]);
+					fprintf(fichier,"%c",monde[i][j][k][l]);
 				}
-			}	
+			}
+			fprintf(fichier,"\n");		
 		}
 	}
+	
+	
 	
 	fclose(fichier);
 }

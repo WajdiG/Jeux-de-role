@@ -154,14 +154,18 @@ void charger_jeu(t_joueur *joueur,t_coord *coord,char ** monde[X][Y],FILE*fichie
 	fscanf(fichier,"%i",&i);
 	(*coord).y=i;
 	
+	fscanf(fichier,"%*c"); //lecture du retour à la ligne
+	fscanf(fichier,"%*c"); //lecture du retour à la ligne
 	for(h=0;h<X;h++){
 		for(j=0;j<Y;j++){
 			for(k=0;k<N;k++){
 				for(l=0;l<M;l++){
-					fscanf(fichier,"%c ",&a);
+					fscanf(fichier,"%c",&a);
+					//fprintf(stderr, "region[%d][%d] = '%c'\n", k, l, a);
 					monde[h][j][k][l]=a;
 				}
-			}	
+			}
+			fscanf(fichier,"%*c"); //lecture du retour à la ligne	
 		}
 	}
 }

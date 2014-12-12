@@ -17,8 +17,7 @@
 #include "JDR1_0.h"
 
 
-extern char ** monde[X][Y]; 
-
+extern char ** monde[X][Y];
 extern t_coord coord;
 t_joueur joueur;
 
@@ -159,7 +158,7 @@ void charger_par(){
 			switch(choix){
 				case 0 : aff_region_monde(); break;
 				case 1 : afficher_joueur();break;
-				case 2 : deplacement_monde(); creer_region(); inclure_region(coord);break;
+				case 2 : deplacement_monde(); creer_region(); inclure_region(coord); crea_file(); break;
 				case 3 : aff_monde(); break;
 				case 4 : break;
 			}

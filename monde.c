@@ -271,7 +271,8 @@ void deplacement_case_monde(t_coord *coord){
 			}
 		}
 		
-		printf("Voter choix : ");
+	
+		printf("Votre choix : ");
 		scanf("%i", &choix);
 		
 	}while(choix<1||choix>verif);
