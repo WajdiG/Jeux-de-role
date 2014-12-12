@@ -151,16 +151,16 @@ void charger_par(){
 			printf(" 1- Afficher les caractéristiques de l'avatar \n ");
 			printf("2- Vous déplacer dans le monde \n ");
 			printf("3- Afficher la position courante dans le monde \n ");
-			printf("4- Retour à l'accueil \n ");
+			printf("4- Sauvegarder et retour à l'accueil \n ");
 			printf("Votre choix :");
 			scanf("%i",&choix);
 			
 			switch(choix){
 				case 0 : aff_region_monde(); break;
 				case 1 : afficher_joueur();break;
-				case 2 : deplacement_monde(); creer_region(); inclure_region(coord); crea_file(); break;
+				case 2 : deplacement_monde(); creer_region(); inclure_region(coord); break;
 				case 3 : aff_monde(); break;
-				case 4 : break;
+				case 4 : crea_file(); break;
 			}
 		}
 	}

@@ -79,43 +79,182 @@ void deplacement_case_monde(t_coord *coord){
 	 *on empile les coordonées de destination possible préalablement stocké dans a.
 	 */
 	
-	do{	
-		printf("Saisissez le chiffre correspondant au choix de votre prochaine destination : \n");
-		if(coord->x==0&&coord->y==0){
-			printf("%i : %i %i \n", cpt, coord->x, (coord->y)+1);
-			a=coord->x;
+	
+	printf("Saisissez le chiffre correspondant au choix de votre prochaine destination : \n");
+	if(coord->x==0&&coord->y==0){
+		printf("%i : %i %i \n", cpt, coord->x, (coord->y)+1);
+		a=coord->x;
+		empiler(a);
+		a=(coord->x)+1;
+		empiler(a);
+		cpt++;
+			
+		printf("%i : %i %i \n", cpt, (coord->x)+1, (coord->y));
+		a=(coord->x)+1;
+		empiler(a);
+		a=(coord->y);
+		empiler(a);
+		cpt++;
+		verif=2;
+	}
+	else if((coord->x)==0&&(coord->y)==Y-1){
+		printf("%i : %i %i \n", cpt, (coord->x), (coord->y)-1);
+		a=(coord->x);
+		empiler(a);
+		a=(coord->y)-1;
+		empiler(a);
+		cpt++;
+			
+		printf("%i : %i %i \n", cpt, (coord->x)+1, (coord->y));
+		a=(coord->x)+1;
+		empiler(a);
+		a=(coord->y);
+		empiler(a);
+		cpt++;
+		verif=2;
+	}
+	else if((coord->y)==0&&(coord->x)==X-1){
+		printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
+		a=(coord->x)-1;
+		empiler(a);
+		a=(coord->y);
+		empiler(a);
+		cpt++;
+			
+		printf("%i : %i %i\n", cpt, (coord->x), (coord->y)+1);
+		a=(coord->x);
+		empiler(a);
+		a=(coord->y)+1;
+		empiler(a);
+		cpt++;
+		verif=2;
+	}
+	else if((coord->y)==Y-1&&(coord->x)==X-1){
+		printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
+		a=(coord->x)-1;
+		empiler(a);
+		a=(coord->y);
+		empiler(a);
+		cpt++;
+			
+		printf("%i : %i %i\n", cpt, (coord->x), (coord->y)-1);
+		a=(coord->x);
+		empiler(a);
+		a=(coord->x)-1;
+		empiler(a);
+		cpt++;
+		verif=2;
+	}
+	else{
+		if((coord->x)==0){
+			printf("%i : %i %i\n", cpt, (coord->x), (coord->y)+1);
+			a=(coord->x);
 			empiler(a);
-			a=(coord->x)+1;
+			a=(coord->y)+1;
 			empiler(a);
 			cpt++;
-			
-			printf("%i : %i %i \n", cpt, (coord->x)+1, (coord->y));
+				
+			printf("%i : %i %i\n", cpt, (coord->x), (coord->y)-1);
+			a=(coord->x);
+			empiler(a);
+			a=(coord->y)-1;
+			empiler(a);
+			cpt++;
+				
+			printf("%i : %i %i\n", cpt, (coord->x)+1, (coord->y));
 			a=(coord->x)+1;
 			empiler(a);
 			a=(coord->y);
 			empiler(a);
 			cpt++;
-			verif=2;
+			verif=3;
 		}
-		else if((coord->x)==0&&(coord->y)==Y-1){
-			printf("%i : %i %i \n", cpt, (coord->x), (coord->y)-1);
+		else if((coord->y)==0){
+			printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
+			a=(coord->x)-1;
+			empiler(a);
+			a=(coord->y);
+			empiler(a);
+			cpt++;
+				
+			printf("%i : %i %i\n", cpt, (coord->x), (coord->y)+1);
+			a=(coord->x);
+			empiler(a);
+			a=(coord->y)+1;
+			empiler(a);
+			cpt++;
+				
+			printf("%i : %i %i\n", cpt, (coord->x)+1, (coord->y));
+			a=(coord->x)+1;
+			empiler(a);
+			a=(coord->y);
+			empiler(a);
+			cpt++;
+			verif=3;
+		}
+		else if((coord->x)==X-1){
+			printf("%i : %i %i\n", cpt, (coord->x), (coord->y)+1);
+			a=(coord->x);
+			empiler(a);
+			a=(coord->y)+1;
+			empiler(a);
+			cpt++;
+			
+			printf("%i : %i %i\n", cpt, (coord->x), (coord->y)-1);
 			a=(coord->x);
 			empiler(a);
 			a=(coord->y)-1;
 			empiler(a);
 			cpt++;
 			
-			printf("%i : %i %i \n", cpt, (coord->x)+1, (coord->y));
+			printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
+			a=(coord->x)-1;
+			empiler(a);
+			a=(coord->y);
+			empiler(a);
+			cpt++;
+			verif=3;
+		}
+		else if((coord->y)==Y-1){
+			printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
+			a=(coord->x)-1;
+			empiler(a);
+			a=(coord->y);
+			empiler(a);
+			cpt++;
+				
+			printf("%i : %i %i\n", cpt, (coord->x),  (coord->y)-1);
+			a=(coord->x);
+			empiler(a);
+			a=(coord->y)-1;
+			empiler(a);
+			cpt++;
+			
+			printf("%i : %i %i\n", cpt, (coord->x)+1, (coord->y));
 			a=(coord->x)+1;
 			empiler(a);
 			a=(coord->y);
 			empiler(a);
 			cpt++;
-			verif=2;
+			verif=3;
 		}
-		else if((coord->y)==0&&(coord->x)==X-1){
+		else{
 			printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
 			a=(coord->x)-1;
+			empiler(a);
+			a=(coord->y);
+			empiler(a);
+			cpt++;
+			
+			printf("%i : %i %i\n", cpt, (coord->x), (coord->y)-1);
+			a=(coord->x);
+			empiler(a);
+			a=(coord->y)-1;
+			empiler(a);
+			cpt++;
+			
+			printf("%i : %i %i\n", cpt, (coord->x)+1, (coord->y));
+			a=(coord->x)+1;
 			empiler(a);
 			a=(coord->y);
 			empiler(a);
@@ -127,155 +266,16 @@ void deplacement_case_monde(t_coord *coord){
 			a=(coord->y)+1;
 			empiler(a);
 			cpt++;
-			verif=2;
-		}
-		else if((coord->y)==Y-1&&(coord->x)==X-1){
-			printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
-			a=(coord->x)-1;
-			empiler(a);
-			a=(coord->y);
-			empiler(a);
-			cpt++;
 			
-			printf("%i : %i %i\n", cpt, (coord->x), (coord->y)-1);
-			a=(coord->x);
-			empiler(a);
-			a=(coord->x)-1;
-			empiler(a);
-			cpt++;
-			verif=2;
+			verif=4;
 		}
-		else{
-			if((coord->x)==0){
-				printf("%i : %i %i\n", cpt, (coord->x), (coord->y)+1);
-				a=(coord->x);
-				empiler(a);
-				a=(coord->y)+1;
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, (coord->x), (coord->y)-1);
-				a=(coord->x);
-				empiler(a);
-				a=(coord->y)-1;
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, (coord->x)+1, (coord->y));
-				a=(coord->x)+1;
-				empiler(a);
-				a=(coord->y);
-				empiler(a);
-				cpt++;
-				verif=3;
-			}
-			else if((coord->y)==0){
-				printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
-				a=(coord->x)-1;
-				empiler(a);
-				a=(coord->y);
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, (coord->x), (coord->y)+1);
-				a=(coord->x);
-				empiler(a);
-				a=(coord->y)+1;
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, (coord->x)+1, (coord->y));
-				a=(coord->x)+1;
-				empiler(a);
-				a=(coord->y);
-				empiler(a);
-				cpt++;
-				verif=3;
-			}
-			else if((coord->x)==X-1){
-				printf("%i : %i %i\n", cpt, (coord->x), (coord->y)+1);
-				a=(coord->x);
-				empiler(a);
-				a=(coord->y)+1;
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, (coord->x), (coord->y)-1);
-				a=(coord->x);
-				empiler(a);
-				a=(coord->y)-1;
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
-				a=(coord->x)-1;
-				empiler(a);
-				a=(coord->y);
-				empiler(a);
-				cpt++;
-				verif=3;
-			}
-			else if((coord->y)==Y-1){
-				printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
-				a=(coord->x)-1;
-				empiler(a);
-				a=(coord->y);
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, (coord->x),  (coord->y)-1);
-				a=(coord->x);
-				empiler(a);
-				a=(coord->y)-1;
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, (coord->x)+1, (coord->y));
-				a=(coord->x)+1;
-				empiler(a);
-				a=(coord->y);
-				empiler(a);
-				cpt++;
-				verif=3;
-			}
-			else{
-				printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
-				a=(coord->x)-1;
-				empiler(a);
-				a=(coord->y);
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, (coord->x), (coord->y)-1);
-				a=(coord->x);
-				empiler(a);
-				a=(coord->y)-1;
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, (coord->x)+1, (coord->y));
-				a=(coord->x)+1;
-				empiler(a);
-				a=(coord->y);
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, (coord->x), (coord->y)+1);
-				a=(coord->x);
-				empiler(a);
-				a=(coord->y)+1;
-				empiler(a);
-				cpt++;
-				
-				verif=4;
-			}
-		}
+	}
 		
-	
+	while(choix<1||choix>verif){
 		printf("Votre choix : ");
 		scanf("%i", &choix);
-		
-	}while(choix<1||choix>verif);
+	}
+	
 	
 	for(b=verif;b>=choix;b--){ //recupération des coordonnées choisit par le joueur
 		depiler(&b);
