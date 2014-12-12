@@ -9,27 +9,28 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#include "crea_avatar.h"
-extern t_joueur joueur;
 
-char charger[16];
+#include "charger.h"
 
 
 /**
- *\fn charger_struct(t_joueur *,FILE*)
- *\brief fonction permettant de charger toutes les données contenue dans le fichier de sauvegarde dans la structure t_joueur jouer
- *\param *joueur pointeur sur la structure t_joueur joueur
- *\param fichier fichier contenant les données sauvegardéess
- */
-void charger_struct(t_joueur *joueur,FILE*fichier){
+*\fn charger_struct(t_joueur *,t_coord *,FILE *)
+*\brief fonction permettant de charger toutes les données contenue dans le fichier de sauvegarde dans la structure t_joueur jouer
+*\param *joueur pointeur sur la structure t_joueur joueur
+*\param fichier fichier contenant les données sauvegardéess
+*/
+void charger_jeu(t_joueur *joueur,t_coord *coord,char ** monde[X][Y],FILE*fichier){
 	int i=0;
+	char a;
+	int h,j,k,l;
 	
 	if(fichier == NULL){
-			fprintf(stderr, "fichier non ouvert \n");
-			return;
+		fprintf(stderr, "fichier non ouvert \n");
+		return;
 	}
 	
 	fscanf(fichier,"%i",&i);
+	
 	if(i==1){
 		(*joueur).physique.sexe=homme; // equivalent joueur-> sexe = homme
 	}
@@ -41,6 +42,7 @@ void charger_struct(t_joueur *joueur,FILE*fichier){
 	}
 	
 	fscanf(fichier,"%i",&i);
+	
 	if(i==1){
 		(*joueur).physique.race=elfe;
 	}
@@ -58,6 +60,7 @@ void charger_struct(t_joueur *joueur,FILE*fichier){
 	}
 	
 	fscanf(fichier,"%i",&i);
+	
 	if(i==1){
 		(*joueur).physique.poids=anorexique;
 	}
@@ -78,43 +81,43 @@ void charger_struct(t_joueur *joueur,FILE*fichier){
 	}
 	
 	fscanf(fichier,"%i",&i);
-	(*joueur).physique.taille=i;	
+	(*joueur).physique.taille=i;
 	
 	fscanf(fichier,"%i",&i);
 	(*joueur).vie.sante=i;
-	fscanf(fichier,"%i",&i);	
-	(*joueur).vie.mana=i;	
+	fscanf(fichier,"%i",&i);
+	(*joueur).vie.mana=i;
 	fscanf(fichier,"%i",&i);
 	(*joueur).vie.endu=i;
 	
 	fscanf(fichier,"%i",&i);
 	(*joueur).comp.rapidite=i;
-	fscanf(fichier,"%i",&i);	
+	fscanf(fichier,"%i",&i);
 	(*joueur).comp.agilite=i;
-	fscanf(fichier,"%i",&i);	
-	(*joueur).comp.force=i;	
+	fscanf(fichier,"%i",&i);
+	(*joueur).comp.force=i;
 	fscanf(fichier,"%i",&i);
 	(*joueur).comp.puissance=i;
-	fscanf(fichier,"%i",&i);	
+	fscanf(fichier,"%i",&i);
 	(*joueur).comp.intelligence=i;
-	fscanf(fichier,"%i",&i);	
+	fscanf(fichier,"%i",&i);
 	(*joueur).comp.perception=i;
 	fscanf(fichier,"%i",&i);
 	(*joueur).comp.chance=i;
 	
 	fscanf(fichier,"%i",&i);
 	(*joueur).combat.archerie=i;
-	fscanf(fichier,"%i",&i);	
-	(*joueur).combat.precision=i;	
+	fscanf(fichier,"%i",&i);
+	(*joueur).combat.precision=i;
 	fscanf(fichier,"%i",&i);
 	(*joueur).combat.unemain=i;
-	fscanf(fichier,"%i",&i);	
+	fscanf(fichier,"%i",&i);
 	(*joueur).combat.deuxmains=i;
-	fscanf(fichier,"%i",&i);	
+	fscanf(fichier,"%i",&i);
 	(*joueur).combat.lance=i;
-	fscanf(fichier,"%i",&i);	
+	fscanf(fichier,"%i",&i);
 	(*joueur).combat.contondant=i;
-	fscanf(fichier,"%i",&i);	
+	fscanf(fichier,"%i",&i);
 	(*joueur).combat.parade=i;
 	fscanf(fichier,"%i",&i);
 	(*joueur).combat.armureleg=i;
@@ -122,46 +125,65 @@ void charger_struct(t_joueur *joueur,FILE*fichier){
 	(*joueur).combat.armurelou=i;
 	fscanf(fichier,"%i",&i);
 	(*joueur).combat.corpscorps=i;
-		
-	fscanf(fichier,"%i",&i);
-	(*joueur).furtif.discretion=i;	
-	fscanf(fichier,"%i",&i);
-	(*joueur).furtif.crochetage=i;
-	fscanf(fichier,"%i",&i);	
-	(*joueur).furtif.dague=i;
-	fscanf(fichier,"%i",&i);	
-	(*joueur).furtif.acrobatie=i;	
 	
 	fscanf(fichier,"%i",&i);
-	(*joueur).dial.persuasion=i;	
+	(*joueur).furtif.discretion=i;
+	fscanf(fichier,"%i",&i);
+	(*joueur).furtif.crochetage=i;
+	fscanf(fichier,"%i",&i);
+	(*joueur).furtif.dague=i;
+	fscanf(fichier,"%i",&i);
+	(*joueur).furtif.acrobatie=i;
+	
+	fscanf(fichier,"%i",&i);
+	(*joueur).dial.persuasion=i;
 	fscanf(fichier,"%i",&i);
 	(*joueur).dial.charisme=i;
-	fscanf(fichier,"%i",&i);	
+	fscanf(fichier,"%i",&i);
 	(*joueur).dial.marchandage=i;
 	
 	fscanf(fichier,"%i",&i);
-	(*joueur).magie.destruction=i;	
+	(*joueur).magie.destruction=i;
 	fscanf(fichier,"%i",&i);
 	(*joueur).magie.guerison=i;
-	fscanf(fichier,"%i",&i);	
+	fscanf(fichier,"%i",&i);
 	(*joueur).magie.invocation=i;
+	
+	fscanf(fichier,"%i",&i);
+	(*coord).x=i;
+	fscanf(fichier,"%i",&i);
+	(*coord).y=i;
+	
+	for(h=0;h<X;h++){
+		for(j=0;j<Y;j++){
+			for(k=0;k<N;k++){
+				for(l=0;l<M;l++){
+					fscanf(fichier,"%c ",&a);
+					monde[h][j][k][l]=a;
+				}
+			}	
+		}
+	}
 }
 
+
 /**
- *\fn void charger_partie(char)
- *\brief fonction permettant de charger une partie
- *\param charger tableau contenant le pseudo du joueur
- *\return int renvoie 1 si le fichier charger est valide, 0 si non
- */
-int charger_partie(char* charger){
+*\fn void charger_partie(char)
+*\brief fonction permettant de charger une partie
+*\param charger tableau contenant le pseudo du joueur
+*\return int renvoie 1 si le fichier charger est valide, 0 si non
+*/
+int charger_partie(char* charger,t_joueur* joueur,t_coord *coord, char ** monde[X][Y]){
 	FILE*fichier;
+	
 	printf("Quel est votre pseudo dans la partie que vous souhaitez charger ? : ");
-	scanf("%s",charger); 
+	scanf("%s",charger);
 	
 	fichier=fopen(charger,"r");
 	
 	if(fichier!=NULL){
-		charger_struct(&joueur,fichier);
+		charger_jeu(joueur, coord, monde, fichier);
+		strcpy(joueur->pseudo,charger);
 		return 1;
 	}
 	printf("Aucun ficher de sauvegarder existant pour ce pseudo. Vous pouvez commencer une nouvelle partie ou réessayer. \n");

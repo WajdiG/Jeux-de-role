@@ -12,22 +12,17 @@
 #include<string.h>
 #include<time.h>
 #include<assert.h>
-#include "crea_avatar.h"
-#include "sauvegarde.h"
-#include "charger.h"
-#include "pile_tab.h"
-#include "region.h"
-#include "monde.h"
 
-extern char charger[16];
+
+#include "JDR1_0.h"
+
+
+extern char ** monde[X][Y]; 
+
 extern t_coord coord;
 t_joueur joueur;
 
-/**
-*\struct t_statcombat
-*\brief structure contenant toutes les statistiques liées au combat
-*/
-typedef struct{int victoire,defaite,total; float pourvic,pourdef;}t_statcombat;
+
 /**
 *\struct afficher_joueur(void)
 *\brief fonction permettant d'afficher les caractéristiques du joueur
@@ -146,8 +141,8 @@ void nouvelle_partie(){
 }
 
 void charger_par(){
-	
-	int i=charger_partie(charger);
+	char charger[16];
+	int i=charger_partie(charger,&joueur,&coord,monde);
 	int choix=0;
 	
 	if(i==1){

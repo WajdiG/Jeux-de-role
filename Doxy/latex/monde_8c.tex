@@ -1,0 +1,143 @@
+\hypertarget{monde_8c}{\section{Référence du fichier monde.\-c}
+\label{monde_8c}\index{monde.\-c@{monde.\-c}}
+}
+
+
+regroupe toutes les fonctions nécessaires à la gestion du monde  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$time.\-h$>$}\\*
+{\ttfamily \#include $<$assert.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}region.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}pile\-\_\-tab.\-h\char`\"{}}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{monde_8c_a207fd5507206d307cd63f95374fcd00d}{\#define {\bfseries X}~3}\label{monde_8c_a207fd5507206d307cd63f95374fcd00d}
+
+\item 
+\hypertarget{monde_8c_a798e4073d613ca5ba9618e1b3253df14}{\#define {\bfseries Y}~3}\label{monde_8c_a798e4073d613ca5ba9618e1b3253df14}
+
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{monde_8c_ade7e5f5e27afb0c46c30e8c788a1e849}{void \hyperlink{monde_8c_ade7e5f5e27afb0c46c30e8c788a1e849}{init\-\_\-monde} ()}\label{monde_8c_ade7e5f5e27afb0c46c30e8c788a1e849}
+
+\begin{DoxyCompactList}\small\item\em initialise le contenu de la matrice monde \end{DoxyCompactList}\item 
+void \hyperlink{monde_8c_a6b5d7094aac50421dc58034f19e40390}{inclure\-\_\-region} (int i, int j)
+\begin{DoxyCompactList}\small\item\em permet d'inclure une region dans le monde \end{DoxyCompactList}\item 
+void \hyperlink{monde_8c_a9410ebc7b1d7851aafa655a08c125260}{deplacement\-\_\-case\-\_\-monde} (int $\ast$i, int $\ast$j)
+\begin{DoxyCompactList}\small\item\em permet de deplacer le joueur d'une case dans le monde \end{DoxyCompactList}\item 
+void \hyperlink{monde_8c_a3553f99cf9b44c060bcc73005f02ced8}{aff\-\_\-monde} (int i, int j)
+\begin{DoxyCompactList}\small\item\em permet d'inclure une region dans le monde \end{DoxyCompactList}\item 
+void \hyperlink{monde_8c_af7d1a28562ea7596887b09da9c121729}{deplacement\-\_\-monde} (int x, int y)
+\begin{DoxyCompactList}\small\item\em permet au joueur de se déplacer dans le monde \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{monde_8c_a7b695bc8c1a17fb80d620bcc4afb88f0}{char \hyperlink{monde_8c_a7b695bc8c1a17fb80d620bcc4afb88f0}{region} \mbox{[}N\mbox{]}\mbox{[}M\mbox{]}}\label{monde_8c_a7b695bc8c1a17fb80d620bcc4afb88f0}
+
+\begin{DoxyCompactList}\small\item\em creer une region \-: labyrinthe aléatoire \end{DoxyCompactList}\item 
+\hypertarget{monde_8c_ab421ba3ffcd9e2018ab39a6180b5276a}{char $\ast$$\ast$ {\bfseries monde} \mbox{[}X\mbox{]}\mbox{[}Y\mbox{]}}\label{monde_8c_ab421ba3ffcd9e2018ab39a6180b5276a}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+regroupe toutes les fonctions nécessaires à la gestion du monde \begin{DoxyAuthor}{Auteur}
+Wajdi Guedouar 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\-1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+27 Novembre 2014 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{monde_8c_a3553f99cf9b44c060bcc73005f02ced8}{\index{monde.\-c@{monde.\-c}!aff\-\_\-monde@{aff\-\_\-monde}}
+\index{aff\-\_\-monde@{aff\-\_\-monde}!monde.c@{monde.\-c}}
+\subsubsection[{aff\-\_\-monde}]{\setlength{\rightskip}{0pt plus 5cm}aff\-\_\-monde (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{int}]{j}
+\end{DoxyParamCaption}
+)}}\label{monde_8c_a3553f99cf9b44c060bcc73005f02ced8}
+
+
+permet d'inclure une region dans le monde 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em i} & abscisse correspondant aux coordonnées du joueur \\
+\hline
+{\em j} & ordonnée correspondant aux coordonnées du joueur \\
+\hline
+\end{DoxyParams}
+\hypertarget{monde_8c_a9410ebc7b1d7851aafa655a08c125260}{\index{monde.\-c@{monde.\-c}!deplacement\-\_\-case\-\_\-monde@{deplacement\-\_\-case\-\_\-monde}}
+\index{deplacement\-\_\-case\-\_\-monde@{deplacement\-\_\-case\-\_\-monde}!monde.c@{monde.\-c}}
+\subsubsection[{deplacement\-\_\-case\-\_\-monde}]{\setlength{\rightskip}{0pt plus 5cm}deplacement\-\_\-case\-\_\-monde (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{i, }
+\item[{int $\ast$}]{j}
+\end{DoxyParamCaption}
+)}}\label{monde_8c_a9410ebc7b1d7851aafa655a08c125260}
+
+
+permet de deplacer le joueur d'une case dans le monde 
+
+permet de deplacer le joueur dans le monde
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$i} & abscisse correspondant aux coordonnées actuelles du joueur \\
+\hline
+{\em $\ast$j} & ordonnée correspondant aux coordonnées actuelles du joueur \\
+\hline
+\end{DoxyParams}
+\hypertarget{monde_8c_af7d1a28562ea7596887b09da9c121729}{\index{monde.\-c@{monde.\-c}!deplacement\-\_\-monde@{deplacement\-\_\-monde}}
+\index{deplacement\-\_\-monde@{deplacement\-\_\-monde}!monde.c@{monde.\-c}}
+\subsubsection[{deplacement\-\_\-monde}]{\setlength{\rightskip}{0pt plus 5cm}deplacement\-\_\-monde (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y}
+\end{DoxyParamCaption}
+)}}\label{monde_8c_af7d1a28562ea7596887b09da9c121729}
+
+
+permet au joueur de se déplacer dans le monde 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em i} & abscisse correspondant aux coordonnées du joueur \\
+\hline
+{\em j} & ordonnée correspondant aux coordonnées du joueur \\
+\hline
+\end{DoxyParams}
+\hypertarget{monde_8c_a6b5d7094aac50421dc58034f19e40390}{\index{monde.\-c@{monde.\-c}!inclure\-\_\-region@{inclure\-\_\-region}}
+\index{inclure\-\_\-region@{inclure\-\_\-region}!monde.c@{monde.\-c}}
+\subsubsection[{inclure\-\_\-region}]{\setlength{\rightskip}{0pt plus 5cm}inclure\-\_\-region (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{int}]{j}
+\end{DoxyParamCaption}
+)}}\label{monde_8c_a6b5d7094aac50421dc58034f19e40390}
+
+
+permet d'inclure une region dans le monde 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em i} & abscisse correspondant aux coordonnées de la region à inclure \\
+\hline
+{\em j} & ordonnée correspondant aux coordonnées de la region à inclure\\
+\hline
+{\em i} & abscisse correspondant aux coordonnées de la region \\
+\hline
+{\em j} & ordonnée correspondant aux coordonnées de la region \\
+\hline
+\end{DoxyParams}

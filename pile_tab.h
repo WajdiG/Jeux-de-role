@@ -6,6 +6,9 @@
 *\date 25 Novembre 2014
 */
 
+#ifndef __PILE_TAB_H__
+#define __PILE_TAB_H__
+
 int tete;
 int queue;
 int nb_valeur;
@@ -16,3 +19,5 @@ void empiler(int c);
 void depiler(int*v);
 int pilevide();
 int pilepleine();
+
+#endif

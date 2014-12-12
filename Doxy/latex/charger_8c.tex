@@ -1,0 +1,81 @@
+\hypertarget{charger_8c}{\section{Référence du fichier charger.\-c}
+\label{charger_8c}\index{charger.\-c@{charger.\-c}}
+}
+
+
+fonction permttant de charger les paramètres du jeu, les caractéristique du joueur et l'avancement dans le jeu  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}crea\-\_\-avatar.\-h\char`\"{}}\\*
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{charger_8c_a7310d695526adc85e0efb84e44b71ce2}{charger\-\_\-struct} (\hyperlink{structt__joueur}{t\-\_\-joueur} $\ast$joueur, F\-I\-L\-E $\ast$fichier)
+\begin{DoxyCompactList}\small\item\em fonction permettant de charger toutes les données contenue dans le fichier de sauvegarde dans la structure \hyperlink{structt__joueur}{t\-\_\-joueur} jouer \end{DoxyCompactList}\item 
+int \hyperlink{charger_8c_aca0872a38c2fa073537821325820f4ea}{charger\-\_\-partie} (char $\ast$charger)
+\begin{DoxyCompactList}\small\item\em fonction permettant de charger une partie \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{charger_8c_a7ceef52b18732e046b145a429b37a790}{\hyperlink{structt__joueur}{t\-\_\-joueur} {\bfseries joueur}}\label{charger_8c_a7ceef52b18732e046b145a429b37a790}
+
+\item 
+\hypertarget{charger_8c_a092a612be04ca4c5eb5687ca3ba799ca}{char {\bfseries charger} \mbox{[}16\mbox{]}}\label{charger_8c_a092a612be04ca4c5eb5687ca3ba799ca}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+fonction permttant de charger les paramètres du jeu, les caractéristique du joueur et l'avancement dans le jeu \begin{DoxyAuthor}{Auteur}
+Wajdi Guedouar 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\-1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+19 Novembre 2014 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{charger_8c_aca0872a38c2fa073537821325820f4ea}{\index{charger.\-c@{charger.\-c}!charger\-\_\-partie@{charger\-\_\-partie}}
+\index{charger\-\_\-partie@{charger\-\_\-partie}!charger.c@{charger.\-c}}
+\subsubsection[{charger\-\_\-partie}]{\setlength{\rightskip}{0pt plus 5cm}void charger\-\_\-partie (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{charger}
+\end{DoxyParamCaption}
+)}}\label{charger_8c_aca0872a38c2fa073537821325820f4ea}
+
+
+fonction permettant de charger une partie 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em charger} & tableau contenant le pseudo du joueur \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int renvoie 1 si le fichier charger est valide, 0 si non 
+\end{DoxyReturn}
+\hypertarget{charger_8c_a7310d695526adc85e0efb84e44b71ce2}{\index{charger.\-c@{charger.\-c}!charger\-\_\-struct@{charger\-\_\-struct}}
+\index{charger\-\_\-struct@{charger\-\_\-struct}!charger.c@{charger.\-c}}
+\subsubsection[{charger\-\_\-struct}]{\setlength{\rightskip}{0pt plus 5cm}charger\-\_\-struct (
+\begin{DoxyParamCaption}
+\item[{{\bf t\-\_\-joueur} $\ast$}]{joueur, }
+\item[{F\-I\-L\-E $\ast$}]{fichier}
+\end{DoxyParamCaption}
+)}}\label{charger_8c_a7310d695526adc85e0efb84e44b71ce2}
+
+
+fonction permettant de charger toutes les données contenue dans le fichier de sauvegarde dans la structure \hyperlink{structt__joueur}{t\-\_\-joueur} jouer 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$joueur} & pointeur sur la structure \hyperlink{structt__joueur}{t\-\_\-joueur} joueur \\
+\hline
+{\em fichier} & fichier contenant les données sauvegardéess \\
+\hline
+\end{DoxyParams}

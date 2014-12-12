@@ -10,14 +10,14 @@
 #include<stdlib.h>
 #include<time.h>
 #include<assert.h>
-#include "region.h"
-#include "pile_tab.h"
 
-#define X 3
-#define Y 3
+#include "monde.h"
+#include "pile_tab.h"
 
 extern char region[N][M]; //une region du monde
 char ** monde[X][Y]; //le monde
+
+t_coord coord={0,0};
 
 /**
  *\fn init_monde(void)
@@ -25,51 +25,48 @@ char ** monde[X][Y]; //le monde
  */
 void init_monde(){
 	
-	int i,j;
-	char mat[N][M];
+	int i,j,k,l;
 	
-	for(i=0;i<N;i++){	//initialise la matrice avec des X
-		for(j=0;j<M;j++){
-			mat[i][j]='X';
-		}
-	}
+	char **region;
+	
 	
 	for(i=0;i<X;i++){
 		for(j=0;j<Y;j++){	//alloue dynamiquement une matrice de taille N M aux coordonnées i j du monde
-			monde[i][j]=(char **)malloc(sizeof(mat[N][M]));
-			monde[i][j]=mat;
+			region = malloc(N * sizeof(*region));
+			for(k=0;k<N;k++){	//initialise la matrice avec des X
+				region[k] = malloc(M*sizeof(*region[k]));
+				for(l=0;l<M;l++){
+					region[k][l]='X';
+				}
+			}
+			monde[i][j]=region;
 		}
 	}
 }
 
 /**
- *\fn inclure_region(int, int)
+ *\fn inclure_region(t_coord)
  *\brief permet d'inclure une region dans le monde
- *\param i abscisse correspondant aux coordonnées de la region à inclure
- *\param j ordonnée correspondant aux coordonnées de la region à inclure
+ *\param coord contient les coordonnées courantes du joueur dans la matrice monde
  */
-void inclure_region(int i, int j){
+void inclure_region(t_coord coord){
 	
 	int a,b;
-	char mat[N][M];
 	
 	for(a=0;a<N;a++){
 		for(b=0;b<M;b++){	//copie la "topologie" de la region dans mat
-			mat[a][b]=region[a][b];
+			monde[coord.x][coord.y][a][b]=region[a][b];
 		}
 	}
-	
-	monde[i][j]=mat;	
-
 }
 
+
 /**
- *\fn deplacement_case_monde(int*, int*)
+ *\fn deplacement_case_monde(t_coord)
  *\brief permet de deplacer le joueur d'une case dans le monde
- *\param *i abscisse correspondant aux coordonnées actuelles du joueur
- *\param *j ordonnée correspondant aux coordonnées actuelles du joueur
+ *\param *coord coordonnées correspondants à la poisition actuelles du joueur
  */
-void deplacement_case_monde(int* i, int* j){
+void deplacement_case_monde(t_coord *coord){
 	
 	int choix,a,b;	
 	int cpt=1;
@@ -84,189 +81,189 @@ void deplacement_case_monde(int* i, int* j){
 	
 	do{	
 		printf("Saisissez le chiffre correspondant au choix de votre prochaine destination : \n");
-		if(*i==0&&*j==0){
-			printf("%i : %i %i \n", cpt, *i, *j+1);
-			a=*i;
+		if(coord->x==0&&coord->y==0){
+			printf("%i : %i %i \n", cpt, coord->x, (coord->y)+1);
+			a=coord->x;
 			empiler(a);
-			a=*j+1;
+			a=(coord->x)+1;
 			empiler(a);
 			cpt++;
 			
-			printf("%i : %i %i \n", cpt, *i+1, *j);
-			a=*i+1;
+			printf("%i : %i %i \n", cpt, (coord->x)+1, (coord->y));
+			a=(coord->x)+1;
 			empiler(a);
-			a=*j;
+			a=(coord->y);
 			empiler(a);
 			cpt++;
 			verif=2;
 		}
-		else if(*i==0&&*j==Y-1){
-			printf("%i : %i %i \n", cpt, *i, *j-1);
-			a=*i;
+		else if((coord->x)==0&&(coord->y)==Y-1){
+			printf("%i : %i %i \n", cpt, (coord->x), (coord->y)-1);
+			a=(coord->x);
 			empiler(a);
-			a=*j-1;
+			a=(coord->y)-1;
 			empiler(a);
 			cpt++;
 			
-			printf("%i : %i %i \n", cpt, *i+1, *j);
-			a=*i+1;
+			printf("%i : %i %i \n", cpt, (coord->x)+1, (coord->y));
+			a=(coord->x)+1;
 			empiler(a);
-			a=*j;
+			a=(coord->y);
 			empiler(a);
 			cpt++;
 			verif=2;
 		}
-		else if(*j==0&&*i==X-1){
-			printf("%i : %i %i\n", cpt, *i-1, *j);
-			a=*i-1;
+		else if((coord->y)==0&&(coord->x)==X-1){
+			printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
+			a=(coord->x)-1;
 			empiler(a);
-			a=*j;
+			a=(coord->y);
 			empiler(a);
 			cpt++;
 			
-			printf("%i : %i %i\n", cpt, *i, *j+1);
-			a=*i;
+			printf("%i : %i %i\n", cpt, (coord->x), (coord->y)+1);
+			a=(coord->x);
 			empiler(a);
-			a=*j+1;
+			a=(coord->y)+1;
 			empiler(a);
 			cpt++;
 			verif=2;
 		}
-		else if(*j==Y-1&&*i==X-1){
-			printf("%i : %i %i\n", cpt, *i-1, *j);
-			a=*i-1;
+		else if((coord->y)==Y-1&&(coord->x)==X-1){
+			printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
+			a=(coord->x)-1;
 			empiler(a);
-			a=*j;
+			a=(coord->y);
 			empiler(a);
 			cpt++;
 			
-			printf("%i : %i %i\n", cpt, *i, *j-1);
-			a=*i;
+			printf("%i : %i %i\n", cpt, (coord->x), (coord->y)-1);
+			a=(coord->x);
 			empiler(a);
-			a=*j-1;
+			a=(coord->x)-1;
 			empiler(a);
 			cpt++;
 			verif=2;
 		}
 		else{
-			if(*i==0){
-				printf("%i : %i %i\n", cpt, *i, *j+1);
-				a=*i;
+			if((coord->x)==0){
+				printf("%i : %i %i\n", cpt, (coord->x), (coord->y)+1);
+				a=(coord->x);
 				empiler(a);
-				a=*j+1;
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, *i, *j-1);
-				a=*i;
-				empiler(a);
-				a=*j-1;
+				a=(coord->y)+1;
 				empiler(a);
 				cpt++;
 				
-				printf("%i : %i %i\n", cpt, *i+1, *j);
-				a=*i+1;
+				printf("%i : %i %i\n", cpt, (coord->x), (coord->y)-1);
+				a=(coord->x);
 				empiler(a);
-				a=*j;
+				a=(coord->y)-1;
+				empiler(a);
+				cpt++;
+				
+				printf("%i : %i %i\n", cpt, (coord->x)+1, (coord->y));
+				a=(coord->x)+1;
+				empiler(a);
+				a=(coord->y);
 				empiler(a);
 				cpt++;
 				verif=3;
 			}
-			else if(*j==0){
-				printf("%i : %i %i\n", cpt, *i-1, *j);
-				a=*i-1;
+			else if((coord->y)==0){
+				printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
+				a=(coord->x)-1;
 				empiler(a);
-				a=*j;
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, *i, *j+1);
-				a=*i;
-				empiler(a);
-				a=*j+1;
+				a=(coord->y);
 				empiler(a);
 				cpt++;
 				
-				printf("%i : %i %i\n", cpt, *i+1, *j);
-				a=*i+1;
+				printf("%i : %i %i\n", cpt, (coord->x), (coord->y)+1);
+				a=(coord->x);
 				empiler(a);
-				a=*j;
+				a=(coord->y)+1;
+				empiler(a);
+				cpt++;
+				
+				printf("%i : %i %i\n", cpt, (coord->x)+1, (coord->y));
+				a=(coord->x)+1;
+				empiler(a);
+				a=(coord->y);
 				empiler(a);
 				cpt++;
 				verif=3;
 			}
-			else if(*i==X-1){
-				printf("%i : %i %i\n", cpt, *i, *j+1);
-				a=*i;
+			else if((coord->x)==X-1){
+				printf("%i : %i %i\n", cpt, (coord->x), (coord->y)+1);
+				a=(coord->x);
 				empiler(a);
-				a=*j+1;
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, *i, *j-1);
-				a=*i;
-				empiler(a);
-				a=*j-1;
+				a=(coord->y)+1;
 				empiler(a);
 				cpt++;
 				
-				printf("%i : %i %i\n", cpt, *i-1, *j);
-				a=*i-1;
+				printf("%i : %i %i\n", cpt, (coord->x), (coord->y)-1);
+				a=(coord->x);
 				empiler(a);
-				a=*j;
+				a=(coord->y)-1;
+				empiler(a);
+				cpt++;
+				
+				printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
+				a=(coord->x)-1;
+				empiler(a);
+				a=(coord->y);
 				empiler(a);
 				cpt++;
 				verif=3;
 			}
-			else if(*j==Y-1){
-				printf("%i : %i %i\n", cpt, *i-1, *j);
-				a=*i-1;
+			else if((coord->y)==Y-1){
+				printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
+				a=(coord->x)-1;
 				empiler(a);
-				a=*j;
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, *i, *j-1);
-				a=*i;
-				empiler(a);
-				a=*j-1;
+				a=(coord->y);
 				empiler(a);
 				cpt++;
 				
-				printf("%i : %i %i\n", cpt, *i+1, *j);
-				a=*i+1;
+				printf("%i : %i %i\n", cpt, (coord->x),  (coord->y)-1);
+				a=(coord->x);
 				empiler(a);
-				a=*j;
+				a=(coord->y)-1;
+				empiler(a);
+				cpt++;
+				
+				printf("%i : %i %i\n", cpt, (coord->x)+1, (coord->y));
+				a=(coord->x)+1;
+				empiler(a);
+				a=(coord->y);
 				empiler(a);
 				cpt++;
 				verif=3;
 			}
 			else{
-				printf("%i : %i %i\n", cpt, *i-1, *j);
-				a=*i-1;
+				printf("%i : %i %i\n", cpt, (coord->x)-1, (coord->y));
+				a=(coord->x)-1;
 				empiler(a);
-				a=*j;
-				empiler(a);
-				cpt++;
-				
-				printf("%i : %i %i\n", cpt, *i, *j-1);
-				a=*i;
-				empiler(a);
-				a=*j-1;
+				a=(coord->y);
 				empiler(a);
 				cpt++;
 				
-				printf("%i : %i %i\n", cpt, *i+1, *j);
-				a=*i+1;
+				printf("%i : %i %i\n", cpt, (coord->x), (coord->y)-1);
+				a=(coord->x);
 				empiler(a);
-				a=*j;
+				a=(coord->y)-1;
 				empiler(a);
 				cpt++;
 				
-				printf("%i : %i %i\n", cpt, *i, *j+1);
-				a=*i;
+				printf("%i : %i %i\n", cpt, (coord->x)+1, (coord->y));
+				a=(coord->x)+1;
 				empiler(a);
-				a=*j+1;
+				a=(coord->y);
+				empiler(a);
+				cpt++;
+				
+				printf("%i : %i %i\n", cpt, (coord->x), (coord->y)+1);
+				a=(coord->x);
+				empiler(a);
+				a=(coord->y)+1;
 				empiler(a);
 				cpt++;
 				
@@ -280,18 +277,18 @@ void deplacement_case_monde(int* i, int* j){
 	}while(choix<1||choix>verif);
 	
 	for(b=verif;b>=choix;b--){ //recupération des coordonnées choisit par le joueur
-		depiler(j);
-		depiler(i);
+		depiler(&b);
+		coord->y=b;
+		depiler(&a);
+		coord->x=a;
 	}
 }
 
 /**
- *\fn aff_monde(int, int)
- *\brief permet d'inclure une region dans le monde
- *\param i abscisse correspondant aux coordonnées du joueur
- *\param j ordonnée correspondant aux coordonnées du joueur
+ *\fn aff_monde(void)
+ *\brief permet d'afficher le monde
  */
-void aff_monde(int i, int j){
+void aff_monde(){
 	
 	int a,b;
 	char mat[X][Y];
@@ -301,7 +298,7 @@ void aff_monde(int i, int j){
 			mat[a][b]='X';
 		}
 	}
-	mat[i][j]='P';
+	mat[coord.x][coord.y]='P';
 	
 	printf("Vous êtes représentez par la lettre P, voici votre position dans la monde : \n");
 	
@@ -314,20 +311,27 @@ void aff_monde(int i, int j){
 }
 
 /**
- *\fn deplacement_monde(int, int)
- *\brief permet au joueur de se déplacer dans le monde
- *\param i abscisse correspondant aux coordonnées du joueur
- *\param j ordonnée correspondant aux coordonnées du joueur
+ *\fn aff_region_monde(void)
+ *\brief permet d'afficher la région dans laquelle vous vous trouvez
  */
-void deplacement_monde(int x, int y){
-	int k=0;
+void aff_region_monde(){
+	int a,b;
 	
-	do{
-		aff_monde(x,y); 
-		deplacement_case_monde(&x,&y);
-		aff_monde(x,y); 
-		printf("Souhaitez-vous déplacer à nouveau ? : 1 pour oui, 0 pour non.");
-		printf("Votre choix : ");
-		scanf("%i", &k);
-	}while(k!=0);
+	for(a=0;a<N;a++){
+		for(b=0;b<M;b++){
+			printf("%c ",monde[coord.x][coord.y][a][b]);
+		}
+		printf("\n");
+	}
+}
+
+/**
+ *\fn deplacement_monde(void)
+ *\brief permet au joueur de se déplacer dans le monde
+ */
+void deplacement_monde(){
+	
+	aff_monde(); 
+	deplacement_case_monde(&coord);
+	aff_monde();
 }

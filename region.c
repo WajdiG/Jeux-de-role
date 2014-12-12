@@ -89,7 +89,7 @@ int verif_coffre(int i, int j){
  *\brief verifie que la case dans laquelle on se trouve soit différente de C (un coffre) ou P (le joueur) 
  *\param i entier représentant l'absisse dans la matrice
  *\param j entier représentant l'ordonnée dans la matrice
- *\return int renvoie 0 si la case vérifiée contient C (un coffre) ou P (le joueur) et 1 si non
+ *\return int renvoie 0 si la case vérifiée contient C (un coffre), P (le joueur) ou M (le monstre) et 1 si non
  */
 int verif_cour(int i, int j){
 	if(region[i][j]=='C'||region[i][j]=='P'||region[i][j]=='M'){
@@ -227,13 +227,12 @@ void chemin(){
 			depiler(&j);
 			region[i][j]=' ';
 		}
-		
 	}
  }
  
  /**
  *\fn carre
- *\brief créer un espace autour des coffres et du joueur
+ *\brief créer un espace carré d'une case autour des coffres, du monstre et du joueur
  */
 void carre(){
 	
@@ -284,5 +283,5 @@ void creer_region(){
 	place_monstre();
 	chemin();
 	carre();
-	aff_region();
+	//aff_region();
 }
