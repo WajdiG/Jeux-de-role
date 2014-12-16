@@ -135,6 +135,7 @@ void nouvelle_partie(){
 			case 2 : crea_file(); break;
 			case 3 : crea_file(); break;
 			case 4 : break;
+			default : printf("Veuillez saisir une valeur entière comprise entre 0 et 4. \n");
 		}	
 	}
 }
@@ -161,6 +162,7 @@ void charger_par(){
 				case 2 : deplacement_monde(); creer_region(); inclure_region(coord); break;
 				case 3 : aff_monde(); break;
 				case 4 : crea_file(); break;
+				default : printf("Veuillez saisir une valeur entière comprise entre 0 et 4. \n");
 			}
 		}
 	}
@@ -170,23 +172,28 @@ void charger_par(){
 }
 
 int main(){
-	int choix;
+	int choix=0;
 	
 	srand(time(NULL));
 	
 	init_monde();
 	
-	printf("Bienvenue : \n");
-	printf("1 : Nouvelle partie \n");
-	printf("2 : Charger partie \n");
-	printf("3 : Afficher monde \n");
-	printf("Votre choix : ");
-	scanf("%i",&choix);
+	while(choix!=4){
+		printf("Bienvenue : \n");
+		printf("1 : Nouvelle partie \n");
+		printf("2 : Charger partie \n");
+		printf("3 : Afficher monde \n");
+		printf("4 : Quittez le jeu \n");
+		printf("Votre choix : ");
+		scanf("%i",&choix);
 	
-	switch(choix){
-		case 1 : nouvelle_partie(); break;
-		case 2 : charger_par(); break;
-		case 3 : aff_monde();break;
+		switch(choix){
+			case 1 : nouvelle_partie(); break;
+			case 2 : charger_par(); break;
+			case 3 : aff_monde();break;
+			case 4 : break;
+			default : printf("Veuillez saisir une valeur entière comprise entre 1 et 4. \n");
+		}
 	}
 	
 	return EXIT_SUCCESS;
