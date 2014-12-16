@@ -5,9 +5,9 @@
  *\version 0.2
  *\date 22 Octobre 2014
 */
+#include "deplacement.h"
 
 #define N 20
-typedef struct {int x, y;}t_coordonees;
 
 void affichage(int matrice[N][N]);
 void tradVision(int matrice[N][N]);

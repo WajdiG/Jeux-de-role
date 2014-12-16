@@ -9,6 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "pile_tab.h"
+#include "deplacement.h"
 
 #define tmax 20
 #define M 100

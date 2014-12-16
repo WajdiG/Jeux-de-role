@@ -10,11 +10,14 @@
 #include <stdlib.h>
 //#include <ncurses.h>
 #include <time.h>
+#include "JDR1_0.h"
+#include "deplacement.h"
+#include "accueil.h"
+#include "IA.h"
 
-void Menu_Jeu();
-void Option_jeu();
-void Quitter_Jeu();
 int quitter = 0;
+extern t_coordonees ma_position;
+extern t_coordonees sorti;
 
 void ecran_accueil(){
 	char verif = 'a';
@@ -46,7 +49,7 @@ void ecran_accueil(){
 	}
 }
 
-void Option_jeu(){
+void Option_jeu(int matrice[N][N]){
 	int verif = 0;
 	system("clear");
 	printf("\n");
@@ -84,10 +87,10 @@ void Option_jeu(){
 	while(verif!=5){
 		scanf(" %i", &verif);
 	}
-	Menu_Jeu();
+	Menu_Jeu(matrice);
 }
-
-void Nouvelle_Partie(){
+/*
+void Nouvelle_Partie(int matrice[N][N]){
 	int verif=0;
 	system("clear");
 	printf("\n");
@@ -116,7 +119,7 @@ void Nouvelle_Partie(){
 	printf("        |||                                                  II    II  II II II   II   IIII IIIIII       |||   \n");
 	printf("        |||                                                                                              |||   \n");
 	printf("        |||                                                                           |============|     |||   \n");
-	printf("        |||                                                                           |    -5-     |     |||   \n");
+	printf("        |||       1                                                                   |    -5-     |     |||   \n");
 	printf("        |||                                                                           |Quitter     |     |||   \n");
 	printf("        |||                                                                           |     le menu|     |||   \n");
 	printf("        |||                                                                           |============|     |||   \n");
@@ -134,11 +137,13 @@ void Nouvelle_Partie(){
 		scanf(" %i", &verif);
 	}
 	switch(verif){
-		case 5 : Menu_Jeu(); break;
+		case 1 : nouvelle_partie(matrice); break;
+		case 5 : Menu_Jeu(matrice); break;
+		default : printf("Recommence gros nul");
 	}
 }
-
-void Menu_Jeu(){
+*/
+void Menu_Jeu(int matrice[N][N]){
 	int verif=-1;
 	system("clear");
 	printf("\n");
@@ -172,8 +177,8 @@ void Menu_Jeu(){
 		scanf(" %i", &verif);
 	}
 	switch(verif){
-		case 1 : Nouvelle_Partie(); break;
-		case 4 : Option_jeu(); break ;
+		case 1 : nouvelle_partie(matrice); break;
+		case 4 : Option_jeu(matrice); break ;
 		case 5 : Quitter_Jeu(); break;
 	}
 }
@@ -214,7 +219,7 @@ void Quitter_Jeu(){
 	quitter = 1;
 }
 
-void defeat(){
+void defeat(int matrice[N][N]){
 	char verif='a';
 	system("clear");
 	printf("\n");
@@ -248,10 +253,10 @@ void defeat(){
 	while(verif != '\n'){
 		scanf("%c", &verif);
 	}
-	Menu_Jeu();
+	Menu_Jeu(matrice);
 }
 
-void victory(){
+void victory(int matrice[N][N]){
 	char verif='a';
 	system("clear");
 	printf("\n");
@@ -285,5 +290,35 @@ void victory(){
 	while(verif != '\n'){
 		scanf("%c", &verif);
 	}
-	Menu_Jeu();
+	//Menu_Jeu(matrice);
+}
+
+void continuer(int matrice[N][N]){
+	
+	int VD=-1;
+	int pvMob=100;
+	rechercheJoueur(matrice);
+	sorti=ma_position;
+	while(matrice[ma_position.x][ma_position.y] != OBJECTIF && quitter != 1){
+			
+		rechercheJoueur(matrice);
+		affichage(matrice);
+		deplacement_perso(matrice, &pvMob);
+		VD=IA(matrice);
+		if(VD==1){
+			defeat(matrice);
+			quitter=0;
+			//break;
+		}
+		else {
+			if(coffre(matrice)){
+				matrice[sorti.x][sorti.y] = OBJECTIF;
+			}		
+			affichage(matrice);
+		}
+	}
+	if(VD==0){
+		victory(matrice);
+		//quitter=0;
+	}
 }
