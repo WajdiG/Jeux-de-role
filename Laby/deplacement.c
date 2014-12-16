@@ -10,8 +10,6 @@
 #include <stdlib.h>
 #include <ncurses.h>
 #include <time.h>
-#include "accueil.h"
-#include "IA.h"
 #define N 20
 #define MUR 0
 #define CHEMIN 1
@@ -25,7 +23,7 @@
 #define MOB_bas 9
 
 extern int quitter;
-
+typedef struct{int x, y;}t_coordonees;
 t_coordonees mes_choix[4];
 t_coordonees ma_position = {17, 2};
 t_coordonees mob_position = {2, 17};
@@ -53,7 +51,7 @@ void affichage(int matrice[N][N]){
                     case(MOB_bas) : printf("v_v"); break;
                 }
 		}
-		printf("\n");
+		printf("\r\n");
 	}
 }
 
@@ -83,14 +81,14 @@ void initialisation(int matrice[N][N]){
 * \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemin, un coffre ou un monstre
 **/
 void deplacement_perso(int matrice[N][N]){
-		
-		char direction;
-        	t_coordonees tampon;
-		printf("\n Ou souhaitez-vous vous deplacer ?\n\n");
-		scanf(" %c", &direction);		
+		int x;
+        t_coordonees tampon;
 		tampon.x = ma_position.x;
-        	tampon.y = ma_position.y;
-		switch(direction){
+        tampon.y = ma_position.y;
+        raw();
+        keypad(stdscr, TRUE);
+		x = getch();
+		switch(x){
 			case 'z' : ma_position.x-- ; break;
 			case 'q' : ma_position.y-- ; break;
 			case 's' : ma_position.x++ ; break;
@@ -102,7 +100,9 @@ void deplacement_perso(int matrice[N][N]){
 		}
 		else{
 			matrice[tampon.x][tampon.y] = CHEMIN;
-		} 		        
+		}
+		refresh();
+		endwin();
 }
 
 /**
@@ -114,11 +114,6 @@ void comptage_coffre(int matrice[N][N], int *compteur){
 	if(matrice[ma_position.x][ma_position.y] == COFFRE){
         	*compteur = *compteur + 1;
 	}  
-}
-
-void placement_mob(int matrice[N][N]){	
-	matrice[mob_position.x][mob_position.y] = MOB;
-	IA();	
 }
 
 /**
@@ -141,42 +136,29 @@ int nb_coffre_map(int matrice[N][N]){
 }
 
 int main(){
-	
 	int matrice[N][N];
 	int compteur = 0;
 	int nb_coffre;
-    	
+    raw();
 	initialisation(matrice);
 	printf("\n\n");
 	nb_coffre = nb_coffre_map(matrice);
-
-	ecran_accueil();
-	
-	Menu_Jeu();
 	
 	matrice[3][17]=COFFRE;
-
-
-	if(quitter == 1){
-		return 0;
-	}	
-	
+	initscr();
    	while(matrice[ma_position.x][ma_position.y] != OBJECTIF){
    		matrice[ma_position.x][ma_position.y] = JOUEUR; // position initiale du joueur
-       		matrice[mob_position.x][mob_position.y] = MOB; //position initiale du perso
        		if(compteur < nb_coffre){
 				affichage(matrice);
 				deplacement_perso(matrice);
-				comptage_coffre(matrice, &compteur);
-				placement_mob(matrice);  	          	    
+				comptage_coffre(matrice, &compteur); 	          	    
        	 	}
        	 	else{
 				matrice[2][17] = OBJECTIF; //la porte est visible maintenant
 				affichage(matrice); 
-				placement_mob(matrice);
 				deplacement_perso(matrice);
 				comptage_coffre(matrice, &compteur);  
 			}       	             
-    }
-    	printf("WELL PLAYED NOOB !!!!\n");
+    }    
+	printf("WELL PLAYED NOOB !!!!\n");
 }
