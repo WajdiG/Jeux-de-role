@@ -1,7 +1,7 @@
 
 OPTS = -Wall
 
-JDR: JDR1_0.o crea_avatar.o sauvegarde.o charger.o region.o pile_tab.o monde.o
+JDR: JDR1_0.o crea_avatar.o sauvegarde.o charger.o region.o pile_tab.o monde.o 
 	gcc JDR1_0.o crea_avatar.o sauvegarde.o charger.o region.o pile_tab.o monde.o -o JDR1 ${OPTS}
 	
 JDR1_0.o: JDR1_0.c

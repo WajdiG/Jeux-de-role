@@ -5,10 +5,10 @@
 *\version 0.1
 *\date 20 octobre 2014
 */
+#ifndef __CREA_AVATAR_H__
+#define __CREA_AVATAR_H__	
 
 #define P 16 /**<constante définissant la taille maximale du pseudo*/
-int principale; /**<nombre de points de compétence principale distribuable */
-int secondaire; /**<nombre de points de compétence secondaire distribuable*/
 
 /**
  *\enum t_sexe
@@ -141,4 +141,5 @@ void config(t_joueur *joueur);
  */
 void crea_ava(t_joueur *joueur,int principale,int secondaire);
 
+#endif
 

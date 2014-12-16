@@ -1,4 +1,3 @@
-
 /**
 *\file sauvegarde.c
 *\brief fonction permttant de sauvegarder les paramètres du jeu, les caractéristique du joueur et l'avancement dans le jeu
@@ -11,15 +10,21 @@
 #include<stdlib.h>
 #include<string.h>
 #include "crea_avatar.h"
+#include "monde.h"
+#include "region.h"
+
 extern t_joueur joueur;
+extern t_coord coord;
 extern char pseudo[P];
+extern char ** monde [X][Y];
 
 /**
- *\fn crea_file(FILE*) 
+ *\fn crea_file(void) 
  *\brief fonction permettant de sauvegarder la structure t_joueur dans le fichier de sauvegarde
- *\param fichier fichier qui contiendra les données à sauvegarder
  */
 void crea_file(){
+	int i,j,k,l;
+	
 	FILE*fichier=fopen(pseudo,"w");
 	
 	fprintf(fichier,"%i ",joueur.physique.sexe);
@@ -63,6 +68,24 @@ void crea_file(){
 	fprintf(fichier,"%i ",joueur.magie.guerison);
 	fprintf(fichier,"%i ",joueur.magie.invocation);
 	
+	fprintf(fichier,"%i ",coord.x);
+	fprintf(fichier,"%i ",coord.y);
+	
+	fprintf(fichier,"\n");	
+	for(i=0;i<X;i++){
+		for(j=0;j<Y;j++){
+			for(k=0;k<N;k++){
+				for(l=0;l<M;l++){
+					fprintf(fichier,"%c",monde[i][j][k][l]);
+				}
+			}
+			fprintf(fichier,"\n");		
+		}
+	}
+	
+	
+	
 	fclose(fichier);
 }
+
 

@@ -9,3 +9,7 @@
 void ecran_accueil();
 void Option_jeu();
 void Menu_Jeu();
+void Quitter_Jeu();
+void Nouvelle_Partie();
+void defeat();
+void victory();

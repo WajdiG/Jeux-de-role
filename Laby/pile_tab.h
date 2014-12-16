@@ -1,13 +1,11 @@
 /**
 *\file pile_tab.h
 *\brief regroupe toutes les déclarations des primitives de pile par tableau
-*\author Wajdi Guedouar
+*\author Wajdi Guedouar, Joris Toulmonde, Godefroy Thieulart
 *\version 0.1
 *\date 25 Novembre 2014
 */
-
-#ifndef __PILE_TAB_H__
-#define __PILE_TAB_H__
+typedef struct {int x, y;}t_coordonees;
 
 int tete;
 int queue;
@@ -20,4 +18,9 @@ void depiler(int*v);
 int pilevide();
 int pilepleine();
 
-#endif
+void initpileStruct();
+void empilerStruct(t_coordonees coord);
+void depilerStruct(t_coordonees *coord);
+int sommet_pile(t_coordonees *coord);
+int pilevideStruct();
+

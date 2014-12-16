@@ -82,7 +82,7 @@ void creer_pseudo(t_joueur *joueur){	//fonction permettant à l'utilisateur de s
 
 		j=0;
 
-		printf("Veuillez saisir un pseudo compris entre 3 et 15 caractère : ");
+		printf("Veuillez saisir un pseudo compris entre 3 et 15 caractère, sans espace : ");
 		scanf("%s", pseudotest);						//insère la chaîne de caractère dans le tableau pseudotest
 
 		for(i=0;pseudotest[i]!='\0';i++){j++;}			//compte le nombre de caractère contenu dans le tableau pseudotest

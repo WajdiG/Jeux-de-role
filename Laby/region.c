@@ -1,7 +1,7 @@
 /**
 *\file region.c
 *\brief regroupe toutes les fonctions nécessaires à la création d'une région : génération aléatoire d'un labyrinthe
-*\author Wajdi Guedouar
+*\author Wajdi Guedouar, Joris Toulmonde, Godefroy Thieulart
 *\version 0.1
 *\date 25 Novembre 2014
 */
@@ -12,8 +12,9 @@
 #include<assert.h>
 #include "pile_tab.h"
 #include "region.h"
+#define N 20
 
-char region[N][M]; // une région du monde !
+char region[N][N]; // une région du monde !
 
 
 /**
@@ -24,7 +25,7 @@ void initregion(){
 	int i,j;
 	
 	for(i=0;i<N;i++){	//initialise la matrice monde
-		for(j=0;j<M;j++){
+		for(j=0;j<N;j++){
 			region[i][j]='X';
 		}
 	}
@@ -34,6 +35,7 @@ void initregion(){
 	}
 }
 
+
 /**
  *\fn aff_region
  *\brief affiche la region à l'écran
@@ -41,8 +43,8 @@ void initregion(){
 void aff_region(){
 	int i,j;
 	for(i=0;i<N;i++){
-		for(j=0;j<M;j++){
-			printf("%c ",region[i][j]);
+		for(j=0;j<N;j++){
+			printf("%c",region[i][j]);
 		}
 		printf("\n");
 	}
@@ -89,7 +91,7 @@ int verif_coffre(int i, int j){
  *\brief verifie que la case dans laquelle on se trouve soit différente de C (un coffre) ou P (le joueur) 
  *\param i entier représentant l'absisse dans la matrice
  *\param j entier représentant l'ordonnée dans la matrice
- *\return int renvoie 0 si la case vérifiée contient C (un coffre), P (le joueur) ou M (le monstre) et 1 si non
+ *\return int renvoie 0 si la case vérifiée contient C (un coffre) ou P (le joueur) et 1 si non
  */
 int verif_cour(int i, int j){
 	if(region[i][j]=='C'||region[i][j]=='P'||region[i][j]=='M'){
@@ -105,11 +107,12 @@ int verif_cour(int i, int j){
 void place_coffre(){
 	int i,j;
 	int k=0;
+	srand(time(NULL));
 	
 	for(k=0;k<NB_COFFRE;k++){	//genere un nombre de coffre égale à NB_COFFRE
 		do{
 			i=rand()%(N-2)+1;
-			j=rand()%(M-2)+1;
+			j=rand()%(N-2)+1;
 		}while(!verif_coffre(i,j)||j==0||i==0);
 		region[i][j]='C';
 		tab[2*k]=i;
@@ -127,7 +130,7 @@ void place_joueur(){
 	
 	do{
 		i=rand()%(N-2)+1;
-		j=rand()%(M-2)+1;
+		j=rand()%(N-2)+1;
 	}while(!verif_coffre(i,j)||j==0||i==0);
 		region[i][j]='P';	
 		tab[8]=i;
@@ -143,7 +146,7 @@ void place_monstre(){
 	
 	do{
 		i=rand()%(N-2)+1;
-		j=rand()%(M-2)+1;
+		j=rand()%(N-2)+1;
 	}while(!verif_coffre(i,j)||j==0||i==0);
 		region[i][j]='M';
 		tab[10]=i;
@@ -164,7 +167,7 @@ void chemin(){
 				i=tab[8];
 				j=tab[9];
 				 
-				while(i>0&&j>0&&i<N-1&&j<M-1){
+				while(i>0&&j>0&&i<N-1&&j<N-1){
 					if(verif_cour(i,j)){
 						region[i][j]=' ';
 					}
@@ -176,7 +179,7 @@ void chemin(){
 				i=tab[10];
 				j=tab[11];
 				 
-				while(i>0&&j>0&&i<N-1&&j<M-1){
+				while(i>0&&j>0&&i<N-1&&j<N-1){
 					if(verif_cour(i,j)){
 						region[i][j]=' ';
 					}
@@ -220,30 +223,31 @@ void chemin(){
 		}
 		
 		
-		for(j=tab[2*b+1]+1;verif_cour(i,j)&&region[i][j]!=' '&&j<M-1;j++){
+		for(j=tab[2*b+1]+1;verif_cour(i,j)&&region[i][j]!=' '&&j<N-1;j++){
 			empiler(j);		
 		}
 		while(!pilevide()){
 			depiler(&j);
 			region[i][j]=' ';
 		}
+		
 	}
  }
  
  /**
  *\fn carre
- *\brief créer un espace carré d'une case autour des coffres, du monstre et du joueur
+ *\brief créer un espace autour des coffres et du joueur
  */
 void carre(){
 	
 	int i,j;
 	
 	for(i=0;i<N;i++){
-		for(j=0;j<M;j++){
+		for(j=0;j<N;j++){
 			if(!verif_cour(i,j)&&i!=0&&j!=0){
 				if(i+1!=(N-1)){
 					region[i+1][j]=' ';
-					if(j+1!=(M-1)){
+					if(j+1!=(N-1)){
 						region[i+1][j+1]=' ';
 					}
 					if(j-1!=0){
@@ -252,14 +256,14 @@ void carre(){
 				}
 				if(i-1!=0){
 					region[i-1][j]=' ';
-					if(j+1!=(M-1)){
+					if(j+1!=(N-1)){
 						region[i-1][j+1]=' ';
 					}
 					if(j-1!=0){
 						region[i-1][j-1]=' ';
 					}
 				}
-				if(j+1!=(M-1)){
+				if(j+1!=(N-1)){
 					region[i][j+1]=' ';
 				}
 				if(j-1!=0){
@@ -283,5 +287,7 @@ void creer_region(){
 	place_monstre();
 	chemin();
 	carre();
-	//aff_region();
+
+	aff_region();
+
 }
