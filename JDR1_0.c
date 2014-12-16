@@ -111,7 +111,7 @@ void afficher_joueur(){
 void nouvelle_partie(){
 	int choix=0;
 	int principale=5;
-    int secondaire=5;
+    	int secondaire=5;
 	
 	crea_ava(&joueur,principale,secondaire);
 	creer_region();
@@ -171,6 +171,7 @@ void charger_par(){
 	}
 }
 
+/*
 int main(){
 	int choix=0;
 	
@@ -198,3 +199,4 @@ int main(){
 	
 	return EXIT_SUCCESS;
 }
+*/
