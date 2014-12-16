@@ -68,11 +68,10 @@ void inclure_region(t_coord coord){
  */
 void deplacement_case_monde(t_coord *coord){
 	
-	int choix,a,b;	
+	int choix,a,b,i;	
 	int cpt=1;
 	int verif=0;
 	
-	initpile();
 	
 	/*Traitement dans un premier temps de tout les cas particuliers : dans les angles ou en bordure de matrice. Puis traitement des autres cas.
 	 *cpt est égale aux choix possible allant de 1 à cpt (cpt étant mis à jour à chaques itération.
@@ -277,7 +276,7 @@ void deplacement_case_monde(t_coord *coord){
 	}
 	
 	
-	for(b=verif;b>=choix;b--){ //recupération des coordonnées choisit par le joueur
+	for(i=verif;i>=choix;i--){ //recupération des coordonnées choisit par le joueur
 		depiler(&b);
 		coord->y=b;
 		depiler(&a);
@@ -331,6 +330,8 @@ void aff_region_monde(){
  *\brief permet au joueur de se déplacer dans le monde
  */
 void deplacement_monde(){
+	
+	initpile();
 	
 	aff_monde(); 
 	deplacement_case_monde(&coord);

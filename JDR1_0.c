@@ -145,7 +145,7 @@ void charger_par(){
 	int i=charger_partie(charger,&joueur,&coord,monde);
 	int choix=0;
 	
-	if(i==1){
+	if(i){
 		while(choix!=4){
 			printf("\n Entrez le nombre entier correspondant à votre choix : \n");
 			printf(" 0- afficher la region dans laquelle vous vous trouvez \n");
