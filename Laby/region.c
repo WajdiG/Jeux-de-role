@@ -287,7 +287,4 @@ void creer_region(){
 	place_monstre();
 	chemin();
 	carre();
-
-	aff_region();
-
 }

@@ -12,13 +12,15 @@
 #include<string.h>
 #include<time.h>
 #include<assert.h>
-
-
-#include "JDR1_0.h"
+#include"IA.h"
+#include"region.h"
+#include"JDR1_0.h"
+#include "accueil.h"
 
 
 extern char ** monde[X][Y];
 extern t_coord coord;
+extern  char region[N][N];
 t_joueur joueur;
 
 
@@ -108,16 +110,21 @@ void afficher_joueur(){
 	}
 }
 
-void nouvelle_partie(){
+void nouvelle_partie(int matrice[N][N]){
 	int choix=0;
-	int principale=2;
-    int secondaire=2;
+	int principale=1;
+    	int secondaire=1;
 	
 	crea_ava(&joueur,principale,secondaire);
+	printf("1\n");
 	creer_region();
+	printf("2\n");
+	tradRandom(matrice, region);
+	printf("3\n");
 	inclure_region(coord);
+	printf("4\n");
 	crea_file();
-	
+	printf("5\n");
 	while(choix!=4&&choix!=3){
 		
 		printf("\n Entrez le nombre entier correspondant à votre choix : \n");
@@ -131,7 +138,7 @@ void nouvelle_partie(){
 	
 		switch(choix){
 			case 0 : aff_region_monde(); break;
-			case 1 : deplacement_monde(); creer_region(); inclure_region(coord);break;
+			case 1 : continuer(matrice); printf("##### on sort de continuer !!\n"); deplacement_monde(); creer_region(); tradRandom(matrice, region); inclure_region(coord);break;
 			case 2 : crea_file(); break;
 			case 3 : crea_file(); break;
 			case 4 : break;
@@ -140,12 +147,12 @@ void nouvelle_partie(){
 	}
 }
 
-void charger_par(){
+void charger_par(int matrice[N][N]){
 	char charger[16];
 	int i=charger_partie(charger,&joueur,&coord,monde);
 	int choix=0;
 	
-	if(i){
+	if(i==1){
 		while(choix!=4){
 			printf("\n Entrez le nombre entier correspondant à votre choix : \n");
 			printf(" 0- afficher la region dans laquelle vous vous trouvez \n");
@@ -159,7 +166,7 @@ void charger_par(){
 			switch(choix){
 				case 0 : aff_region_monde(); break;
 				case 1 : afficher_joueur();break;
-				case 2 : deplacement_monde(); creer_region(); inclure_region(coord); break;
+				case 2 : deplacement_monde(); creer_region(); tradRandom(matrice, region); inclure_region(coord); break;
 				case 3 : aff_monde(); break;
 				case 4 : crea_file(); break;
 				default : printf("Veuillez saisir une valeur entière comprise entre 0 et 4. \n");

@@ -5,8 +5,7 @@
 *\version 0.1
 *\date 25 Novembre 2014
 */
-typedef struct {int x, y;}t_coordonees;
-
+#include "deplacement.h"
 int tete;
 int queue;
 int nb_valeur;

@@ -13,6 +13,7 @@
 #include <assert.h>
 #include "accueil.h"
 #include "pile_tab.h"
+#include "deplacement.h"
 #define N 20
 #define MUR 0
 #define CHEMIN 1
@@ -31,13 +32,13 @@ void tradRandom(int matrice[N][N], char region[N][N]){
 	
 	for(cptx=0;cptx<N;cptx++){
 		for(cpty=0;cpty<N;cpty++){
-                switch(region[cptx][cpty]){
-                    case('X') : matrice[cptx][cpty]=MUR ; break;
-                    case(' ') : matrice[cptx][cpty]=CHEMIN; break;
-                    case('P') : matrice[cptx][cpty]=JOUEUR; break;
-                    case('C') : matrice[cptx][cpty]=COFFRE; break;
-                    case('M') : matrice[cptx][cpty]=MOB; break;
-                }
+		        switch(region[cptx][cpty]){
+		            case('X') : matrice[cptx][cpty]=MUR ; break;
+		            case(' ') : matrice[cptx][cpty]=CHEMIN; break;
+		            case('P') : matrice[cptx][cpty]=JOUEUR; break;
+		            case('C') : matrice[cptx][cpty]=COFFRE; break;
+		            case('M') : matrice[cptx][cpty]=MOB; break;
+		        }
 		}
 	}
 }
@@ -48,14 +49,14 @@ void tradVision(int matrice[N][N]){
 	
 	for(cptx=0;cptx<N;cptx++){
 		for(cpty=0;cpty<N;cpty++){
-                switch(matrice[cptx][cpty]){
-                    case(MUR) : vision[cptx][cpty]=-8; break;
-                    case(CHEMIN) : vision[cptx][cpty]=-1; break;
-                    case(JOUEUR) : vision[cptx][cpty]=-2; break;
-                    case(COFFRE) : vision[cptx][cpty]=-3; break;
-                    case(OBJECTIF) : vision[cptx][cpty]=-4; break;
-                    case(MOB) : vision[cptx][cpty]=0; break;
-                }
+		        switch(matrice[cptx][cpty]){
+		            case(MUR) : vision[cptx][cpty]=-8; break;
+		            case(CHEMIN) : vision[cptx][cpty]=-1; break;
+		            case(JOUEUR) : vision[cptx][cpty]=-2; break;
+		            case(COFFRE) : vision[cptx][cpty]=-3; break;
+		            case(OBJECTIF) : vision[cptx][cpty]=-4; break;
+		            case(MOB) : vision[cptx][cpty]=0; break;
+		        }
 		}
 	}
 }
@@ -68,15 +69,15 @@ void affVision2(int matrice[N][N]){
 	for(cptx=0;cptx<N;cptx++){
 		printf("\n");
 		for(cpty=0;cpty<N;cpty++){
-                switch(matrice[cptx][cpty]){
-                    case(-8) : printf("|-|"); break;
-                    case(-1) : printf("   "); break;
-                    case(-2) : printf("*_*"); break;
-                    case(-3) : printf("[C]"); break;
-                    case(-4) : printf(" X "); break;
-                    case(0) : printf(">_<"); break;
-                }
-            if(matrice[cptx][cpty]>0 && matrice[cptx][cpty]<=9){
+		        switch(matrice[cptx][cpty]){
+		            case(-8) : printf("|-|"); break;
+		            case(-1) : printf("   "); break;
+		            case(-2) : printf("*_*"); break;
+		            case(-3) : printf("[C]"); break;
+		            case(-4) : printf(" X "); break;
+		            case(0) : printf(">_<"); break;
+		        }
+            		if(matrice[cptx][cpty]>0 && matrice[cptx][cpty]<=9){
 				printf(" %i ", matrice[cptx][cpty]);
 			}
 			else if(matrice[cptx][cpty]>9){
@@ -85,7 +86,6 @@ void affVision2(int matrice[N][N]){
 		}
 	}
 	printf("\n");
-
 }
 
 void affVision(int matrice[N][N]){
@@ -271,9 +271,8 @@ void lireChemin(t_coordonees cheminRetour, int cptx, int cpty){
 }
 
 int IA(int matrice[N][N]){
-	int mobx, Jx;
-	int moby, Jy;
-	int attaque=0;
+	int mobx;
+	int moby;
 	int cptx=0;
 	int cpty=0;
 	t_coordonees cheminRetour;

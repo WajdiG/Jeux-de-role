@@ -1,4 +1,4 @@
- 
+
 #ifndef __JDR1_0_H__
 #define __JDR1_0_H__
 
@@ -8,7 +8,7 @@
 #include "pile_tab.h"
 #include "region.h"
 #include "monde.h"
-
+#include "deplacement.h"
 
 /**
 *\struct t_statcombat
@@ -17,7 +17,7 @@
 typedef struct{int victoire,defaite,total; float pourvic,pourdef;}t_statcombat;
 
 void afficher_joueur();
-void nouvelle_partie();
-void charger_par();
+void nouvelle_partie(int matrice[N][N]);
+void charger_par(int matrice[N][N]);
 
 #endif
