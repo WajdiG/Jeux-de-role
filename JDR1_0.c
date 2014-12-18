@@ -110,8 +110,8 @@ void afficher_joueur(){
 
 void nouvelle_partie(){
 	int choix=0;
-	int principale=5;
-    	int secondaire=5;
+	int principale=2;
+    int secondaire=2;
 	
 	crea_ava(&joueur,principale,secondaire);
 	creer_region();

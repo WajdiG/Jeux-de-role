@@ -22,6 +22,6 @@ void resetMob();
 t_coordonees ecrireChemin();
 int MobNextToJoueur();
 void lireChemin(t_coordonees cheminRetour, int cptx, int cpty);
-void IA(int vision[N][N], int*pvJoueur);
+void IA(int vision[N][N], int*pvJoueur, int*parade, int*enduJoueur, int cpt_laby);
 
 #endif

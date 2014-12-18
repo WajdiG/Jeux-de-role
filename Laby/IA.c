@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-//#include <ncurses.h>
+#include <ncurses.h>
 #include <time.h>
 #include <assert.h>
 #include "accueil.h"
@@ -25,6 +25,7 @@
 //typedef enum { JOUEUR=-2, , MOB=0, MUR, CHEMIN, COFFRE, OBJECTIF } t_case_vision;
 
 int vision[N][N];
+extern t_joueur joueur;
 
 void tradRandom(int matrice[N][N], char region[N][N]){
 	int cptx=0;
@@ -64,28 +65,28 @@ void tradVision(int matrice[N][N]){
 void affVision2(int matrice[N][N]){
 	int cptx=0;
 	int cpty=0;
-	system("clear");
+	clear();
 	
 	for(cptx=0;cptx<N;cptx++){
-		printf("\n");
+		printw("\n");
 		for(cpty=0;cpty<N;cpty++){
 		        switch(matrice[cptx][cpty]){
-		            case(-8) : printf("|-|"); break;
-		            case(-1) : printf("   "); break;
-		            case(-2) : printf("*_*"); break;
-		            case(-3) : printf("[C]"); break;
-		            case(-4) : printf(" X "); break;
-		            case(0) : printf(">_<"); break;
+		            case(-8) : printw("|-|"); break;
+		            case(-1) : printw("   "); break;
+		            case(-2) : printw("*_*"); break;
+		            case(-3) : printw("[C]"); break;
+		            case(-4) : printw(" X "); break;
+		            case(0) : printw(">_<"); break;
 		        }
             		if(matrice[cptx][cpty]>0 && matrice[cptx][cpty]<=9){
-				printf(" %i ", matrice[cptx][cpty]);
+				printw(" %i ", matrice[cptx][cpty]);
 			}
 			else if(matrice[cptx][cpty]>9){
-				printf(" %i", matrice[cptx][cpty]);
+				printw(" %i", matrice[cptx][cpty]);
 			}
 		}
 	}
-	printf("\n");
+	printw("\n");
 }
 
 /*void affVision(int matrice[N][N]){
@@ -93,19 +94,20 @@ void affVision2(int matrice[N][N]){
 	int cpty=0;
 
 	for(cptx=0;cptx<N;cptx++){
-		printf("\n");
+		printw("\n");
 		for(cpty=0;cpty<N;cpty++){
 			if(matrice[cptx][cpty]>=0 && matrice[cptx][cpty]<=9){
-				printf(" %i ", matrice[cptx][cpty]);
+				printw(" %i ", matrice[cptx][cpty]);
 			}
 			else if(matrice[cptx][cpty]>9){
-				printf(" %i", matrice[cptx][cpty]);
+				printw(" %i", matrice[cptx][cpty]);
 			}
 			else{
-				printf("%i ", matrice[cptx][cpty]);
+				printw("%i ", matrice[cptx][cpty]);
 			}
 		}
 	}
+
 	printf("\n");
 }*/
 
@@ -125,7 +127,6 @@ void trouverMob(int *mobx, int *moby){
 			
 		}
 	}
-	
 }
 
 void resetMob(){
@@ -239,48 +240,69 @@ void lireChemin(t_coordonees cheminRetour){
 }
 
 //deplace le mob sur une case en direction du joueur
-void IA(int matrice[N][N], int*pvJoueur){
+void IA(int matrice[N][N], int*pvJoueur, int parade, int*enduJoueur, int cpt_laby){
 	int mobx;
 	int moby;
 	int attaque=0;
-	int degat=10;
+	int degat=10+(2*cpt_laby);
+	int degatBrut=degat;
 	t_coordonees cheminRetour;
 	t_coordonees resultat;
 	srand(time(NULL));
-	int critique = rand()%(100-1)+1;
-
+	int critique = (rand()%(100-1)+1)+(2.5*cpt_laby);
+	int reducDegat;
+	int paradeJoueur = joueur.combat.parade;
+	int degatBloquer=degatBrut-paradeJoueur;
+	
+	//choisi la statistique la plus élever entre armureleg et armurelou pour determiner la reduction des degats
+	if(joueur.combat.armureleg>=joueur.combat.armurelou){
+		reducDegat = joueur.combat.armureleg;
+	}
+	else{
+		reducDegat = joueur.combat.armurelou;
+	}
+	
 	tradVision(matrice);
 	resetMob();
 	trouverMob(&mobx, &moby);
 	
-	attaque=MobNextToJoueur();
+	attaque=MobNextToJoueur();						//determine si le joueur et le mob sont cote à cote et savoir par la suite l'action de l'IA
+	
+	//fait deplacer le mob si celui-ci n'est pas a coter du joueur
 	if(attaque==0){
 		cheminRetour=ecrireChemin();
 		lireChemin(cheminRetour);
 		depilerStruct(&resultat);
-		matrice[resultat.x][resultat.y]=MOB; //déplacer le MOB sur la case en direction du joueur
-		matrice[mobx][moby]=CHEMIN; //liberer le chemin derriere le MOB
+		matrice[resultat.x][resultat.y]=MOB; 		//déplacer le MOB sur la case en direction du joueur
+		matrice[mobx][moby]=CHEMIN; 				//liberer le chemin derriere le MOB
 	}
+	
+	//inflige des degats au joueur en fonction de ses compétences si le mob est a coter de celui-ci
 	else{
+		degat=degat-(0.25*reducDegat);
 		if(critique>=100){
 			degat*=2;
-			printf("\n==> CRITIQUE <==\n");
+			printf("\r\n            ==> CRITIQUE <==            \r\n");
 		}
-		*pvJoueur-=degat;
-		printf("\nVous perdez %i PV \n", degat);
+		if(parade==0){
+			*pvJoueur-=degat;
+			printf("\r\n     /!\\ Vous perdez %i PV /!\\\r\n", degat);
+		}
+		else if(parade==1 && degatBrut<*enduJoueur){
+			
+			if(degatBloquer<=0){	
+				*pvJoueur-=0;
+				*enduJoueur-=degatBrut;
+			}
+			
+			else{
+				*enduJoueur-=degatBrut;
+				*pvJoueur-=degatBloquer;
+			}
+			printf("\r\n      /!\\ Vous parez le prochain coup /!\\ \r\n");
+		}
 	}
-	// cptx,cpty = case à coté du joueur, c'est notre cible
-	//cptx=cheminRetour.x;
-	//cpty=cheminRetour.y;
-	
-	
-	
-	/*if(cheminRetour.x==mobx && cheminRetour.y==moby){ // le monstre est déjà sur la cible
-		//printf("CASE : %d =?= %d\n", matrice[mobx][moby], MOB);
-		//matrice[mobx][moby]=MOB;
-		//le monstre ne peut pas se mettre sur le joueur
-		
-	}*/
+
 	
 	
 }

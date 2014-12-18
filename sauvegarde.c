@@ -83,8 +83,6 @@ void crea_file(){
 		}
 	}
 	
-	
-	
 	fclose(fichier);
 }
 

@@ -13,16 +13,11 @@
 #include "monde.h"
 #include "region.h"
 
-extern t_joueur joueur;
-extern t_coord coord;
-extern char pseudo[P];
-extern char ** monde [X][Y];
-
 /**
  *\fn crea_file(void) 
  *\brief fonction permettant de sauvegarder la structure t_joueur dans le fichier de sauvegarde
  */
-void crea_file(){
+void crea_file(t_joueur joueur, t_coord coord, char pseudo[P], char ** monde[X][Y]){
 	int i,j,k,l;
 	
 	FILE*fichier=fopen(pseudo,"w");

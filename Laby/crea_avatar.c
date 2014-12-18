@@ -9,6 +9,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<ncurses.h>
 #include "crea_avatar.h"
 
 #define P 16 /**<constante définissant la taille maximale du pseudo*/
@@ -82,18 +83,18 @@ void creer_pseudo(t_joueur *joueur){	//fonction permettant à l'utilisateur de s
 
 		j=0;
 
-		printf("Veuillez saisir un pseudo compris entre 3 et 15 caractère, sans espace : ");
-		scanf("%s", pseudotest);						//insère la chaîne de caractère dans le tableau pseudotest
+		printw("Veuillez saisir un pseudo compris entre 3 et 15 caractère, sans espace : ");
+		scanw("%s", pseudotest);						//insère la chaîne de caractère dans le tableau pseudotest
 
 		for(i=0;pseudotest[i]!='\0';i++){j++;}			//compte le nombre de caractère contenu dans le tableau pseudotest
 
-	}while(j<3||j>15);
+	}while(j<3||j>P-1);
 
 	for(i=0;i<j;i++){pseudo[i]=pseudotest[i];}			//copie le pseudo valide dans le tableau pseudo
 
 	pseudo[i]='\0';										// termine la chaîne de caractère par un '\0'
 
-	printf("Votre pseudo est %s. \n",pseudo);
+	printw("Votre pseudo est %s. \n",pseudo);
 
 
 	for(i=0;i<j+1;i++){
@@ -115,30 +116,30 @@ void race(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir l
 	while(i==0){
 
 		do{						//test afin que le chiffre saisit corresponde bien à un choix possible
-			printf("\n	Choisissez votre race en tapant le chiffre correspondant : \n");
-			printf("		1- Elfe \n");
-			printf("		2- Humain \n");
-			printf("		3- Nain \n");
-			printf("		4- Orc \n");
-			printf("		5- Troll \n");
-			printf("		Votre choix :");
+			printw("\nChoisissez votre race en tapant le chiffre correspondant : \n");
+			printw("1- Elfe \n");
+			printw("2- Humain \n");
+			printw("3- Nain \n");
+			printw("4- Orc \n");
+			printw("5- Troll \n");
+			printw("Votre choix :");
 
-			scanf("%i", &choix);			
+			scanw("%i", &choix);			
 		}while(choix<1||choix>5);
 
 
         switch(choix){                                    //présentation des caractéristiques liées aux différentes races
-		case 1 : printf("	Vous êtes un Elfe. Les Elfes ont un bonus de Perception, d'Agilité et de Rapidité. Vous êtes équipé d'une épée courte et d'un arc long ce qui fait de vous une menace permanente dans toutes les situations. \n"); (*joueur).physique.race=elfe;break;
-		case 2 : printf("	Vous êtes un Humain, les Humains ont un bonus d'Agilité, de Force et de Rapidité. Bien que les humains soient polyvalent en ce qui concerne leur technique de combat, vous êtes équipé d'une épée courte et d'un arc court ce qui diminue la portée de vos flèches contrairement aux arcs longs. \n"); (*joueur).physique.race=humain;break;
-		case 3 : printf("	Vous êtes un Nain, les Nains ont un bonus de Perception, de Force et de Puissance. Vous êtes équipé de dague de lancer et d'une hache à deux mains ce qui fait de vous un adversaire redoutable en combat raproché. \n"); (*joueur).physique.race=nain;break;
-		case 4 : printf("	Vous êtes un Orc, les Orcs ont un bonus de Puissance, de Force et de Rapidité. Vous êtes équipé d'un arc court et d'une masse à une main vous rendant aussi dangereux que vous l'espériez. \n"); (*joueur).physique.race=orc;break;
-        case 5 : printf("	Vous êtes un Troll, les Trolls ont un gros bonus de Puissance et de Force. Vous êtes équipé d'un marteau de guerre à deux mains, rien ne peux vous arrêter ! \n"); (*joueur).physique.race=troll;break;
+		case 1 : printw("Vous êtes un Elfe. Les Elfes ont un bonus de Perception, d'Agilité et de Rapidité. Vous êtes équipé d'une épée courte et d'un arc long ce qui fait de vous une menace permanente dans toutes les situations. \n"); (*joueur).physique.race=elfe;break;
+		case 2 : printw("Vous êtes un Humain, les Humains ont un bonus d'Agilité, de Force et de Rapidité. Bien que les humains soient polyvalent en ce qui concerne leur technique de combat, vous êtes équipé d'une épée courte et d'un arc court ce qui diminue la portée de vos flèches contrairement aux arcs longs. \n"); (*joueur).physique.race=humain;break;
+		case 3 : printw("Vous êtes un Nain, les Nains ont un bonus de Perception, de Force et de Puissance. Vous êtes équipé de dague de lancer et d'une hache à deux mains ce qui fait de vous un adversaire redoutable en combat raproché. \n"); (*joueur).physique.race=nain;break;
+		case 4 : printw("Vous êtes un Orc, les Orcs ont un bonus de Puissance, de Force et de Rapidité. Vous êtes équipé d'un arc court et d'une masse à une main vous rendant aussi dangereux que vous l'espériez. \n"); (*joueur).physique.race=orc;break;
+        case 5 : printw("Vous êtes un Troll, les Trolls ont un gros bonus de Puissance et de Force. Vous êtes équipé d'un marteau de guerre à deux mains, rien ne peux vous arrêter ! \n"); (*joueur).physique.race=troll;break;
         }
 
 
-		printf("	L'équipement lié à votre race est un équipement par défaut qui pourra être modifié au cour du jeu. Etes vous sûre de votre choix ? \n");
-		printf("	tapez 0 pour changer, n'importe quel autre chiffre entier pour valider : ");
-		scanf("%i", &i);							//donne à l'utilisateur la possibilité de changer son choix.
+		printw(" L'équipement lié à votre race est un équipement par défaut qui pourra être modifié au cour du jeu. Etes vous sûre de votre choix ? \n");
+		printw("tapez 0 pour changer, n'importe quel autre chiffre entier pour valider : ");
+		scanw("%i", &i);							//donne à l'utilisateur la possibilité de changer son choix.
 	}
 }
 
@@ -153,20 +154,20 @@ void sexe(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir l
 	int choix=-1;
 
 	do{						//test afin que le chiffre saisit corresponde bien à un choix possible
-		printf("\n	Le sexe de votre personnage n'aura pas d'impact sur ses compétences, il peut toutefois vous donnez des choix différents lors de vos quètes et dialogues. Choisissez votre sexe : \n");
-		printf("		0- Masculin \n");
-		printf("		1- Féminin \n");
-		printf("		2_ Sans \n");
-		printf("	Votre choix :");
+		printw("\nLe sexe de votre personnage n'aura pas d'impact sur ses compétences, il peut toutefois vous donnez des choix différents lors de vos quètes et dialogues. Choisissez votre sexe : \n");
+		printw("0- Masculin \n");
+		printw("1- Féminin \n");
+		printw("2_ Sans \n");
+		printw("Votre choix :");
 
-		scanf("%i", &choix);				
+		scanw("%i", &choix);				
 	}while(choix!=0&&choix!=1&&choix!=2);
 
 
     switch(choix){
-	case 0 : (*joueur).physique.sexe=homme; printf("	Vous êtes un mâle. \n"); break;
-	case 1 : (*joueur).physique.sexe=femme; printf("	Vous êtes une femelle. \n"); break;
-	case 2 : (*joueur).physique.sexe=sans; printf("	Vous n'avez pas de sexe. \n"); break;
+	case 0: (*joueur).physique.sexe=homme; printw("Vous êtes un mâle. \n"); break;
+	case 1 : (*joueur).physique.sexe=femme; printw("Vous êtes une femelle. \n"); break;
+	case 2 : (*joueur).physique.sexe=sans; printw("Vous n'avez pas de sexe. \n"); break;
     }
 }
 
@@ -180,24 +181,24 @@ void taille(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir
 
 	if((*joueur).physique.race==nain){
 		while(tal<100||tal>150){
-			printf("\n	Choisissez la taille de votre avatar en cm (comprise entre 100 et 150), la taille de votre avatar aura une influence sur votre expérience de jeu. \n votre taille : ");
-			scanf("%i", &tal);
+			printw("\nChoisissez la taille de votre avatar en cm (comprise entre 100 et 150), la taille de votre avatar aura une influence sur votre expérience de jeu. \n votre taille : ");
+			scanw("%i", &tal);
 		}
 	}
 	else if((*joueur).physique.race==humain||(*joueur).physique.race==elfe||(*joueur).physique.race==orc){
 		while(tal<140||tal>220){
-			printf("\n	Choisissez la taille de votre avatar en cm (comprise entre 140 et 220), la taille de votre avatar aura une influence sur votre expérience de jeu. \n votre taille : ");
-			scanf("%i", &tal);
+			printw("\nChoisissez la taille de votre avatar en cm (comprise entre 140 et 220), la taille de votre avatar aura une influence sur votre expérience de jeu. \n votre taille : ");
+			scanw("%i", &tal);
 		}
 	}
 	else{
 		while(tal<160||tal>280){
-			printf("\n	Choisissez la taille de votre avatar en cm (comprise entre 160 et 280), la taille de votre avatar aura une influence sur votre expérience de jeu. \n votre taille : ");
-			scanf("%i", &tal);
+			printw("\nChoisissez la taille de votre avatar en cm (comprise entre 160 et 280), la taille de votre avatar aura une influence sur votre expérience de jeu. \n votre taille : ");
+			scanw("%i", &tal);
 		}
 	}
 
-	printf("	Vous mesurez %i cm.\n",tal);
+	printw("Vous mesurez %i cm.\n",tal);
 
 	(*joueur).physique.taille=tal;
 }
@@ -217,70 +218,70 @@ void poids(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir 
 
 	if((*joueur).physique.race==elfe||(*joueur).physique.race==humain){
 		do{					//test afin de que le poids soit dans la fourchette voulue
-			printf("\n	Veuillez saisir un nombre entier correspondant au poids de votre avatar compris entre 40 et 200kg : ");
-			scanf("%f", &poids);
+			printw("\nVeuillez saisir un nombre entier correspondant au poids de votre avatar compris entre 40 et 200kg : ");
+			scanw("%f", &poids);
 		}while(poids<40||poids>200);
 
         imc= (poids/(taille*taille))*ch;
 
 		if(imc<16.5){
-			printf("	vous êtes anoréxique, vous pourrez passer par tout les chemins y compris les passages les plus étroits étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
+			printw("vous êtes anoréxique, vous pourrez passer par tout les chemins y compris les passages les plus étroits étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
 			(*joueur).physique.poids=anorexique;
 		}
 		else if(imc>=16.5&&imc<18.5){
-			printf("	vous êtes mince voir très mince, vous pourrez emprunter la plupart des chemins, votre avatar aura un léger bonus d'agilité et de rapidité et un léger malus de force et de puissance. \n");
+			printw("vous êtes mince voir très mince, vous pourrez emprunter la plupart des chemins, votre avatar aura un léger bonus d'agilité et de rapidité et un léger malus de force et de puissance. \n");
 			(*joueur).physique.poids=mince;
 		}
 		else if(imc>=18.5&&imc<25){
-			printf("	Vous êtes bien batît, vous pourrez passer sur les chemins classiques, vous avez des compétences équilibrées \n");
+			printw("Vous êtes bien batît, vous pourrez passer sur les chemins classiques, vous avez des compétences équilibrées \n");
 			(*joueur).physique.poids=moyen;
 		}
 		else if(imc>=25&&imc<30){
-			printf("	Vous êtes en surpoids, vous ne pourrez pas passer par tout les chemins. vous avez un bonus de force et de puissance et un malus de rapidité et d'agilité. \n");
+			printw("Vous êtes en surpoids, vous ne pourrez pas passer par tout les chemins. vous avez un bonus de force et de puissance et un malus de rapidité et d'agilité. \n");
 			(*joueur).physique.poids=surpoids;
 		}
 		else if(imc>=30&&imc<35){
-			printf("	Vous êtes obèse, vous ne pourrez passer que par les chemins suffisament large pour vous. Vous avez un grand bonus de force et de puissance et un grand malus de rapidité et d'agilité. \n");
+			printw("Vous êtes obèse, vous ne pourrez passer que par les chemins suffisament large pour vous. Vous avez un grand bonus de force et de puissance et un grand malus de rapidité et d'agilité. \n");
 			(*joueur).physique.poids=obese;
 		}
 		else if(imc>=35){
-			printf("	Vous êtes rangé(e) dans la catégorie \"obèsité morbide\". Vous avez un énorme bonus de force et puissance et un énorme malus de rapidité et d'agilité. Vous risquez d'avoir certaines surprise durant votre aventure... \n");
+			printw("Vous êtes rangé(e) dans la catégorie \"obèsité morbide\". Vous avez un énorme bonus de force et puissance et un énorme malus de rapidité et d'agilité. Vous risquez d'avoir certaines surprise durant votre aventure... \n");
 			(*joueur).physique.poids=obesemo;
 		}
 	}
 	else if((*joueur).physique.race==nain){
 		while(poids<40||poids>200){					//test afin que le poids soit dans la fourchette voulue
-			printf("	Veuillez saisir un nombre entier correspondant au poids de votre avatar compris entre 40 et 200kg : ");
-			scanf("%f", &poids);
+			printw("Veuillez saisir un nombre entier correspondant au poids de votre avatar compris entre 40 et 200kg : ");
+			scanw("%f", &poids);
 		}
 
         imc=(poids/(((*joueur).physique.taille)*((*joueur).physique.taille)))*10000;
 
 		if(imc<45){
-			printf("	vous êtes anoréxique, vous pourrez passer par les passages étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
+			printw("vous êtes anoréxique, vous pourrez passer par les passages étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
 			(*joueur).physique.poids=anorexique;
 		}
 		else if(imc>=45&&imc<48){
-			printf("	vous êtes mince voir très mince, vous pourrez emprunter la plupart des chemins mais pas tous, vos caractéristiques ont un léger bonus d'agilité et de rapidité et un léger malus de force et de puissance. \n");
+			printw("vous êtes mince voir très mince, vous pourrez emprunter la plupart des chemins mais pas tous, vos caractéristiques ont un léger bonus d'agilité et de rapidité et un léger malus de force et de puissance. \n");
 			(*joueur).physique.poids=mince;
 		}
 		else if(imc>=48&&imc<57){
-			printf("	Vous êtes de corpulence moyenne, vous ne pourrez passer que sur les chemins classiques, vous avez des compétences équilibrées \n");
+			printw("Vous êtes de corpulence moyenne, vous ne pourrez passer que sur les chemins classiques, vous avez des compétences équilibrées \n");
 			(*joueur).physique.poids=moyen;
 		}
 		else if(imc>=57&&imc<60){
-			printf("	Vous êtes en surpoids, vous ne pourrez passer que par les chemins suffisament large pour vous. Vous avez un grand bonus de force et de puissance et un grand malus de rapidité et d'agilité. \n");
+			printw("Vous êtes en surpoids, vous ne pourrez passer que par les chemins suffisament large pour vous. Vous avez un grand bonus de force et de puissance et un grand malus de rapidité et d'agilité. \n");
 			(*joueur).physique.poids=surpoids;
 		}
 		else{
-			printf("	Vous êtes obèse. Vous avez un énorme bonus de force et puissance et un énorme malus de rapidité et d'agilité. Vous risquez d'avoir certaines surprise durant votre aventure... \n");
+			printw("Vous êtes obèse. Vous avez un énorme bonus de force et puissance et un énorme malus de rapidité et d'agilité. Vous risquez d'avoir certaines surprise durant votre aventure... \n");
 			(*joueur).physique.poids=obese;
 		}
 	}
 	else if((*joueur).physique.race==orc){
 		while(poids<40||poids>200){					//test afin que le poids soit dans la fourchette voulue
-			printf("	Veuillez saisir un nombre entier correspondant au poids de votre avatar compris entre 40 et 200kg : ");
-			scanf("%f", &poids);
+			printw("Veuillez saisir un nombre entier correspondant au poids de votre avatar compris entre 40 et 200kg : ");
+			scanw("%f", &poids);
 		}
 
 
@@ -288,30 +289,30 @@ void poids(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir 
 		
 
 		if(imc<18){
-			printf("	vous êtes anoréxique, vous pourrez passer par les passages étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
+			printw("vous êtes anoréxique, vous pourrez passer par les passages étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
 			(*joueur).physique.poids=anorexique;
 		}
 		else if(imc>=18&&imc<21){
-			printf("	vous êtes mince voir très mince, vous pourrez emprunter la plupart des chemins mais pas tous, vos caractéristiques ont un léger bonus d'agilité et de rapidité et un léger malus de force et de puissance. \n");
+			printw("vous êtes mince voir très mince, vous pourrez emprunter la plupart des chemins mais pas tous, vos caractéristiques ont un léger bonus d'agilité et de rapidité et un léger malus de force et de puissance. \n");
 			(*joueur).physique.poids=mince;
 		}
 		else if(imc>=21&&imc<27){
-			printf("	Vous êtes de corpulence moyenne, vous ne pourrez passer que sur les chemins classiques, vous avez des compétences équilibrées \n");
+			printw("Vous êtes de corpulence moyenne, vous ne pourrez passer que sur les chemins classiques, vous avez des compétences équilibrées \n");
 			(*joueur).physique.poids=moyen;
 		}
 		else if(imc>=27&&imc<30){
-			printf("	Vous êtes en surpoids, vous ne pourrez passer que par les chemins suffisament large pour vous. Vous avez un grand bonus de force et de puissance et un grand malus de rapidité et d'agilité. \n");
+			printw("Vous êtes en surpoids, vous ne pourrez passer que par les chemins suffisament large pour vous. Vous avez un grand bonus de force et de puissance et un grand malus de rapidité et d'agilité. \n");
 			(*joueur).physique.poids=surpoids;
 		}
 		else{
-			printf("	Vous êtes obèse. Vous avez un énorme bonus de force et puissance et un énorme malus de rapidité et d'agilité. Vous risquez d'avoir certaines surprise durant votre aventure... \n");
+			printw("Vous êtes obèse. Vous avez un énorme bonus de force et puissance et un énorme malus de rapidité et d'agilité. Vous risquez d'avoir certaines surprise durant votre aventure... \n");
 			(*joueur).physique.poids=obese;
 		}
 	}
 	else if((*joueur).physique.race==troll){
 		while(poids<100||poids>350){					//test afin que le poids soit dans la fourchette voulue
-			printf("	Veuillez saisir un nombre entier correspondant au poids de votre avatar compris entre 100 et 350kg : ");
-			scanf("%f", &poids);
+			printw("Veuillez saisir un nombre entier correspondant au poids de votre avatar compris entre 100 et 350kg : ");
+			scanw("%f", &poids);
 		}
 
 
@@ -319,23 +320,23 @@ void poids(t_joueur *joueur){	//fonction permettant à l'utilisateur de choisir 
 	
 
 		if(imc<32){
-			printf("	vous êtes anoréxique, vous pourrez passer par les passages étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
+			printw("vous êtes anoréxique, vous pourrez passer par les passages étroits, vote avatar aura un grand bonus d'agilité et de rapidité et un grand malus de force et de puissance. Vous risquez d'avoir certaine surprise durant votre partie ...\n");
 			(*joueur).physique.poids=anorexique;
 		}
 		else if(imc>=32&&imc<36){
-			printf("	vous êtes mince voir très mince, vous pourrez emprunter la plupart des chemins mais pas tous, vos caractéristiques ont un léger bonus d'agilité et de rapidité et un léger malus de force et de puissance. \n");
+			printw("vous êtes mince voir très mince, vous pourrez emprunter la plupart des chemins mais pas tous, vos caractéristiques ont un léger bonus d'agilité et de rapidité et un léger malus de force et de puissance. \n");
 			(*joueur).physique.poids=mince;
 		}
 		else if(imc>=36&&imc<44){
-			printf("	Vous êtes de corpulence moyenne, vous ne pourrez passer que sur les chemins classiques, vous avez des compétences équilibrées \n");
+			printw("Vous êtes de corpulence moyenne, vous ne pourrez passer que sur les chemins classiques, vous avez des compétences équilibrées \n");
 			(*joueur).physique.poids=moyen;
 		}
 		else if(imc>=44&&imc<48){
-			printf("	Vous êtes en surpoids, vous ne pourrez passer que par les chemins suffisament large pour vous. Vous avez un grand bonus de force et de puissance et un grand malus de rapidité et d'agilité. \n");
+			printw("Vous êtes en surpoids, vous ne pourrez passer que par les chemins suffisament large pour vous. Vous avez un grand bonus de force et de puissance et un grand malus de rapidité et d'agilité. \n");
 			(*joueur).physique.poids=surpoids;
 		}
 		else{
-			printf("	Vous êtes obèse. Vous avez un énorme bonus de force et puissance et un énorme malus de rapidité et d'agilité. Vous risquez d'avoir certaines surprise durant votre aventure... \n");
+			printw("Vous êtes obèse. Vous avez un énorme bonus de force et puissance et un énorme malus de rapidité et d'agilité. Vous risquez d'avoir certaines surprise durant votre aventure... \n");
 			(*joueur).physique.poids=obese;
 		}
 	}
@@ -466,20 +467,20 @@ void attribution_points(t_joueur *joueur, int principale, int secondaire){  //fo
 
 	while(cpt>0){
 
-		printf("\nVous avez %i points de compétences à répartir parmis vos compétences principales : \n",cpt);
-		printf("1	Rapidité : %i \n", (*joueur).comp.rapidite);
-		printf("2	Agilité : %i \n", (*joueur).comp.agilite);
-		printf("3	Force : %i \n", (*joueur).comp.force);
-		printf("4	Puissance : %i \n", (*joueur).comp.puissance);
-		printf("5	Intelligence : %i \n", (*joueur).comp.intelligence);
-		printf("6	Perception : %i \n", (*joueur).comp.perception);
-		printf("7	Chance : %i \n", (*joueur).comp.chance);
-		printf("Saisisser la compétence à augmenter : \n");
-		scanf("%i", &choix);
-
+		printw("\nVous avez %i points de compétences à répartir parmis vos compétences principales : \n",cpt);
+		printw("1	Rapidité : %i \n", (*joueur).comp.rapidite);
+		printw("2	Agilité : %i \n", (*joueur).comp.agilite);
+		printw("3	Force : %i \n", (*joueur).comp.force);
+		printw("4	Puissance : %i \n", (*joueur).comp.puissance);
+		printw("5	Intelligence : %i \n", (*joueur).comp.intelligence);
+		printw("6	Perception : %i \n", (*joueur).comp.perception);
+		printw("7	Chance : %i \n", (*joueur).comp.chance);
+		printw("Saisisser la compétence à augmenter : \n");
+		scanw("%i", &choix);
+		
 		while(choix<1||choix>7){
-			printf("Saisissez une valeur entière valide :");
-			scanf("%i",&choix);
+			printw("Saisissez une valeur entière valide :");
+			scanw("%i", &choix);
 		}
 
 		switch(choix){
@@ -493,48 +494,48 @@ void attribution_points(t_joueur *joueur, int principale, int secondaire){  //fo
 		}
 		cpt--;
 	}
-
-	printf("\n	Voici vos niveaux de compétences principales actuels : \n");
-	printf("		Rapidité : %i \n", (*joueur).comp.rapidite);
-	printf("		Agilité : %i \n", (*joueur).comp.agilite);
-	printf("		Force : %i \n", (*joueur).comp.force);
-	printf("		Puissance : %i \n", (*joueur).comp.puissance);
-	printf("		Intelligence : %i \n", (*joueur).comp.intelligence);
-	printf("		Perception : %i \n", (*joueur).comp.perception);
-	printf("		Chance : %i \n", (*joueur).comp.chance);
+	clear();
+	printw("\nVoici vos niveaux de compétences principales actuels : \n");
+	printw("	Rapidité : %i \n", (*joueur).comp.rapidite);
+	printw("	Agilité : %i \n", (*joueur).comp.agilite);
+	printw("	Force : %i \n", (*joueur).comp.force);
+	printw("	Puissance : %i \n", (*joueur).comp.puissance);
+	printw("	Intelligence : %i \n", (*joueur).comp.intelligence);
+	printw("	Perception : %i \n", (*joueur).comp.perception);
+	printw("	Chance : %i \n", (*joueur).comp.chance);
 
 	while(sec>0){
-		printf("\n	Vous avez %i points de compétences à répartir parmis vos compétences secondaires : \n",sec);
-		printf("	Compétences de combat : \n");
-		printf("		1	Archerie : %i \n", (*joueur).combat.archerie);
-		printf("		2	Précision : %i \n", (*joueur).combat.precision);
-		printf("		3	Une main : %i \n", (*joueur).combat.unemain);
-		printf("		4	Deux mains : %i \n", (*joueur).combat.deuxmains);
-		printf("		5	Lance : %i \n", (*joueur).combat.lance);
-		printf("		6	Contondant : %i \n", (*joueur).combat.contondant);
-		printf("		7	Parade : %i \n", (*joueur).combat.parade);
-		printf("		8	Armure légère : %i \n", (*joueur).combat.armureleg);
-		printf("		9	Armure lourde : %i \n", (*joueur).combat.armurelou);
-		printf("		10  	Corps à corps : %i \n", (*joueur).combat.corpscorps);
-		printf("\n	Compétences de furtivité : \n");
-		printf("		11	Crochetage : %i \n", (*joueur).furtif.crochetage);
-		printf("		12	Discretion : %i \n", (*joueur).furtif.discretion);
-		printf("		13	Dague : %i \n", (*joueur).furtif.dague);
-		printf("		14	Acrobatie : %i \n", (*joueur).furtif.acrobatie);
-		printf("\n	Compétences de dialogue : \n");
-		printf("		15	Charisme : %i \n", (*joueur).dial.charisme);
-		printf("		16	Persuasion : %i \n", (*joueur).dial.persuasion);
-		printf("		17	Marchandage : %i \n", (*joueur).dial.marchandage);
-		printf("\n	Compétences de magie : \n");
-		printf("		18	Destruction : %i \n", (*joueur).magie.destruction);
-		printf("		19	Guérison : %i \n", (*joueur).magie.guerison);
-		printf("		20	Invocation : %i \n", (*joueur).magie.invocation);
-		printf("	Saisisser la compétence à augmenter : \n");
-		scanf("%i", &choix);
+		printw("\nVous avez %i points de compétences à répartir parmis vos compétences secondaires : \n",sec);
+		printw("Compétences de combat : \n");
+		printw("1	Archerie : %i \n", (*joueur).combat.archerie);
+		printw("2	Précision : %i \n", (*joueur).combat.precision);
+		printw("3	Une main : %i \n", (*joueur).combat.unemain);
+		printw("4	Deux mains : %i \n", (*joueur).combat.deuxmains);
+		printw("5	Lance : %i \n", (*joueur).combat.lance);
+		printw("6	Contondant : %i \n", (*joueur).combat.contondant);
+		printw("7	Parade : %i \n", (*joueur).combat.parade);
+		printw("8	Armure légère : %i \n", (*joueur).combat.armureleg);
+		printw("9	Armure lourde : %i \n", (*joueur).combat.armurelou);
+		printw("10  	Corps à corps : %i \n", (*joueur).combat.corpscorps);
+		printw("\nCompétences de furtivité : \n");
+		printw("11	Crochetage : %i \n", (*joueur).furtif.crochetage);
+		printw("12	Discretion : %i \n", (*joueur).furtif.discretion);
+		printw("13	Dague : %i \n", (*joueur).furtif.dague);
+		printw("14	Acrobatie : %i \n", (*joueur).furtif.acrobatie);
+		printw("\nCompétences de dialogue : \n");
+		printw("15	Charisme : %i \n", (*joueur).dial.charisme);
+		printw("16	Persuasion : %i \n", (*joueur).dial.persuasion);
+		printw("17	Marchandage : %i \n", (*joueur).dial.marchandage);
+		printw("\nCompétences de magie : \n");
+		printw("18	Destruction : %i \n", (*joueur).magie.destruction);
+		printw("19	Guérison : %i \n", (*joueur).magie.guerison);
+		printw("20	Invocation : %i \n", (*joueur).magie.invocation);
+		printw("Saisisser la compétence à augmenter : \n");
+		scanw("%i", &choix);
 
 		while(choix<1||choix>19){
-			printf("	Saisissez une valeur entière valide :");
-			scanf("%i",&choix);
+			printw("Saisissez une valeur entière valide :");
+			scanw("%i", &choix);
 		}
 
 		switch(choix){
@@ -548,7 +549,7 @@ void attribution_points(t_joueur *joueur, int principale, int secondaire){  //fo
 			case 8 : (*joueur).combat.armureleg++;break;
 			case 9 : (*joueur).combat.armurelou++;break;
 			case 10 : (*joueur).combat.corpscorps++;break;
-			case 11: (*joueur).furtif.crochetage++;break;
+			case 11 : (*joueur).furtif.crochetage++;break;
 			case 12 : (*joueur).furtif.discretion++;break;
 			case 13 : (*joueur).furtif.dague++;break;
 			case 14 : (*joueur).furtif.acrobatie++;break;
@@ -563,32 +564,32 @@ void attribution_points(t_joueur *joueur, int principale, int secondaire){  //fo
 		sec--;
 	}
 
+	clear();
+	printw("\nVoici vos niveaux de compétences secondaires actuels : \n");
 
-	printf("\n	Voici vos niveaux de compétences secondaires actuels : \n");
-
-    printf("	Compétences de combat : \n");
-    printf("		Archerie : %i \n", (*joueur).combat.archerie);
-    printf("		Précision : %i \n", (*joueur).combat.precision);
-    printf("		Une main : %i \n", (*joueur).combat.unemain);
-    printf("		Deux mains : %i \n", (*joueur).combat.deuxmains);
-    printf("		Lance : %i \n", (*joueur).combat.lance);
-    printf("		Contondant : %i \n", (*joueur).combat.contondant);
-    printf("		Parade : %i \n", (*joueur).combat.parade);
-    printf("		Armure légère : %i \n", (*joueur).combat.armureleg);
-    printf("		Armure lourde : %i \n", (*joueur).combat.armurelou);
-    printf("\n	Compétences de furtivité : \n");
-    printf("  	 	Crochetage : %i \n", (*joueur).furtif.crochetage);
-    printf("		Discretion : %i \n", (*joueur).furtif.discretion);
-    printf("		Dague : %i \n", (*joueur).furtif.dague);
-    printf("		Acrobatie : %i \n", (*joueur).furtif.acrobatie);
-    printf("\n	Compétences de dialogue : \n");
-    printf("		Charisme : %i \n", (*joueur).dial.charisme);
-    printf("		Persuasion : %i \n", (*joueur).dial.persuasion);
-    printf("		Marchandage : %i \n", (*joueur).dial.marchandage);
-    printf("\n	Compétences de magie : \n");
-    printf("		Destruction : %i \n", (*joueur).magie.destruction);
-    printf("		Guérison : %i \n", (*joueur).magie.guerison);
-    printf("		Invocation : %i \n", (*joueur).magie.invocation);
+    printw("Compétences de combat : \n");
+    printw("	Archerie : %i \n", (*joueur).combat.archerie);
+    printw("	Précision : %i \n", (*joueur).combat.precision);
+    printw("	Une main : %i \n", (*joueur).combat.unemain);
+    printw("	Deux mains : %i \n", (*joueur).combat.deuxmains);
+    printw("	Lance : %i \n", (*joueur).combat.lance);
+    printw("	Contondant : %i \n", (*joueur).combat.contondant);
+    printw("	Parade : %i \n", (*joueur).combat.parade);
+    printw("	Armure légère : %i \n", (*joueur).combat.armureleg);
+    printw("	Armure lourde : %i \n", (*joueur).combat.armurelou);
+    printw("\nCompétences de furtivité : \n");
+    printw("    Crochetage : %i \n", (*joueur).furtif.crochetage);
+    printw("	Discretion : %i \n", (*joueur).furtif.discretion);
+    printw("	Dague : %i \n", (*joueur).furtif.dague);
+    printw("	Acrobatie : %i \n", (*joueur).furtif.acrobatie);
+    printw("\nCompétences de dialogue : \n");
+    printw("	Charisme : %i \n", (*joueur).dial.charisme);
+    printw("	Persuasion : %i \n", (*joueur).dial.persuasion);
+    printw("	Marchandage : %i \n", (*joueur).dial.marchandage);
+    printw("\nCompétences de magie : \n");
+    printw("	Destruction : %i \n", (*joueur).magie.destruction);
+    printw("	Guérison : %i \n", (*joueur).magie.guerison);
+    printw("	Invocation : %i \n", (*joueur).magie.invocation);
 }
 
 /**
@@ -601,87 +602,87 @@ void config(t_joueur *joueur){	//Fonction permettant à l'utilisateur de revenir
 	int choix=0;
 	int m,c;
 
-	printf("\n	Chacun de vos choix concernant les caractéristiques physiques de votre avatar auront un impact sur votre expérience de jeu et sur les compétences suivantes : Rapidité, Agilité, Perception, Force et Puissance. Vous aurez à chaques choix la possibilité de changer d'avis. \n");
+	printw("\nChacun de vos choix concernant les caractéristiques physiques de votre avatar auront un impact sur votre expérience de jeu et sur les compétences suivantes : Rapidité, Agilité, Perception, Force et Puissance. Vous aurez à chaques choix la possibilité de changer d'avis. \n");
 
 	while(choix!=6){
 
-		printf("\n	Voici vos caractéristiques actuelles : \n");			//récapitulatif des compétences de l'avatar
-		printf("		Rapidité    : %i \n", (*joueur).comp.rapidite);
-		printf("		Agilité     : %i \n", (*joueur).comp.agilite);
-		printf("		Force       : %i \n", (*joueur).comp.force);
-		printf("		Puissance   : %i \n", (*joueur).comp.puissance);
-		printf("		Intelligence: %i \n", (*joueur).comp.intelligence);
-		printf("		Perception  : %i \n", (*joueur).comp.perception);
-		printf("		Chance 	: %i \n", (*joueur).comp.chance);
-		printf("	Pseudo : %s \n", (*joueur).pseudo);
+		printw("\n Voici vos caractéristiques actuelles : \n");			//récapitulatif des compétences de l'avatar
+		printw("	Rapidité    : %i \n", (*joueur).comp.rapidite);
+		printw("	Agilité     : %i \n", (*joueur).comp.agilite);
+		printw("	Force       : %i \n", (*joueur).comp.force);
+		printw("	Puissance   : %i \n", (*joueur).comp.puissance);
+		printw("	Intelligence: %i \n", (*joueur).comp.intelligence);
+		printw("	Perception  : %i \n", (*joueur).comp.perception);
+		printw("	Chance 	: %i \n", (*joueur).comp.chance);
+		printw("Pseudo : %s \n", (*joueur).pseudo);
 		if((*joueur).physique.race==1){
-			printf("	Race : elfe \n");
+			printw("Race : elfe \n");
         }
         else if((*joueur).physique.race==2){
-            printf("	Race : humain \n");
+            printw("Race : humain \n");
         }
         else if((*joueur).physique.race==3){
-            printf("	Race : nain \n");
+            printw("Race : nain \n");
         }
         else if((*joueur).physique.race==4){
-            printf("	Race : orc \n");
+            printw("Race : orc \n");
         }
         else{
-            printf("	Race : troll \n");
+            printw("Race : troll \n");
         }
         
         m=(*joueur).physique.taille/100;
         c=(*joueur).physique.taille%100;
         
         if(c==0){
-			printf("	Taille : %i m \n", m);
+			printw("Taille : %i m \n", m);
 		}
 		else{
-			printf("	Taille : %i m %i \n", m,c);
+			printw("Taille : %i m %i \n", m,c);
 		}
         
         if((*joueur).physique.poids==1){
-			printf("	Corpulence : anorexique \n");
+			printw("Corpulence : anorexique \n");
         }
         else if((*joueur).physique.poids==2){
-            printf("	Corpulence : mince \n");
+            printw("Corpulence : mince \n");
         }
         else if((*joueur).physique.poids==3){
-            printf("	Corpulence : moyenne \n");
+            printw("Corpulence : moyenne \n");
         }
         else if((*joueur).physique.poids==4){
-            printf("	Corpulence : surpoids \n");
+            printw("Corpulence : surpoids \n");
         }
         else if((*joueur).physique.poids==5){
-            printf("	Corpulence : obèse \n");
+            printw("Corpulence : obèse \n");
         }
         else{
-            printf("	Corpulence : obèsité morbide \n");
+            printw("Corpulence : obèsité morbide \n");
         }
         
 																		//Offre la possibilité de modifier l'une des options de l'avatar
-		printf("\n	Sélectionnez l'une des options suivantes : \n");
-		printf("		1- Modifier votre pseudo \n");
-		printf("		2- Modifier votre race \n");
-		printf("		3- Modifier votre poids \n");
-		printf("		4- Modifier votre sexe \n");
-		printf("		5_ Modifier votre taille \n");
-		printf("		6- Commencez l'aventure \n");
-		printf("	Votre choix doit être compris entre 1 et 6 : ");
-		scanf("%i", &choix);
+		printw("\nSélectionnez l'une des options suivantes : \n");
+		printw("1- Modifier votre pseudo \n");
+		printw("2- Modifier votre race \n");
+		printw("3- Modifier votre poids \n");
+		printw("4- Modifier votre sexe \n");
+		printw("5_ Modifier votre taille \n");
+		printw("6- Commencez l'aventure \n");
+		printw("Votre choix doit être compris entre 1 et 6 : ");
+		scanw("%i", &choix);
 
 		switch(choix){
-			case 1 : creer_pseudo(joueur); break;
-			case 2 : race(joueur); printf("	Vous devez maintenant ajuster votre taille et votre poids. \n"); taille(joueur); poids(joueur); break;
-			case 3 : poids(joueur); break;
-			case 4 : sexe(joueur); break;
-			case 5 : taille(joueur); poids(joueur);break;
-			case 6 : break;
-			default : printf("	Veuillez saisir une valeur valide comprise entre 1 et 6. \n");
+			case '1' : creer_pseudo(joueur); break;
+			case '2' : race(joueur); printw("Vous devez maintenant ajuster votre taille et votre poids. \n"); taille(joueur); poids(joueur); initCaract(joueur); break;
+			case '3' : poids(joueur); initCaract(joueur); break;
+			case '4' : sexe(joueur); break;
+			case '5' : taille(joueur); poids(joueur); initCaract(joueur); break;
+			case '6' : break;
+			default : printw("Veuillez saisir une valeur valide comprise entre 1 et 6. \n");
 		}
 	}
 
-	printf("	Que l'aventure commence ... \n");
+	printw("Que l'aventure commence ... \n");
 }
 
 /**
@@ -694,20 +695,17 @@ void config(t_joueur *joueur){	//Fonction permettant à l'utilisateur de revenir
 void crea_ava(t_joueur *joueur,int principale,int secondaire){ //fonction contenant toutes les fonctions nécessaires à la création de l'avatar
 
 	initstruct(joueur);
-
 	creer_pseudo(joueur);
-
 	race(joueur);
-
+	clear();
 	sexe(joueur);
-
 	taille(joueur);
-
 	poids(joueur);
-
+	clear();
 	initCaract(joueur);
-
-    attribution_points(joueur,principale,secondaire);
-
-    config(joueur);
+	clear();
+    	attribution_points(joueur,principale,secondaire);
+	clear();
+    	config(joueur);
+	clear();
 }

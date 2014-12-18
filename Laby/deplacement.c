@@ -20,9 +20,16 @@ t_coordonees sorti;
 * \brief Fonction permettant l'affichage de la carte a chaque tour.
 * \param matrice[N][N] matrice ou chaque case contient soir un mur, un chemin, un joueur, un coffre ou un monstre
 **/
-void affichage(int matrice[N][N], int pvJoueur, int manaJoueur, int enduJoueur, int pvMob){
+void affichage(int matrice[N][N], int pvJoueur, int manaJoueur, int enduJoueur, int pvMob, int cpt_laby, int*parade, int*distance){
 	int i, j;
 	system("clear");
+	
+	if(cpt_laby<10){
+		printf("\r\nO=============Le=niveau=du=Labyrinthe=est=de=%i==============O\r\n", cpt_laby);
+	}
+	else{
+		printf("\r\nO=============Le=niveau=du=Labyrinthe=est=de=%i==============O\r\n", cpt_laby);
+	}
 	
 	for(i=0;i<N;i++){
 		for(j=0;j<N;j++){
@@ -37,13 +44,24 @@ void affichage(int matrice[N][N], int pvJoueur, int manaJoueur, int enduJoueur, 
 		}
 		printf("\r\n");
 	}
-	if(pvJoueur==100){	printf("PV : %i                                         PV Mob = %i \n", pvJoueur, pvMob);	}
-	else if(pvJoueur>9 && pvJoueur<100){	 printf("PV : %i                                           PV Mob = %i \n", pvJoueur, pvMob);	}
-	else if(pvJoueur<10){	 printf("PV : %i                                             PV Mob = %i \n", pvJoueur, pvMob);	}
-	printf("Mana : %i\n", manaJoueur);
-	printf("Endurance : %i \n", enduJoueur);
-	printf("\nO=====================Boite=A=Dialogue========================O\n");
-	}
+
+		if(pvJoueur==100){	printf("PV : %i                                         PV Mob = %i \r\n", pvJoueur, pvMob);	}
+		else if(pvJoueur>9 && pvJoueur<100){	 printf("PV : %i                                           PV Mob = %i \r\n", pvJoueur, pvMob);	}
+		else if(pvJoueur<10){	 printf("PV : %i                                             PV Mob = %i \r\n", pvJoueur, pvMob);	}
+		printf("Mana : %i \r\n", manaJoueur);
+		printf("Endurance : %i \r\n", enduJoueur);
+		if(*distance==1){
+			printf("distance activé");
+		}
+		else{
+			printf("distance desactivé");
+		}
+		printf("\r\nO=====================Boite=A=Dialogue========================O\r\n");
+		
+		if(*parade==1){
+			printf("\r\n         ==> Vous parez le prochain coup <== \r\n");
+		}
+}
 
 /**
 * \fn void rechercheJoueur(int matrice[N][N])
@@ -69,30 +87,39 @@ void rechercheJoueur(int matrice[N][N]){
 * \brief Fonction permettant de deplacer le joueur a chaque tour.
 * \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemin, un coffre ou un monstre
 **/
-void deplacement_perso(int matrice[N][N], int*pvMob, int*enduJoueur, t_joueur*joueur){
-		
+void deplacement_perso(int*parade, int*distance,int matrice[N][N], int*pvMob, int*enduJoueur, int*pvJoueur, int*manaJoueur, t_joueur*joueur,int pvMax){
+	
         t_coordonees tampon;
 		int x;
 		
-		initscr();
-		raw();
-		keypad(stdscr,TRUE);
-		noecho();
 		x = getch();
 		tampon.x = ma_position.x;
         tampon.y = ma_position.y;
 
 		switch(x){
+			
+			//fait bouger le joueur dans la direction voulu
 			case 'z' : ma_position.x-- ; break;
 			case 'q' : ma_position.y-- ; break;
 			case 's' : ma_position.x++ ; break;
 			case 'd' : ma_position.y++ ; break;
-			case 'h' : creer_region() ; tradRandom(matrice, region) ; break;
-			case 'i' : degatHaut(matrice, ma_position, pvMob, enduJoueur,joueur) ; break;
-			case 'j' : degatGauche(matrice, ma_position, pvMob, enduJoueur,joueur) ; break;
-			case 'k' : degatBas(matrice, ma_position, pvMob, enduJoueur,joueur) ; break;
-			case 'l' : degatDroite(matrice, ma_position, pvMob, enduJoueur,joueur) ; break;
-		}	
+			
+			//fait attaquer le joueur dans la direction voulu
+			case 'i' : degatHaut(matrice, ma_position, pvMob, enduJoueur,joueur,distance) ; break;
+			case 'j' : degatGauche(matrice, ma_position, pvMob, enduJoueur,joueur,distance) ; break;
+			case 'k' : degatBas(matrice, ma_position, pvMob, enduJoueur,joueur,distance) ; break;
+			case 'l' : degatDroite(matrice, ma_position, pvMob, enduJoueur,joueur,distance) ; break;
+			
+			//permet au joueur d'utiliser sa magie
+			case 'u' : guerison(joueur, pvJoueur, manaJoueur,pvMax) ; break;
+			case 'o' : destruction(matrice, ma_position,pvMob, joueur, manaJoueur) ; break;
+			
+			//commande secondaire du joueur
+			case ' ' : *parade=1 ; *distance=0 ; break;
+			case 'n' : *parade=0 ; *distance=1 ; break;
+		}
+		
+		//empeche le joueur de marcher sur les murs ou sur le mob, et libère le chemin derrière lui
 		if(matrice[ma_position.x][ma_position.y] == MUR){
 			ma_position.x = tampon.x;
 			ma_position.y = tampon.y;
@@ -104,9 +131,8 @@ void deplacement_perso(int matrice[N][N], int*pvMob, int*enduJoueur, t_joueur*jo
 		else{
 			matrice[tampon.x][tampon.y] = CHEMIN;
 			matrice[ma_position.x][ma_position.y]=JOUEUR;
-		}
-		refresh();
-		endwin(); 	        
+		}	
+		refresh();      
 }
 
 /**
@@ -138,8 +164,12 @@ void jouer(){
 
 int main(){
 	srand(time(NULL));
+	initscr();
+	raw();
+	keypad(stdscr,TRUE);
 	init_monde();
 	jouer();
+	endwin();
 	return EXIT_SUCCESS;
 	
 }

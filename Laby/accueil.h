@@ -13,6 +13,7 @@
 void ecran_accueil();
 void Option_jeu(int matrice[N][N]);
 void Option_jeu_2(int matrice[N][N]);
+void Option_jeu_3(int matrice[N][N]);
 void Menu_Jeu(int matrice[N][N]);
 void Quitter_Jeu();
 void Nouvelle_Partie(int matrice[N][N]);

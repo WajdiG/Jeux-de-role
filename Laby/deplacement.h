@@ -13,9 +13,9 @@
 
 typedef struct {int x,y;}t_coordonees;
 
-void affichage(int matrice[N][N], int pvJoueur, int manaJoueur, int enduJoueur, int pvMob);
+void affichage(int matrice[N][N], int pvJoueur, int manaJoueur, int enduJoueur, int pvMob, int cpt_laby, int*parade, int*distance);
 void rechercheJoueur(int matrice[N][N]);
-void deplacement_perso(int matrice[N][N], int*pvMob, int*enduJoueur, t_joueur*joueur);
+void deplacement_perso(int*parade, int*distance,int matrice[N][N], int*pvMob, int*enduJoueur, int*pvJoueur, int*manaJoueur, t_joueur*joueur, int pvMax);
 int coffre(int matrice[N][N]);
 void jouer();
 

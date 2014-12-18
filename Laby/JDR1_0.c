@@ -15,6 +15,15 @@
 #include "IA.h"
 #include "region.h"
 #include "JDR1_0.h"
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<time.h>
+#include<assert.h>
+#include<ncurses.h>
+#include"IA.h"
+#include"region.h"
+#include"JDR1_0.h"
 #include "accueil.h"
 
 
@@ -31,83 +40,82 @@ t_statcombat statcombat;
 */
 void afficher_joueur(){
 	
-	printf("\n	Voici vos niveaux de compétences principales actuels : \n");
-	printf("		Rapidité : %i \n", joueur.comp.rapidite);
-	printf("		Agilité : %i \n", joueur.comp.agilite);
-	printf("		Force : %i \n", joueur.comp.force);
-	printf("		Puissance : %i \n", joueur.comp.puissance);
-	printf("		Intelligence : %i \n", joueur.comp.intelligence);
-	printf("		Perception : %i \n", joueur.comp.perception);
-	printf("		Chance : %i \n", joueur.comp.chance);
-	printf("	Compétences de combat : \n");
-	printf("		Archerie : %i \n", joueur.combat.archerie);
-	printf("		Précision : %i \n", joueur.combat.precision);
-	printf("		Une main : %i \n", joueur.combat.unemain);
-	printf("		Deux mains : %i \n", joueur.combat.deuxmains);
-	printf("		Lance : %i \n", joueur.combat.lance);
-	printf("		Contondant : %i \n", joueur.combat.contondant);
-	printf("		Parade : %i \n", joueur.combat.parade);
-	printf("		Armure légère : %i \n", joueur.combat.armureleg);
-	printf("		Armure lourde : %i \n", joueur.combat.armurelou);
-	printf("\n	Compétences de furtivité : \n");
-	printf(" 		Crochetage : %i \n", joueur.furtif.crochetage);
-	printf("		Discretion : %i \n", joueur.furtif.discretion);
-	printf("		Dague : %i \n", joueur.furtif.dague);
-	printf("		Acrobatie : %i \n", joueur.furtif.acrobatie);
-	printf("\n	Compétences de dialogue : \n");
-	printf("		Charisme : %i \n", joueur.dial.charisme);
-	printf("		Persuasion : %i \n", joueur.dial.persuasion);
-	printf("		Marchandage : %i \n", joueur.dial.marchandage);
-	printf("\n	Compétences de magie : \n");
-	printf("		Destruction : %i \n", joueur.magie.destruction);
-	printf("		Guérison : %i \n", joueur.magie.guerison);
-	printf("		Invocation : %i \n", joueur.magie.invocation);
-			
-	printf("	Pseudo : %s \n", joueur.pseudo);
+	printw("\nVoici vos niveaux de compétences principales actuels : \n");
+	printw("	Rapidité : %i \n", joueur.comp.rapidite);
+	printw("	Agilité : %i \n", joueur.comp.agilite);
+	printw("	Force : %i \n", joueur.comp.force);
+	printw("	Puissance : %i \n", joueur.comp.puissance);
+	printw("	Intelligence : %i \n", joueur.comp.intelligence);
+	printw("	Perception : %i \n", joueur.comp.perception);
+	printw("	Chance : %i \n", joueur.comp.chance);
+	printw("Compétences de combat : \n");
+	printw("	Archerie : %i \n", joueur.combat.archerie);
+	printw("	Précision : %i \n", joueur.combat.precision);
+	printw("	Une main : %i \n", joueur.combat.unemain);
+	printw("	Deux mains : %i \n", joueur.combat.deuxmains);
+	printw("	Lance : %i \n", joueur.combat.lance);
+	printw("	Contondant : %i \n", joueur.combat.contondant);
+	printw("	Parade : %i \n", joueur.combat.parade);
+	printw("	Armure légère : %i \n", joueur.combat.armureleg);
+	printw("	Armure lourde : %i \n", joueur.combat.armurelou);
+	printw("\nCompétences de furtivité : \n");
+	printw(" 	Crochetage : %i \n", joueur.furtif.crochetage);
+	printw("	Discretion : %i \n", joueur.furtif.discretion);
+	printw("	Dague : %i \n", joueur.furtif.dague);
+	printw("	Acrobatie : %i \n", joueur.furtif.acrobatie);
+	printw("\nCompétences de dialogue : \n");
+	printw("	Charisme : %i \n", joueur.dial.charisme);
+	printw("	Persuasion : %i \n", joueur.dial.persuasion);
+	printw("	Marchandage : %i \n", joueur.dial.marchandage);
+	printw("\nCompétences de magie : \n");
+	printw("	Destruction : %i \n", joueur.magie.destruction);
+	printw("	Guérison : %i \n", joueur.magie.guerison);
+	printw("	Invocation : %i \n", joueur.magie.invocation);			
+	printw("Pseudo : %s \n", joueur.pseudo);
 	
 	if(joueur.physique.race==1){
-		printf("	Race : elfe \n");
+		printw("Race : elfe \n");
 	}
 	else if(joueur.physique.race==2){
-		printf("	Race : humain \n");
+		printw("Race : humain \n");
 	}
 	else if(joueur.physique.race==3){
-		printf("	Race : nain \n");
+		printw("Race : nain \n");
 	}
 	else if(joueur.physique.race==4){
-		printf("	Race : orc \n");
+		printw("Race : orc \n");
 	}
 	else{
-		printf("	Race : troll \n");
+		printw("Race : troll \n");
 	}
 	
 	int m=joueur.physique.taille/100;
 	int c=joueur.physique.taille%100;
 	
 	if(c==0){
-		printf("	Taille : %i m \n", m);
+		printw("Taille : %i m \n", m);
 	}
 	else{
-		printf("	Taille : %i m %i \n", m,c);
+		printw("Taille : %i m %i \n",m,c);
 	}
 	
 	if(joueur.physique.poids==1){
-		printf("	Corpulence : anorexique \n");
+		printw("Corpulence : anorexique \n");
 	}
 	else if(joueur.physique.poids==2){
-		printf("	Corpulence : mince \n");
+		printw("Corpulence : mince \n");
 	}
 	else if(joueur.physique.poids==3){
-		printf("	Corpulence : moyenne \n");
+		printw("Corpulence : moyenne \n");
 	}
 	else if(joueur.physique.poids==4){
-		printf("	Corpulence : surpoids \n");
+		printw("Corpulence : surpoids \n");
 	}
 	else if(joueur.physique.poids==5){
-		printf("	Corpulence : obèse \n");
+		printw("Corpulence : obèse \n");
 	}
 	else{
-		printf("	Corpulence : obèsité morbide \n");
+		printw("Corpulence : obèsité morbide \n");
 	}
 }
 
@@ -117,33 +125,28 @@ void nouvelle_partie(int matrice[N][N]){
     int secondaire=1;
 	
 	crea_ava(&joueur,principale,secondaire);
-	printf("1\n");
 	creer_region();
-	printf("2\n");
 	tradRandom(matrice, region);
-	printf("3\n");
 	inclure_region(coord);
-	printf("4\n");
-	crea_file();
-	printf("5\n");
+	crea_file(joueur, coord, joueur.pseudo, monde);
+	
 	while(choix!=4&&choix!=3){
-		
-		printf("\n	Entrez le nombre entier correspondant à votre choix : \n");
-		printf("		0- Afficher la region dans laquelle vous vous trouvez \n");
-		printf("		1- Continuer \n");
-		printf("		2- Sauvegarder \n");
-		printf("		3- Sauvegarder et quitter \n");
-		printf("		4- Quittez sans sauvegarder \n");
-		printf("		Votre choix : ");
-		scanf(" %i",&choix);
+		printw("\n Entrez le nombre entier correspondant à votre choix : \n");
+		printw("0- Afficher la region dans laquelle vous vous trouvez \n");
+		printw("1- Continuer \n");
+		printw("2- Sauvegarder \n");
+		printw("3- Sauvegarder et quitter \n");
+		printw("4- Quittez sans sauvegarder \n");
+		printw("Votre choix :");
+		scanw("%i", &choix);
 	
 		switch(choix){
-			case 0 : aff_region_monde(); break;
+			case 0 : clear(); aff_region_monde(); break;
 			case 1 : continuer(matrice); deplacement_monde(); creer_region(); tradRandom(matrice, region); inclure_region(coord);break;
-			case 2 : crea_file(); break;
-			case 3 : crea_file(); break;
+			case 2 : crea_file(joueur, coord, joueur.pseudo, monde); break;
+			case 3 : crea_file(joueur, coord, joueur.pseudo, monde); break;
 			case 4 : break;
-			default : printf("	Veuillez saisir une valeur entière comprise entre 0 et 4. \n");
+			default : printw("Veuillez saisir une valeur entière comprise entre 0 et 4. \n");
 		}	
 	}
 }
@@ -155,23 +158,24 @@ void charger_par(int matrice[N][N]){
 	
 	if(i==1){
 		while(choix!=4){
-			printf("\n	Entrez le nombre entier correspondant à votre choix : \n");
-			printf(" 		0- afficher la region dans laquelle vous vous trouvez \n");
-			printf(" 		1- Afficher les caractéristiques de l'avatar \n ");
-			printf("		2- Vous déplacer dans le monde \n ");
-			printf("		3- Afficher la position courante dans le monde \n ");
-			printf("		4- Sauvegarder et retour à l'accueil \n ");
-			printf("		Votre choix :");
-			scanf("  %i",&choix);
-			
-			switch(choix){
-				case 0 : aff_region_monde(); break;
-				case 1 : afficher_joueur();break;
-				case 2 : deplacement_monde(); creer_region(); tradRandom(matrice, region); inclure_region(coord); break;
-				case 3 : aff_monde(); break;
-				case 4 : crea_file(); break;
-				default : printf("	Veuillez saisir une valeur entière comprise entre 0 et 4. \n");
-			}
+
+				printw("\n Entrez le nombre entier correspondant à votre choix : \n");
+				printw(" 0- afficher la region dans laquelle vous vous trouvez \n");
+				printw(" 1- Afficher les caractéristiques de l'avatar \n ");
+				printw("2- Vous déplacer dans le monde \n ");
+				printw("3- Afficher la position courante dans le monde \n ");
+				printw("4- Sauvegarder et retour à l'accueil \n ");
+				printw("Votre choix :");
+				scanw("%i", &choix);
+				
+				switch(choix){
+					case 0 : clear(); aff_region_monde(); break;
+					case 1 : clear(); afficher_joueur();break;
+					case 2 : continuer(matrice); deplacement_monde(); creer_region(); tradRandom(matrice, region); inclure_region(coord); break;
+					case 3 : clear(); aff_monde(); break;
+					case 4 : crea_file(joueur, coord, joueur.pseudo, monde); break;
+					default : printw("Veuillez saisir une valeur entière comprise entre 0 et 4. \n");
+				}
 		}
 	}
 	else{
@@ -203,8 +207,7 @@ int main(){
 			case 4 : break;
 			default : printf("Veuillez saisir une valeur entière comprise entre 1 et 4. \n");
 		}
+		printw("\n Ce fichier n'existe pas, si vous n'avez pas créer de partie, retournez à l'accueil du jeu. Sinon, réessayez. \n");
+
 	}
-	
-	return EXIT_SUCCESS;
-}
-*/
+}*/
