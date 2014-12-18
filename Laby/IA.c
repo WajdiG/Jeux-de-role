@@ -8,7 +8,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-//#include <ncurses.h>
+#include <ncurses.h>
 #include <time.h>
 #include <assert.h>
 #include "accueil.h"
@@ -64,28 +64,28 @@ void tradVision(int matrice[N][N]){
 void affVision2(int matrice[N][N]){
 	int cptx=0;
 	int cpty=0;
-	system("clear");
+	clear();
 	
 	for(cptx=0;cptx<N;cptx++){
-		printf("\n");
+		printw("\n");
 		for(cpty=0;cpty<N;cpty++){
 		        switch(matrice[cptx][cpty]){
-		            case(-8) : printf("|-|"); break;
-		            case(-1) : printf("   "); break;
-		            case(-2) : printf("*_*"); break;
-		            case(-3) : printf("[C]"); break;
-		            case(-4) : printf(" X "); break;
-		            case(0) : printf(">_<"); break;
+		            case(-8) : printw("|-|"); break;
+		            case(-1) : printw("   "); break;
+		            case(-2) : printw("*_*"); break;
+		            case(-3) : printw("[C]"); break;
+		            case(-4) : printw(" X "); break;
+		            case(0) : printw(">_<"); break;
 		        }
             		if(matrice[cptx][cpty]>0 && matrice[cptx][cpty]<=9){
-				printf(" %i ", matrice[cptx][cpty]);
+				printw(" %i ", matrice[cptx][cpty]);
 			}
 			else if(matrice[cptx][cpty]>9){
-				printf(" %i", matrice[cptx][cpty]);
+				printw(" %i", matrice[cptx][cpty]);
 			}
 		}
 	}
-	printf("\n");
+	printw("\n");
 }
 
 void affVision(int matrice[N][N]){
@@ -93,20 +93,20 @@ void affVision(int matrice[N][N]){
 	int cpty=0;
 
 	for(cptx=0;cptx<N;cptx++){
-		printf("\n");
+		printw("\n");
 		for(cpty=0;cpty<N;cpty++){
 			if(matrice[cptx][cpty]>=0 && matrice[cptx][cpty]<=9){
-				printf(" %i ", matrice[cptx][cpty]);
+				printw(" %i ", matrice[cptx][cpty]);
 			}
 			else if(matrice[cptx][cpty]>9){
-				printf(" %i", matrice[cptx][cpty]);
+				printw(" %i", matrice[cptx][cpty]);
 			}
 			else{
-				printf("%i ", matrice[cptx][cpty]);
+				printw("%i ", matrice[cptx][cpty]);
 			}
 		}
 	}
-	printf("\n");
+	printw("\n");
 }
 
 void trouverMob(int *mobx, int *moby){
@@ -214,8 +214,8 @@ int MobNextToJoueur(){
 			}
 		}
 	}
-	printf("joueur : %i %i \n", Jx, Jy);
-	printf("mob : %i %i \n", mobx, moby);
+	//printw("joueur : %i %i \n", Jx, Jy);
+	//printw("mob : %i %i \n", mobx, moby);
 
 	if(moby==Jy+1 && mobx==Jx){
 		return 1;

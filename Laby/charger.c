@@ -9,7 +9,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-
+#include<ncurses.h>
 #include "charger.h"
 
 
@@ -180,8 +180,8 @@ void charger_jeu(t_joueur *joueur,t_coord *coord,char ** monde[X][Y],FILE*fichie
 int charger_partie(char* charger,t_joueur* joueur,t_coord *coord, char ** monde[X][Y]){
 	FILE*fichier;
 	
-	printf("Quel est votre pseudo dans la partie que vous souhaitez charger ? : ");
-	scanf("%s",charger);
+	printw("Quel est votre pseudo dans la partie que vous souhaitez charger ? : ");
+	scanw("%s",charger);
 	
 	fichier=fopen(charger,"r");
 	
@@ -190,6 +190,6 @@ int charger_partie(char* charger,t_joueur* joueur,t_coord *coord, char ** monde[
 		strcpy(joueur->pseudo,charger);
 		return 1;
 	}
-	printf("Aucun ficher de sauvegarder existant pour ce pseudo. Vous pouvez commencer une nouvelle partie ou réessayer. \n");
+	printw("Aucun ficher de sauvegarder existant pour ce pseudo. Vous pouvez commencer une nouvelle partie ou réessayer. \n");
 	return 0;
 }

@@ -10,6 +10,7 @@
 #include<stdlib.h>
 #include<time.h>
 #include<assert.h>
+#include<ncurses.h>
 #include "pile_tab.h"
 #include "region.h"
 #define N 20
@@ -44,9 +45,9 @@ void aff_region(){
 	int i,j;
 	for(i=0;i<N;i++){
 		for(j=0;j<N;j++){
-			printf("%c",region[i][j]);
+			printw("%c",region[i][j]);
 		}
-		printf("\n");
+		printw("\n");
 	}
 }
 
