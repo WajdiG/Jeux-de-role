@@ -120,6 +120,7 @@ int main(){
 	initscr();
 	raw();
 	keypad(stdscr,TRUE);
+	noecho();
 	init_monde();
 	jouer();
 	endwin();

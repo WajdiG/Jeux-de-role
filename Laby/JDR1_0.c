@@ -120,7 +120,7 @@ void nouvelle_partie(int matrice[N][N]){
 	creer_region();
 	tradRandom(matrice, region);
 	inclure_region(coord);
-	crea_file();
+	crea_file(joueur, coord, joueur.pseudo, monde);
 	
 	while(choix!=4&&choix!=3){
 		
@@ -136,8 +136,8 @@ void nouvelle_partie(int matrice[N][N]){
 		switch(choix){
 			case 0 : clear(); aff_region_monde(); break;
 			case 1 : continuer(matrice); deplacement_monde(); creer_region(); tradRandom(matrice, region); inclure_region(coord);break;
-			case 2 : crea_file(); break;
-			case 3 : crea_file(); break;
+			case 2 : crea_file(joueur, coord, joueur.pseudo, monde); break;
+			case 3 : crea_file(joueur, coord, joueur.pseudo, monde); break;
 			case 4 : break;
 			default : printw("Veuillez saisir une valeur entière comprise entre 0 et 4. \n");
 		}	
@@ -165,7 +165,7 @@ void charger_par(int matrice[N][N]){
 				case 1 : clear(); afficher_joueur();break;
 				case 2 : continuer(matrice); deplacement_monde(); creer_region(); tradRandom(matrice, region); inclure_region(coord); break;
 				case 3 : clear(); aff_monde(); break;
-				case 4 : crea_file(); break;
+				case 4 : crea_file(joueur, coord, joueur.pseudo, monde); break;
 				default : printw("Veuillez saisir une valeur entière comprise entre 0 et 4. \n");
 			}
 		}

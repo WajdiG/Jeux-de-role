@@ -19,6 +19,10 @@ int quitter = 0;
 extern t_coordonees ma_position;
 extern t_coordonees sorti;
 
+/**
+* \fn void ecran_accueil()
+* \brief Fonction d'affichage de l'ecran d'accueil du jeu.
+**/
 void ecran_accueil(){
 	char verif = 'a';
 	clear();
@@ -253,7 +257,7 @@ void continuer(int matrice[N][N]){
 		VD=IA(matrice);
 		if(VD==1){
 			defeat(matrice);
-			quitter=0;
+			break;
 		}
 		else {
 			if(coffre(matrice)){

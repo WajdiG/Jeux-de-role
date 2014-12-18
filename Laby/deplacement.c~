@@ -23,7 +23,6 @@ t_coordonees sorti;
 void affichage(int matrice[N][N]){
 	int i, j;
 	system("clear");
-	
 	for(i=0;i<N;i++){
 		for(j=0;j<N;j++){
                 switch(matrice[i][j]){
@@ -37,7 +36,6 @@ void affichage(int matrice[N][N]){
 		}
 		printf("\r\n");
 	}
-	printf("\n\n\n\n\n\n\n\n\n\n\n");
 }
 
 /**
@@ -66,27 +64,18 @@ void rechercheJoueur(int matrice[N][N]){
 **/
 void deplacement_perso(int matrice[N][N], int*pvMob){
 		
-        	t_coordonees tampon;
+        t_coordonees tampon;
 		int x;
 		
-		initscr();
-		raw();
-		keypad(stdscr,TRUE);
-		noecho();
 		x = getch();
 		tampon.x = ma_position.x;
-        	tampon.y = ma_position.y;
-    		//scanf(" %c", &direction);
+        tampon.y = ma_position.y;
 		switch(x){
 			case 'z' : ma_position.x-- ; break;
 			case 'q' : ma_position.y-- ; break;
 			case 's' : ma_position.x++ ; break;
 			case 'd' : ma_position.y++ ; break;
 			case 'h' : creer_region() ; tradRandom(matrice, region) ; break;
-			/*case 'i' : degatHaut(matrice, ma_position, pvMob) ; break;
-			case 'j' : degatGauche() ; break;
-			case 'k' : degatBas() ; break;
-			case 'l' :degatDroite() ; break;*/
 		}	
 		if(matrice[ma_position.x][ma_position.y] == MUR){
 			ma_position.x = tampon.x;
@@ -95,9 +84,8 @@ void deplacement_perso(int matrice[N][N], int*pvMob){
 		else{
 			matrice[tampon.x][tampon.y] = CHEMIN;
 			matrice[ma_position.x][ma_position.y]=JOUEUR;
-		}
-		refresh();
-		endwin(); 	        
+		}	
+		refresh();        
 }
 
 /**
@@ -129,8 +117,13 @@ void jouer(){
 
 int main(){
 	srand(time(NULL));
+	initscr();
+	raw();
+	keypad(stdscr,TRUE);
+	noecho();
 	init_monde();
 	jouer();
+	endwin();
 	return EXIT_SUCCESS;
 	
 }

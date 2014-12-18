@@ -695,21 +695,18 @@ void config(t_joueur *joueur){	//Fonction permettant à l'utilisateur de revenir
 void crea_ava(t_joueur *joueur,int principale,int secondaire){ //fonction contenant toutes les fonctions nécessaires à la création de l'avatar
 
 	initstruct(joueur);
-
+	echo();
 	creer_pseudo(joueur);
-
 	race(joueur);
 	clear();
 	sexe(joueur);
-
 	taille(joueur);
-
 	poids(joueur);
 	clear();
 	initCaract(joueur);
 	clear();
-    attribution_points(joueur,principale,secondaire);
+    	attribution_points(joueur,principale,secondaire);
 	clear();
-    config(joueur);
+    	config(joueur);
 	clear();
 }
