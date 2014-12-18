@@ -1,4 +1,3 @@
-
 #ifndef __JDR1_0_H__
 #define __JDR1_0_H__
 

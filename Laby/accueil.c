@@ -16,8 +16,11 @@
 #include "IA.h"
 
 int quitter = 0;
+int cpt_laby=0;
+extern t_joueur joueur;
 extern t_coordonees ma_position;
 extern t_coordonees sorti;
+extern t_statcombat statcombat;
 
 void ecran_accueil(){
 	char verif = 'a';
@@ -72,8 +75,8 @@ void Option_jeu(int matrice[N][N]){
 	printf("        |||                                                                                              |||   \n");
 	printf("        |||   |============|  |============|  |============|        |============|    |============|     |||   \n");
 	printf("        |||   |Q           |  | S          |  |D           |        |    -4-     |    |    -5-     |     |||   \n");
-	printf("        |||   |   pour     |  |   pour     |  |   pour     |        |Option      |    |Retour      |     |||   \n");
-	printf("        |||   |   la Gauche|  |   Descendre|  |   La Droite|        |      de jeu|    |    au  Menu|     |||   \n");
+	printf("        |||   |   pour     |  |   pour     |  |   pour     |        |page        |    |Retour      |     |||   \n");
+	printf("        |||   |   la Gauche|  |   Descendre|  |   La Droite|        |    suivante|    |    au  Menu|     |||   \n");
 	printf("        |||   |============|  |============|  |============|        |============|    |============|     |||   \n");
 	printf("        |||                                                                                              |||   \n");
 	printf("        |||                             |================================|                               |||   \n");
@@ -84,14 +87,16 @@ void Option_jeu(int matrice[N][N]){
 	printf("                                  \\______________|====O    O====|______________/                              \n");
 	printf("\n");
 
-	while(verif!=5){
-		scanf(" %i", &verif);
+	scanf("%i", &verif);
+	switch(verif){
+		case 4 : Option_jeu_2(matrice); break;
+		case 5 : Menu_Jeu(matrice); break;
 	}
 	Menu_Jeu(matrice);
 }
-/*
-void Nouvelle_Partie(int matrice[N][N]){
-	int verif=0;
+
+void Option_jeu_2(int matrice[N][N]){
+	int verif = 0;
 	system("clear");
 	printf("\n");
 	printf("\n");
@@ -103,27 +108,19 @@ void Nouvelle_Partie(int matrice[N][N]){
 	printf("        /H\\                                                                                              /H\\ \n");
 	printf("       <HUH>            _______TOULMONDE_Joris-THIEULART_Godefroy-GUEDOUAR_Wajdi________                <HUH>  \n");
 	printf("        |||                                                                                              |||   \n");
+	printf("        |||                                        ______________________________________________        |||   \n");
+	printf("        |||                                       //                                            \\\\       ||| \n");
+	printf("        |||                   |============|      H    IIII  IIII  IIIIII IIII  IIII  III   II   H       |||   \n");
+	printf("        |||                   |I           |      H   II  II II II   II    II  II  II IIII  II   H       |||   \n");
+	printf("        |||                   | pour taper |      H   II  II IIII    II    II  II  II II II II   H       |||   \n");
+	printf("        |||                   |     en haut|      H   II  II II      II    II  II  II II  IIII   H       |||   \n");
+	printf("        |||                   |============|      U    IIII  II      II   IIII  IIII  II   III   U       |||   \n");
 	printf("        |||                                                                                              |||   \n");
-	printf("        |||       III    II  IIII  II  II II   II IIIIII II   II   IIIIII                                |||   \n");
-	printf("        |||       IIII   II II  II II  II II   II II     II   II   II                                    |||   \n");
-	printf("        |||       II II  II II  II II  II  II II  IIII   II   II   IIII                                  |||   \n");
-	printf("        |||       II   IIII II  II II  II   III   II     II   II   II                                    |||   \n");
-	printf("        |||       II    III  IIII   IIII     I    IIIIII IIII IIII IIIIII                                |||   \n");
-	printf("        |||                                                                                              |||   \n");
-	printf("        |||       ================================================================================       |||   \n");
-	printf("        |||                                                                                              |||   \n");
-	printf("        |||                                                  IIII   IIII  IIII  IIIIII IIII IIIIII       |||   \n");
-	printf("        |||                                                  II II II  II II II   II    II  II           |||   \n");
-	printf("        |||                                                  IIII  IIIIII IIII    II    II  IIII         |||   \n");
-	printf("        |||                                                  II    II  II III     II    II  II           |||   \n");
-	printf("        |||                                                  II    II  II II II   II   IIII IIIIII       |||   \n");
-	printf("        |||                                                                                              |||   \n");
-	printf("        |||                                                                           |============|     |||   \n");
-	printf("        |||       1                                                                   |    -5-     |     |||   \n");
-	printf("        |||                                                                           |Quitter     |     |||   \n");
-	printf("        |||                                                                           |     le menu|     |||   \n");
-	printf("        |||                                                                           |============|     |||   \n");
-	printf("        |||                                                                                              |||   \n");
+	printf("        |||   |============|  |============|  |============|        |============|    |============|     |||   \n");
+	printf("        |||   |J           |  | K          |  |L           |        |    -4-     |    |    -5-     |     |||   \n");
+	printf("        |||   | pour taper |  | pour taper |  | pour tapper|        |page        |    |Retour      |     |||   \n");
+	printf("        |||   |    a Gauche|  |      en bas|  |    a Droite|        |  precedente|    |    au  Menu|     |||   \n");
+	printf("        |||   |============|  |============|  |============|        |============|    |============|     |||   \n");
 	printf("        |||                                                                                              |||   \n");
 	printf("        |||                             |================================|                               |||   \n");
 	printf("        |||                             |            VEUILLEZ            |                               |||   \n");
@@ -132,17 +129,15 @@ void Nouvelle_Partie(int matrice[N][N]){
 	printf("         V                        ______|================================|______                          V    \n");
 	printf("                                  \\______________|====O    O====|______________/                              \n");
 	printf("\n");
-	
-	while(verif<=0 || verif>5){
-		scanf(" %i", &verif);
-	}
+
+	scanf("%i", &verif);
 	switch(verif){
-		case 1 : nouvelle_partie(matrice); break;
+		case 4 : Option_jeu(matrice); break;
 		case 5 : Menu_Jeu(matrice); break;
-		default : printf("Recommence gros nul");
 	}
+	Menu_Jeu(matrice);
 }
-*/
+
 void Menu_Jeu(int matrice[N][N]){
 	int verif=-1;
 	system("clear");
@@ -294,31 +289,61 @@ void victory(int matrice[N][N]){
 }
 
 void continuer(int matrice[N][N]){
+	int pvJoueur=joueur.vie.sante;
+	int manaJoueur=joueur.vie.mana;
+	int enduJoueur=joueur.vie.endu;
+	int pvMob=30;
+	int cptx, cpty;
 	
-	int VD=-1;
-	int pvMob=100;
 	rechercheJoueur(matrice);
 	sorti=ma_position;
+	affichage(matrice, pvJoueur, manaJoueur, enduJoueur, pvMob);
+		
 	while(matrice[ma_position.x][ma_position.y] != OBJECTIF && quitter != 1){
-			
-		rechercheJoueur(matrice);
-		affichage(matrice);
-		deplacement_perso(matrice, &pvMob);
-		VD=IA(matrice);
-		if(VD==1){
+		
+		if(pvMob>0){
+				IA(matrice, &pvJoueur);
+				affichage(matrice, pvJoueur, manaJoueur, enduJoueur, pvMob);
+		}
+		else if(pvMob<=0){
+			for(cptx=0 ; cptx<N ; cptx++){
+				for(cpty=0 ; cpty<N ; cpty++){
+					if(matrice[cptx][cpty]==MOB){
+						matrice[cptx][cpty]=CHEMIN;
+						break;
+					}
+				}
+			}
+			printf("\n               ==> Vous avez tue le mob <==               \n");
+		}
+		deplacement_perso(matrice, &pvMob, &enduJoueur, &joueur);
+		affichage(matrice, pvJoueur, manaJoueur, enduJoueur, pvMob);
+		
+		if(coffre(matrice) && pvMob<=0){
+			printf("\n         ==> La porte de sortie est deverouillée <==         \n");
+			matrice[sorti.x][sorti.y] = OBJECTIF;
+		}
+		if(enduJoueur<100){
+			enduJoueur+=3;
+		}
+		if(enduJoueur<0){
+			enduJoueur=0;
+		}
+		if(pvJoueur<=0){
 			defeat(matrice);
-			quitter=0;
-			//break;
+			statcombat.defaite++;
+			break;
 		}
-		else {
-			if(coffre(matrice)){
-				matrice[sorti.x][sorti.y] = OBJECTIF;
-			}		
-			affichage(matrice);
-		}
+
 	}
-	if(VD==0){
-		victory(matrice);
-		//quitter=0;
+	victory(matrice);
+	statcombat.victoire++;
+	cpt_laby++;
+	
+	if((cpt_laby%2)==0){
+		attribution_points(&joueur, 0, 1);
+	}
+	else if((cpt_laby%5)==0){
+		attribution_points(&joueur, 1, 0);
 	}
 }

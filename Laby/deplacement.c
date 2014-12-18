@@ -20,7 +20,7 @@ t_coordonees sorti;
 * \brief Fonction permettant l'affichage de la carte a chaque tour.
 * \param matrice[N][N] matrice ou chaque case contient soir un mur, un chemin, un joueur, un coffre ou un monstre
 **/
-void affichage(int matrice[N][N]){
+void affichage(int matrice[N][N], int pvJoueur, int manaJoueur, int enduJoueur, int pvMob){
 	int i, j;
 	system("clear");
 	
@@ -37,8 +37,13 @@ void affichage(int matrice[N][N]){
 		}
 		printf("\r\n");
 	}
-	printf("\n\n\n\n\n\n\n\n\n\n\n");
-}
+	if(pvJoueur==100){	printf("PV : %i                                         PV Mob = %i \n", pvJoueur, pvMob);	}
+	else if(pvJoueur>9 && pvJoueur<100){	 printf("PV : %i                                           PV Mob = %i \n", pvJoueur, pvMob);	}
+	else if(pvJoueur<10){	 printf("PV : %i                                             PV Mob = %i \n", pvJoueur, pvMob);	}
+	printf("Mana : %i\n", manaJoueur);
+	printf("Endurance : %i \n", enduJoueur);
+	printf("\nO=====================Boite=A=Dialogue========================O\n");
+	}
 
 /**
 * \fn void rechercheJoueur(int matrice[N][N])
@@ -64,9 +69,9 @@ void rechercheJoueur(int matrice[N][N]){
 * \brief Fonction permettant de deplacer le joueur a chaque tour.
 * \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemin, un coffre ou un monstre
 **/
-void deplacement_perso(int matrice[N][N], int*pvMob){
+void deplacement_perso(int matrice[N][N], int*pvMob, int*enduJoueur, t_joueur*joueur){
 		
-        	t_coordonees tampon;
+        t_coordonees tampon;
 		int x;
 		
 		initscr();
@@ -75,20 +80,24 @@ void deplacement_perso(int matrice[N][N], int*pvMob){
 		noecho();
 		x = getch();
 		tampon.x = ma_position.x;
-        	tampon.y = ma_position.y;
-    		//scanf(" %c", &direction);
+        tampon.y = ma_position.y;
+
 		switch(x){
 			case 'z' : ma_position.x-- ; break;
 			case 'q' : ma_position.y-- ; break;
 			case 's' : ma_position.x++ ; break;
 			case 'd' : ma_position.y++ ; break;
 			case 'h' : creer_region() ; tradRandom(matrice, region) ; break;
-			/*case 'i' : degatHaut(matrice, ma_position, pvMob) ; break;
-			case 'j' : degatGauche() ; break;
-			case 'k' : degatBas() ; break;
-			case 'l' :degatDroite() ; break;*/
+			case 'i' : degatHaut(matrice, ma_position, pvMob, enduJoueur,joueur) ; break;
+			case 'j' : degatGauche(matrice, ma_position, pvMob, enduJoueur,joueur) ; break;
+			case 'k' : degatBas(matrice, ma_position, pvMob, enduJoueur,joueur) ; break;
+			case 'l' : degatDroite(matrice, ma_position, pvMob, enduJoueur,joueur) ; break;
 		}	
 		if(matrice[ma_position.x][ma_position.y] == MUR){
+			ma_position.x = tampon.x;
+			ma_position.y = tampon.y;
+		}
+		else if(matrice[ma_position.x][ma_position.y] == MOB){
 			ma_position.x = tampon.x;
 			ma_position.y = tampon.y;
 		}
