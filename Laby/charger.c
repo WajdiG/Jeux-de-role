@@ -185,11 +185,13 @@ int charger_partie(char* charger,t_joueur* joueur,t_coord *coord, char ** monde[
 	
 	fichier=fopen(charger,"r");
 	
+	//si le fichier existe
 	if(fichier!=NULL){
 		charger_jeu(joueur, coord, monde, fichier);
 		strcpy(joueur->pseudo,charger);
 		return 1;
 	}
+	
 	printw("Aucun ficher de sauvegarder existant pour ce pseudo. Vous pouvez commencer une nouvelle partie ou réessayer. \n");
 	return 0;
 }
