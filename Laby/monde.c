@@ -17,7 +17,7 @@
 extern char region[N][N]; //une region du monde
 char ** monde[X][Y]; //le monde
 
-t_coord coord={0,0};
+t_coord coord={0,0}; //coordonnées du joueur dans le monde
 
 /**
  *\fn init_monde(void)
@@ -292,17 +292,19 @@ void deplacement_case_monde(t_coord *coord){
 void aff_monde(){
 	
 	int a,b;
-	char mat[X][Y];
+	char mat[X][Y]; //matrice répresantant la matrice monde à l'écran
 	
+	//initialise la matrice mat de façon a la faire correspondre à la matrice monde
 	for(a=0;a<X;a++){
 		for(b=0;b<Y;b++){
 			mat[a][b]='X';
 		}
 	}
-	mat[coord.x][coord.y]='P';
+	mat[coord.x][coord.y]='P'; //représente le joueur dans la matrice mat en fonction de ses coordonnées dans le monde
 	
 	printw("Vous êtes représenté par la lettre P, voici votre position dans la monde : \n");
 	
+	//affiche à l'écran la matrice mat
 	for(a=0;a<X;a++){
 		for(b=0;b<Y;b++){
 			printw("%c ", mat[a][b]);
