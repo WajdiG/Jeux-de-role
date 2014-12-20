@@ -692,8 +692,9 @@ void config(t_joueur *joueur){	//Fonction permettant à l'utilisateur de revenir
  *\param principale nombre de points de compétences principales à répartir
  *\param secondaire nombre de points de compétences secondaires à répartir
  */
-void crea_ava(t_joueur *joueur,int principale,int secondaire){ //fonction contenant toutes les fonctions nécessaires à la création de l'avatar
-
+void crea_ava(t_joueur *joueur,int principale,int secondaire){ 
+	
+	//toutes les fonctions nécessaires à la création de l'avatar
 	initstruct(joueur);
 	creer_pseudo(joueur);
 	race(joueur);
