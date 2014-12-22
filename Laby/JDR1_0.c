@@ -15,15 +15,7 @@
 #include "IA.h"
 #include "region.h"
 #include "JDR1_0.h"
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<time.h>
-#include<assert.h>
 #include<ncurses.h>
-#include"IA.h"
-#include"region.h"
-#include"JDR1_0.h"
 #include "accueil.h"
 
 
