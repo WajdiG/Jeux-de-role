@@ -21,7 +21,7 @@
 
 extern char ** monde[X][Y]; /**< matrice de matrice représentant le monde, chaque case du monde contient une matrice region */
 extern t_coord coord; /**< variable de type t_coord contenant les coordonnées du joueur dans la matrice monde */
-extern  char region[N][N]; /**< matrice de type caractère contenant un region du monde */
+extern  char region[N][N]; /**< matrice de type caractère contenant une region du monde */
 t_joueur joueur; /**< variable de type t_joueur contenant toutes les données de l'avatar du joueur */
 t_statcombat statcombat; ,/**< variable de type t_statcombat contenant toutes les données liées aux statistiques de combats du joueur */
 
