@@ -6,14 +6,14 @@
 *\date 27 Novembre 2014
 */
 
-#define N 20
-#define tmax N+N
-#define NB_COFFRE 4
+#define N 20 /**< constante définissant la taille de la matrice region */
+#define tmax N+N /**< constante définissant la taille du tableau pile */
+#define NB_COFFRE 4 /**< constante définissant le nombre de coffre présent sur dans la matrice region */
 
 
-int tab[12];
-int pile[tmax];
-int sommet;
+int tab[NB_COFFRE+4]; /**< tableau d'entier contenant les coordonnées des coffres plus celles du monstre et du joueur */
+int pile[tmax]; /**< tableau d'entier représentant une pile d'entier */
+int sommet; /**< entier représentant le sommet de la pile d'entier */
 
 /**
  *\fn initregion
