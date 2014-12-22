@@ -13,7 +13,6 @@
 #include<ncurses.h>
 #include "pile_tab.h"
 #include "region.h"
-#define N 20
 
 char region[N][N]; /**< matrice de matrice représentant le monde, chaque case du monde contient une matrice region */
 
