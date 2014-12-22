@@ -15,7 +15,7 @@
 #include "region.h"
 #define N 20
 
-char region[N][N]; // une région du monde !
+char region[N][N]; /**< matrice de matrice représentant le monde, chaque case du monde contient une matrice region */
 
 
 /**
