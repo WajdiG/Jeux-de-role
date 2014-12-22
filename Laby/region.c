@@ -31,7 +31,7 @@ void initregion(){
 		}
 	}
 	
-	for(i=0;i<8;i++){	//initialise le tableau tab
+	for(i=0;i<(NB_COFFRE+4);i++){	//initialise le tableau tab
 		tab[i]=1;
 	}
 }
@@ -136,8 +136,8 @@ void place_joueur(){
 	}while(!verif_coffre(i,j)||j==0||i==0);
 		region[i][j]='P';	
 		//sauvegarde les coordonées du joueur dans le tableau tab
-		tab[8]=i;
-		tab[9]=j;
+		tab[2*NB_COFFRE]=i;
+		tab[(2*NB_COFFRE)+1]=j;
 }
 
 /**
@@ -153,8 +153,8 @@ void place_monstre(){
 	}while(!verif_coffre(i,j)||j==0||i==0);
 		region[i][j]='M';
 		//sauvegarde les coordonées du monstre dans le tableau tab
-		tab[10]=i;
-		tab[11]=j;
+		tab[(2*NB_COFFRE)+2]=i;
+		tab[(2*NB_COFFRE)+3]=j;
 }
 
  /**
@@ -168,8 +168,8 @@ void chemin(){
 	for(k=-1; k<=1; k++){	
 		for(l=-1; l<=1; l++){//crée des couloirs a partir du personnage et du monstre vers les extremités du laby
 			if((k==0||l==0) && k!=l){
-				i=tab[8];
-				j=tab[9];
+				i=tab[2*NB_COFFRE];
+				j=tab[(2*NB_COFFRE)+1];
 				 
 				while(i>0&&j>0&&i<N-1&&j<N-1){
 					if(verif_cour(i,j)){
@@ -180,8 +180,8 @@ void chemin(){
 				}
 			}
 			if((k==0||l==0) && k!=l){
-				i=tab[10];
-				j=tab[11];
+				i=tab[(2*NB_COFFRE)+2];
+				j=tab[(2*NB_COFFRE)+3];
 				 
 				while(i>0&&j>0&&i<N-1&&j<N-1){
 					if(verif_cour(i,j)){
