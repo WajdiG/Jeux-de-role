@@ -14,10 +14,10 @@
 #include "monde.h"
 #include "pile_tab.h"
 
-extern char region[N][N]; //une region du monde
-char ** monde[X][Y]; //le monde
+extern char region[N][N];  /**< matrice de type caractère contenant une region du monde */
+char ** monde[X][Y]; /**< matrice de matrice représentant le monde, chaque case du monde contient une matrice region */
 
-t_coord coord={0,0}; //coordonnées du joueur dans le monde
+t_coord coord={0,0}; /**< variable de type t_coord contenant les coordonnées du joueur dans la matrice monde */
 
 /**
  *\fn init_monde(void)
