@@ -29,7 +29,7 @@ void aff_region();
 
 /**
  *\fn verif_coffre(int , int)
- *\brief initialise la matrice, toutes les cases valent X
+ *\brief verifie la présence ou non d'un coffre C ou d'un personnage P dans la matrice region autour des coordonnées i et j passées en paramètre
  *\param i entier représentant l'absisse dans la matrice
  *\param j entier représentant l'ordonnée dans la matrice
  *\return int renvoie 0 si la case vérifiée contient C (un coffre) et 1 si non
@@ -76,7 +76,7 @@ void chemin();
 void carre();
 
  /**
- *\fn region
+ *\fn creer_region(void)
  *\brief creer une region : labyrinthe aléatoire
  */
 void creer_region();
