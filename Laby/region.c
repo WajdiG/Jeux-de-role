@@ -1,7 +1,7 @@
 /**
 *\file region.c
 *\brief regroupe toutes les fonctions nécessaires à la création d'une région : génération aléatoire d'un labyrinthe
-*\author Wajdi Guedouar, Joris Toulmonde, Godefroy Thieulart
+*\author Wajdi Guedouar
 *\version 0.1
 *\date 25 Novembre 2014
 */
@@ -19,7 +19,7 @@ char region[N][N]; // une région du monde !
 
 
 /**
- *\fn initregion
+ *\fn initregion(void)
  *\brief initialise la region où toutes les cases valent X, ainsi que le tableau tab où tout vaut 1
  */
 void initregion(){
@@ -38,7 +38,7 @@ void initregion(){
 
 
 /**
- *\fn aff_region
+ *\fn aff_region(void)
  *\brief affiche la region à l'écran
  */
 void aff_region(){
@@ -53,10 +53,10 @@ void aff_region(){
 
 /**
  *\fn verif_coffre(int , int)
- *\brief initialise la matrice, toutes les cases valent X
+ *\brief recherche la présence d'un coffre 'C' o d'un joueur 'P' dans la matrice monde autour des coordonnées i j passées en paramètre
  *\param i entier représentant l'absisse dans la matrice
  *\param j entier représentant l'ordonnée dans la matrice
- *\return int renvoie 0 si la case vérifiée contient C (un coffre) et 1 si non
+ *\return int renvoie 0 si la case vérifiée contient C (un coffre) ou P (un joueur) et 1 si non
  */
 int verif_coffre(int i, int j){
 	if(region[i+1][j]=='C'||region[i+1][j]=='P'){
@@ -90,9 +90,9 @@ int verif_coffre(int i, int j){
 /**
  *\fn verif_cour(int , int)
  *\brief verifie que la case dans laquelle on se trouve soit différente de C (un coffre) ou P (le joueur) 
- *\param i entier représentant l'absisse dans la matrice
+ *\param i entier représentant l'abscisse dans la matrice
  *\param j entier représentant l'ordonnée dans la matrice
- *\return int renvoie 0 si la case vérifiée contient C (un coffre) ou P (le joueur) et 1 si non
+ *\return int renvoie 0 si la case vérifiée contient C (un coffre), M (un monstre) ou P (le joueur) et 1 si non
  */
 int verif_cour(int i, int j){
 	if(region[i][j]=='C'||region[i][j]=='P'||region[i][j]=='M'){
@@ -116,6 +116,7 @@ void place_coffre(){
 			j=rand()%(N-2)+1;
 		}while(!verif_coffre(i,j)||j==0||i==0);
 		region[i][j]='C';
+		//sauvegarde les coordonées du coffre dans le tableau tab
 		tab[2*k]=i;
 		tab[2*k+1]=j;
 	}
@@ -123,7 +124,7 @@ void place_coffre(){
 }
 
 /**
- *\fn place_joueur
+ *\fn place_joueur(void)
  *\brief permet de placer le joueur aleatoirement sur la map
  */
 void place_joueur(){
@@ -134,12 +135,13 @@ void place_joueur(){
 		j=rand()%(N-2)+1;
 	}while(!verif_coffre(i,j)||j==0||i==0);
 		region[i][j]='P';	
+		//sauvegarde les coordonées du joueur dans le tableau tab
 		tab[8]=i;
 		tab[9]=j;
 }
 
 /**
- *\fn place_monstre
+ *\fn place_monstre(void)
  *\brief permet de placer le monstre aleatoirement sur la map
  */
 void place_monstre(){
@@ -150,20 +152,21 @@ void place_monstre(){
 		j=rand()%(N-2)+1;
 	}while(!verif_coffre(i,j)||j==0||i==0);
 		region[i][j]='M';
+		//sauvegarde les coordonées du monstre dans le tableau tab
 		tab[10]=i;
 		tab[11]=j;
 }
 
  /**
- *\fn chemin
+ *\fn chemin(void)
  *\brief permet de générer un chemin depuis P (le joueur) vers les bord de la matrice, depuis C (un coffre) vers un chemin existant
  */
 void chemin(){
 	 
 	int i,j,k,l,b; 
 	 
-	for(k=-1; k<=1; k++){	//creeer des couloirs a partir du personnage vers les extremités du laby
-		for(l=-1; l<=1; l++){
+	for(k=-1; k<=1; k++){	
+		for(l=-1; l<=1; l++){//crée des couloirs a partir du personnage et du monstre vers les extremités du laby
 			if((k==0||l==0) && k!=l){
 				i=tab[8];
 				j=tab[9];
@@ -236,7 +239,7 @@ void chemin(){
  }
  
  /**
- *\fn carre
+ *\fn carre(void)
  *\brief créer un espace autour des coffres et du joueur
  */
 void carre(){
@@ -276,7 +279,7 @@ void carre(){
 }
 
  /**
- *\fn region
+ *\fn creer_region(void)
  *\brief creer une region : labyrinthe aléatoire
  */
 void creer_region(){
