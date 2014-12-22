@@ -10,9 +10,13 @@
 
 #include "region.h"
 
-#define X 3
-#define Y 3
+#define X 3  /**< constante définissant le nombre de ligne dans la matrice monde */
+#define Y 3  /**< constante définissant le nombre de colonne dans la matrice monde */
 
+/**
+ *\struct t_coord
+ *\brief structure contenant les coordonnées du joueur dans la matrice monde
+ */
 typedef struct{int x,y;}t_coord;
 
 /**
