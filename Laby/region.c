@@ -53,7 +53,7 @@ void aff_region(){
 
 /**
  *\fn verif_coffre(int , int)
- *\brief recherche la présence d'un coffre 'C' o d'un joueur 'P' dans la matrice monde autour des coordonnées i j passées en paramètre
+ *\brief recherche la présence d'un coffre 'C' ou d'un joueur 'P' dans la matrice region autour des coordonnées i j passées en paramètre
  *\param i entier représentant l'absisse dans la matrice
  *\param j entier représentant l'ordonnée dans la matrice
  *\return int renvoie 0 si la case vérifiée contient C (un coffre) ou P (un joueur) et 1 si non
