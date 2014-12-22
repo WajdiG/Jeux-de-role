@@ -12,8 +12,6 @@
 #include<ncurses.h>
 #include "crea_avatar.h"
 
-#define P 16 /**<constante définissant la taille maximale du pseudo*/
-
 char pseudo[P];/**<tableau destiné à contenir le pseudo du joueur*/
 
 
