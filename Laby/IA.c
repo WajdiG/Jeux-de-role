@@ -246,9 +246,12 @@ void IA(int matrice[N][N], int*pvJoueur, int parade, int*enduJoueur, int cpt_lab
 	int attaque=0;
 	int degat=10+(2*cpt_laby);
 	int degatBrut=degat;
+	
 	t_coordonees cheminRetour;
 	t_coordonees resultat;
+	
 	srand(time(NULL));
+	
 	int critique = (rand()%(100-1)+1)+(2.5*cpt_laby);
 	int reducDegat;
 	int paradeJoueur = joueur.combat.parade;

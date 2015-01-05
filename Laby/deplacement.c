@@ -25,10 +25,10 @@ void affichage(int matrice[N][N], int pvJoueur, int manaJoueur, int enduJoueur, 
 	system("clear");
 	
 	if(cpt_laby<10){
-		printf("\r\nO=============Le=niveau=du=Labyrinthe=est=de=%i==============O\r\n", cpt_laby);
+		printf("\r\nO=============Le=niveau=du=Labyrinthe=est=de=%i==============O\r\n\n", cpt_laby);
 	}
 	else{
-		printf("\r\nO=============Le=niveau=du=Labyrinthe=est=de=%i==============O\r\n", cpt_laby);
+		printf("\r\nO=============Le=niveau=du=Labyrinthe=est=de=%i==============O\r\n\n", cpt_laby);
 	}
 	
 	for(i=0;i<N;i++){
@@ -45,18 +45,18 @@ void affichage(int matrice[N][N], int pvJoueur, int manaJoueur, int enduJoueur, 
 		printf("\r\n");
 	}
 
-		if(pvJoueur==100){	printf("PV : %i                                         PV Mob = %i \r\n", pvJoueur, pvMob);	}
-		else if(pvJoueur>9 && pvJoueur<100){	 printf("PV : %i                                           PV Mob = %i \r\n", pvJoueur, pvMob);	}
-		else if(pvJoueur<10){	 printf("PV : %i                                             PV Mob = %i \r\n", pvJoueur, pvMob);	}
+		if(pvJoueur>=100){	printf("\nPV : %i                                         PV Mob = %i \r\n", pvJoueur, pvMob);	}
+		else if(pvJoueur>9 && pvJoueur<100){	 printf("\nPV : %i                                           PV Mob = %i \r\n", pvJoueur, pvMob);	}
+		else if(pvJoueur<10){	 printf("\nPV : %i                                             PV Mob = %i \r\n", pvJoueur, pvMob);	}
 		printf("Mana : %i \r\n", manaJoueur);
 		printf("Endurance : %i \r\n", enduJoueur);
 		if(*distance==1){
 			printf("distance activé");
 		}
-		else{
+		else if(*distance==0){
 			printf("distance desactivé");
 		}
-		printf("\r\nO=====================Boite=A=Dialogue========================O\r\n");
+		printf("\r\n\nO=====================Boite=A=Dialogue========================O\r\n");
 		
 		if(*parade==1){
 			printf("\r\n         ==> Vous parez le prochain coup <== \r\n");
@@ -99,24 +99,26 @@ void deplacement_perso(int*parade, int*distance,int matrice[N][N], int*pvMob, in
 		switch(x){
 			
 			//fait bouger le joueur dans la direction voulu
-			case 'z' : ma_position.x-- ; break;
-			case 'q' : ma_position.y-- ; break;
-			case 's' : ma_position.x++ ; break;
-			case 'd' : ma_position.y++ ; break;
+			case 'z' : *parade=0 ; ma_position.x-- ; break;
+			case 'q' : *parade=0 ; ma_position.y-- ; break;
+			case 's' : *parade=0 ; ma_position.x++ ; break;
+			case 'd' : *parade=0 ; ma_position.y++ ; break;
 			
 			//fait attaquer le joueur dans la direction voulu
-			case 'i' : degatHaut(matrice, ma_position, pvMob, enduJoueur,joueur,distance) ; break;
-			case 'j' : degatGauche(matrice, ma_position, pvMob, enduJoueur,joueur,distance) ; break;
-			case 'k' : degatBas(matrice, ma_position, pvMob, enduJoueur,joueur,distance) ; break;
-			case 'l' : degatDroite(matrice, ma_position, pvMob, enduJoueur,joueur,distance) ; break;
+			case 'i' : *parade=0 ; degatHaut(matrice, ma_position, pvMob, enduJoueur,joueur,distance) ; break;
+			case 'j' : *parade=0 ; degatGauche(matrice, ma_position, pvMob, enduJoueur,joueur,distance) ; break;
+			case 'k' : *parade=0 ; degatBas(matrice, ma_position, pvMob, enduJoueur,joueur,distance) ; break;
+			case 'l' : *parade=0 ; degatDroite(matrice, ma_position, pvMob, enduJoueur,joueur,distance) ; break;
 			
 			//permet au joueur d'utiliser sa magie
-			case 'u' : guerison(joueur, pvJoueur, manaJoueur,pvMax) ; break;
-			case 'o' : destruction(matrice, ma_position,pvMob, joueur, manaJoueur) ; break;
+			case 'u' : *parade=0 ; guerison(joueur, pvJoueur, manaJoueur,pvMax) ; break;
+			case 'o' : *parade=0 ; destruction(matrice, ma_position,pvMob, joueur, manaJoueur) ; break;
 			
 			//commande secondaire du joueur
 			case ' ' : *parade=1 ; *distance=0 ; break;
-			case 'n' : *parade=0 ; *distance=1 ; break;
+			case 'n' : *parade=0 ;
+						if(*distance==1){	*distance=0 ;	}
+						else if(*distance==0){	*distance=1 ;	} break;
 		}
 		
 		//empeche le joueur de marcher sur les murs ou sur le mob, et libère le chemin derrière lui

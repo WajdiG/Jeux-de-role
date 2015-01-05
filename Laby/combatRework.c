@@ -110,7 +110,7 @@ void degatHaut(int matrice[N][N], t_coordonees ma_position, int*pvMob, int*enduJ
 		if((*enduJoueur-25)>=0){
 			*enduJoueur-=25;
 			
-			if(matrice[x-1][y]==MOB||matrice[x-2][y]==MOB||matrice[x-3][y]==MOB){
+			if(matrice[x-1][y]==MOB||matrice[x-2][y]==MOB||matrice[x-3][y]==MOB||matrice[x+4][y]==MOB){
 				printf("\r\n    Vous infligez %i points de degat    \r\n", degat);
 				*pvMob-=degat;
 				if(*pvMob<=0){	*pvMob=0;	}
@@ -162,7 +162,7 @@ void degatGauche(int matrice[N][N], t_coordonees ma_position, int*pvMob, int*end
 		if((*enduJoueur-25)>=0){
 			*enduJoueur-=25;
 			
-			if(matrice[x][y-1]==MOB||matrice[x][y-2]==MOB||matrice[x][y-3]==MOB){
+			if(matrice[x][y-1]==MOB||matrice[x][y-2]==MOB||matrice[x][y-3]==MOB||matrice[x+4][y]==MOB){
 				printf("\r\n    Vous infligez %i points de degat    \r\n", degat);
 				*pvMob-=degat;
 				if(*pvMob<=0){	*pvMob=0;	}
@@ -215,7 +215,7 @@ void degatBas(int matrice[N][N], t_coordonees ma_position, int*pvMob, int*enduJo
 		if((*enduJoueur-25)>=0){
 			*enduJoueur-=25;
 			
-			if(matrice[x+1][y]==MOB||matrice[x+2][y]==MOB||matrice[x+3][y]==MOB){
+			if(matrice[x+1][y]==MOB||matrice[x+2][y]==MOB||matrice[x+3][y]==MOB||matrice[x+4][y]==MOB){
 				printf("\r\n    Vous infligez %i points de degat    \r\n", degat);
 				*pvMob-=degat;
 				if(*pvMob<=0){	*pvMob=0;	}
@@ -267,7 +267,7 @@ void degatDroite(int matrice[N][N], t_coordonees ma_position, int*pvMob, int*end
 		if((*enduJoueur-25)>=0){
 			*enduJoueur-=25;
 			
-			if(matrice[x][y+1]==MOB||matrice[x][y+2]==MOB||matrice[x][y+3]==MOB){
+			if(matrice[x][y+1]==MOB||matrice[x][y+2]==MOB||matrice[x][y+3]==MOB||matrice[x+4][y]==MOB){
 				printf("\r\n    Vous infligez %i points de degat    \r\n", degat);
 				*pvMob-=degat;
 				if(*pvMob<=0){	*pvMob=0;	}
