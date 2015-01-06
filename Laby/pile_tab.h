@@ -14,10 +14,36 @@ int queue;
 int nb_valeur;
 int nouv;
 
+/**
+ *\fn initpile(void)
+ *\brief initialise la pile
+ */
 void initpile();
+
+/**
+ *\fn empiler(int c)
+ *\brief Empile une strcuture dans la pile
+ *\param t_coordonees coord 
+ */
 void empiler(int c);
+
+/**
+ *\fn depiler(int*v)
+ *\brief Depile une strcuture de la pile
+ *\param t_coordonees *coord 
+ */
 void depiler(int*v);
+
+/**
+ *\fn pilevide(void)
+ *\brief Retourne vrai si la pile est vide
+ */
 int pilevide();
+
+/**
+ *\fn pilepleine(void)
+ *\brief Retourne vrai si la pile est pleine
+ */
 int pilepleine();
 
 void initpileStruct();

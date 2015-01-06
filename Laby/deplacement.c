@@ -9,16 +9,24 @@
 #include "JDR1_0.h"
 #include "deplacement.h"
 
-extern int quitter;
-extern char region[N][N];
+extern int quitter; /**< Variable pour savoir si on quitte le jeu */
+extern char region[N][N]; /**< matrice de matrice représentant le monde, chaque case du monde contient une matrice region */
 
-t_coordonees ma_position;
-t_coordonees sorti;
+
+t_coordonees ma_position; /**< Structure modélisant les coordonnées de la case courante du joueur*/
+t_coordonees sorti; /**< Structure modélisant les coordonnées de la sortie*/
 
 /**
-* \fn void affichage(int matrice[N][N])
+* \fn void affichage(int matrice[N][N], int pvJoueur, int manaJoueur, int enduJoueur, int pvMob, int cpt_laby, int*parade, int*distance)
 * \brief Fonction permettant l'affichage de la carte a chaque tour.
 * \param matrice[N][N] matrice ou chaque case contient soir un mur, un chemin, un joueur, un coffre ou un monstre
+* \param pvJoueur les points de vie du joueur
+* \param manaJoueur représentant le mana du joueur
+* \param enduJoueur représentant l'endurance du joueur
+* \param pvMob representant les points de vie du monstre
+* \param cpt_laby represente le niveau du labyrinthe
+* \param *parade represente les points de parade du joueur
+* \param *distance est fait pour activer ou pas le mode distance (archerie)
 **/
 void affichage(int matrice[N][N], int pvJoueur, int manaJoueur, int enduJoueur, int pvMob, int cpt_laby, int*parade, int*distance){
 	int i, j;
@@ -83,7 +91,7 @@ void rechercheJoueur(int matrice[N][N]){
 }
 
 /**
-* \fn void deplacement_perso(int matrice[N][N])
+* \fn void deplacement_perso(int*parade, int*distance,int matrice[N][N], int*pvMob, int*enduJoueur, int*pvJoueur, int*manaJoueur, t_joueur*joueur,int pvMax)
 * \brief Fonction permettant de deplacer le joueur a chaque tour ou le faire agir
 * \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemin, un coffre ou un monstre
 **/
@@ -138,7 +146,7 @@ void deplacement_perso(int*parade, int*distance,int matrice[N][N], int*pvMob, in
 }
 
 /**
-* \fn int coffre()
+* \fn int coffre(int matrice[N][N])
 * \brief Fonction permettant de voir s'il y a des coffres sur la carte
 * \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemain, un coffre ou un monstre
 * \return Renvoi 1 s'il n'y a plus de coffre sur la carte

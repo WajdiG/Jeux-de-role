@@ -1,0 +1,171 @@
+\hypertarget{accueil_8c}{\section{Référence du fichier accueil.\-c}
+\label{accueil_8c}\index{accueil.\-c@{accueil.\-c}}
+}
+
+
+Projet informatique S3 Deplacement du personnage et colisions sur le parois.  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$ncurses.\-h$>$}\\*
+{\ttfamily \#include $<$time.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}J\-D\-R1\-\_\-0.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}deplacement.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}accueil.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}I\-A.\-h\char`\"{}}\\*
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{accueil_8c_abcb460b4678bf2572b4c301c571ec08c}{void \hyperlink{accueil_8c_abcb460b4678bf2572b4c301c571ec08c}{ecran\-\_\-accueil} ()}\label{accueil_8c_abcb460b4678bf2572b4c301c571ec08c}
+
+\begin{DoxyCompactList}\small\item\em Fonction d'affichage de l'ecran d'accueil du jeu. \end{DoxyCompactList}\item 
+void \hyperlink{accueil_8c_a8b8c134e4b2b18c9f39b3b53ac4c2809}{Option\-\_\-jeu} (int matrice\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]}\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Fonction d'affichage du premier ecran d'option du jeu. \end{DoxyCompactList}\item 
+\hypertarget{accueil_8c_a681b8ae580d5f343bc3830cd5c2f37a0}{void {\bfseries Option\-\_\-jeu\-\_\-2} (int matrice\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]}\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]})}\label{accueil_8c_a681b8ae580d5f343bc3830cd5c2f37a0}
+
+\item 
+\hypertarget{accueil_8c_ae1c8e367e1151b45cdff3f65c5fd49cd}{void {\bfseries Option\-\_\-jeu\-\_\-3} (int matrice\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]}\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]})}\label{accueil_8c_ae1c8e367e1151b45cdff3f65c5fd49cd}
+
+\item 
+void \hyperlink{accueil_8c_ae05b7506e692c971cfb1ab276ebf3ab8}{Menu\-\_\-\-Jeu} (int matrice\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]}\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Fonction d'affichage du menu du jeu. \end{DoxyCompactList}\item 
+\hypertarget{accueil_8c_abdceeee891e61b6d1e3ebe9691d98cfc}{void \hyperlink{accueil_8c_abdceeee891e61b6d1e3ebe9691d98cfc}{Quitter\-\_\-\-Jeu} ()}\label{accueil_8c_abdceeee891e61b6d1e3ebe9691d98cfc}
+
+\begin{DoxyCompactList}\small\item\em Fonction de l'écran de fermeture du jeu. \end{DoxyCompactList}\item 
+void \hyperlink{accueil_8c_acdf28d5a05a41b47def0bb666f7bbb3a}{defeat} (int matrice\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]}\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Fonction d'affichage de l'ecran du jeu en cas de defaite du joueur. \end{DoxyCompactList}\item 
+void \hyperlink{accueil_8c_a2a2102915bb94ea419f647331d1aee23}{victory} (int matrice\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]}\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Fonction d'affichage de l'ecran du jeu en cas de victoire du joueur. \end{DoxyCompactList}\item 
+void \hyperlink{accueil_8c_a4afecbad8c47ee79b7bb046480c9550d}{continuer} (int matrice\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]}\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Fonction faisant tourner le labyrinthe du programme. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{accueil_8c_a9adb2a1586473935ee69a235f56a17f4}{quitter} = 0
+\item 
+\hypertarget{accueil_8c_a9c38e7acc5748786605ff7d2bf33add0}{int {\bfseries cpt\-\_\-laby} =0}\label{accueil_8c_a9c38e7acc5748786605ff7d2bf33add0}
+
+\item 
+\hyperlink{structt__joueur}{t\-\_\-joueur} \hyperlink{accueil_8c_a7ceef52b18732e046b145a429b37a790}{joueur}
+\item 
+\hyperlink{structt__coordonees}{t\-\_\-coordonees} \hyperlink{accueil_8c_a5b9e5eeb8cef6b34c54b0feb9799aab1}{ma\-\_\-position}
+\item 
+\hyperlink{structt__coordonees}{t\-\_\-coordonees} \hyperlink{accueil_8c_a729553852e8269c609ba66a1f1d5dcf9}{sorti}
+\item 
+\hyperlink{structt__statcombat}{t\-\_\-statcombat} \hyperlink{accueil_8c_a7bb225ac5f7866b967ec70fa6f0b46ef}{statcombat}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Projet informatique S3 Deplacement du personnage et colisions sur le parois. \begin{DoxyAuthor}{Auteur}
+T\-H\-I\-E\-U\-L\-A\-R\-T Godefroy 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\-2 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+22 Octobre 2014 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{accueil_8c_a4afecbad8c47ee79b7bb046480c9550d}{\index{accueil.\-c@{accueil.\-c}!continuer@{continuer}}
+\index{continuer@{continuer}!accueil.c@{accueil.\-c}}
+\subsubsection[{continuer}]{\setlength{\rightskip}{0pt plus 5cm}void continuer (
+\begin{DoxyParamCaption}
+\item[{int}]{matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{accueil_8c_a4afecbad8c47ee79b7bb046480c9550d}
+
+
+Fonction faisant tourner le labyrinthe du programme. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}} & est la matrice contenant le labyrinthe \\
+\hline
+\end{DoxyParams}
+\hypertarget{accueil_8c_acdf28d5a05a41b47def0bb666f7bbb3a}{\index{accueil.\-c@{accueil.\-c}!defeat@{defeat}}
+\index{defeat@{defeat}!accueil.c@{accueil.\-c}}
+\subsubsection[{defeat}]{\setlength{\rightskip}{0pt plus 5cm}void defeat (
+\begin{DoxyParamCaption}
+\item[{int}]{matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{accueil_8c_acdf28d5a05a41b47def0bb666f7bbb3a}
+
+
+Fonction d'affichage de l'ecran du jeu en cas de defaite du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}} & est la matrice contenant le labyrinthe \\
+\hline
+\end{DoxyParams}
+\hypertarget{accueil_8c_ae05b7506e692c971cfb1ab276ebf3ab8}{\index{accueil.\-c@{accueil.\-c}!Menu\-\_\-\-Jeu@{Menu\-\_\-\-Jeu}}
+\index{Menu\-\_\-\-Jeu@{Menu\-\_\-\-Jeu}!accueil.c@{accueil.\-c}}
+\subsubsection[{Menu\-\_\-\-Jeu}]{\setlength{\rightskip}{0pt plus 5cm}void Menu\-\_\-\-Jeu (
+\begin{DoxyParamCaption}
+\item[{int}]{matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{accueil_8c_ae05b7506e692c971cfb1ab276ebf3ab8}
+
+
+Fonction d'affichage du menu du jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}} & est la matrice contenant le labyrinthe \\
+\hline
+\end{DoxyParams}
+\hypertarget{accueil_8c_a8b8c134e4b2b18c9f39b3b53ac4c2809}{\index{accueil.\-c@{accueil.\-c}!Option\-\_\-jeu@{Option\-\_\-jeu}}
+\index{Option\-\_\-jeu@{Option\-\_\-jeu}!accueil.c@{accueil.\-c}}
+\subsubsection[{Option\-\_\-jeu}]{\setlength{\rightskip}{0pt plus 5cm}void Option\-\_\-jeu (
+\begin{DoxyParamCaption}
+\item[{int}]{matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{accueil_8c_a8b8c134e4b2b18c9f39b3b53ac4c2809}
+
+
+Fonction d'affichage du premier ecran d'option du jeu. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}} & est la matrice contenant le labyrinthe \\
+\hline
+\end{DoxyParams}
+\hypertarget{accueil_8c_a2a2102915bb94ea419f647331d1aee23}{\index{accueil.\-c@{accueil.\-c}!victory@{victory}}
+\index{victory@{victory}!accueil.c@{accueil.\-c}}
+\subsubsection[{victory}]{\setlength{\rightskip}{0pt plus 5cm}void victory (
+\begin{DoxyParamCaption}
+\item[{int}]{matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{accueil_8c_a2a2102915bb94ea419f647331d1aee23}
+
+
+Fonction d'affichage de l'ecran du jeu en cas de victoire du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}} & est la matrice contenant le labyrinthe \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Documentation des variables}
+\hypertarget{accueil_8c_a7ceef52b18732e046b145a429b37a790}{\index{accueil.\-c@{accueil.\-c}!joueur@{joueur}}
+\index{joueur@{joueur}!accueil.c@{accueil.\-c}}
+\subsubsection[{joueur}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-joueur} joueur}}\label{accueil_8c_a7ceef52b18732e046b145a429b37a790}
+variable de type \hyperlink{structt__joueur}{t\-\_\-joueur} contenant toutes les données de l'avatar du joueur \hypertarget{accueil_8c_a5b9e5eeb8cef6b34c54b0feb9799aab1}{\index{accueil.\-c@{accueil.\-c}!ma\-\_\-position@{ma\-\_\-position}}
+\index{ma\-\_\-position@{ma\-\_\-position}!accueil.c@{accueil.\-c}}
+\subsubsection[{ma\-\_\-position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-coordonees} ma\-\_\-position}}\label{accueil_8c_a5b9e5eeb8cef6b34c54b0feb9799aab1}
+Structure modélisant les coordonnées de la case courante du joueur \hypertarget{accueil_8c_a9adb2a1586473935ee69a235f56a17f4}{\index{accueil.\-c@{accueil.\-c}!quitter@{quitter}}
+\index{quitter@{quitter}!accueil.c@{accueil.\-c}}
+\subsubsection[{quitter}]{\setlength{\rightskip}{0pt plus 5cm}int quitter = 0}}\label{accueil_8c_a9adb2a1586473935ee69a235f56a17f4}
+Variable pour savoir si on quitte le jeu \hypertarget{accueil_8c_a729553852e8269c609ba66a1f1d5dcf9}{\index{accueil.\-c@{accueil.\-c}!sorti@{sorti}}
+\index{sorti@{sorti}!accueil.c@{accueil.\-c}}
+\subsubsection[{sorti}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-coordonees} sorti}}\label{accueil_8c_a729553852e8269c609ba66a1f1d5dcf9}
+Structure modélisant les coordonnées de la sortie \hypertarget{accueil_8c_a7bb225ac5f7866b967ec70fa6f0b46ef}{\index{accueil.\-c@{accueil.\-c}!statcombat@{statcombat}}
+\index{statcombat@{statcombat}!accueil.c@{accueil.\-c}}
+\subsubsection[{statcombat}]{\setlength{\rightskip}{0pt plus 5cm}{\bf t\-\_\-statcombat} statcombat}}\label{accueil_8c_a7bb225ac5f7866b967ec70fa6f0b46ef}
+variable de type \hyperlink{structt__statcombat}{t\-\_\-statcombat} contenant toutes les données liées aux statistiques de combats du joueur 

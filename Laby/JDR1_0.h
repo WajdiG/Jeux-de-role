@@ -1,13 +1,13 @@
-#ifndef __JDR1_0_H__
-#define __JDR1_0_H__
-
 /**
-*\file JR1_0.h
+*\file JDR1_0.h
 *\brief regroupe tout les prototypes des fonctions nécessaire à la création de l'avatar
 *\author Wajdi Guedouar
 *\version 0.1
 *\date 20 octobre 2014
 */
+#ifndef __JDR1_0_H__
+#define __JDR1_0_H__
+
 
 #include "crea_avatar.h"
 #include "sauvegarde.h"

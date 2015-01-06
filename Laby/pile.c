@@ -15,13 +15,22 @@
 
 //typedef struct {int x, y;}t_coordonees;
 
-static t_coordonees pile[M];
-static int sommet;
+static t_coordonees pile[M]; /**< Pile de structure */
+static int sommet; /**< constante définissant le sommet de la pile */
 
+/**
+ *\fn initpile(void)
+ *\brief initialise la pile
+ */
 void initpile(void){
 	sommet=-1;
 }
 
+/**
+ *\fn empiler(t_coordonees coord)
+ *\brief Empile une strcuture dans la pile
+ *\param t_coordonees coord 
+ */
 void empiler(t_coordonees coord){
 	if(sommet<M-1){
 		sommet++;
@@ -31,6 +40,11 @@ void empiler(t_coordonees coord){
 	}
 }
 
+/**
+ *\fn depiler(t_coordonees *coord)
+ *\brief Depile une strcuture de la pile
+ *\param t_coordonees *coord 
+ */
 void depiler(t_coordonees *coord){
 	if(sommet>-1){
 		coord->x=pile[sommet].x;
@@ -39,6 +53,11 @@ void depiler(t_coordonees *coord){
 	}
 }
 
+/**
+ *\fn sommet_pile(t_coordonees *coord)
+ *\brief Place les coordonnées du sommet de la pile dans la structure coord
+ *\param t_coordonees *coord 
+ */
 int sommet_pile(t_coordonees *coord){
 	if(sommet>-1){
 		coord->x=pile[sommet].x;
@@ -48,6 +67,10 @@ int sommet_pile(t_coordonees *coord){
 	return 0;
 }
 
+/**
+ *\fn pilevide(void)
+ *\brief Retourne vrai si la pile est vide
+ */
 int pilevide(void){
 	return(sommet==-1);
 }

@@ -1,0 +1,163 @@
+\hypertarget{region_8h}{\section{Référence du fichier region.\-h}
+\label{region_8h}\index{region.\-h@{region.\-h}}
+}
+
+
+regroupe tout les prototypes de fonctions nécessaires à la création d'une région \-: génération aléatoire d'un labyrinthe  
+
+
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}~20
+\item 
+\#define \hyperlink{region_8h_a6fa3f0fd272360d6310c9669f0737bfd}{tmax}~\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}+\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}
+\item 
+\#define \hyperlink{region_8h_ae831eba8d3667c28a44e9e88802aa186}{N\-B\-\_\-\-C\-O\-F\-F\-R\-E}~4
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{region_8h_ad134ad7c592c7468f57a28c4d4c4a890}{void \hyperlink{region_8h_ad134ad7c592c7468f57a28c4d4c4a890}{initregion} ()}\label{region_8h_ad134ad7c592c7468f57a28c4d4c4a890}
+
+\begin{DoxyCompactList}\small\item\em initialise la region où toutes les cases valent X, ainsi que le tableau tab où tout vaut 1 \end{DoxyCompactList}\item 
+\hypertarget{region_8h_a173df6cdc7203f062a8d186a9bf83333}{void \hyperlink{region_8h_a173df6cdc7203f062a8d186a9bf83333}{aff\-\_\-region} ()}\label{region_8h_a173df6cdc7203f062a8d186a9bf83333}
+
+\begin{DoxyCompactList}\small\item\em affiche la region à l'écran \end{DoxyCompactList}\item 
+int \hyperlink{region_8h_a88e5559d6de75369c3c6e13ab9eee80b}{verif\-\_\-coffre} (int i, int j)
+\begin{DoxyCompactList}\small\item\em recherche la présence d'un coffre 'C' ou d'un joueur 'P' dans la matrice region autour des coordonnées i j passées en paramètre \end{DoxyCompactList}\item 
+int \hyperlink{region_8h_a5451226c5adab39930b44049602e02fd}{verif\-\_\-cour} (int i, int j)
+\begin{DoxyCompactList}\small\item\em verifie que la case dans laquelle on se trouve soit différente de C (un coffre) ou P (le joueur) \end{DoxyCompactList}\item 
+\hypertarget{region_8h_ab95bebeadc75636e4e2831259c1bb7d3}{void \hyperlink{region_8h_ab95bebeadc75636e4e2831259c1bb7d3}{place\-\_\-coffre} ()}\label{region_8h_ab95bebeadc75636e4e2831259c1bb7d3}
+
+\begin{DoxyCompactList}\small\item\em permet de placer des coffres C aléatoirement dans la matrice \end{DoxyCompactList}\item 
+\hypertarget{region_8h_ab6ec38a69d6aa64ee0438f2821bcaedd}{void \hyperlink{region_8h_ab6ec38a69d6aa64ee0438f2821bcaedd}{place\-\_\-joueur} ()}\label{region_8h_ab6ec38a69d6aa64ee0438f2821bcaedd}
+
+\begin{DoxyCompactList}\small\item\em permet de placer le joueur aleatoirement sur la map \end{DoxyCompactList}\item 
+\hypertarget{region_8h_a52f03a9c0b509dabf447997d3b054553}{void \hyperlink{region_8h_a52f03a9c0b509dabf447997d3b054553}{place\-\_\-monstre} ()}\label{region_8h_a52f03a9c0b509dabf447997d3b054553}
+
+\begin{DoxyCompactList}\small\item\em permet de placer le monstre aleatoirement sur la map \end{DoxyCompactList}\item 
+\hypertarget{region_8h_aa1fd880318ce6352630435950d6fd2a1}{void \hyperlink{region_8h_aa1fd880318ce6352630435950d6fd2a1}{chemin} ()}\label{region_8h_aa1fd880318ce6352630435950d6fd2a1}
+
+\begin{DoxyCompactList}\small\item\em permet de générer un chemin depuis P (le joueur) vers les bord de la matrice, depuis C (un coffre) vers un chemin existant \end{DoxyCompactList}\item 
+\hypertarget{region_8h_ae591ac3160b493da801cda52ccaeaad1}{void \hyperlink{region_8h_ae591ac3160b493da801cda52ccaeaad1}{carre} ()}\label{region_8h_ae591ac3160b493da801cda52ccaeaad1}
+
+\begin{DoxyCompactList}\small\item\em créer un espace autour des coffres et du joueur \end{DoxyCompactList}\item 
+\hypertarget{region_8h_a13f36260be8b4946aaca6b5d5ba910a0}{void \hyperlink{region_8h_a13f36260be8b4946aaca6b5d5ba910a0}{creer\-\_\-region} ()}\label{region_8h_a13f36260be8b4946aaca6b5d5ba910a0}
+
+\begin{DoxyCompactList}\small\item\em creer une region \-: labyrinthe aléatoire \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{region_8h_a37eebb840591110a9e6fcdd00b1d1019}{tab} \mbox{[}\hyperlink{region_8h_ae831eba8d3667c28a44e9e88802aa186}{N\-B\-\_\-\-C\-O\-F\-F\-R\-E}+4\mbox{]}
+\item 
+int \hyperlink{region_8h_a2a46a4ab5390437fb3bf07a17afd9873}{pile} \mbox{[}\hyperlink{region_8h_a6fa3f0fd272360d6310c9669f0737bfd}{tmax}\mbox{]}
+\item 
+int \hyperlink{region_8h_ab23513cd1b60a5ce42fdddfb249cbde4}{sommet}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+regroupe tout les prototypes de fonctions nécessaires à la création d'une région \-: génération aléatoire d'un labyrinthe \begin{DoxyAuthor}{Auteur}
+Wajdi Guedouar, Joris Toulmonde, Godefroy Thieulart 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\-1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+27 Novembre 2014 
+\end{DoxyDate}
+
+
+\subsection{Documentation des macros}
+\hypertarget{region_8h_a0240ac851181b84ac374872dc5434ee4}{\index{region.\-h@{region.\-h}!N@{N}}
+\index{N@{N}!region.h@{region.\-h}}
+\subsubsection[{N}]{\setlength{\rightskip}{0pt plus 5cm}\#define N~20}}\label{region_8h_a0240ac851181b84ac374872dc5434ee4}
+constante définissant la taille de la matrice region \hypertarget{region_8h_ae831eba8d3667c28a44e9e88802aa186}{\index{region.\-h@{region.\-h}!N\-B\-\_\-\-C\-O\-F\-F\-R\-E@{N\-B\-\_\-\-C\-O\-F\-F\-R\-E}}
+\index{N\-B\-\_\-\-C\-O\-F\-F\-R\-E@{N\-B\-\_\-\-C\-O\-F\-F\-R\-E}!region.h@{region.\-h}}
+\subsubsection[{N\-B\-\_\-\-C\-O\-F\-F\-R\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\-B\-\_\-\-C\-O\-F\-F\-R\-E~4}}\label{region_8h_ae831eba8d3667c28a44e9e88802aa186}
+constante définissant le nombre de coffre présent sur dans la matrice region \hypertarget{region_8h_a6fa3f0fd272360d6310c9669f0737bfd}{\index{region.\-h@{region.\-h}!tmax@{tmax}}
+\index{tmax@{tmax}!region.h@{region.\-h}}
+\subsubsection[{tmax}]{\setlength{\rightskip}{0pt plus 5cm}\#define tmax~{\bf N}+{\bf N}}}\label{region_8h_a6fa3f0fd272360d6310c9669f0737bfd}
+constante définissant la taille du tableau pile 
+
+\subsection{Documentation des fonctions}
+\hypertarget{region_8h_a88e5559d6de75369c3c6e13ab9eee80b}{\index{region.\-h@{region.\-h}!verif\-\_\-coffre@{verif\-\_\-coffre}}
+\index{verif\-\_\-coffre@{verif\-\_\-coffre}!region.h@{region.\-h}}
+\subsubsection[{verif\-\_\-coffre}]{\setlength{\rightskip}{0pt plus 5cm}int verif\-\_\-coffre (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{int}]{j}
+\end{DoxyParamCaption}
+)}}\label{region_8h_a88e5559d6de75369c3c6e13ab9eee80b}
+
+
+recherche la présence d'un coffre 'C' ou d'un joueur 'P' dans la matrice region autour des coordonnées i j passées en paramètre 
+
+verifie la présence ou non d'un coffre C ou d'un personnage P dans la matrice region autour des coordonnées i et j passées en paramètre
+
+
+\begin{DoxyParams}{Paramètres}
+{\em i} & entier représentant l'absisse dans la matrice \\
+\hline
+{\em j} & entier représentant l'ordonnée dans la matrice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int renvoie 0 si la case vérifiée contient C (un coffre) ou P (un joueur) et 1 si non
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em i} & entier représentant l'absisse dans la matrice \\
+\hline
+{\em j} & entier représentant l'ordonnée dans la matrice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int renvoie 0 si la case vérifiée contient C (un coffre) et 1 si non 
+\end{DoxyReturn}
+\hypertarget{region_8h_a5451226c5adab39930b44049602e02fd}{\index{region.\-h@{region.\-h}!verif\-\_\-cour@{verif\-\_\-cour}}
+\index{verif\-\_\-cour@{verif\-\_\-cour}!region.h@{region.\-h}}
+\subsubsection[{verif\-\_\-cour}]{\setlength{\rightskip}{0pt plus 5cm}int verif\-\_\-cour (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{int}]{j}
+\end{DoxyParamCaption}
+)}}\label{region_8h_a5451226c5adab39930b44049602e02fd}
+
+
+verifie que la case dans laquelle on se trouve soit différente de C (un coffre) ou P (le joueur) 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em i} & entier représentant l'abscisse dans la matrice \\
+\hline
+{\em j} & entier représentant l'ordonnée dans la matrice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int renvoie 0 si la case vérifiée contient C (un coffre), M (un monstre) ou P (le joueur) et 1 si non
+\end{DoxyReturn}
+
+\begin{DoxyParams}{Paramètres}
+{\em i} & entier représentant l'absisse dans la matrice \\
+\hline
+{\em j} & entier représentant l'ordonnée dans la matrice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+int renvoie 0 si la case vérifiée contient C (un coffre) ou P (le joueur) et 1 si non 
+\end{DoxyReturn}
+
+
+\subsection{Documentation des variables}
+\hypertarget{region_8h_a2a46a4ab5390437fb3bf07a17afd9873}{\index{region.\-h@{region.\-h}!pile@{pile}}
+\index{pile@{pile}!region.h@{region.\-h}}
+\subsubsection[{pile}]{\setlength{\rightskip}{0pt plus 5cm}int pile\mbox{[}{\bf tmax}\mbox{]}}}\label{region_8h_a2a46a4ab5390437fb3bf07a17afd9873}
+tableau d'entier représentant une pile d'entier \hypertarget{region_8h_ab23513cd1b60a5ce42fdddfb249cbde4}{\index{region.\-h@{region.\-h}!sommet@{sommet}}
+\index{sommet@{sommet}!region.h@{region.\-h}}
+\subsubsection[{sommet}]{\setlength{\rightskip}{0pt plus 5cm}int sommet}}\label{region_8h_ab23513cd1b60a5ce42fdddfb249cbde4}
+entier représentant le sommet de la pile d'entier \hypertarget{region_8h_a37eebb840591110a9e6fcdd00b1d1019}{\index{region.\-h@{region.\-h}!tab@{tab}}
+\index{tab@{tab}!region.h@{region.\-h}}
+\subsubsection[{tab}]{\setlength{\rightskip}{0pt plus 5cm}int tab\mbox{[}{\bf N\-B\-\_\-\-C\-O\-F\-F\-R\-E}+4\mbox{]}}}\label{region_8h_a37eebb840591110a9e6fcdd00b1d1019}
+tableau d'entier contenant les coordonnées des coffres plus celles du monstre et du joueur 

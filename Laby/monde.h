@@ -1,5 +1,5 @@
 /**
-*\file monde.c
+*\file monde.h
 *\brief regroupe toutes les fonctions nécessaires à la gestion du monde
 *\author Wajdi Guedouar
 *\version 0.1

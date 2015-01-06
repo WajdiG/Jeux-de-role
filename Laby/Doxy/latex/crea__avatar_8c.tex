@@ -1,0 +1,235 @@
+\hypertarget{crea__avatar_8c}{\section{Référence du fichier crea\-\_\-avatar.\-c}
+\label{crea__avatar_8c}\index{crea\-\_\-avatar.\-c@{crea\-\_\-avatar.\-c}}
+}
+
+
+regroupe toutes les fonctions nécessaire à la création de l'avatar  
+
+
+{\ttfamily \#include $<$stdio.\-h$>$}\\*
+{\ttfamily \#include $<$stdlib.\-h$>$}\\*
+{\ttfamily \#include $<$string.\-h$>$}\\*
+{\ttfamily \#include $<$ncurses.\-h$>$}\\*
+{\ttfamily \#include \char`\"{}crea\-\_\-avatar.\-h\char`\"{}}\\*
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{crea__avatar_8c_a3eebaf821e7abd3fb18762cf9cacb965}{initstruct} (\hyperlink{structt__joueur}{t\-\_\-joueur} $\ast$\hyperlink{IA_8c_a7ceef52b18732e046b145a429b37a790}{joueur})
+\begin{DoxyCompactList}\small\item\em fonction permettant d'initialiser toutes les valeurs contenue dans la structure \hyperlink{structt__joueur}{t\-\_\-joueur} \end{DoxyCompactList}\item 
+void \hyperlink{crea__avatar_8c_a04d1e415051e549e451c2a4f7b7f4f9d}{creer\-\_\-pseudo} (\hyperlink{structt__joueur}{t\-\_\-joueur} $\ast$\hyperlink{IA_8c_a7ceef52b18732e046b145a429b37a790}{joueur})
+\begin{DoxyCompactList}\small\item\em fonction permettant au joueur de créer un pseudo et de le stocké dans le tableau char nom\mbox{[}\mbox{]} de la structure \hyperlink{structt__joueur}{t\-\_\-joueur} \end{DoxyCompactList}\item 
+void \hyperlink{crea__avatar_8c_a375ea749e409cd7608131769464c2039}{race} (\hyperlink{structt__joueur}{t\-\_\-joueur} $\ast$\hyperlink{IA_8c_a7ceef52b18732e046b145a429b37a790}{joueur})
+\begin{DoxyCompactList}\small\item\em fonction permettant au joueur de choisir une race parmis les choix du type énuméré t\-\_\-race, son choix sera alors sauvegardé dans la structure \hyperlink{structt__joueur}{t\-\_\-joueur} \end{DoxyCompactList}\item 
+void \hyperlink{crea__avatar_8c_a1171f8dd74cc459e6938a9c6aa345a6b}{sexe} (\hyperlink{structt__joueur}{t\-\_\-joueur} $\ast$\hyperlink{IA_8c_a7ceef52b18732e046b145a429b37a790}{joueur})
+\begin{DoxyCompactList}\small\item\em fonction permettant au joueur de choisir le sexe de son avatar, son choix sera sauvegardé dans le type énuméré t\-\_\-sexe de la structure \hyperlink{structt__joueur}{t\-\_\-joueur} \end{DoxyCompactList}\item 
+void \hyperlink{crea__avatar_8c_ad5ea36780348d0bb87974035480df785}{taille} (\hyperlink{structt__joueur}{t\-\_\-joueur} $\ast$\hyperlink{IA_8c_a7ceef52b18732e046b145a429b37a790}{joueur})
+\begin{DoxyCompactList}\small\item\em fonction permettant au joueur de choisir sa taille (en centimètre) parmis des choix proposés dépendant de sa race. Une fois valider, son choix sera sauvegardé dans l'entier int taille de la structure \hyperlink{structt__joueur}{t\-\_\-joueur} \end{DoxyCompactList}\item 
+void \hyperlink{crea__avatar_8c_af12417a59b198706ae4680119ea857f3}{poids} (\hyperlink{structt__joueur}{t\-\_\-joueur} $\ast$\hyperlink{IA_8c_a7ceef52b18732e046b145a429b37a790}{joueur})
+\begin{DoxyCompactList}\small\item\em fonction permettant au joueur de choisir le poids de son avatar (en kg) en fonction de sa race, une fois choisit, la fonction calcule l'I\-M\-C de l'avatar et en fonction du résultat, associe une des valeurs du type énuméré t\-\_\-poids dans la structure \hyperlink{structt__joueur}{t\-\_\-joueur} \end{DoxyCompactList}\item 
+void \hyperlink{crea__avatar_8c_a47a94ca18d15fa6ac55e52ce9ae5b798}{init\-Caract} (\hyperlink{structt__joueur}{t\-\_\-joueur} $\ast$\hyperlink{IA_8c_a7ceef52b18732e046b145a429b37a790}{joueur})
+\begin{DoxyCompactList}\small\item\em fonction mettant à jour les compétences secondaires et principales du joueur en fonctions de l'I\-M\-C et de la race du joueur. \end{DoxyCompactList}\item 
+void \hyperlink{crea__avatar_8c_a5cc091e0bc03a253f8d993c24fef330c}{attribution\-\_\-points} (\hyperlink{structt__joueur}{t\-\_\-joueur} $\ast$\hyperlink{IA_8c_a7ceef52b18732e046b145a429b37a790}{joueur}, int principale, int secondaire)
+\begin{DoxyCompactList}\small\item\em fonction permettant au joueur de répartir un nombre donné de points de compétences principales et secondaires. \end{DoxyCompactList}\item 
+void \hyperlink{crea__avatar_8c_a13225a1b64e6e05fa16427c3d127e901}{config} (\hyperlink{structt__joueur}{t\-\_\-joueur} $\ast$\hyperlink{IA_8c_a7ceef52b18732e046b145a429b37a790}{joueur})
+\begin{DoxyCompactList}\small\item\em fonction permettant au joueur de voir un récapitulatif du contenu de la fonction \hyperlink{structt__joueur}{t\-\_\-joueur} et lui permet de revenir sur la race, la taille, le poids, le sexe et le pseudo. Si non, il peut lancer l'aventure. \end{DoxyCompactList}\item 
+void \hyperlink{crea__avatar_8c_ab2756648c1d1ff12696104718e817c0f}{crea\-\_\-ava} (\hyperlink{structt__joueur}{t\-\_\-joueur} $\ast$\hyperlink{IA_8c_a7ceef52b18732e046b145a429b37a790}{joueur}, int principale, int secondaire)
+\begin{DoxyCompactList}\small\item\em fonction permettant d'appeler toutes les fonctions du fichier \hyperlink{crea__avatar_8c}{crea\-\_\-avatar.\-c} dans l'ordre voulu \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{crea__avatar_8c_ad45347ee3b99e58ad7a35fec8e7e3cd9}{pseudo} \mbox{[}\hyperlink{crea__avatar_8h_a2748566f4c443ee77aa831e63dbb5ebe}{P}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+regroupe toutes les fonctions nécessaire à la création de l'avatar \begin{DoxyAuthor}{Auteur}
+Wajdi Guedouar 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\-1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+20 octobre 2014 
+\end{DoxyDate}
+
+
+\subsection{Documentation des fonctions}
+\hypertarget{crea__avatar_8c_a5cc091e0bc03a253f8d993c24fef330c}{\index{crea\-\_\-avatar.\-c@{crea\-\_\-avatar.\-c}!attribution\-\_\-points@{attribution\-\_\-points}}
+\index{attribution\-\_\-points@{attribution\-\_\-points}!crea_avatar.c@{crea\-\_\-avatar.\-c}}
+\subsubsection[{attribution\-\_\-points}]{\setlength{\rightskip}{0pt plus 5cm}void attribution\-\_\-points (
+\begin{DoxyParamCaption}
+\item[{{\bf t\-\_\-joueur} $\ast$}]{joueur, }
+\item[{int}]{principale, }
+\item[{int}]{secondaire}
+\end{DoxyParamCaption}
+)}}\label{crea__avatar_8c_a5cc091e0bc03a253f8d993c24fef330c}
+
+
+fonction permettant au joueur de répartir un nombre donné de points de compétences principales et secondaires. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$joueur} & pointeur sur la structure \hyperlink{structt__joueur}{t\-\_\-joueur} joueur \\
+\hline
+{\em principale} & nombre de points de compétences principales à répartir \\
+\hline
+{\em secondaire} & nombre de points de compétences secondaires à répartir \\
+\hline
+\end{DoxyParams}
+\hypertarget{crea__avatar_8c_a13225a1b64e6e05fa16427c3d127e901}{\index{crea\-\_\-avatar.\-c@{crea\-\_\-avatar.\-c}!config@{config}}
+\index{config@{config}!crea_avatar.c@{crea\-\_\-avatar.\-c}}
+\subsubsection[{config}]{\setlength{\rightskip}{0pt plus 5cm}void config (
+\begin{DoxyParamCaption}
+\item[{{\bf t\-\_\-joueur} $\ast$}]{joueur}
+\end{DoxyParamCaption}
+)}}\label{crea__avatar_8c_a13225a1b64e6e05fa16427c3d127e901}
+
+
+fonction permettant au joueur de voir un récapitulatif du contenu de la fonction \hyperlink{structt__joueur}{t\-\_\-joueur} et lui permet de revenir sur la race, la taille, le poids, le sexe et le pseudo. Si non, il peut lancer l'aventure. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$joueur} & pointeur sur la structure \hyperlink{structt__joueur}{t\-\_\-joueur} joueur \\
+\hline
+\end{DoxyParams}
+\hypertarget{crea__avatar_8c_ab2756648c1d1ff12696104718e817c0f}{\index{crea\-\_\-avatar.\-c@{crea\-\_\-avatar.\-c}!crea\-\_\-ava@{crea\-\_\-ava}}
+\index{crea\-\_\-ava@{crea\-\_\-ava}!crea_avatar.c@{crea\-\_\-avatar.\-c}}
+\subsubsection[{crea\-\_\-ava}]{\setlength{\rightskip}{0pt plus 5cm}void crea\-\_\-ava (
+\begin{DoxyParamCaption}
+\item[{{\bf t\-\_\-joueur} $\ast$}]{joueur, }
+\item[{int}]{principale, }
+\item[{int}]{secondaire}
+\end{DoxyParamCaption}
+)}}\label{crea__avatar_8c_ab2756648c1d1ff12696104718e817c0f}
+
+
+fonction permettant d'appeler toutes les fonctions du fichier \hyperlink{crea__avatar_8c}{crea\-\_\-avatar.\-c} dans l'ordre voulu 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$joueur} & pointeur sur la structure \hyperlink{structt__joueur}{t\-\_\-joueur} joueur \\
+\hline
+{\em principale} & nombre de points de compétences principales à répartir \\
+\hline
+{\em secondaire} & nombre de points de compétences secondaires à répartir \\
+\hline
+\end{DoxyParams}
+\hypertarget{crea__avatar_8c_a04d1e415051e549e451c2a4f7b7f4f9d}{\index{crea\-\_\-avatar.\-c@{crea\-\_\-avatar.\-c}!creer\-\_\-pseudo@{creer\-\_\-pseudo}}
+\index{creer\-\_\-pseudo@{creer\-\_\-pseudo}!crea_avatar.c@{crea\-\_\-avatar.\-c}}
+\subsubsection[{creer\-\_\-pseudo}]{\setlength{\rightskip}{0pt plus 5cm}void creer\-\_\-pseudo (
+\begin{DoxyParamCaption}
+\item[{{\bf t\-\_\-joueur} $\ast$}]{joueur}
+\end{DoxyParamCaption}
+)}}\label{crea__avatar_8c_a04d1e415051e549e451c2a4f7b7f4f9d}
+
+
+fonction permettant au joueur de créer un pseudo et de le stocké dans le tableau char nom\mbox{[}\mbox{]} de la structure \hyperlink{structt__joueur}{t\-\_\-joueur} 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$joueur} & pointeur sur la structure \hyperlink{structt__joueur}{t\-\_\-joueur} joueur \\
+\hline
+\end{DoxyParams}
+\hypertarget{crea__avatar_8c_a47a94ca18d15fa6ac55e52ce9ae5b798}{\index{crea\-\_\-avatar.\-c@{crea\-\_\-avatar.\-c}!init\-Caract@{init\-Caract}}
+\index{init\-Caract@{init\-Caract}!crea_avatar.c@{crea\-\_\-avatar.\-c}}
+\subsubsection[{init\-Caract}]{\setlength{\rightskip}{0pt plus 5cm}void init\-Caract (
+\begin{DoxyParamCaption}
+\item[{{\bf t\-\_\-joueur} $\ast$}]{joueur}
+\end{DoxyParamCaption}
+)}}\label{crea__avatar_8c_a47a94ca18d15fa6ac55e52ce9ae5b798}
+
+
+fonction mettant à jour les compétences secondaires et principales du joueur en fonctions de l'I\-M\-C et de la race du joueur. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$joueur} & pointeur sur la structure \hyperlink{structt__joueur}{t\-\_\-joueur} joueur \\
+\hline
+\end{DoxyParams}
+\hypertarget{crea__avatar_8c_a3eebaf821e7abd3fb18762cf9cacb965}{\index{crea\-\_\-avatar.\-c@{crea\-\_\-avatar.\-c}!initstruct@{initstruct}}
+\index{initstruct@{initstruct}!crea_avatar.c@{crea\-\_\-avatar.\-c}}
+\subsubsection[{initstruct}]{\setlength{\rightskip}{0pt plus 5cm}void initstruct (
+\begin{DoxyParamCaption}
+\item[{{\bf t\-\_\-joueur} $\ast$}]{joueur}
+\end{DoxyParamCaption}
+)}}\label{crea__avatar_8c_a3eebaf821e7abd3fb18762cf9cacb965}
+
+
+fonction permettant d'initialiser toutes les valeurs contenue dans la structure \hyperlink{structt__joueur}{t\-\_\-joueur} 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$joueur} & pointeur sur la structure \hyperlink{structt__joueur}{t\-\_\-joueur} joueur \\
+\hline
+\end{DoxyParams}
+\hypertarget{crea__avatar_8c_af12417a59b198706ae4680119ea857f3}{\index{crea\-\_\-avatar.\-c@{crea\-\_\-avatar.\-c}!poids@{poids}}
+\index{poids@{poids}!crea_avatar.c@{crea\-\_\-avatar.\-c}}
+\subsubsection[{poids}]{\setlength{\rightskip}{0pt plus 5cm}void poids (
+\begin{DoxyParamCaption}
+\item[{{\bf t\-\_\-joueur} $\ast$}]{joueur}
+\end{DoxyParamCaption}
+)}}\label{crea__avatar_8c_af12417a59b198706ae4680119ea857f3}
+
+
+fonction permettant au joueur de choisir le poids de son avatar (en kg) en fonction de sa race, une fois choisit, la fonction calcule l'I\-M\-C de l'avatar et en fonction du résultat, associe une des valeurs du type énuméré t\-\_\-poids dans la structure \hyperlink{structt__joueur}{t\-\_\-joueur} 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$joueur} & pointeur sur la structure \hyperlink{structt__joueur}{t\-\_\-joueur} joueur \\
+\hline
+\end{DoxyParams}
+\hypertarget{crea__avatar_8c_a375ea749e409cd7608131769464c2039}{\index{crea\-\_\-avatar.\-c@{crea\-\_\-avatar.\-c}!race@{race}}
+\index{race@{race}!crea_avatar.c@{crea\-\_\-avatar.\-c}}
+\subsubsection[{race}]{\setlength{\rightskip}{0pt plus 5cm}void race (
+\begin{DoxyParamCaption}
+\item[{{\bf t\-\_\-joueur} $\ast$}]{joueur}
+\end{DoxyParamCaption}
+)}}\label{crea__avatar_8c_a375ea749e409cd7608131769464c2039}
+
+
+fonction permettant au joueur de choisir une race parmis les choix du type énuméré t\-\_\-race, son choix sera alors sauvegardé dans la structure \hyperlink{structt__joueur}{t\-\_\-joueur} 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$joueur} & pointeur sur la structure \hyperlink{structt__joueur}{t\-\_\-joueur} joueur \\
+\hline
+\end{DoxyParams}
+\hypertarget{crea__avatar_8c_a1171f8dd74cc459e6938a9c6aa345a6b}{\index{crea\-\_\-avatar.\-c@{crea\-\_\-avatar.\-c}!sexe@{sexe}}
+\index{sexe@{sexe}!crea_avatar.c@{crea\-\_\-avatar.\-c}}
+\subsubsection[{sexe}]{\setlength{\rightskip}{0pt plus 5cm}void sexe (
+\begin{DoxyParamCaption}
+\item[{{\bf t\-\_\-joueur} $\ast$}]{joueur}
+\end{DoxyParamCaption}
+)}}\label{crea__avatar_8c_a1171f8dd74cc459e6938a9c6aa345a6b}
+
+
+fonction permettant au joueur de choisir le sexe de son avatar, son choix sera sauvegardé dans le type énuméré t\-\_\-sexe de la structure \hyperlink{structt__joueur}{t\-\_\-joueur} 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$joueur} & pointeur sur la structure \hyperlink{structt__joueur}{t\-\_\-joueur} joueur \\
+\hline
+\end{DoxyParams}
+\hypertarget{crea__avatar_8c_ad5ea36780348d0bb87974035480df785}{\index{crea\-\_\-avatar.\-c@{crea\-\_\-avatar.\-c}!taille@{taille}}
+\index{taille@{taille}!crea_avatar.c@{crea\-\_\-avatar.\-c}}
+\subsubsection[{taille}]{\setlength{\rightskip}{0pt plus 5cm}void taille (
+\begin{DoxyParamCaption}
+\item[{{\bf t\-\_\-joueur} $\ast$}]{joueur}
+\end{DoxyParamCaption}
+)}}\label{crea__avatar_8c_ad5ea36780348d0bb87974035480df785}
+
+
+fonction permettant au joueur de choisir sa taille (en centimètre) parmis des choix proposés dépendant de sa race. Une fois valider, son choix sera sauvegardé dans l'entier int taille de la structure \hyperlink{structt__joueur}{t\-\_\-joueur} 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em $\ast$joueur} & pointeur sur la structure \hyperlink{structt__joueur}{t\-\_\-joueur} joueur \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Documentation des variables}
+\hypertarget{crea__avatar_8c_ad45347ee3b99e58ad7a35fec8e7e3cd9}{\index{crea\-\_\-avatar.\-c@{crea\-\_\-avatar.\-c}!pseudo@{pseudo}}
+\index{pseudo@{pseudo}!crea_avatar.c@{crea\-\_\-avatar.\-c}}
+\subsubsection[{pseudo}]{\setlength{\rightskip}{0pt plus 5cm}char pseudo\mbox{[}{\bf P}\mbox{]}}}\label{crea__avatar_8c_ad45347ee3b99e58ad7a35fec8e7e3cd9}
+tableau destiné à contenir le pseudo du joueur 

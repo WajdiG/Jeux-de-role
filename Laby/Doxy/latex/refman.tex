@@ -1,0 +1,111 @@
+\documentclass{book}
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+\usepackage{makeidx}
+\usepackage{natbib}
+\usepackage{graphicx}
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{ifthen}
+\usepackage[table]{xcolor}
+\usepackage{textcomp}
+\usepackage{alltt}
+\usepackage{ifpdf}
+\ifpdf
+\usepackage[pdftex,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\else
+\usepackage[ps2pdf,
+            pagebackref=true,
+            colorlinks=true,
+            linkcolor=blue,
+            unicode
+           ]{hyperref}
+\usepackage{pspicture}
+\fi
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+
+\usepackage{mathptmx}
+\usepackage[scaled=.90]{helvet}
+\usepackage{courier}
+\usepackage{sectsty}
+\usepackage{amssymb}
+\usepackage[titles]{tocloft}
+\usepackage{doxygen}
+\lstset{language=C++,inputencoding=utf8,basicstyle=\footnotesize,breaklines=true,breakatwhitespace=true,tabsize=4,numbers=left }
+\makeindex
+\setcounter{tocdepth}{3}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\familydefault}{\sfdefault}
+\hfuzz=15pt
+\setlength{\emergencystretch}{15pt}
+\hbadness=750
+\tolerance=750
+\begin{document}
+\hypersetup{pageanchor=false,citecolor=blue}
+\begin{titlepage}
+\vspace*{7cm}
+\begin{center}
+{\Large Jeu de role, par W.\-G\-U\-E\-D\-O\-U\-A\-R,G.\-T\-H\-I\-E\-U\-L\-A\-R\-T et J.\-T\-O\-U\-L\-M\-O\-N\-D\-E }\\
+\vspace*{1cm}
+{\large Généré par Doxygen 1.8.3.1}\\
+\vspace*{0.5cm}
+{\small Mardi Janvier 6 2015 16:55:29}\\
+\end{center}
+\end{titlepage}
+\clearemptydoublepage
+\pagenumbering{roman}
+\tableofcontents
+\clearemptydoublepage
+\pagenumbering{arabic}
+\hypersetup{pageanchor=true,citecolor=blue}
+\chapter{R\-E\-A\-D\-M\-E}
+\label{md_README}
+\hypertarget{md_README}{}
+\input{md_README}
+\chapter{Index des classes}
+\input{annotated}
+\chapter{Index des fichiers}
+\input{files}
+\chapter{Documentation des classes}
+\input{structt__combat}
+\input{structt__comp1}
+\input{structt__coord}
+\input{structt__coordonees}
+\input{structt__dial}
+\input{structt__furtif}
+\input{structt__joueur}
+\input{structt__magie}
+\input{structt__physique}
+\input{structt__statcombat}
+\input{structt__vie}
+\chapter{Documentation des fichiers}
+\input{accueil_8c}
+\input{accueil_8h}
+\input{charger_8c}
+\input{charger_8h}
+\input{crea__avatar_8c}
+\input{crea__avatar_8h}
+\input{deplacement_8c}
+\input{deplacement_8h}
+\input{IA_8c}
+\input{JDR1__0_8h}
+\input{monde_8c}
+\input{monde_8h}
+\input{pile_8c}
+\input{pile_8h}
+\input{pile__tab_8c}
+\input{pile__tab_8h}
+\input{region_8c}
+\input{region_8h}
+\input{sauvegarde_8c}
+\input{sauvegarde_8h}
+\addcontentsline{toc}{part}{Index}
+\printindex
+\end{document}
