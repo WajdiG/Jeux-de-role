@@ -1,7 +1,7 @@
 /**
  *\file pile.c
  *\brief Projet informatique S3 Deplacement du personnage et colisions sur le parois
- *\author TOULMONDE Joris
+ *\author Joris TOULMONDE, Godefroy THIEULART
  *\version 0.2
  *\date 22 Octobre 2014
 */

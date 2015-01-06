@@ -1,9 +1,9 @@
 /**
- *\file deplacement.c
+ *\file combatRework.c
  *\brief Projet informatique S3 Deplacement du personnage et colisions sur le parois
- *\author Joris Toulmonde, Godefroy Thieulart
+ *\author Godefroy THIEULART
  *\version 0.2
- *\date 22 Octobre 2014
+ *\date 01 Decembre 2014
 */
 
 #include <stdio.h>
@@ -14,21 +14,16 @@
 #include "IA.h"
 #include "region.h"
 
-#define N 20
-#define MUR 0
-#define CHEMIN 1
-#define COFFRE 2
-#define JOUEUR 3
-#define OBJECTIF 4
-#define MOB 5
+#define N 20 /**< Taille de la matrice region*/
+#define MUR 0 /**< Entier modélisant un mur*/
+#define CHEMIN 1 /**< Entier modélisant le chemin à emprunter disponible pour le joueur et le monstre*/
+#define COFFRE 2 /**< Entier modélisant un coffre*/
+#define JOUEUR 3 /**< Entier modélisant le joueur*/
+#define OBJECTIF 4 /**< Entier modélisant un objectif*/
+#define MOB 5 /**< Entier modélisant un monstre*/
 
-extern int quitter;
-extern char region[N][N];
-extern int matrice[N][N];
-
-t_coordonees mes_choix[4];
-t_coordonees ma_position;
-t_coordonees sorti;
+t_coordonees mes_choix[4]; /**< coordonnées entourant les coordonnées ou se trouve le joueur */
+t_coordonees ma_position; /**< coordonnées ou se trouve le joueur */
 
 /**
 * \fn void guerison(t_joueur*joueur, int*pvJoueur, int*manaJoueur, int pvMax)
@@ -48,7 +43,7 @@ void guerison(t_joueur*joueur, int*pvJoueur, int*manaJoueur, int pvMax){
 		printf("\r\n      ==> Vous regagnez %i points de vie <==\r\n", Soin);
 	}
 	else {
-		printf("\r\n      ==> Vous n'avez aps assez de mana <== \r\n");
+		printf("\r\n      ==> Vous n'avez pas assez de mana <== \r\n");
 	}
 }
 

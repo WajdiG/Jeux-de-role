@@ -1,7 +1,7 @@
 /**
 *\file JDR1_0.h
 *\brief regroupe tout les prototypes des fonctions nécessaire à la création de l'avatar
-*\author Wajdi Guedouar
+*\author Wajdi GUEDOUAR
 *\version 0.1
 *\date 20 octobre 2014
 */
@@ -30,14 +30,14 @@ typedef struct{int victoire,defaite,total; float pourvic,pourdef;}t_statcombat;
 void afficher_joueur();
 
 /**
- *\fn nouvelle_partie(int ) 
+ *\fn nouvelle_partie(int matrice[N][N]) 
  *\brief fonction permettant au joueur de démarrer une nouvelle partie
  *\param matrice[N][N] prend en paramètre une matrice de taille NxN
  */
 void nouvelle_partie(int matrice[N][N]);
 
 /**
- *\fn charger_par(int) 
+ *\fn charger_par(int matrice[N][N]) 
  *\brief fonction permettant au joueur de charger une partie et de la continuer
  *\param matrice[N][N] prend en paramètre une matrice de taille NxN
  */

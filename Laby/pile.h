@@ -1,7 +1,7 @@
 /**
  *\file pile.h
  *\brief Regroupe les prototypes de fonction pour les piles
- *\author TOULMONDE Joris
+ *\author Joris TOULMONDE, Godefroy THIEULART
  *\version 0.2
  *\date 22 Octobre 2014
 */
