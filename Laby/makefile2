@@ -1,8 +1,0 @@
-prog2 : accueil.o deplacement.o
-	gcc accueil.o deplacement.o -o prog2
-	
-accueil.o : accueil.c
-	gcc -c accueil.c
-	
-deplacement.o : deplacement.c
-	gcc -c deplacement.c 
