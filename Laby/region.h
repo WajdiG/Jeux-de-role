@@ -6,14 +6,14 @@
 *\date 27 Novembre 2014
 */
 
-#define N 20
-#define tmax N+N
-#define NB_COFFRE 4
+#define N 20 /**< constante définissant la taille de la matrice region */
+#define tmax N+N /**< constante définissant la taille du tableau pile */
+#define NB_COFFRE 4 /**< constante définissant le nombre de coffre présent sur dans la matrice region */
 
 
-int tab[12];
-int pile[tmax];
-int sommet;
+int tab[NB_COFFRE+4]; /**< tableau d'entier contenant les coordonnées des coffres plus celles du monstre et du joueur */
+int pile[tmax]; /**< tableau d'entier représentant une pile d'entier */
+int sommet; /**< entier représentant le sommet de la pile d'entier */
 
 /**
  *\fn initregion
@@ -29,7 +29,7 @@ void aff_region();
 
 /**
  *\fn verif_coffre(int , int)
- *\brief initialise la matrice, toutes les cases valent X
+ *\brief verifie la présence ou non d'un coffre C ou d'un personnage P dans la matrice region autour des coordonnées i et j passées en paramètre
  *\param i entier représentant l'absisse dans la matrice
  *\param j entier représentant l'ordonnée dans la matrice
  *\return int renvoie 0 si la case vérifiée contient C (un coffre) et 1 si non
@@ -76,7 +76,7 @@ void chemin();
 void carre();
 
  /**
- *\fn region
+ *\fn creer_region(void)
  *\brief creer une region : labyrinthe aléatoire
  */
 void creer_region();

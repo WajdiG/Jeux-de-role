@@ -30,6 +30,10 @@ t_coordonees mes_choix[4];
 t_coordonees ma_position;
 t_coordonees sorti;
 
+/**
+* \fn void guerison(t_joueur*joueur, int*pvJoueur, int*manaJoueur, int pvMax)
+* \brief Fonction modifiant les données du joueur dans le cas ou celui-ci utilise la commande de guerison
+**/
 void guerison(t_joueur*joueur, int*pvJoueur, int*manaJoueur, int pvMax){
 	int cptSoin=(*joueur).magie.guerison;
 	int puisMag=(*joueur).comp.puissance;
@@ -48,6 +52,10 @@ void guerison(t_joueur*joueur, int*pvJoueur, int*manaJoueur, int pvMax){
 	}
 }
 
+/**
+* \fn void destruction(int matrice[N][N], t_coordonees ma_position, int*pvMob,t_joueur*joueur, int*manaJoueur)
+* \brief Fonction modifiant les données du joueur dans le cas ou celui-ci utilise la commande de destruction
+**/
 void destruction(int matrice[N][N], t_coordonees ma_position, int*pvMob,t_joueur*joueur, int*manaJoueur){
 	int cptdest=(*joueur).magie.destruction;
 	int puisMag=(*joueur).comp.puissance;
@@ -74,6 +82,10 @@ void destruction(int matrice[N][N], t_coordonees ma_position, int*pvMob,t_joueur
 	}
 }
 
+/**
+* \fn void degatHaut(int matrice[N][N], t_coordonees ma_position, int*pvMob, int*enduJoueur,t_joueur*joueur,int*distance)
+* \brief Fonction modifiant les données du joueur dans le cas ou celui-ci utilise la commande d'attaque vers le haut, elle influt aussi sur les données du monstre
+**/
 void degatHaut(int matrice[N][N], t_coordonees ma_position, int*pvMob, int*enduJoueur,t_joueur*joueur,int*distance){
 	int x = ma_position.x;
 	int y = ma_position.y;
@@ -126,6 +138,10 @@ void degatHaut(int matrice[N][N], t_coordonees ma_position, int*pvMob, int*enduJ
 	}
 }
 
+/**
+* \fn void degatGauche(int matrice[N][N], t_coordonees ma_position, int*pvMob, int*enduJoueur,t_joueur*joueur,int*distance)
+* \brief Fonction modifiant les données du joueur dans le cas ou celui-ci utilise la commande d'attaque vers la gauche, elle influt aussi sur les données du monstre
+**/
 void degatGauche(int matrice[N][N], t_coordonees ma_position, int*pvMob, int*enduJoueur,t_joueur*joueur,int*distance){
 	int x = ma_position.x;
 	int y = ma_position.y;
@@ -179,6 +195,10 @@ void degatGauche(int matrice[N][N], t_coordonees ma_position, int*pvMob, int*end
 	
 }
 
+/**
+* \fn void degatBas(int matrice[N][N], t_coordonees ma_position, int*pvMob, int*enduJoueur,t_joueur*joueur,int*distance)
+* \brief Fonction modifiant les données du joueur dans le cas ou celui-ci utilise la commande d'attaque vers le bas, elle influt aussi sur les données du monstre
+**/
 void degatBas(int matrice[N][N], t_coordonees ma_position, int*pvMob, int*enduJoueur,t_joueur*joueur,int*distance){
 	int x = ma_position.x;
 	int y = ma_position.y;
@@ -231,6 +251,10 @@ void degatBas(int matrice[N][N], t_coordonees ma_position, int*pvMob, int*enduJo
 	}
 }
 
+/**
+* \fn void degatDroite(int matrice[N][N], t_coordonees ma_position, int*pvMob, int*enduJoueur,t_joueur*joueur,int*distance)
+* \brief Fonction modifiant les données du joueur dans le cas ou celui-ci utilise la commande d'attaque vers la droite, elle influt aussi sur les données du monstre
+**/
 void degatDroite(int matrice[N][N], t_coordonees ma_position, int*pvMob, int*enduJoueur,t_joueur*joueur,int*distance){
 	int x = ma_position.x;
 	int y = ma_position.y;

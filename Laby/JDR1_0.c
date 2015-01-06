@@ -15,27 +15,19 @@
 #include "IA.h"
 #include "region.h"
 #include "JDR1_0.h"
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include<time.h>
-#include<assert.h>
 #include<ncurses.h>
-#include"IA.h"
-#include"region.h"
-#include"JDR1_0.h"
 #include "accueil.h"
 
 
-extern char ** monde[X][Y];
-extern t_coord coord;
-extern  char region[N][N];
-t_joueur joueur;
-t_statcombat statcombat;
+extern char ** monde[X][Y]; /**< matrice de matrice représentant le monde, chaque case du monde contient une matrice region */
+extern t_coord coord; /**< variable de type t_coord contenant les coordonnées du joueur dans la matrice monde */
+extern  char region[N][N]; /**< matrice de type caractère contenant une region du monde */
+t_joueur joueur; /**< variable de type t_joueur contenant toutes les données de l'avatar du joueur */
+t_statcombat statcombat;/**< variable de type t_statcombat contenant toutes les données liées aux statistiques de combats du joueur */
 
 
 /**
-*\struct afficher_joueur(void)
+*\fn afficher_joueur(void)
 *\brief fonction permettant d'afficher les caractéristiques du joueur
 */
 void afficher_joueur(){
@@ -92,6 +84,7 @@ void afficher_joueur(){
 	int m=joueur.physique.taille/100;
 	int c=joueur.physique.taille%100;
 	
+	//affiche la taille en fonction de la présence ou non de centimètre
 	if(c==0){
 		printw("Taille : %i m \n", m);
 	}
@@ -119,17 +112,24 @@ void afficher_joueur(){
 	}
 }
 
+/**
+ *\fn nouvelle_partie(int **) 
+ *\brief fonction permettant au joueur de démarrer une nouvelle partie
+ *\param matrice prend en paramètre une matrice de taille NxN
+ */
 void nouvelle_partie(int matrice[N][N]){
 	int choix=0;
 	int principale=1;
-    int secondaire=1;
+    	int secondaire=1;
 	
+	//appelle des 5 fonctions necessaire à la création d'une nouvelle partie
 	crea_ava(&joueur,principale,secondaire);
 	creer_region();
 	tradRandom(matrice, region);
 	inclure_region(coord);
 	crea_file(joueur, coord, joueur.pseudo, monde);
 	
+	//menu de jeu
 	while(choix!=4&&choix!=3){
 		printw("\n Entrez le nombre entier correspondant à votre choix : \n");
 		printw("0- Afficher la region dans laquelle vous vous trouvez \n");
@@ -151,12 +151,19 @@ void nouvelle_partie(int matrice[N][N]){
 	}
 }
 
+/**
+ *\fn charger_par(int **) 
+ *\brief fonction permettant au joueur de charger une partie et de la continuer
+ *\param matrice prend en paramètre une matrice de taille NxN
+ */
 void charger_par(int matrice[N][N]){
 	char charger[16];
-	int i=charger_partie(charger,&joueur,&coord,monde);
 	int choix=0;
+	//met dans i la valeur de charger_partie : 1 si la partie existe et 0 si non.
+	int i=charger_partie(charger,&joueur,&coord,monde);
 	
 	if(i==1){
+		//menu permettant au joueur de poursuivre sa partie
 		while(choix!=4){
 
 				printw("\n Entrez le nombre entier correspondant à votre choix : \n");

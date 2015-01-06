@@ -84,7 +84,7 @@ void rechercheJoueur(int matrice[N][N]){
 
 /**
 * \fn void deplacement_perso(int matrice[N][N])
-* \brief Fonction permettant de deplacer le joueur a chaque tour.
+* \brief Fonction permettant de deplacer le joueur a chaque tour ou le faire agir
 * \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemin, un coffre ou un monstre
 **/
 void deplacement_perso(int*parade, int*distance,int matrice[N][N], int*pvMob, int*enduJoueur, int*pvJoueur, int*manaJoueur, t_joueur*joueur,int pvMax){
@@ -157,6 +157,10 @@ int coffre(int matrice[N][N]){
 	return 1;
 }
 
+/**
+* \fn void jouer()
+* \brief Fonction permettant d'afficher le menu du jeu
+**/
 void jouer(){
 	int matrice[N][N];
 	

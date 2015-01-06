@@ -14,10 +14,12 @@
 
 
 /**
-*\fn charger_struct(t_joueur *,t_coord *,FILE *)
+*\fn charger_struct(t_joueur *,t_coord *, char **,FILE *)
 *\brief fonction permettant de charger toutes les données contenue dans le fichier de sauvegarde dans la structure t_joueur jouer
 *\param *joueur pointeur sur la structure t_joueur joueur
-*\param fichier fichier contenant les données sauvegardéess
+*\param coord coordonnées du joueur dans la matrice monde
+*\param monde[X][Y] matrice monde représentant le monde dans lequel le joueur évolue
+*\param fichier fichier contenant les données sauvegardées
 */
 void charger_jeu(t_joueur *joueur,t_coord *coord,char ** monde[X][Y],FILE*fichier){
 	int i=0;
@@ -175,6 +177,9 @@ void charger_jeu(t_joueur *joueur,t_coord *coord,char ** monde[X][Y],FILE*fichie
 *\fn void charger_partie(char)
 *\brief fonction permettant de charger une partie
 *\param charger tableau contenant le pseudo du joueur
+*\param *joueur pointeur sur la structure t_joueur joueur
+*\param coord coordonnées du joueur dans la matrice monde
+*\param monde[X][Y] matrice monde représentant le monde dans lequel le joueur évolue
 *\return int renvoie 1 si le fichier charger est valide, 0 si non
 */
 int charger_partie(char* charger,t_joueur* joueur,t_coord *coord, char ** monde[X][Y]){
@@ -185,11 +190,13 @@ int charger_partie(char* charger,t_joueur* joueur,t_coord *coord, char ** monde[
 	
 	fichier=fopen(charger,"r");
 	
+	//si le fichier existe
 	if(fichier!=NULL){
 		charger_jeu(joueur, coord, monde, fichier);
 		strcpy(joueur->pseudo,charger);
 		return 1;
 	}
+	
 	printw("Aucun ficher de sauvegarder existant pour ce pseudo. Vous pouvez commencer une nouvelle partie ou réessayer. \n");
 	return 0;
 }

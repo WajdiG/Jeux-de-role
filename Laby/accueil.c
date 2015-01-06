@@ -57,6 +57,11 @@ void ecran_accueil(){
 	refresh();
 }
 
+/**
+* \fn void Option_jeu(int matrice[N][N])
+* \brief Fonction d'affichage du premier ecran d'option du jeu.
+* \param matrice[N][N] est la matrice contenant le labyrinthe
+**/
 void Option_jeu(int matrice[N][N]){
 	int verif = -1;
 	
@@ -104,6 +109,11 @@ void Option_jeu(int matrice[N][N]){
 	}
 }
 
+/**
+* \fn void Option_jeu2(int matrice[N][N])
+* \brief Fonction d'affichage du second ecran d'option du jeu.
+* \param matrice[N][N] est la matrice contenant le labyrinthe
+**/
 void Option_jeu_2(int matrice[N][N]){
 	int verif = -1;
 	clear();
@@ -150,6 +160,11 @@ void Option_jeu_2(int matrice[N][N]){
 	}
 }
 
+/**
+* \fn void Option_jeu3(int matrice[N][N])
+* \brief Fonction d'affichage du troisieme ecran d'option du jeu.
+* \param matrice[N][N] est la matrice contenant le labyrinthe
+**/
 void Option_jeu_3(int matrice[N][N]){
 	int verif = -1;
 	clear();
@@ -195,6 +210,11 @@ void Option_jeu_3(int matrice[N][N]){
 	}
 }
 
+/**
+* \fn void Menu_Jeu(int matrice[N][N])
+* \brief Fonction d'affichage du menu du jeu.
+* \param matrice[N][N] est la matrice contenant le labyrinthe
+**/
 void Menu_Jeu(int matrice[N][N]){
 	int verif=-1;
 	clear();
@@ -237,6 +257,10 @@ void Menu_Jeu(int matrice[N][N]){
 	}
 }
 
+/**
+* \fn void Quitter_Jeu()
+* \brief Fonction de l'écran de fermeture du jeu.
+**/
 void Quitter_Jeu(){
 	char verif='a';
 	clear();
@@ -273,6 +297,11 @@ void Quitter_Jeu(){
 	quitter = 1;
 }
 
+/**
+* \fn void defeat(int matrice[N][N])
+* \brief Fonction d'affichage de l'ecran du jeu en cas de defaite du joueur.
+* \param matrice[N][N] est la matrice contenant le labyrinthe
+**/
 void defeat(int matrice[N][N]){
 	char verif='a';
 	clear();
@@ -309,6 +338,11 @@ void defeat(int matrice[N][N]){
 	}
 }
 
+/**
+* \fn void victory(int matrice[N][N])
+* \brief Fonction d'affichage de l'ecran du jeu en cas de victoire du joueur.
+* \param matrice[N][N] est la matrice contenant le labyrinthe
+**/
 void victory(int matrice[N][N]){
 	char verif='a';
 	clear();
@@ -345,6 +379,11 @@ void victory(int matrice[N][N]){
 	}
 }
 
+/**
+* \fn void continuer(int matrice[N][N])
+* \brief Fonction faisant tourner le labyrinthe du programme
+* \param matrice[N][N] est la matrice contenant le labyrinthe
+**/
 void continuer(int matrice[N][N]){
 	int pvJoueur=joueur.vie.sante+joueur.comp.force;
 	int pvMax=pvJoueur;
