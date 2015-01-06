@@ -323,7 +323,7 @@ void IA(int matrice[N][N], int*pvJoueur, int*parade, int*enduJoueur, int cpt_lab
 	trouverMob(&mobx, &moby);
 	
 	attaque=MobNextToJoueur(mobx, moby);						//determine si le joueur et le mob sont cote à cote et savoir par la suite l'action de l'IA
-	printw("attaque = %i", attaque);
+
 	//fait deplacer le mob si celui-ci n'est pas a coter du joueur
 	if(attaque==0){
 		cheminRetour=ecrireChemin();
@@ -331,7 +331,6 @@ void IA(int matrice[N][N], int*pvJoueur, int*parade, int*enduJoueur, int cpt_lab
 		depilerStruct(&resultat);
 		matrice[resultat.x][resultat.y]=MOB; 		//déplacer le MOB sur la case en direction du joueur
 		matrice[mobx][moby]=CHEMIN; 				//liberer le chemin derriere le MOB
-		printw("pouet");
 	}
 	
 	//inflige des degats au joueur en fonction de ses compétences si le mob est a coter de celui-ci
@@ -341,7 +340,6 @@ void IA(int matrice[N][N], int*pvJoueur, int*parade, int*enduJoueur, int cpt_lab
 			degat*=2;
 			printw("\r\n            ==> CRITIQUE <==            \r\n");
 		}
-		printw("parade : %i", *parade);
 		if(*parade==0){
 			*pvJoueur-=degat;
 			printw("\r\n     /!\\ Vous perdez %i PV /!\\\r\n", degat);

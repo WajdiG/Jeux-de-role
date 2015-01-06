@@ -1,7 +1,7 @@
 OPTS = -Wall
 
 prog4: IA.o pile_tab.o region.o combatRework.o accueil.o deplacement.o JDR1_0.o crea_avatar.o sauvegarde.o charger.o monde.o
-	gcc IA.o pile_tab.o region.o combatRework.o accueil.o deplacement.o JDR1_0.o crea_avatar.o sauvegarde.o charger.o monde.o -lncurses -o prog4 ${OPTS}
+	gcc IA.o pile_tab.o region.o combatRework.o accueil.o deplacement.o JDR1_0.o crea_avatar.o sauvegarde.o charger.o monde.o -lncurses -o JDR ${OPTS}
 	
 pile_tab.o : pile_tab.c
 	gcc -c pile_tab.c ${OPTS}
@@ -37,4 +37,4 @@ monde.o: monde.c
 	gcc -c monde.c
 	
 clean: 
-	rm -f *.o prog4
+	rm -f *.o JDR

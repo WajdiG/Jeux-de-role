@@ -15,8 +15,8 @@
 #include "accueil.h"
 #include "IA.h"
 
-int quitter = 0;
-int cpt_laby=0;
+int quitter = 0; /**< variable permettant de quitter le jeu */
+int cpt_laby=0; /**< compteur pour savoir le nombre de labyrinthe réaliser par le joueur */
 extern t_joueur joueur;
 extern t_coordonees ma_position;
 extern t_coordonees sorti;
@@ -110,7 +110,7 @@ void Option_jeu(int matrice[N][N]){
 }
 
 /**
-* \fn void Option_jeu2(int matrice[N][N])
+* \fn void Option_jeu_2(int matrice[N][N])
 * \brief Fonction d'affichage du second ecran d'option du jeu.
 * \param matrice[N][N] est la matrice contenant le labyrinthe
 **/
@@ -161,7 +161,7 @@ void Option_jeu_2(int matrice[N][N]){
 }
 
 /**
-* \fn void Option_jeu3(int matrice[N][N])
+* \fn void Option_jeu_3(int matrice[N][N])
 * \brief Fonction d'affichage du troisieme ecran d'option du jeu.
 * \param matrice[N][N] est la matrice contenant le labyrinthe
 **/
@@ -230,11 +230,11 @@ void Menu_Jeu(int matrice[N][N]){
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                                                                                              |||   \n");
-	printw("        |||   |============|    |============|    |============|    |============|    |============|     |||   \n");
-	printw("        |||   |    -1-     |    |    -2-     |    |    -3-     |    |    -4-     |    |    -5-     |     |||   \n");
-	printw("        |||   |Nouvelle    |    |Charger     |    |Cheat       |    |commande    |    |Quitter     |     |||   \n");
-	printw("        |||   |      Partie|    |      Partie|    |        Code|    |      du jeu|    |     le jeu |     |||   \n");
-	printw("        |||   |============|    |============|    |============|    |============|    |============|     |||   \n");
+	printw("        |||   |============|    |============|                      |============|    |============|     |||   \n");
+	printw("        |||   |    -1-     |    |    -2-     |                      |    -4-     |    |    -5-     |     |||   \n");
+	printw("        |||   |Nouvelle    |    |Charger     |                      |commande    |    |Quitter     |     |||   \n");
+	printw("        |||   |      Partie|    |      Partie|                      |      du jeu|    |     le jeu |     |||   \n");
+	printw("        |||   |============|    |============|                      |============|    |============|     |||   \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                             |================================|                               |||   \n");
@@ -380,11 +380,12 @@ void victory(int matrice[N][N]){
 }
 
 /**
-* \fn void continuer(int matrice[N][N])
+* \fn int continuer(int matrice[N][N])
 * \brief Fonction faisant tourner le labyrinthe du programme
 * \param matrice[N][N] est la matrice contenant le labyrinthe
+* \return renvoie 1 si le joueur meurt, renvoie 0 sinon
 **/
-void continuer(int matrice[N][N]){
+int continuer(int matrice[N][N]){
 	
 	//initialisation des statistiques du joueur
 	int pvJoueur=joueur.vie.sante+joueur.comp.force;
@@ -430,6 +431,7 @@ void continuer(int matrice[N][N]){
 		if(pvJoueur<=0){
 			defeat(matrice);
 			statcombat.defaite++;
+			return 1;
 		}
 		affichage(matrice, pvJoueur, manaJoueur, enduJoueur, pvMob, cpt_laby, &parade, &distance);
 		
@@ -447,19 +449,22 @@ void continuer(int matrice[N][N]){
 	}
 	
 	//affiche l'ecran de victoire si le joueur est vivant et a recuperer tout les coffres/tuer le mob/pris la sortie
-	if(pvJoueur>0){
-		victory(matrice);
-		statcombat.victoire++;
-	}
+	if(quitter!=1){
+		if(pvJoueur>0){
+			victory(matrice);
+			statcombat.victoire++;
+		}
 	
-	//permet d'augmenter le niveau du joueur (et de son adversaire)
-	cpt_laby++;
-	if((cpt_laby%1)==0){
-		clear();
-		attribution_points(&joueur, 0, 1);
+		//permet d'augmenter le niveau du joueur (et de son adversaire)
+		cpt_laby++;
+		if((cpt_laby%1)==0){
+			clear();
+			attribution_points(&joueur, 0, 1);
+		}
+		else if((cpt_laby%2)==0){
+			clear();
+			attribution_points(&joueur, 1, 0);
+		}	
 	}
-	else if((cpt_laby%2)==0){
-		clear();
-		attribution_points(&joueur, 1, 0);
-	}
+	return 0;
 }

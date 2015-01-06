@@ -19,6 +19,6 @@ void Quitter_Jeu();
 void Nouvelle_Partie(int matrice[N][N]);
 void defeat(int matrice[N][N]);
 void victory(int matrice[N][N]);
-void continuer(int matrice[N][N]);
+int continuer(int matrice[N][N]);
 
 #endif

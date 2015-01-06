@@ -120,7 +120,8 @@ void afficher_joueur(){
 void nouvelle_partie(int matrice[N][N]){
 	int choix=0;
 	int principale=1;
-    	int secondaire=1;
+    int secondaire=1;
+	int quitter=0;
 	
 	//appelle des 5 fonctions necessaire à la création d'une nouvelle partie
 	crea_ava(&joueur,principale,secondaire);
@@ -130,7 +131,7 @@ void nouvelle_partie(int matrice[N][N]){
 	crea_file(joueur, coord, joueur.pseudo, monde);
 	
 	//menu de jeu
-	while(choix!=4&&choix!=3){
+	while(choix!=4&&choix!=3&&quitter!=1){
 		printw("\n Entrez le nombre entier correspondant à votre choix : \n");
 		printw("0- Afficher la region dans laquelle vous vous trouvez \n");
 		printw("1- Continuer \n");
@@ -142,7 +143,8 @@ void nouvelle_partie(int matrice[N][N]){
 	
 		switch(choix){
 			case 0 : clear(); aff_region_monde(); break;
-			case 1 : continuer(matrice); deplacement_monde(); creer_region(); tradRandom(matrice, region); inclure_region(coord);break;
+			case 1 : quitter=continuer(matrice); 
+					if(quitter!=1){deplacement_monde(); creer_region(); tradRandom(matrice, region); inclure_region(coord);}break;
 			case 2 : crea_file(joueur, coord, joueur.pseudo, monde); break;
 			case 3 : crea_file(joueur, coord, joueur.pseudo, monde); break;
 			case 4 : break;
