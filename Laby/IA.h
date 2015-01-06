@@ -20,7 +20,7 @@ void trouverMob(int *mobx, int *moby);
 void trouvercible(int *Jx, int *Jy);
 void resetMob();
 t_coordonees ecrireChemin();
-int MobNextToJoueur();
+int MobNextToJoueur(int mobx, int moby);
 void lireChemin(t_coordonees cheminRetour, int cptx, int cpty);
 void IA(int vision[N][N], int*pvJoueur, int*parade, int*enduJoueur, int cpt_laby);
 

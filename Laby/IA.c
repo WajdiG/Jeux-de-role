@@ -30,7 +30,8 @@ extern t_joueur joueur;
 /**
 * \fn void tradRandom(int matrice[N][N], char region[N][N])
 * \brief Fonction permettant de traduire la matrice générer aléatoirement en matrice lisible par le programme
-* \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemain, un coffre ou un monstre, et region[N][N] Matrice de caractère ou chaque case contient soit un mur, un coffre ou un monstre
+* \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemain, un coffre ou un monstre
+* \param region[N][N] Matrice de caractère ou chaque case contient soit un mur, un coffre ou un monstre
 **/
 void tradRandom(int matrice[N][N], char region[N][N]){
 	int cptx=0;
@@ -134,7 +135,8 @@ void affVision(int matrice[N][N]){
 /**
 * \fn void trouverMob(int*mobx, int*moby)
 * \brief Fonction permettant de chercher les coordonnées de l'IA sur la matrice de jeu
-* \param *mobx qui contiendra la coordonnées x de l'IA dans la matrice et *moby qui contiendra la coordonnée y de l'IA
+* \param *mobx qui contiendra la coordonnées x de l'IA dans la matrice 
+* \param *moby qui contiendra la coordonnée y de l'IA
 **/
 void trouverMob(int *mobx, int *moby){
 	int cptx;
@@ -170,8 +172,6 @@ void resetMob(){
 		}
 	}
 }
-
-//calcule le chemin du monstre jusqu'au joueur
 
 /**
 * \fn t_coordonees ecrireChemin()
@@ -222,10 +222,9 @@ t_coordonees ecrireChemin(){
 * \brief Fonction permettant de savoir si l'IA est en contact avec le joueur afin de décider de l'action a faire
 * \return renvoi 1 si l'IA se trouve sur une case adjacente aux joueur, renvoi 0 autrement
 **/
-int MobNextToJoueur(){
+int MobNextToJoueur(int mobx, int moby){
 	int cptx;
 	int cpty;
-	int mobx, moby;
 	int sortis=0;
 	int joueur=-2;
 	int mob=0;
@@ -244,7 +243,7 @@ int MobNextToJoueur(){
 	else if(vision[mobx-1][moby]==joueur){return 1;}
 	else if(vision[mobx][moby+1]==joueur){return 1;}
 	else if(vision[mobx][moby-1]==joueur){return 1;}
-	return 0;
+	else {return 0;}
 }
 
 // empile les cases à suivre par le monstre pour arriver au joueur
@@ -289,12 +288,12 @@ void lireChemin(t_coordonees cheminRetour){
 * \fn void IA(int matrice[N][N], int*pvJoueur, int parade, int*enduJoueur, int cpt_laby)
 * \brief Fonction responsable de la totalité de l'IA, du choix de ses actions
 * \param matrice[N][N] est la matrice contenant le jeu
-* 		 *pvJoueur est la variable pointeur contenant les PV du joueur permettant de les modifiés
-* 		 parade contient une valeur booléenne afin de savoir si le joueur s'est mis en parade, modifiera le calcul des degat subis
-* 		 *enduJoueur est la variable pointeur contenant l'endurance du joueur permettant de les modifiés
-* 		 cpt_laby est une variable contenant le nombre de labyrinthe réussi par le joueur, celle-ci permettra de determiner la difficultées de l'IA
+* \param *pvJoueur est la variable pointeur contenant les PV du joueur permettant de les modifiés
+* \param parade contient une valeur booléenne afin de savoir si le joueur s'est mis en parade, modifiera le calcul des degat subis
+* \param *enduJoueur est la variable pointeur contenant l'endurance du joueur permettant de les modifiés
+* \param cpt_laby est une variable contenant le nombre de labyrinthe réussi par le joueur, celle-ci permettra de determiner la difficultées de l'IA
 **/
-void IA(int matrice[N][N], int*pvJoueur, int parade, int*enduJoueur, int cpt_laby){
+void IA(int matrice[N][N], int*pvJoueur, int*parade, int*enduJoueur, int cpt_laby){
 	int mobx;
 	int moby;
 	int attaque=0;
@@ -323,8 +322,8 @@ void IA(int matrice[N][N], int*pvJoueur, int parade, int*enduJoueur, int cpt_lab
 	resetMob();
 	trouverMob(&mobx, &moby);
 	
-	attaque=MobNextToJoueur();						//determine si le joueur et le mob sont cote à cote et savoir par la suite l'action de l'IA
-	
+	attaque=MobNextToJoueur(mobx, moby);						//determine si le joueur et le mob sont cote à cote et savoir par la suite l'action de l'IA
+	printw("attaque = %i", attaque);
 	//fait deplacer le mob si celui-ci n'est pas a coter du joueur
 	if(attaque==0){
 		cheminRetour=ecrireChemin();
@@ -332,20 +331,22 @@ void IA(int matrice[N][N], int*pvJoueur, int parade, int*enduJoueur, int cpt_lab
 		depilerStruct(&resultat);
 		matrice[resultat.x][resultat.y]=MOB; 		//déplacer le MOB sur la case en direction du joueur
 		matrice[mobx][moby]=CHEMIN; 				//liberer le chemin derriere le MOB
+		printw("pouet");
 	}
 	
 	//inflige des degats au joueur en fonction de ses compétences si le mob est a coter de celui-ci
-	else{
+	else if(attaque==1){
 		degat=degat-(0.25*reducDegat);
 		if(critique>=100){
 			degat*=2;
-			printf("\r\n            ==> CRITIQUE <==            \r\n");
+			printw("\r\n            ==> CRITIQUE <==            \r\n");
 		}
-		if(parade==0){
+		printw("parade : %i", *parade);
+		if(*parade==0){
 			*pvJoueur-=degat;
-			printf("\r\n     /!\\ Vous perdez %i PV /!\\\r\n", degat);
+			printw("\r\n     /!\\ Vous perdez %i PV /!\\\r\n", degat);
 		}
-		else if(parade==1 && degatBrut<*enduJoueur){
+		else if(*parade==1 && degatBrut<*enduJoueur){
 			
 			if(degatBloquer<=0){	
 				*pvJoueur-=0;
@@ -356,7 +357,7 @@ void IA(int matrice[N][N], int*pvJoueur, int parade, int*enduJoueur, int cpt_lab
 				*enduJoueur-=degatBrut;
 				*pvJoueur-=degatBloquer;
 			}
-			printf("\r\n      /!\\ Vous parez le prochain coup /!\\ \r\n");
+			printw("\r\n      /!\\ Vous parez le prochain coup /!\\ \r\n");
 		}
 	}
 

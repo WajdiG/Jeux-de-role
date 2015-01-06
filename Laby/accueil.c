@@ -385,12 +385,17 @@ void victory(int matrice[N][N]){
 * \param matrice[N][N] est la matrice contenant le labyrinthe
 **/
 void continuer(int matrice[N][N]){
+	
+	//initialisation des statistiques du joueur
 	int pvJoueur=joueur.vie.sante+joueur.comp.force;
 	int pvMax=pvJoueur;
 	int manaJoueur=joueur.vie.mana+joueur.comp.intelligence;
 	int enduJoueur=joueur.vie.endu+joueur.comp.agilite;
 	int enduMax=enduJoueur;
+	
+	//initiation des statistiques du mob
 	int pvMob=30+(2*cpt_laby);
+	
 	int cptx, cpty;
 	int parade=0;
 	int distance=0;
