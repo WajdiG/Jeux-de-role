@@ -13,7 +13,7 @@
 #include "crea_avatar.h"
 
 /**
-*\fn charger_jeu(t_joueur *,t_coord *, char **,FILE *)
+*\fn charger_jeu(t_joueur*joueur,t_coord*coord, char**monde [X][Y],FILE*fichier)
 *\brief fonction permettant de charger toutes les données contenue dans le fichier de sauvegarde dans la structure t_joueur jouer
 *\param *joueur pointeur sur la structure t_joueur joueur
 *\param coord coordonnées du joueur dans la matrice monde
@@ -23,7 +23,7 @@
 void charger_jeu(t_joueur *joueur,t_coord *coord,char ** monde[X][Y],FILE*fichier);
 
 /**
-*\fn charger_partie(char*, t_joueur*,t_coord*, char**)
+*\fn charger_partie(char*charger, t_joueur*joueur,t_coord*coord, char**monde[X][Y])
 *\brief fonction permettant de charger une partie
 *\param charger tableau contenant le pseudo du joueur
 *\param joueur pointeur sur la structure t_joueur joueur

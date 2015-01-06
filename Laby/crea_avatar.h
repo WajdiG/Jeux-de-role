@@ -1,7 +1,7 @@
 /**
 *\file crea_avatar.h
 *\brief regroupe tous les prototypes de fonctions nécessaires à la création de l'avatar
-*\author Wajdi Guedouar
+*\author Wajdi GUEDOUAR
 *\version 0.1
 *\date 20 octobre 2014
 */

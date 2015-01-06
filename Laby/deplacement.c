@@ -1,3 +1,11 @@
+/**
+*\file deplacement.h
+*\brief Regroupe les prototypes pour le deplacement des entités et le démarage du jeu
+*\author Joris Toulmonde, Godefroy THIEULART 
+*\version 0.1
+*\date 25 Novembre 2014
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <ncurses.h>

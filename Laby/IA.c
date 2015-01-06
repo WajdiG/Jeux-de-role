@@ -1,9 +1,9 @@
 /**
  *\file IA.c
  *\brief Projet informatique S3 Deplacement du personnage et colisions sur le parois
- *\author Joris Toulmonde, Godefroy Thieulart
+ *\author Godefroy THIEULART
  *\version 0.2
- *\date 22 Octobre 2014
+ *\date 01 Novembre 2014
 */
 
 #include <stdio.h>
@@ -14,18 +14,17 @@
 #include "accueil.h"
 #include "pile_tab.h"
 #include "deplacement.h"
-#define N 20
-#define MUR 0
-#define CHEMIN 1
-#define COFFRE 2
-#define JOUEUR 3
-#define OBJECTIF 4
-#define MOB 5
-//typedef enum { MUR, CHEMIN, COFFRE, JOUEUR, OBJECTIF, MOB } t_case;
-//typedef enum { JOUEUR=-2, , MOB=0, MUR, CHEMIN, COFFRE, OBJECTIF } t_case_vision;
+#define N 20 /**< Taille de la matrice region*/
+#define MUR 0 /**< Entier modélisant un mur*/
+#define CHEMIN 1 /**< Entier modélisant le chemin à emprunter disponible pour le joueur et le monstre*/
+#define COFFRE 2 /**< Entier modélisant un coffre*/
+#define JOUEUR 3 /**< Entier modélisant le joueur*/
+#define OBJECTIF 4 /**< Entier modélisant un objectif*/
+#define MOB 5 /**< Entier modélisant un monstre*/
 
-int vision[N][N];
-extern t_joueur joueur;
+
+int vision[N][N]; /**< matrice contenant la matrice tel qu'elle est vue par l'IA */
+extern t_joueur joueur; /**< variable de type t_joueur contenant toutes les données de l'avatar du joueur */
 
 /**
 * \fn void tradRandom(int matrice[N][N], char region[N][N])
@@ -51,7 +50,7 @@ void tradRandom(int matrice[N][N], char region[N][N]){
 }
 
 /**
-* \fn void tradiVision(int matrice[N][N])
+* \fn void tradVision(int matrice[N][N])
 * \brief Fonction permettant de traduire la carte du jeu en carte lisible par l'IA du jeu dans une nouvelle matrice
 * \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemain, un coffre ou un monstre
 **/
@@ -74,7 +73,7 @@ void tradVision(int matrice[N][N]){
 }
 
 /**
-* \fn void affVision2(matrice[N][N])
+* \fn void affVision2(int matrice[N][N])
 * \brief Fonction permettant d'afficher la matrice contenant la vision de l'IA, mais en plus simplifier, celle-ci n'a était utilisé que durant la conception du programme
 * \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemain, un coffre ou un monstre
 **/
@@ -106,7 +105,7 @@ void affVision2(int matrice[N][N]){
 }
 
 /**
-* \fn void affVision(matrice[N][N])
+* \fn void affVision(int matrice[N][N])
 * \brief Fonction permettant d'afficher la matrice contenant la vision de l'IA, a l'état brute, celle-ci n'a était utilisé que durant la conception du programme
 * \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemain, un coffre ou un monstre
 **/
@@ -218,7 +217,7 @@ t_coordonees ecrireChemin(){
 }
 
 /**
-* \fn int MobNextToJoueur()
+* \fn int MobNextToJoueur(int mobx, int moby)
 * \brief Fonction permettant de savoir si l'IA est en contact avec le joueur afin de décider de l'action a faire
 * \return renvoi 1 si l'IA se trouve sur une case adjacente aux joueur, renvoi 0 autrement
 **/
@@ -285,7 +284,7 @@ void lireChemin(t_coordonees cheminRetour){
 
 //deplace le mob sur une case en direction du joueur
 /**
-* \fn void IA(int matrice[N][N], int*pvJoueur, int parade, int*enduJoueur, int cpt_laby)
+* \fn void IA(int matrice[N][N], int*pvJoueur, int*parade, int*enduJoueur, int cpt_laby)
 * \brief Fonction responsable de la totalité de l'IA, du choix de ses actions
 * \param matrice[N][N] est la matrice contenant le jeu
 * \param *pvJoueur est la variable pointeur contenant les PV du joueur permettant de les modifiés
