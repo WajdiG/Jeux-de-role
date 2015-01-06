@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>Jeu de role, par W.GUEDOUAR,G.THIEULART et J.TOULMONDE: Référence du fichier IA.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Jeu de role, par W.GUEDOUAR,G.THIEULART et J.TOULMONDE
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier IA.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Projet informatique S3 Deplacement du personnage et colisions sur le parois.  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &lt;ncurses.h&gt;</code><br/>
+<code>#include &lt;time.h&gt;</code><br/>
+<code>#include &lt;assert.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="accueil_8h_source.html">accueil.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="pile__tab_8h_source.html">pile_tab.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="deplacement_8h_source.html">deplacement.h</a>&quot;</code><br/>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a0240ac851181b84ac374872dc5434ee4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0240ac851181b84ac374872dc5434ee4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>N</b>&#160;&#160;&#160;20</td></tr>
+<tr class="separator:a0240ac851181b84ac374872dc5434ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a528503a3fc17d7c9f3ddfb07899db5c2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a528503a3fc17d7c9f3ddfb07899db5c2"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MUR</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a528503a3fc17d7c9f3ddfb07899db5c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6bb184c7d6c6d65a61005666a6fe14a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad6bb184c7d6c6d65a61005666a6fe14a"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>CHEMIN</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ad6bb184c7d6c6d65a61005666a6fe14a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cacf98b9cb87fc9b76ec796ed335c57"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7cacf98b9cb87fc9b76ec796ed335c57"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>COFFRE</b>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a7cacf98b9cb87fc9b76ec796ed335c57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f907d351a198b9a0405ce45155625dc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f907d351a198b9a0405ce45155625dc"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>JOUEUR</b>&#160;&#160;&#160;3</td></tr>
+<tr class="separator:a7f907d351a198b9a0405ce45155625dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa23eede76f54b18175d201b515174343"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa23eede76f54b18175d201b515174343"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>OBJECTIF</b>&#160;&#160;&#160;4</td></tr>
+<tr class="separator:aa23eede76f54b18175d201b515174343"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5d74834d125657ab3af2fb2488fbdca"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae5d74834d125657ab3af2fb2488fbdca"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>MOB</b>&#160;&#160;&#160;5</td></tr>
+<tr class="separator:ae5d74834d125657ab3af2fb2488fbdca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a7022c21a18453a5577af512240be650f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="IA_8c.html#a7022c21a18453a5577af512240be650f">tradRandom</a> (int matrice[<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>], char <a class="el" href="region_8c.html#a8cfa194cabf94f79c4ec657c7e4b938b">region</a>[<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>])</td></tr>
+<tr class="memdesc:a7022c21a18453a5577af512240be650f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction permettant de traduire la matrice générer aléatoirement en matrice lisible par le programme.  <a href="#a7022c21a18453a5577af512240be650f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a7022c21a18453a5577af512240be650f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc85f1e3c9183eb0f603915653bc4b17"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adc85f1e3c9183eb0f603915653bc4b17"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>tradVision</b> (int matrice[<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>])</td></tr>
+<tr class="separator:adc85f1e3c9183eb0f603915653bc4b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5f44bffcec145ddd94760462ad88e52"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa5f44bffcec145ddd94760462ad88e52"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>affVision2</b> (int matrice[<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>])</td></tr>
+<tr class="separator:aa5f44bffcec145ddd94760462ad88e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada2e297ccdb4d1724f1f8b35eeea7488"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ada2e297ccdb4d1724f1f8b35eeea7488"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>affVision</b> (int matrice[<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>])</td></tr>
+<tr class="separator:ada2e297ccdb4d1724f1f8b35eeea7488"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a031bd638c3895c231748a7991d30972f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="IA_8c.html#a031bd638c3895c231748a7991d30972f">trouverMob</a> (int *mobx, int *moby)</td></tr>
+<tr class="memdesc:a031bd638c3895c231748a7991d30972f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction permettant de chercher les coordonnées de l'IA sur la matrice de jeu.  <a href="#a031bd638c3895c231748a7991d30972f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a031bd638c3895c231748a7991d30972f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75e73fdbc76afe6a612d733b3108b2df"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a75e73fdbc76afe6a612d733b3108b2df"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="IA_8c.html#a75e73fdbc76afe6a612d733b3108b2df">resetMob</a> ()</td></tr>
+<tr class="memdesc:a75e73fdbc76afe6a612d733b3108b2df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction permettant de réinitialiser la vision de l'IA, nous permettant par la suite de la mettre a jour. <br/></td></tr>
+<tr class="separator:a75e73fdbc76afe6a612d733b3108b2df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d95328c8474d716e62b4848052565bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__coordonees.html">t_coordonees</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="IA_8c.html#a2d95328c8474d716e62b4848052565bc">ecrireChemin</a> ()</td></tr>
+<tr class="memdesc:a2d95328c8474d716e62b4848052565bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction qui génèrera les chemin que l'IA pourra emprunter pour rejoindre le joueur sur la carte.  <a href="#a2d95328c8474d716e62b4848052565bc">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a2d95328c8474d716e62b4848052565bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7dd8ea4a02928d90da3d271af55e47c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7dd8ea4a02928d90da3d271af55e47c7"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>MobNextToJoueur</b> (int mobx, int moby)</td></tr>
+<tr class="separator:a7dd8ea4a02928d90da3d271af55e47c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af77bb81089d8d24954799806299064ff"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="IA_8c.html#af77bb81089d8d24954799806299064ff">lireChemin</a> (<a class="el" href="structt__coordonees.html">t_coordonees</a> cheminRetour)</td></tr>
+<tr class="memdesc:af77bb81089d8d24954799806299064ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction permettant de chercher le chemin le plus rapide pour que l'IA puisse rejoindre le joueur.  <a href="#af77bb81089d8d24954799806299064ff">Plus de détails...</a><br/></td></tr>
+<tr class="separator:af77bb81089d8d24954799806299064ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a605a27af91044e23a7ca15fb0fc8b1d0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a605a27af91044e23a7ca15fb0fc8b1d0"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>IA</b> (int matrice[<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>], int *pvJoueur, int *parade, int *enduJoueur, int <a class="el" href="accueil_8c.html#a9c38e7acc5748786605ff7d2bf33add0">cpt_laby</a>)</td></tr>
+<tr class="separator:a605a27af91044e23a7ca15fb0fc8b1d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a2c2e3d48f08f0b0cb1bef34765ce4588"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c2e3d48f08f0b0cb1bef34765ce4588"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>vision</b> [<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>]</td></tr>
+<tr class="separator:a2c2e3d48f08f0b0cb1bef34765ce4588"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7ceef52b18732e046b145a429b37a790"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__joueur.html">t_joueur</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="IA_8c.html#a7ceef52b18732e046b145a429b37a790">joueur</a></td></tr>
+<tr class="separator:a7ceef52b18732e046b145a429b37a790"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Projet informatique S3 Deplacement du personnage et colisions sur le parois. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Joris Toulmonde, Godefroy Thieulart </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.2 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>22 Octobre 2014 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="a2d95328c8474d716e62b4848052565bc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__coordonees.html">t_coordonees</a> ecrireChemin </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction qui génèrera les chemin que l'IA pourra emprunter pour rejoindre le joueur sur la carte. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>renvoi un structure contenant les coordonnées de la case adjacente aux joueur </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="af77bb81089d8d24954799806299064ff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void lireChemin </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__coordonees.html">t_coordonees</a>&#160;</td>
+          <td class="paramname"><em>cheminRetour</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction permettant de chercher le chemin le plus rapide pour que l'IA puisse rejoindre le joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cheminRetour</td><td>contient les coordonnées de la case se trouvant a cote du joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7022c21a18453a5577af512240be650f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void tradRandom </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>matrice</em>[N][N], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>region</em>[N][N]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction permettant de traduire la matrice générer aléatoirement en matrice lisible par le programme. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">matrice[N][N]</td><td>Matrice ou chaque case contient soit un mur, un joueur, un chemain, un coffre ou un monstre </td></tr>
+    <tr><td class="paramname">region[N][N]</td><td>Matrice de caractère ou chaque case contient soit un mur, un coffre ou un monstre </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a031bd638c3895c231748a7991d30972f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void trouverMob </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>mobx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>moby</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fonction permettant de chercher les coordonnées de l'IA sur la matrice de jeu. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">*mobx</td><td>qui contiendra la coordonnées x de l'IA dans la matrice </td></tr>
+    <tr><td class="paramname">*moby</td><td>qui contiendra la coordonnée y de l'IA </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a class="anchor" id="a7ceef52b18732e046b145a429b37a790"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__joueur.html">t_joueur</a> joueur</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>variable de type <a class="el" href="structt__joueur.html" title="structure contenant toutes les structures et tableaux de données de joueur">t_joueur</a> contenant toutes les données de l'avatar du joueur </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.3.1
+</small></address>
+</body>
+</html>

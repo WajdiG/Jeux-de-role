@@ -30,16 +30,16 @@ typedef struct{int victoire,defaite,total; float pourvic,pourdef;}t_statcombat;
 void afficher_joueur();
 
 /**
- *\fn nouvelle_partie(int **) 
+ *\fn nouvelle_partie(int ) 
  *\brief fonction permettant au joueur de démarrer une nouvelle partie
- *\param matrice prend en paramètre une matrice de taille NxN
+ *\param matrice[N][N] prend en paramètre une matrice de taille NxN
  */
 void nouvelle_partie(int matrice[N][N]);
 
 /**
- *\fn charger_par(int **) 
+ *\fn charger_par(int) 
  *\brief fonction permettant au joueur de charger une partie et de la continuer
- *\param matrice prend en paramètre une matrice de taille NxN
+ *\param matrice[N][N] prend en paramètre une matrice de taille NxN
  */
 void charger_par(int matrice[N][N]);
 

@@ -14,7 +14,11 @@
 #include "region.h"
 
 /**
- *\fn crea_file(void) 
+ *\fn crea_file(t_joueur, t_coord, char, char**) 
+ *\param joueur structure contenant les caractéristiques de l'avatar
+ *\param coord structure contenant les coordonnées du joueur 
+ *\param pseudo[P] tableau 
+ *\param monde[X][Y]
  *\brief fonction permettant de sauvegarder la structure t_joueur, la matrice monde et les coordonnées du joueur dans cette matrice dans le fichier de sauvegarde
  */
 void crea_file(t_joueur joueur, t_coord coord, char pseudo[P], char ** monde[X][Y]){

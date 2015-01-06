@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>Jeu de role, par W.GUEDOUAR,G.THIEULART et J.TOULMONDE: Référence du fichier region.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Jeu de role, par W.GUEDOUAR,G.THIEULART et J.TOULMONDE
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier region.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>regroupe toutes les fonctions nécessaires à la création d'une région : génération aléatoire d'un labyrinthe  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &lt;time.h&gt;</code><br/>
+<code>#include &lt;assert.h&gt;</code><br/>
+<code>#include &lt;ncurses.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="pile__tab_8h_source.html">pile_tab.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="region_8h_source.html">region.h</a>&quot;</code><br/>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:a7f49a67e654c911de630ffd7fb352fcb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f49a67e654c911de630ffd7fb352fcb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="region_8c.html#a7f49a67e654c911de630ffd7fb352fcb">initregion</a> ()</td></tr>
+<tr class="memdesc:a7f49a67e654c911de630ffd7fb352fcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise la region où toutes les cases valent X, ainsi que le tableau tab où tout vaut 1 <br/></td></tr>
+<tr class="separator:a7f49a67e654c911de630ffd7fb352fcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a55669b37b8e107a42df1d12252998e1a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a55669b37b8e107a42df1d12252998e1a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="region_8c.html#a55669b37b8e107a42df1d12252998e1a">aff_region</a> ()</td></tr>
+<tr class="memdesc:a55669b37b8e107a42df1d12252998e1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">affiche la region à l'écran <br/></td></tr>
+<tr class="separator:a55669b37b8e107a42df1d12252998e1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3971772ac1f10d972f8a48dc71346db"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="region_8c.html#ab3971772ac1f10d972f8a48dc71346db">verif_coffre</a> (int i, int j)</td></tr>
+<tr class="memdesc:ab3971772ac1f10d972f8a48dc71346db"><td class="mdescLeft">&#160;</td><td class="mdescRight">recherche la présence d'un coffre 'C' ou d'un joueur 'P' dans la matrice region autour des coordonnées i j passées en paramètre  <a href="#ab3971772ac1f10d972f8a48dc71346db">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ab3971772ac1f10d972f8a48dc71346db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e565cacecf0cb75b8327b4fa5d21c48"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="region_8c.html#a6e565cacecf0cb75b8327b4fa5d21c48">verif_cour</a> (int i, int j)</td></tr>
+<tr class="memdesc:a6e565cacecf0cb75b8327b4fa5d21c48"><td class="mdescLeft">&#160;</td><td class="mdescRight">verifie que la case dans laquelle on se trouve soit différente de C (un coffre) ou P (le joueur)  <a href="#a6e565cacecf0cb75b8327b4fa5d21c48">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a6e565cacecf0cb75b8327b4fa5d21c48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae5d46273489c0ad1383e6ae989dc524"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae5d46273489c0ad1383e6ae989dc524"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="region_8c.html#aae5d46273489c0ad1383e6ae989dc524">place_coffre</a> ()</td></tr>
+<tr class="memdesc:aae5d46273489c0ad1383e6ae989dc524"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de placer des coffres C aléatoirement dans la matrice <br/></td></tr>
+<tr class="separator:aae5d46273489c0ad1383e6ae989dc524"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5661ebd19cd53feaf3aed2b883030b9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad5661ebd19cd53feaf3aed2b883030b9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="region_8c.html#ad5661ebd19cd53feaf3aed2b883030b9">place_joueur</a> ()</td></tr>
+<tr class="memdesc:ad5661ebd19cd53feaf3aed2b883030b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de placer le joueur aleatoirement sur la map <br/></td></tr>
+<tr class="separator:ad5661ebd19cd53feaf3aed2b883030b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad69a7ee33dcb0d3c56815a95fc1b194e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad69a7ee33dcb0d3c56815a95fc1b194e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="region_8c.html#ad69a7ee33dcb0d3c56815a95fc1b194e">place_monstre</a> ()</td></tr>
+<tr class="memdesc:ad69a7ee33dcb0d3c56815a95fc1b194e"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de placer le monstre aleatoirement sur la map <br/></td></tr>
+<tr class="separator:ad69a7ee33dcb0d3c56815a95fc1b194e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af57a9bb5dbc808ee2f73a6b73232008b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af57a9bb5dbc808ee2f73a6b73232008b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="region_8c.html#af57a9bb5dbc808ee2f73a6b73232008b">chemin</a> ()</td></tr>
+<tr class="memdesc:af57a9bb5dbc808ee2f73a6b73232008b"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de générer un chemin depuis P (le joueur) vers les bord de la matrice, depuis C (un coffre) vers un chemin existant <br/></td></tr>
+<tr class="separator:af57a9bb5dbc808ee2f73a6b73232008b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0a1c4fbf50f0a9d25558ee87a20a927"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa0a1c4fbf50f0a9d25558ee87a20a927"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="region_8c.html#aa0a1c4fbf50f0a9d25558ee87a20a927">carre</a> ()</td></tr>
+<tr class="memdesc:aa0a1c4fbf50f0a9d25558ee87a20a927"><td class="mdescLeft">&#160;</td><td class="mdescRight">créer un espace autour des coffres et du joueur <br/></td></tr>
+<tr class="separator:aa0a1c4fbf50f0a9d25558ee87a20a927"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2250187217eb5517bc0719c5dc343fc7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2250187217eb5517bc0719c5dc343fc7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="region_8c.html#a2250187217eb5517bc0719c5dc343fc7">creer_region</a> ()</td></tr>
+<tr class="memdesc:a2250187217eb5517bc0719c5dc343fc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">creer une region : labyrinthe aléatoire <br/></td></tr>
+<tr class="separator:a2250187217eb5517bc0719c5dc343fc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a8cfa194cabf94f79c4ec657c7e4b938b"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="region_8c.html#a8cfa194cabf94f79c4ec657c7e4b938b">region</a> [<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>]</td></tr>
+<tr class="separator:a8cfa194cabf94f79c4ec657c7e4b938b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>regroupe toutes les fonctions nécessaires à la création d'une région : génération aléatoire d'un labyrinthe </p>
+<dl class="section author"><dt>Auteur</dt><dd>Wajdi Guedouar </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>25 Novembre 2014 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="ab3971772ac1f10d972f8a48dc71346db"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">verif_coffre </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>recherche la présence d'un coffre 'C' ou d'un joueur 'P' dans la matrice region autour des coordonnées i j passées en paramètre </p>
+<p>verifie la présence ou non d'un coffre C ou d'un personnage P dans la matrice region autour des coordonnées i et j passées en paramètre</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>entier représentant l'absisse dans la matrice </td></tr>
+    <tr><td class="paramname">j</td><td>entier représentant l'ordonnée dans la matrice </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int renvoie 0 si la case vérifiée contient C (un coffre) ou P (un joueur) et 1 si non</dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>entier représentant l'absisse dans la matrice </td></tr>
+    <tr><td class="paramname">j</td><td>entier représentant l'ordonnée dans la matrice </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int renvoie 0 si la case vérifiée contient C (un coffre) et 1 si non </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a6e565cacecf0cb75b8327b4fa5d21c48"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">verif_cour </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>verifie que la case dans laquelle on se trouve soit différente de C (un coffre) ou P (le joueur) </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>entier représentant l'abscisse dans la matrice </td></tr>
+    <tr><td class="paramname">j</td><td>entier représentant l'ordonnée dans la matrice </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int renvoie 0 si la case vérifiée contient C (un coffre), M (un monstre) ou P (le joueur) et 1 si non</dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>entier représentant l'absisse dans la matrice </td></tr>
+    <tr><td class="paramname">j</td><td>entier représentant l'ordonnée dans la matrice </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>int renvoie 0 si la case vérifiée contient C (un coffre) ou P (le joueur) et 1 si non </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a class="anchor" id="a8cfa194cabf94f79c4ec657c7e4b938b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char region[<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>matrice de matrice représentant le monde, chaque case du monde contient une matrice region </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.3.1
+</small></address>
+</body>
+</html>

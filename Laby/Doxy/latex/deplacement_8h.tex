@@ -1,0 +1,180 @@
+\hypertarget{deplacement_8h}{\section{Référence du fichier deplacement.\-h}
+\label{deplacement_8h}\index{deplacement.\-h@{deplacement.\-h}}
+}
+
+
+Regroupe les prototypes pour le deplacement des entités et le démarage du jeu.  
+
+
+{\ttfamily \#include \char`\"{}crea\-\_\-avatar.\-h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structt__coordonees}{t\-\_\-coordonees}
+\begin{DoxyCompactList}\small\item\em Structure comportant les coordonnées de la case correspondante. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{deplacement_8h_a0240ac851181b84ac374872dc5434ee4}{N}~20
+\item 
+\#define \hyperlink{deplacement_8h_a528503a3fc17d7c9f3ddfb07899db5c2}{M\-U\-R}~0
+\item 
+\#define \hyperlink{deplacement_8h_ad6bb184c7d6c6d65a61005666a6fe14a}{C\-H\-E\-M\-I\-N}~1
+\item 
+\#define \hyperlink{deplacement_8h_a7cacf98b9cb87fc9b76ec796ed335c57}{C\-O\-F\-F\-R\-E}~2
+\item 
+\#define \hyperlink{deplacement_8h_a7f907d351a198b9a0405ce45155625dc}{J\-O\-U\-E\-U\-R}~3
+\item 
+\#define \hyperlink{deplacement_8h_aa23eede76f54b18175d201b515174343}{O\-B\-J\-E\-C\-T\-I\-F}~4
+\item 
+\#define \hyperlink{deplacement_8h_ae5d74834d125657ab3af2fb2488fbdca}{M\-O\-B}~5
+\end{DoxyCompactItemize}
+\subsection*{Fonctions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{deplacement_8h_a51426bd041aaf1a1365b027d475e3390}{affichage} (int matrice\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]}\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]}, int pv\-Joueur, int mana\-Joueur, int endu\-Joueur, int pv\-Mob, int \hyperlink{accueil_8c_a9c38e7acc5748786605ff7d2bf33add0}{cpt\-\_\-laby}, int $\ast$parade, int $\ast$distance)
+\begin{DoxyCompactList}\small\item\em Fonction permettant l'affichage de la carte a chaque tour. \end{DoxyCompactList}\item 
+void \hyperlink{deplacement_8h_a6e64422af8f95fb796f37619d3a5a882}{recherche\-Joueur} (int matrice\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]}\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Fonction qui recherche les coordonnées du joueur sur la carte. \end{DoxyCompactList}\item 
+void \hyperlink{deplacement_8h_a13f7e644ade717e1ec7240fba71711f6}{deplacement\-\_\-perso} (int $\ast$parade, int $\ast$distance, int matrice\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]}\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]}, int $\ast$pv\-Mob, int $\ast$endu\-Joueur, int $\ast$pv\-Joueur, int $\ast$mana\-Joueur, \hyperlink{structt__joueur}{t\-\_\-joueur} $\ast$\hyperlink{JDR1__0_8c_a7ceef52b18732e046b145a429b37a790}{joueur}, int pv\-Max)
+\begin{DoxyCompactList}\small\item\em Fonction permettant de deplacer le joueur a chaque tour ou le faire agir. \end{DoxyCompactList}\item 
+int \hyperlink{deplacement_8h_a070b74288a1c2a7c5f9cac9c1877e28e}{coffre} (int matrice\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]}\mbox{[}\hyperlink{region_8h_a0240ac851181b84ac374872dc5434ee4}{N}\mbox{]})
+\begin{DoxyCompactList}\small\item\em Fonction permettant de voir s'il y a des coffres sur la carte. \end{DoxyCompactList}\item 
+\hypertarget{deplacement_8h_aa0136c8ad51bede3861d1c5a045d5bd1}{void \hyperlink{deplacement_8h_aa0136c8ad51bede3861d1c5a045d5bd1}{jouer} ()}\label{deplacement_8h_aa0136c8ad51bede3861d1c5a045d5bd1}
+
+\begin{DoxyCompactList}\small\item\em Fonction permettant d'afficher le menu du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Description détaillée}
+Regroupe les prototypes pour le deplacement des entités et le démarage du jeu. \begin{DoxyAuthor}{Auteur}
+Joris Toulmonde 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\-1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+25 Novembre 2014 
+\end{DoxyDate}
+
+
+\subsection{Documentation des macros}
+\hypertarget{deplacement_8h_ad6bb184c7d6c6d65a61005666a6fe14a}{\index{deplacement.\-h@{deplacement.\-h}!C\-H\-E\-M\-I\-N@{C\-H\-E\-M\-I\-N}}
+\index{C\-H\-E\-M\-I\-N@{C\-H\-E\-M\-I\-N}!deplacement.h@{deplacement.\-h}}
+\subsubsection[{C\-H\-E\-M\-I\-N}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-H\-E\-M\-I\-N~1}}\label{deplacement_8h_ad6bb184c7d6c6d65a61005666a6fe14a}
+Entier modélisant le chemin à emprunter disponible pour le joueur et le monstre \hypertarget{deplacement_8h_a7cacf98b9cb87fc9b76ec796ed335c57}{\index{deplacement.\-h@{deplacement.\-h}!C\-O\-F\-F\-R\-E@{C\-O\-F\-F\-R\-E}}
+\index{C\-O\-F\-F\-R\-E@{C\-O\-F\-F\-R\-E}!deplacement.h@{deplacement.\-h}}
+\subsubsection[{C\-O\-F\-F\-R\-E}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\-O\-F\-F\-R\-E~2}}\label{deplacement_8h_a7cacf98b9cb87fc9b76ec796ed335c57}
+Entier modélisant un coffre \hypertarget{deplacement_8h_a7f907d351a198b9a0405ce45155625dc}{\index{deplacement.\-h@{deplacement.\-h}!J\-O\-U\-E\-U\-R@{J\-O\-U\-E\-U\-R}}
+\index{J\-O\-U\-E\-U\-R@{J\-O\-U\-E\-U\-R}!deplacement.h@{deplacement.\-h}}
+\subsubsection[{J\-O\-U\-E\-U\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define J\-O\-U\-E\-U\-R~3}}\label{deplacement_8h_a7f907d351a198b9a0405ce45155625dc}
+Entier modélisant le joueur \hypertarget{deplacement_8h_ae5d74834d125657ab3af2fb2488fbdca}{\index{deplacement.\-h@{deplacement.\-h}!M\-O\-B@{M\-O\-B}}
+\index{M\-O\-B@{M\-O\-B}!deplacement.h@{deplacement.\-h}}
+\subsubsection[{M\-O\-B}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-O\-B~5}}\label{deplacement_8h_ae5d74834d125657ab3af2fb2488fbdca}
+Entier modélisant un monstre \hypertarget{deplacement_8h_a528503a3fc17d7c9f3ddfb07899db5c2}{\index{deplacement.\-h@{deplacement.\-h}!M\-U\-R@{M\-U\-R}}
+\index{M\-U\-R@{M\-U\-R}!deplacement.h@{deplacement.\-h}}
+\subsubsection[{M\-U\-R}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\-U\-R~0}}\label{deplacement_8h_a528503a3fc17d7c9f3ddfb07899db5c2}
+Entier modélisant un mur \hypertarget{deplacement_8h_a0240ac851181b84ac374872dc5434ee4}{\index{deplacement.\-h@{deplacement.\-h}!N@{N}}
+\index{N@{N}!deplacement.h@{deplacement.\-h}}
+\subsubsection[{N}]{\setlength{\rightskip}{0pt plus 5cm}\#define N~20}}\label{deplacement_8h_a0240ac851181b84ac374872dc5434ee4}
+Taille de la matrice region \hypertarget{deplacement_8h_aa23eede76f54b18175d201b515174343}{\index{deplacement.\-h@{deplacement.\-h}!O\-B\-J\-E\-C\-T\-I\-F@{O\-B\-J\-E\-C\-T\-I\-F}}
+\index{O\-B\-J\-E\-C\-T\-I\-F@{O\-B\-J\-E\-C\-T\-I\-F}!deplacement.h@{deplacement.\-h}}
+\subsubsection[{O\-B\-J\-E\-C\-T\-I\-F}]{\setlength{\rightskip}{0pt plus 5cm}\#define O\-B\-J\-E\-C\-T\-I\-F~4}}\label{deplacement_8h_aa23eede76f54b18175d201b515174343}
+Entier modélisant un objectif 
+
+\subsection{Documentation des fonctions}
+\hypertarget{deplacement_8h_a51426bd041aaf1a1365b027d475e3390}{\index{deplacement.\-h@{deplacement.\-h}!affichage@{affichage}}
+\index{affichage@{affichage}!deplacement.h@{deplacement.\-h}}
+\subsubsection[{affichage}]{\setlength{\rightskip}{0pt plus 5cm}void affichage (
+\begin{DoxyParamCaption}
+\item[{int}]{matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}, }
+\item[{int}]{pv\-Joueur, }
+\item[{int}]{mana\-Joueur, }
+\item[{int}]{endu\-Joueur, }
+\item[{int}]{pv\-Mob, }
+\item[{int}]{cpt\-\_\-laby, }
+\item[{int $\ast$}]{parade, }
+\item[{int $\ast$}]{distance}
+\end{DoxyParamCaption}
+)}}\label{deplacement_8h_a51426bd041aaf1a1365b027d475e3390}
+
+
+Fonction permettant l'affichage de la carte a chaque tour. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}} & matrice ou chaque case contient soir un mur, un chemin, un joueur, un coffre ou un monstre \\
+\hline
+{\em pv\-Joueur} & les points de vie du joueur \\
+\hline
+{\em mana\-Joueur} & représentant le mana du joueur \\
+\hline
+{\em endu\-Joueur} & représentant l'endurance du joueur \\
+\hline
+{\em pv\-Mob} & representant les points de vie du monstre \\
+\hline
+{\em cpt\-\_\-laby} & represente le niveau du labyrinthe \\
+\hline
+{\em $\ast$parade} & represente les points de parade du joueur \\
+\hline
+{\em $\ast$distance} & est fait pour activer ou pas le mode distance (archerie) \\
+\hline
+\end{DoxyParams}
+\hypertarget{deplacement_8h_a070b74288a1c2a7c5f9cac9c1877e28e}{\index{deplacement.\-h@{deplacement.\-h}!coffre@{coffre}}
+\index{coffre@{coffre}!deplacement.h@{deplacement.\-h}}
+\subsubsection[{coffre}]{\setlength{\rightskip}{0pt plus 5cm}int coffre (
+\begin{DoxyParamCaption}
+\item[{int}]{matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{deplacement_8h_a070b74288a1c2a7c5f9cac9c1877e28e}
+
+
+Fonction permettant de voir s'il y a des coffres sur la carte. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}} & Matrice ou chaque case contient soit un mur, un joueur, un chemain, un coffre ou un monstre \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Renvoie}
+Renvoi 1 s'il n'y a plus de coffre sur la carte 
+\end{DoxyReturn}
+\hypertarget{deplacement_8h_a13f7e644ade717e1ec7240fba71711f6}{\index{deplacement.\-h@{deplacement.\-h}!deplacement\-\_\-perso@{deplacement\-\_\-perso}}
+\index{deplacement\-\_\-perso@{deplacement\-\_\-perso}!deplacement.h@{deplacement.\-h}}
+\subsubsection[{deplacement\-\_\-perso}]{\setlength{\rightskip}{0pt plus 5cm}void deplacement\-\_\-perso (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{parade, }
+\item[{int $\ast$}]{distance, }
+\item[{int}]{matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}, }
+\item[{int $\ast$}]{pv\-Mob, }
+\item[{int $\ast$}]{endu\-Joueur, }
+\item[{int $\ast$}]{pv\-Joueur, }
+\item[{int $\ast$}]{mana\-Joueur, }
+\item[{{\bf t\-\_\-joueur} $\ast$}]{joueur, }
+\item[{int}]{pv\-Max}
+\end{DoxyParamCaption}
+)}}\label{deplacement_8h_a13f7e644ade717e1ec7240fba71711f6}
+
+
+Fonction permettant de deplacer le joueur a chaque tour ou le faire agir. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}} & Matrice ou chaque case contient soit un mur, un joueur, un chemin, un coffre ou un monstre \\
+\hline
+\end{DoxyParams}
+\hypertarget{deplacement_8h_a6e64422af8f95fb796f37619d3a5a882}{\index{deplacement.\-h@{deplacement.\-h}!recherche\-Joueur@{recherche\-Joueur}}
+\index{recherche\-Joueur@{recherche\-Joueur}!deplacement.h@{deplacement.\-h}}
+\subsubsection[{recherche\-Joueur}]{\setlength{\rightskip}{0pt plus 5cm}void recherche\-Joueur (
+\begin{DoxyParamCaption}
+\item[{int}]{matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}}
+\end{DoxyParamCaption}
+)}}\label{deplacement_8h_a6e64422af8f95fb796f37619d3a5a882}
+
+
+Fonction qui recherche les coordonnées du joueur sur la carte. 
+
+
+\begin{DoxyParams}{Paramètres}
+{\em matrice\mbox{[}\-N\mbox{]}\mbox{[}\-N\mbox{]}} & matrice ou chaque case contient soir un mur, un chemin, un joueur, un coffre ou un monstre \\
+\hline
+\end{DoxyParams}

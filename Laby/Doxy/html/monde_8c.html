@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.3.1"/>
+<title>Jeu de role, par W.GUEDOUAR,G.THIEULART et J.TOULMONDE: Référence du fichier monde.c</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Jeu de role, par W.GUEDOUAR,G.THIEULART et J.TOULMONDE
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.3.1 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Fonctions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence du fichier monde.c</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>regroupe toutes les fonctions nécessaires à la gestion du monde  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
+<code>#include &lt;stdlib.h&gt;</code><br/>
+<code>#include &lt;time.h&gt;</code><br/>
+<code>#include &lt;assert.h&gt;</code><br/>
+<code>#include &lt;ncurses.h&gt;</code><br/>
+<code>#include &quot;<a class="el" href="monde_8h_source.html">monde.h</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="pile__tab_8h_source.html">pile_tab.h</a>&quot;</code><br/>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Fonctions</h2></td></tr>
+<tr class="memitem:ade7e5f5e27afb0c46c30e8c788a1e849"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ade7e5f5e27afb0c46c30e8c788a1e849"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#ade7e5f5e27afb0c46c30e8c788a1e849">init_monde</a> ()</td></tr>
+<tr class="memdesc:ade7e5f5e27afb0c46c30e8c788a1e849"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialise le contenu de la matrice monde <br/></td></tr>
+<tr class="separator:ade7e5f5e27afb0c46c30e8c788a1e849"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf86baca20dcd4c203c3dcae49701e71"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#acf86baca20dcd4c203c3dcae49701e71">inclure_region</a> (<a class="el" href="structt__coord.html">t_coord</a> <a class="el" href="monde_8c.html#a65ad89c179706eac95090f934d603e18">coord</a>)</td></tr>
+<tr class="memdesc:acf86baca20dcd4c203c3dcae49701e71"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet d'inclure une region dans le monde  <a href="#acf86baca20dcd4c203c3dcae49701e71">Plus de détails...</a><br/></td></tr>
+<tr class="separator:acf86baca20dcd4c203c3dcae49701e71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a00e5bca746ae75b9a6ec6ea0b01872c5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#a00e5bca746ae75b9a6ec6ea0b01872c5">deplacement_case_monde</a> (<a class="el" href="structt__coord.html">t_coord</a> *<a class="el" href="monde_8c.html#a65ad89c179706eac95090f934d603e18">coord</a>)</td></tr>
+<tr class="memdesc:a00e5bca746ae75b9a6ec6ea0b01872c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet de deplacer le joueur d'une case dans le monde  <a href="#a00e5bca746ae75b9a6ec6ea0b01872c5">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a00e5bca746ae75b9a6ec6ea0b01872c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54953fb082f165e89400a9d8f2f39b24"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54953fb082f165e89400a9d8f2f39b24"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#a54953fb082f165e89400a9d8f2f39b24">aff_monde</a> ()</td></tr>
+<tr class="memdesc:a54953fb082f165e89400a9d8f2f39b24"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet d'afficher le monde <br/></td></tr>
+<tr class="separator:a54953fb082f165e89400a9d8f2f39b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5cd646eb10d19db2082763490508c3a4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5cd646eb10d19db2082763490508c3a4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#a5cd646eb10d19db2082763490508c3a4">aff_region_monde</a> ()</td></tr>
+<tr class="memdesc:a5cd646eb10d19db2082763490508c3a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet d'afficher la région dans laquelle vous vous trouvez <br/></td></tr>
+<tr class="separator:a5cd646eb10d19db2082763490508c3a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88e4ad66d00e352dca7617ef439188b2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a88e4ad66d00e352dca7617ef439188b2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#a88e4ad66d00e352dca7617ef439188b2">deplacement_monde</a> ()</td></tr>
+<tr class="memdesc:a88e4ad66d00e352dca7617ef439188b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">permet au joueur de se déplacer dans le monde <br/></td></tr>
+<tr class="separator:a88e4ad66d00e352dca7617ef439188b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a8cfa194cabf94f79c4ec657c7e4b938b"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#a8cfa194cabf94f79c4ec657c7e4b938b">region</a> [<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>]</td></tr>
+<tr class="separator:a8cfa194cabf94f79c4ec657c7e4b938b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab421ba3ffcd9e2018ab39a6180b5276a"><td class="memItemLeft" align="right" valign="top">char **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#ab421ba3ffcd9e2018ab39a6180b5276a">monde</a> [<a class="el" href="monde_8h.html#a207fd5507206d307cd63f95374fcd00d">X</a>][<a class="el" href="monde_8h.html#a798e4073d613ca5ba9618e1b3253df14">Y</a>]</td></tr>
+<tr class="separator:ab421ba3ffcd9e2018ab39a6180b5276a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65ad89c179706eac95090f934d603e18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structt__coord.html">t_coord</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="monde_8c.html#a65ad89c179706eac95090f934d603e18">coord</a> ={0,0}</td></tr>
+<tr class="separator:a65ad89c179706eac95090f934d603e18"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>regroupe toutes les fonctions nécessaires à la gestion du monde </p>
+<dl class="section author"><dt>Auteur</dt><dd>Wajdi Guedouar </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>27 Novembre 2014 </dd></dl>
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="a00e5bca746ae75b9a6ec6ea0b01872c5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">deplacement_case_monde </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__coord.html">t_coord</a> *&#160;</td>
+          <td class="paramname"><em>coord</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>permet de deplacer le joueur d'une case dans le monde </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coord</td><td>coordonnées correspondants à la poisition actuelles du joueur </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="acf86baca20dcd4c203c3dcae49701e71"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">inclure_region </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__coord.html">t_coord</a>&#160;</td>
+          <td class="paramname"><em>coord</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>permet d'inclure une region dans le monde </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">coord</td><td>contient les coordonnées courantes du joueur dans la matrice monde </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des variables</h2>
+<a class="anchor" id="a65ad89c179706eac95090f934d603e18"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structt__coord.html">t_coord</a> coord ={0,0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>variable de type <a class="el" href="structt__coord.html" title="structure contenant les coordonnées du joueur dans la matrice monde">t_coord</a> contenant les coordonnées du joueur dans la matrice monde </p>
+
+</div>
+</div>
+<a class="anchor" id="ab421ba3ffcd9e2018ab39a6180b5276a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char** monde[<a class="el" href="monde_8h.html#a207fd5507206d307cd63f95374fcd00d">X</a>][<a class="el" href="monde_8h.html#a798e4073d613ca5ba9618e1b3253df14">Y</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>matrice de matrice représentant le monde, chaque case du monde contient une matrice region </p>
+
+</div>
+</div>
+<a class="anchor" id="a8cfa194cabf94f79c4ec657c7e4b938b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char region[<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>][<a class="el" href="region_8h.html#a0240ac851181b84ac374872dc5434ee4">N</a>]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>matrice de type caractère contenant une region du monde</p>
+<p>matrice de matrice représentant le monde, chaque case du monde contient une matrice region </p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.3.1
+</small></address>
+</body>
+</html>

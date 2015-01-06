@@ -11,7 +11,7 @@
 
 #include "pile.h"
 
-#define M 100
+#define M 100 /**< constante entière définissant la taille de la pile de structure */
 
 //typedef struct {int x, y;}t_coordonees;
 

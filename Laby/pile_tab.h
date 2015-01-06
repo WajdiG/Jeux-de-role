@@ -9,10 +9,10 @@
 #define __PILE_TAB_H__
 
 #include "deplacement.h"
-int tete;
-int queue;
-int nb_valeur;
-int nouv;
+int tete; /**< constante définissant la tete de la liste */
+int queue; /**< constante définissant la queue de la liste */
+int nb_valeur; /**< constante définissant le nombre de valeur dans la liste */
+int nouv; /**< constante définissant l'éklément nouveau de la liste */
 
 /**
  *\fn initpile(void)

@@ -62,9 +62,9 @@ void inclure_region(t_coord coord){
 
 
 /**
- *\fn deplacement_case_monde(t_coord)
+ *\fn deplacement_case_monde(t_coord*)
  *\brief permet de deplacer le joueur d'une case dans le monde
- *\param *coord coordonnées correspondants à la poisition actuelles du joueur
+ *\param coord coordonnées correspondants à la poisition actuelles du joueur
  */
 void deplacement_case_monde(t_coord *coord){
 	
