@@ -52,7 +52,7 @@ void tradRandom(int matrice[N][N], char region[N][N]){
 /**
 * \fn void tradVision(int matrice[N][N])
 * \brief Fonction permettant de traduire la carte du jeu en carte lisible par l'IA du jeu dans une nouvelle matrice
-* \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemain, un coffre ou un monstre
+* \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemin, un coffre ou un monstre
 **/
 void tradVision(int matrice[N][N]){
 	int cptx=0;
@@ -74,8 +74,8 @@ void tradVision(int matrice[N][N]){
 
 /**
 * \fn void affVision2(int matrice[N][N])
-* \brief Fonction permettant d'afficher la matrice contenant la vision de l'IA, mais en plus simplifier, celle-ci n'a était utilisé que durant la conception du programme
-* \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemain, un coffre ou un monstre
+* \brief Fonction permettant d'afficher la matrice contenant la vision de l'IA, mais en plus simplifié, celle-ci n'a été utilisé que durant la conception du programme
+* \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemin, un coffre ou un monstre
 **/
 void affVision2(int matrice[N][N]){
 	int cptx=0;
@@ -106,8 +106,8 @@ void affVision2(int matrice[N][N]){
 
 /**
 * \fn void affVision(int matrice[N][N])
-* \brief Fonction permettant d'afficher la matrice contenant la vision de l'IA, a l'état brute, celle-ci n'a était utilisé que durant la conception du programme
-* \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemain, un coffre ou un monstre
+* \brief Fonction permettant d'afficher la matrice contenant la vision de l'IA, à l'état brute, celle-ci n'a été utilisé que durant la conception du programme
+* \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemin, un coffre ou un monstre
 **/
 void affVision(int matrice[N][N]){
 	int cptx=0;
@@ -157,7 +157,7 @@ void trouverMob(int *mobx, int *moby){
 
 /**
 * \fn void resetMob()
-* \brief Fonction permettant de réinitialiser la vision de l'IA, nous permettant par la suite de la mettre a jour
+* \brief Fonction permettant de réinitialiser la vision de l'IA, nous permettant par la suite de la mettre à jour
 **/
 void resetMob(){
 	int cptx, cpty;
@@ -175,7 +175,7 @@ void resetMob(){
 /**
 * \fn t_coordonees ecrireChemin()
 * \brief Fonction qui génèrera les chemin que l'IA pourra emprunter pour rejoindre le joueur sur la carte
-* \return renvoi un structure contenant les coordonnées de la case adjacente aux joueur
+* \return renvoi un structure contenant les coordonnées de la case adjacente au joueur
 **/
 t_coordonees ecrireChemin(){
 	t_coordonees cheminRetour;
@@ -188,7 +188,7 @@ t_coordonees ecrireChemin(){
 				
 				if(vision[cptx][cpty]==chemin){
 					
-					// le joueur est à coté de notre case -> on arrete
+					// le joueur est à coté de notre case -> on arrète
 					if((vision[cptx][cpty-1]==-2) || (vision[cptx][cpty+1]==-2) || (vision[cptx-1][cpty]==-2) || (vision[cptx+1][cpty]==-2)){
 						cheminRetour.x=cptx;
 						cheminRetour.y=cpty;
@@ -218,8 +218,8 @@ t_coordonees ecrireChemin(){
 
 /**
 * \fn int MobNextToJoueur(int mobx, int moby)
-* \brief Fonction permettant de savoir si l'IA est en contact avec le joueur afin de décider de l'action a faire
-* \return renvoi 1 si l'IA se trouve sur une case adjacente aux joueur, renvoi 0 autrement
+* \brief Fonction permettant de savoir si l'IA est en contact avec le joueur afin de décider de l'action à faire
+* \return renvoie 1 si l'IA se trouve sur une case adjacente au joueur, renvoie 0 autrement
 **/
 int MobNextToJoueur(int mobx, int moby){
 	int cptx;
@@ -250,7 +250,7 @@ int MobNextToJoueur(int mobx, int moby){
 /**
 * \fn void lireChemin(t_coordonees cheminRetour)
 * \brief Fonction permettant de chercher le chemin le plus rapide pour que l'IA puisse rejoindre le joueur
-* \param cheminRetour contient les coordonnées de la case se trouvant a cote du joueur
+* \param cheminRetour contient les coordonnées de la case se trouvant à coté du joueur
 **/
 void lireChemin(t_coordonees cheminRetour){
 	int arrive=0;
@@ -260,7 +260,7 @@ void lireChemin(t_coordonees cheminRetour){
 	
 	while(arrive!=1){
 
-		if((vision[cheminRetour.x][cheminRetour.y-1]==0) || (vision[cheminRetour.x][cheminRetour.y+1]==0) || (vision[cheminRetour.x-1][cheminRetour.y]==0) || (vision[cheminRetour.x+1][cheminRetour.y]==0)){ //on est a coté du monstre
+		if((vision[cheminRetour.x][cheminRetour.y-1]==0) || (vision[cheminRetour.x][cheminRetour.y+1]==0) || (vision[cheminRetour.x-1][cheminRetour.y]==0) || (vision[cheminRetour.x+1][cheminRetour.y]==0)){ //on est à coté du monstre
 			arrive=1;
 		}
 		else {
@@ -282,12 +282,12 @@ void lireChemin(t_coordonees cheminRetour){
 	}
 }
 
-//deplace le mob sur une case en direction du joueur
+//déplace le mob sur une case en direction du joueur
 /**
 * \fn void IA(int matrice[N][N], int*pvJoueur, int*parade, int*enduJoueur, int cpt_laby)
-* \brief Fonction responsable de la totalité de l'IA, du choix de ses actions
+* \brief Fonction responsable de la totalité de l'IA, de ses choix et de ses actions
 * \param matrice[N][N] est la matrice contenant le jeu
-* \param *pvJoueur est la variable pointeur contenant les PV du joueur permettant de les modifiés
+* \param *pvJoueur est un pointeur contenant les PV du joueur et nous permettant de les modifiés
 * \param parade contient une valeur booléenne afin de savoir si le joueur s'est mis en parade, modifiera le calcul des degat subis
 * \param *enduJoueur est la variable pointeur contenant l'endurance du joueur permettant de les modifiés
 * \param cpt_laby est une variable contenant le nombre de labyrinthe réussi par le joueur, celle-ci permettra de determiner la difficultées de l'IA
