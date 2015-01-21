@@ -288,9 +288,9 @@ void lireChemin(t_coordonees cheminRetour){
 * \brief Fonction responsable de la totalité de l'IA, de ses choix et de ses actions
 * \param matrice[N][N] est la matrice contenant le jeu
 * \param *pvJoueur est un pointeur contenant les PV du joueur et nous permettant de les modifiés
-* \param parade contient une valeur booléenne afin de savoir si le joueur s'est mis en parade, modifiera le calcul des degat subis
-* \param *enduJoueur est la variable pointeur contenant l'endurance du joueur permettant de les modifiés
-* \param cpt_laby est une variable contenant le nombre de labyrinthe réussi par le joueur, celle-ci permettra de determiner la difficultées de l'IA
+* \param parade contient une valeur booléenne afin de savoir si le joueur s'est mis en parade, modifiera le calcul des dégats subis
+* \param *enduJoueur est la variable pointeur contenant l'endurance du joueur permettant de les modifié
+* \param cpt_laby est une variable contenant le nombre de labyrinthe réussi par le joueur, celle-ci permettra de determiner la difficulté de l'IA
 **/
 void IA(int matrice[N][N], int*pvJoueur, int*parade, int*enduJoueur, int cpt_laby){
 	int mobx;
@@ -309,7 +309,7 @@ void IA(int matrice[N][N], int*pvJoueur, int*parade, int*enduJoueur, int cpt_lab
 	int paradeJoueur = joueur.combat.parade;
 	int degatBloquer=degatBrut-paradeJoueur;
 	
-	//choisi la statistique la plus élever entre armureleg et armurelou pour determiner la reduction des degats
+	//choisi la statistique la plus élever entre armureleg et armurelou pour determiner la reduction des dégats
 	if(joueur.combat.armureleg>=joueur.combat.armurelou){
 		reducDegat = joueur.combat.armureleg;
 	}
@@ -321,18 +321,18 @@ void IA(int matrice[N][N], int*pvJoueur, int*parade, int*enduJoueur, int cpt_lab
 	resetMob();
 	trouverMob(&mobx, &moby);
 	
-	attaque=MobNextToJoueur(mobx, moby);						//determine si le joueur et le mob sont cote à cote et savoir par la suite l'action de l'IA
+	attaque=MobNextToJoueur(mobx, moby);						//détermine si le joueur et le mob sont côte à côte et savoir par la suite l'action de l'IA
 
-	//fait deplacer le mob si celui-ci n'est pas a coter du joueur
+	//fait deplacer le mob si celui-ci n'est pas à coté du joueur
 	if(attaque==0){
 		cheminRetour=ecrireChemin();
 		lireChemin(cheminRetour);
 		depilerStruct(&resultat);
 		matrice[resultat.x][resultat.y]=MOB; 		//déplacer le MOB sur la case en direction du joueur
-		matrice[mobx][moby]=CHEMIN; 				//liberer le chemin derriere le MOB
+		matrice[mobx][moby]=CHEMIN; 				//libérer le chemin derrière le MOB
 	}
 	
-	//inflige des degats au joueur en fonction de ses compétences si le mob est a coter de celui-ci
+	//inflige des dégats au joueur en fonction de ses compétences si le mob est à coté de celui-ci
 	else if(attaque==1){
 		degat=degat-(0.25*reducDegat);
 		if(critique>=100){
