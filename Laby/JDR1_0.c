@@ -32,7 +32,7 @@ t_statcombat statcombat;/**< variable de type t_statcombat contenant toutes les 
 */
 void afficher_joueur(){
 	
-	printw("\nVoici vos niveaux de compétences principales actuels : \n");
+	printw("\nVoici vos niveaux de compétences principales actuelles : \n");
 	printw("	Rapidité : %i \n", joueur.comp.rapidite);
 	printw("	Agilité : %i \n", joueur.comp.agilite);
 	printw("	Force : %i \n", joueur.comp.force);
@@ -120,10 +120,10 @@ void afficher_joueur(){
 void nouvelle_partie(int matrice[N][N]){
 	int choix=0;
 	int principale=1;
-    int secondaire=1;
+    	int secondaire=1;
 	int quitter=0;
 	
-	//appelle des 5 fonctions necessaire à la création d'une nouvelle partie
+	//appelle des 5 fonctions nécessaires à la création d'une nouvelle partie
 	crea_ava(&joueur,principale,secondaire);
 	creer_region();
 	tradRandom(matrice, region);
@@ -169,9 +169,9 @@ void charger_par(int matrice[N][N]){
 		while(choix!=4){
 
 				printw("\n Entrez le nombre entier correspondant à votre choix : \n");
-				printw(" 0- afficher la region dans laquelle vous vous trouvez \n");
+				printw(" 0- Afficher la region dans laquelle vous vous trouvez \n");
 				printw(" 1- Afficher les caractéristiques de l'avatar \n ");
-				printw("2- Vous déplacer dans le monde \n ");
+				printw("2- Continuer \n ");
 				printw("3- Afficher la position courante dans le monde \n ");
 				printw("4- Sauvegarder et retour à l'accueil \n ");
 				printw("Votre choix :");
@@ -188,35 +188,6 @@ void charger_par(int matrice[N][N]){
 		}
 	}
 	else{
-		printf("\n 	Ce fichier n'existe pas, si vous n'avez pas créer de partie, retournez à l'accueil du jeu. Sinon, réessayez. \n");
+		printf("\n 	Ce fichier n'éxiste pas, si vous n'avez pas créer de partie, retournez à l'accueil du jeu. Sinon, réessayez. \n");
 	}
 }
-
-/*
-int main(){
-	int choix=0;
-	
-	srand(time(NULL));
-	
-	init_monde();
-	
-	while(choix!=4){
-		printf("Bienvenue : \n");
-		printf("1 : Nouvelle partie \n");
-		printf("2 : Charger partie \n");
-		printf("3 : Afficher monde \n");
-		printf("4 : Quittez le jeu \n");
-		printf("Votre choix : ");
-		scanf("%i",&choix);
-	
-		switch(choix){
-			case 1 : nouvelle_partie(); break;
-			case 2 : charger_par(); break;
-			case 3 : aff_monde();break;
-			case 4 : break;
-			default : printf("Veuillez saisir une valeur entière comprise entre 1 et 4. \n");
-		}
-		printw("\n Ce fichier n'existe pas, si vous n'avez pas créer de partie, retournez à l'accueil du jeu. Sinon, réessayez. \n");
-
-	}
-}*/
