@@ -1,6 +1,6 @@
 /**
  *\file combatRework.h
- *\brief Projet informatique S3 Deplacement du personnage et colisions sur le parois
+ *\brief prototypes des fonctions gérant le système de combat du jeu
  *\author Godefroy THIEULART
  *\version 0.2
  *\date 01 Decembre 2014
