@@ -1,6 +1,6 @@
 /**
 *\file charger.c
-*\brief fonction permttant de charger les paramètres du jeu, les caractéristique du joueur et l'avancement dans le jeu
+*\brief fonction permttant de charger les paramètres du jeu, les caractéristiques du joueur et l'avancement dans le jeu
 *\author Wajdi GUEDOUAR
 *\version 0.1
 *\date 19 Novembre 2014
@@ -15,7 +15,7 @@
 
 /**
 *\fn charger_jeu(t_joueur*joueur,t_coord*coord, char**monde [X][Y],FILE*fichier)
-*\brief fonction permettant de charger toutes les données contenue dans le fichier de sauvegarde dans la structure t_joueur jouer
+*\brief fonction permettant de charger toutes les données contenues dans le fichier de sauvegarde dans la structure t_joueur joueur
 *\param joueur pointeur sur la structure t_joueur joueur
 *\param coord coordonnées du joueur dans la matrice monde
 *\param monde[X][Y] matrice monde représentant le monde dans lequel le joueur évolue
@@ -34,7 +34,7 @@ void charger_jeu(t_joueur *joueur,t_coord *coord,char ** monde[X][Y],FILE*fichie
 	fscanf(fichier,"%i",&i);
 	
 	if(i==1){
-		(*joueur).physique.sexe=homme; // equivalent joueur-> sexe = homme
+		(*joueur).physique.sexe=homme; // équivalent joueur-> sexe = homme
 	}
 	else if(i==2){
 		(*joueur).physique.sexe=femme;
@@ -180,7 +180,7 @@ void charger_jeu(t_joueur *joueur,t_coord *coord,char ** monde[X][Y],FILE*fichie
 *\param joueur pointeur sur la structure t_joueur joueur
 *\param coord coordonnées du joueur dans la matrice monde
 *\param monde[X][Y] matrice monde représentant le monde dans lequel le joueur évolue
-*\return int renvoie 1 si le fichier charger est valide, 0 si non
+*\return int renvoie 1 si le fichier chargé est valide, 0 si non
 */
 int charger_partie(char* charger,t_joueur* joueur,t_coord *coord, char ** monde[X][Y]){
 	FILE*fichier;
@@ -197,6 +197,6 @@ int charger_partie(char* charger,t_joueur* joueur,t_coord *coord, char ** monde[
 		return 1;
 	}
 	
-	printw("Aucun ficher de sauvegarder existant pour ce pseudo. Vous pouvez commencer une nouvelle partie ou réessayer. \n");
+	printw("Aucun ficher de sauvegarde éxistant pour ce pseudo. Vous pouvez commencer une nouvelle partie ou réessayer. \n");
 	return 0;
 }
