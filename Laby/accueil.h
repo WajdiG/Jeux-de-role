@@ -1,6 +1,6 @@
 /**
  *\file accueil.h
- *\brief Projet informatique S3 Deplacement du personnage et colisions sur le parois
+ *\brief prototypes des fonctions gérants l'interface du jeu
  *\author Godefroy THIEULART
  *\version 0.2
  *\date 22 Octobre 2014
