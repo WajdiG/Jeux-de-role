@@ -1,6 +1,6 @@
 /**
-*\file deplacement.h
-*\brief Regroupe les prototypes pour le deplacement des entités et le démarage du jeu
+*\file deplacement.c
+*\brief Regroupe les fonctions nécéssaires aux deplacements des entités et au démarrage du jeu
 *\author Joris Toulmonde, Godefroy THIEULART 
 *\version 0.1
 *\date 25 Novembre 2014
@@ -18,7 +18,7 @@
 #include "deplacement.h"
 
 extern int quitter; /**< Variable pour savoir si on quitte le jeu */
-extern char region[N][N]; /**< matrice de matrice représentant le monde, chaque case du monde contient une matrice region */
+extern char region[N][N]; /**< matrice représentant une région */
 
 
 t_coordonees ma_position; /**< Structure modélisant les coordonnées de la case courante du joueur*/
@@ -26,15 +26,15 @@ t_coordonees sorti; /**< Structure modélisant les coordonnées de la sortie*/
 
 /**
 * \fn void affichage(int matrice[N][N], int pvJoueur, int manaJoueur, int enduJoueur, int pvMob, int cpt_laby, int*parade, int*distance)
-* \brief Fonction permettant l'affichage de la carte a chaque tour.
-* \param matrice[N][N] matrice ou chaque case contient soir un mur, un chemin, un joueur, un coffre ou un monstre
+* \brief Fonction permettant l'affichage de la carte à chaque tour.
+* \param matrice[N][N] matrice où chaque case contient soit un mur, un chemin, un joueur, un coffre ou un monstre
 * \param pvJoueur les points de vie du joueur
 * \param manaJoueur représentant le mana du joueur
 * \param enduJoueur représentant l'endurance du joueur
-* \param pvMob representant les points de vie du monstre
-* \param cpt_laby represente le niveau du labyrinthe
+* \param pvMob représentant les points de vie du monstre
+* \param cpt_laby représente le niveau du labyrinthe
 * \param *parade represente les points de parade du joueur
-* \param *distance est fait pour activer ou pas le mode distance (archerie)
+* \param *distance est fait pour gérer le mode distance (archerie)
 **/
 void affichage(int matrice[N][N], int pvJoueur, int manaJoueur, int enduJoueur, int pvMob, int cpt_laby, int*parade, int*distance){
 	int i, j;
@@ -61,16 +61,16 @@ void affichage(int matrice[N][N], int pvJoueur, int manaJoueur, int enduJoueur, 
 		printf("\r\n");
 	}
 
-		if(pvJoueur>=100){	printf("\nPV : %i                                         PV Mob = %i \r\n", pvJoueur, pvMob);	}
-		else if(pvJoueur>9 && pvJoueur<100){	 printf("\nPV : %i                                           PV Mob = %i \r\n", pvJoueur, pvMob);	}
-		else if(pvJoueur<10){	 printf("\nPV : %i                                             PV Mob = %i \r\n", pvJoueur, pvMob);	}
+		if(pvJoueur>=100){printf("\nPV : %i                                         PV Mob = %i \r\n", pvJoueur, pvMob);}
+		else if(pvJoueur>9 && pvJoueur<100){printf("\nPV : %i                                           PV Mob = %i \r\n", pvJoueur, pvMob);}
+		else if(pvJoueur<10){printf("\nPV : %i                                             PV Mob = %i \r\n", pvJoueur, pvMob);}
 		printf("Mana : %i \r\n", manaJoueur);
 		printf("Endurance : %i \r\n", enduJoueur);
 		if(*distance==1){
-			printf("distance activé");
+			printf("distance activée");
 		}
 		else if(*distance==0){
-			printf("distance desactivé");
+			printf("distance désactivée");
 		}
 		printf("\r\n\nO=====================Boite=A=Dialogue========================O\r\n");
 		
@@ -82,7 +82,7 @@ void affichage(int matrice[N][N], int pvJoueur, int manaJoueur, int enduJoueur, 
 /**
 * \fn void rechercheJoueur(int matrice[N][N])
 * \brief Fonction qui recherche les coordonnées du joueur sur la carte
-* \param matrice[N][N] matrice ou chaque case contient soir un mur, un chemin, un joueur, un coffre ou un monstre
+* \param matrice[N][N] matrice où chaque case contient soit un mur, un chemin, un joueur, un coffre ou un monstre
 **/
 void rechercheJoueur(int matrice[N][N]){
 	int cptx=0;
@@ -101,7 +101,7 @@ void rechercheJoueur(int matrice[N][N]){
 /**
 * \fn void deplacement_perso(int*parade, int*distance,int matrice[N][N], int*pvMob, int*enduJoueur, int*pvJoueur, int*manaJoueur, t_joueur*joueur,int pvMax)
 * \brief Fonction permettant de deplacer le joueur a chaque tour ou le faire agir
-* \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemin, un coffre ou un monstre
+* \param matrice[N][N] Matrice où chaque case contient soit un mur, un joueur, un chemin, un coffre ou un monstre
 **/
 void deplacement_perso(int*parade, int*distance,int matrice[N][N], int*pvMob, int*enduJoueur, int*pvJoueur, int*manaJoueur, t_joueur*joueur,int pvMax){
 	
@@ -110,17 +110,17 @@ void deplacement_perso(int*parade, int*distance,int matrice[N][N], int*pvMob, in
 		
 		x = getch();
 		tampon.x = ma_position.x;
-        tampon.y = ma_position.y;
+        	tampon.y = ma_position.y;
 
 		switch(x){
 			
-			//fait bouger le joueur dans la direction voulu
+			//fait bouger le joueur dans la direction voulue
 			case 'z' : *parade=0 ; ma_position.x-- ; break;
 			case 'q' : *parade=0 ; ma_position.y-- ; break;
 			case 's' : *parade=0 ; ma_position.x++ ; break;
 			case 'd' : *parade=0 ; ma_position.y++ ; break;
 			
-			//fait attaquer le joueur dans la direction voulu
+			//fait attaquer le joueur dans la direction voulue
 			case 'i' : *parade=0 ; degatHaut(matrice, ma_position, pvMob, enduJoueur,joueur,distance) ; break;
 			case 'j' : *parade=0 ; degatGauche(matrice, ma_position, pvMob, enduJoueur,joueur,distance) ; break;
 			case 'k' : *parade=0 ; degatBas(matrice, ma_position, pvMob, enduJoueur,joueur,distance) ; break;
@@ -137,7 +137,7 @@ void deplacement_perso(int*parade, int*distance,int matrice[N][N], int*pvMob, in
 						else if(*distance==0){	*distance=1 ;	} break;
 		}
 		
-		//empeche le joueur de marcher sur les murs ou sur le mob, et libère le chemin derrière lui
+		//empèche le joueur de marcher sur les murs ou sur le mob et libère le chemin derrière lui
 		if(matrice[ma_position.x][ma_position.y] == MUR){
 			ma_position.x = tampon.x;
 			ma_position.y = tampon.y;
@@ -156,7 +156,7 @@ void deplacement_perso(int*parade, int*distance,int matrice[N][N], int*pvMob, in
 /**
 * \fn int coffre(int matrice[N][N])
 * \brief Fonction permettant de voir s'il y a des coffres sur la carte
-* \param matrice[N][N] Matrice ou chaque case contient soit un mur, un joueur, un chemain, un coffre ou un monstre
+* \param matrice[N][N] Matrice où chaque case contient soit un mur, un joueur, un chemain, un coffre ou un monstre
 * \return Renvoi 1 s'il n'y a plus de coffre sur la carte
 **/
 int coffre(int matrice[N][N]){
