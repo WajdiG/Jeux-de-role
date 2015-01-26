@@ -1,6 +1,6 @@
 /**
  *\file combatRework.c
- *\brief Projet informatique S3 Deplacement du personnage et colisions sur le parois
+ *\brief fonctions gérant le système de combat du jeu
  *\author Godefroy THIEULART
  *\version 0.2
  *\date 01 Decembre 2014
@@ -13,8 +13,8 @@
 #include "accueil.h"
 #include "IA.h"
 #include "region.h"
+#include "combatRework.h"
 
-#define N 20 /**< Taille de la matrice region*/
 #define MUR 0 /**< Entier modélisant un mur*/
 #define CHEMIN 1 /**< Entier modélisant le chemin à emprunter disponible pour le joueur et le monstre*/
 #define COFFRE 2 /**< Entier modélisant un coffre*/
