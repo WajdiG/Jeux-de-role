@@ -1,6 +1,6 @@
 /**
  *\file IA.c
- *\brief Projet informatique S3 Deplacement du personnage et colisions sur le parois
+ *\brief fichier contenant les fonctions liées à l'intelligence artificielle des mobs
  *\author Godefroy THIEULART
  *\version 0.2
  *\date 01 Novembre 2014
