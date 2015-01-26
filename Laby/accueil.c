@@ -16,7 +16,7 @@
 #include "IA.h"
 
 int quitter = 0; /**< variable permettant de quitter le jeu */
-int cpt_laby=0; /**< compteur pour savoir le nombre de labyrinthe réaliser par le joueur */
+int cpt_laby=0; /**< compteur du nombre de labyrinthe réalisé par le joueur */
 extern t_joueur joueur;
 extern t_coordonees ma_position;
 extern t_coordonees sorti;
@@ -24,7 +24,7 @@ extern t_statcombat statcombat;
 
 /**
 * \fn void ecran_accueil()
-* \brief Fonction d'affichage de l'ecran d'accueil du jeu.
+* \brief Fonction d'affichage de l'écran d'accueil du jeu.
 **/
 void ecran_accueil(){
 	char verif = 'a';
@@ -74,20 +74,20 @@ void Option_jeu(int matrice[N][N]){
 	printw("         H                   III   II  II II  III II  II II     II    II  II II  II                       H    \n"); 
 	printw("         H                   II II  IIII   IIII I  IIII  IIIIII IIII IIII II  II IIIIII ©                H     \n");
 	printw("        /H\\                                                                                              /H\\ \n");
-	printw("       <HUH>            _______TOULMONDE_Joris-THIEULART_Godefroy-GUEDOUAR_Wajdi________                <HUH>  \n");
+	printw("       <HUH>            _______GUEDOUAR_Wajdi-THIEULART_Godefroy-TOULMONDE_Joris________                <HUH>  \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                                        ______________________________________________        |||   \n");
 	printw("        |||                                       //                                            \\\\       ||| \n");
 	printw("        |||                   |============|      H    IIII  IIII  IIIIII IIII  IIII  III   II   H       |||   \n");
 	printw("        |||                   |Z           |      H   II  II II II   II    II  II  II IIII  II   H       |||   \n");
 	printw("        |||                   |   pour     |      H   II  II IIII    II    II  II  II II II II   H       |||   \n");
-	printw("        |||                   |      Monter|      H   II  II II      II    II  II  II II  IIII   H       |||   \n");
+	printw("        |||                   |      monter|      H   II  II II      II    II  II  II II  IIII   H       |||   \n");
 	printw("        |||                   |============|      U    IIII  II      II   IIII  IIII  II   III   U       |||   \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||   |============|  |============|  |============|              |======|    |============|     |||   \n");
 	printw("        |||   |Q           |  | S          |  |D           |              | -4-  |    |    -5-     |     |||   \n");
 	printw("        |||   |   pour     |  |   pour     |  |   pour     |              |      |    |Retour      |     |||   \n");
-	printw("        |||   |   la Gauche|  |   Descendre|  |   La Droite|              |Next  |    |    au  Menu|     |||   \n");
+	printw("        |||   |   la gauche|  |   descendre|  |   la droite|              |Next  |    |    au  menu|     |||   \n");
 	printw("        |||   |============|  |============|  |============|              |======|    |============|     |||   \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                             |================================|                               |||   \n");
@@ -111,7 +111,7 @@ void Option_jeu(int matrice[N][N]){
 
 /**
 * \fn void Option_jeu_2(int matrice[N][N])
-* \brief Fonction d'affichage du second ecran d'option du jeu.
+* \brief Fonction d'affichage du second écran d'option du jeu.
 * \param matrice[N][N] est la matrice contenant le labyrinthe
 **/
 void Option_jeu_2(int matrice[N][N]){
@@ -125,7 +125,7 @@ void Option_jeu_2(int matrice[N][N]){
 	printw("         H                   III   II  II II  III II  II II     II    II  II II  II                       H    \n"); 
 	printw("         H                   II II  IIII   IIII I  IIII  IIIIII IIII IIII II  II IIIIII ©                H     \n");
 	printw("        /H\\                                                                                              /H\\ \n");
-	printw("       <HUH>            _______TOULMONDE_Joris-THIEULART_Godefroy-GUEDOUAR_Wajdi________                <HUH>  \n");
+	printw("       <HUH>            _______GUEDOUAR_Wajdi-THIEULART_Godefroy-TOULMONDE_Joris________                <HUH>  \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                                        ______________________________________________        |||   \n");
 	printw("        |||                                       //                                            \\\\       ||| \n");
@@ -138,7 +138,7 @@ void Option_jeu_2(int matrice[N][N]){
 	printw("        |||   |============|  |============|  |============|    |======|  |======|    |============|     |||   \n");
 	printw("        |||   |J           |  | K          |  |L           |    | -3-  |  | -4-  |    |    -5-     |     |||   \n");
 	printw("        |||   | pour taper |  | pour taper |  | pour tapper|    |      |  |      |    |Retour      |     |||   \n");
-	printw("        |||   |    a Gauche|  |      en bas|  |    a Droite|    |Prev  |  |Next  |    |    au  Menu|     |||   \n");
+	printw("        |||   |    à gauche|  |      en bas|  |    à droite|    |Prev  |  |Next  |    |    au  Menu|     |||   \n");
 	printw("        |||   |============|  |============|  |============|    |======|  |======|    |============|     |||   \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                             |================================|                               |||   \n");
@@ -162,7 +162,7 @@ void Option_jeu_2(int matrice[N][N]){
 
 /**
 * \fn void Option_jeu_3(int matrice[N][N])
-* \brief Fonction d'affichage du troisieme ecran d'option du jeu.
+* \brief Fonction d'affichage du troisième écran d'option du jeu.
 * \param matrice[N][N] est la matrice contenant le labyrinthe
 **/
 void Option_jeu_3(int matrice[N][N]){
@@ -176,7 +176,7 @@ void Option_jeu_3(int matrice[N][N]){
 	printw("         H                   III   II  II II  III II  II II     II    II  II II  II                       H    \n"); 
 	printw("         H                   II II  IIII   IIII I  IIII  IIIIII IIII IIII II  II IIIIII ©                H     \n");
 	printw("        /H\\                                                                                              /H\\ \n");
-	printw("       <HUH>            _______TOULMONDE_Joris-THIEULART_Godefroy-GUEDOUAR_Wajdi________                <HUH>  \n");
+	printw("       <HUH>            _______GUEDOUAR_Wajdi-THIEULART_Godefroy-TOULMONDE_Joris________                <HUH>  \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                                        ______________________________________________        |||   \n");
 	printw("        |||                                       //                                            \\\\       ||| \n");
@@ -188,8 +188,8 @@ void Option_jeu_3(int matrice[N][N]){
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||   |============|   |==========================|     |======|              |============|     |||   \n");
 	printw("        |||   |N           |   |         SPACEBAR         |     | -3-  |              |    -5-     |     |||   \n");
-	printw("        |||   |Distance    |   |  Parade de ma prochaine  |     |      |              |Retour      |     |||   \n");
-	printw("        |||   |      ON/OFF|   |      Attaque ennemi      |     |Prev  |              |    au  Menu|     |||   \n");
+	printw("        |||   |Distance    |   |  Parade de la prochaine  |     |      |              |Retour      |     |||   \n");
+	printw("        |||   |      ON/OFF|   |      attaque ennemi      |     |Prev  |              |    au  Menu|     |||   \n");
 	printw("        |||   |============|   |==========================|     |======|              |============|     |||   \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                             |================================|                               |||   \n");
@@ -212,7 +212,7 @@ void Option_jeu_3(int matrice[N][N]){
 
 /**
 * \fn void Menu_Jeu(int matrice[N][N])
-* \brief Fonction d'affichage du menu du jeu.
+* \brief Fonction d'affichage du menu de jeu.
 * \param matrice[N][N] est la matrice contenant le labyrinthe
 **/
 void Menu_Jeu(int matrice[N][N]){
@@ -226,13 +226,13 @@ void Menu_Jeu(int matrice[N][N]){
 	printw("         H                   III   II  II II  III II  II II     II    II  II II  II                       H    \n"); 
 	printw("         H                   II II  IIII   IIII I  IIII  IIIIII IIII IIII II  II IIIIII ©                H     \n");
 	printw("        /H\\                                                                                              /H\\ \n");
-	printw("       <HUH>            _______TOULMONDE_Joris-THIEULART_Godefroy-GUEDOUAR_Wajdi________                <HUH>  \n");
+	printw("       <HUH>            _______GUEDOUAR_Wajdi-THIEULART_Godefroy-TOULMONDE_Joris________                <HUH>  \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||   |============|    |============|                      |============|    |============|     |||   \n");
 	printw("        |||   |    -1-     |    |    -2-     |                      |    -4-     |    |    -5-     |     |||   \n");
-	printw("        |||   |Nouvelle    |    |Charger     |                      |commande    |    |Quitter     |     |||   \n");
+	printw("        |||   |Nouvelle    |    |Charger     |                      |Commande    |    |Quitter     |     |||   \n");
 	printw("        |||   |      Partie|    |      Partie|                      |      du jeu|    |     le jeu |     |||   \n");
 	printw("        |||   |============|    |============|                      |============|    |============|     |||   \n");
 	printw("        |||                                                                                              |||   \n");
@@ -272,7 +272,7 @@ void Quitter_Jeu(){
 	printw("         H                   III   II  II II  III II  II II     II    II  II II  II                       H    \n"); 
 	printw("         H                   II II  IIII   IIII I  IIII  IIIIII IIII IIII II  II IIIIII ©                H     \n");
 	printw("        /H\\                                                                                              /H\\ \n");
-	printw("       <HUH>            _______TOULMONDE_Joris-THIEULART_Godefroy-GUEDOUAR_Wajdi________                <HUH>  \n");
+	printw("       <HUH>            _______GUEDOUAR_Wajdi-THIEULART_Godefroy-TOULMONDE_Joris________                <HUH>  \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                         O|=====================================|O                            |||   \n");
 	printw("        |||                            \\        MERCI                   /                                |||  \n");
@@ -299,7 +299,7 @@ void Quitter_Jeu(){
 
 /**
 * \fn void defeat(int matrice[N][N])
-* \brief Fonction d'affichage de l'ecran du jeu en cas de defaite du joueur.
+* \brief Fonction d'affichage de l'écran de jeu en cas de défaite du joueur.
 * \param matrice[N][N] est la matrice contenant le labyrinthe
 **/
 void defeat(int matrice[N][N]){
@@ -313,7 +313,7 @@ void defeat(int matrice[N][N]){
 	printw("         H                   III   II  II II  III II  II II     II    II  II II  II                       H    \n"); 
 	printw("         H                   II II  IIII   IIII I  IIII  IIIIII IIII IIII II  II IIIIII ©                H     \n");
 	printw("        /H\\                                                                                              /H\\ \n");
-	printw("       <HUH>            _______TOULMONDE_Joris-THIEULART_Godefroy-GUEDOUAR_Wajdi________                <HUH>  \n");
+	printw("       <HUH>            _______GUEDOUAR_Wajdi-THIEULART_Godefroy-TOULMONDE_Joris________                <HUH>  \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                          IIII    IIIIII IIIIII IIIIII  IIII  IIIIII                          |||   \n");
@@ -340,7 +340,7 @@ void defeat(int matrice[N][N]){
 
 /**
 * \fn void victory(int matrice[N][N])
-* \brief Fonction d'affichage de l'ecran du jeu en cas de victoire du joueur.
+* \brief Fonction d'affichage de l'écran du jeu en cas de victoire du joueur.
 * \param matrice[N][N] est la matrice contenant le labyrinthe
 **/
 void victory(int matrice[N][N]){
@@ -354,7 +354,7 @@ void victory(int matrice[N][N]){
 	printw("         H                   III   II  II II  III II  II II     II    II  II II  II                       H    \n"); 
 	printw("         H                   II II  IIII   IIII I  IIII  IIIIII IIII IIII II  II IIIIII ©                H     \n");
 	printw("        /H\\                                                                                              /H\\ \n");
-	printw("       <HUH>            _______TOULMONDE_Joris-THIEULART_Godefroy-GUEDOUAR_Wajdi________                <HUH>  \n");
+	printw("       <HUH>            _______GUEDOUAR_Wajdi-THIEULART_Godefroy-TOULMONDE_Joris________                <HUH>  \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                                                                                              |||   \n");
 	printw("        |||                       II     II IIII  IIII  IIIIII  IIII  IIII  II  II                       |||   \n");
@@ -394,7 +394,7 @@ int continuer(int matrice[N][N]){
 	int enduJoueur=joueur.vie.endu+joueur.comp.agilite;
 	int enduMax=enduJoueur;
 	
-	//initiation des statistiques du mob
+	//initialisation des statistiques du mob
 	int pvMob=30+(2*cpt_laby);
 	
 	int cptx, cpty;
@@ -407,10 +407,10 @@ int continuer(int matrice[N][N]){
 		
 	while(matrice[ma_position.x][ma_position.y] != OBJECTIF && quitter != 1){
 		
-		//fait jouer le joueur
+		//tour du joueur
 		deplacement_perso(&parade, &distance, matrice, &pvMob, &enduJoueur, &pvJoueur, &manaJoueur, &joueur, pvMax);
 		
-		//fait agir le mob si celui-ci est vivant (plus de 0 PV)
+		//tour du mob si celui-ci est vivant (plus de 0 PV)
 		if(pvMob>0){
 				IA(matrice, &pvJoueur, &parade, &enduJoueur,cpt_laby);
 				affichage(matrice, pvJoueur, manaJoueur, enduJoueur, pvMob, cpt_laby, &parade, &distance);
@@ -424,10 +424,10 @@ int continuer(int matrice[N][N]){
 					}
 				}
 			}
-			printf("\r\n               ==> Vous avez tue le mob <==               \r\n");
+			printf("\r\n               ==> Vous avez tué le mob <==               \r\n");
 		}
 		
-		//affiche l'ecran de defaite dans le cas ou le joueur perd toute sa vie
+		//affiche l'écran de défaite dans le cas ou le joueur perd toute sa vie
 		if(pvJoueur<=0){
 			defeat(matrice);
 			statcombat.defaite++;
@@ -435,20 +435,20 @@ int continuer(int matrice[N][N]){
 		}
 		affichage(matrice, pvJoueur, manaJoueur, enduJoueur, pvMob, cpt_laby, &parade, &distance);
 		
-		//verifie si des coffre sont toujours present dans le niveau, affiche la sorti si non
+		//vérifie si des coffres sont toujours présents dans le niveau, affiche la sortie si non
 		if(coffre(matrice) && pvMob<=0){
 			printf("\r\n         ==> La porte de sortie est deverouillée <==         \r\n");
 			
 			matrice[sorti.x][sorti.y] = OBJECTIF;
 		}
-		//reactualise l'endurance de joueur
+		//réactualise l'endurance du joueur
 		if(enduJoueur<100){	enduJoueur+=3;	}
 		if(enduJoueur>enduMax){	enduJoueur=enduMax;	}
 		if(enduJoueur<=	0){	enduJoueur=0;	}
 		
 	}
 	
-	//affiche l'ecran de victoire si le joueur est vivant et a recuperer tout les coffres/tuer le mob/pris la sortie
+	//affiche l'écran de victoire si le joueur est vivant et a récuperé tout les coffres/tué le mob/pris la sortie
 	if(quitter!=1){
 		if(pvJoueur>0){
 			victory(matrice);
