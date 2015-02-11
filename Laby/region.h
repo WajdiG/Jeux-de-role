@@ -11,7 +11,7 @@
 #define NB_COFFRE 4 /**< constante définissant le nombre de coffre présent sur dans la matrice region */
 
 
-int tab[NB_COFFRE+4]; /**< tableau d'entier contenant les coordonnées des coffres plus celles du monstre et du joueur */
+int tab[NB_COFFRE+8]; /**< tableau d'entier contenant les coordonnées des coffres plus celles du monstre et du joueur */
 int pile[tmax]; /**< tableau d'entier représentant une pile d'entier */
 int sommet; /**< entier représentant le sommet de la pile d'entier */
 
