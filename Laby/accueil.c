@@ -300,9 +300,9 @@ void Quitter_Jeu(){
 /**
 * \fn void defeat(int matrice[N][N])
 * \brief Fonction d'affichage de l'écran de jeu en cas de défaite du joueur.
-* \param matrice[N][N] est la matrice contenant le labyrinthe
+* \return void
 **/
-void defeat(int matrice[N][N]){
+void defeat(){
 	char verif='a';
 	clear();
 	printw("\n");
@@ -341,9 +341,9 @@ void defeat(int matrice[N][N]){
 /**
 * \fn void victory(int matrice[N][N])
 * \brief Fonction d'affichage de l'écran du jeu en cas de victoire du joueur.
-* \param matrice[N][N] est la matrice contenant le labyrinthe
+* \return void
 **/
-void victory(int matrice[N][N]){
+void victory(){
 	char verif='a';
 	clear();
 	printw("\n");

@@ -135,7 +135,7 @@ void place_joueur(){
 	}while(!verif_coffre(i,j)||j==0||i==0);
 		region[i][j]='P';	
 		//sauvegarde les coordonées du joueur dans le tableau tab
-		tab[2*NB_COFFRE]=i;
+		tab[(2*NB_COFFRE)]=i;
 		tab[(2*NB_COFFRE)+1]=j;
 }
 
