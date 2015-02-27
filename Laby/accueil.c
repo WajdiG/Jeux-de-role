@@ -298,7 +298,7 @@ void Quitter_Jeu(){
 }
 
 /**
-* \fn void defeat(int matrice[N][N])
+* \fn void defeat(void)
 * \brief Fonction d'affichage de l'écran de jeu en cas de défaite du joueur.
 * \return void
 **/
@@ -339,7 +339,7 @@ void defeat(){
 }
 
 /**
-* \fn void victory(int matrice[N][N])
+* \fn void victory(void)
 * \brief Fonction d'affichage de l'écran du jeu en cas de victoire du joueur.
 * \return void
 **/
